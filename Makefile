@@ -1,5 +1,5 @@
 BASE:=book
-BOOKNAME:=`ls -1 $(BASE)`
+BOOKNAME:=`ls -1 $(BASE) | head -n 1`
 SRC:=book/$(BOOKNAME)
 IMAGE:=andreacensi/duckuments:devel
 

@@ -2,7 +2,7 @@ version: 2
 jobs:
     build:
         docker:
-        - image: andreacensi/duckuments:1
+        - image: andreacensi/mcdp_books:duckuments
         resource_class: large
         steps:
         - checkout
