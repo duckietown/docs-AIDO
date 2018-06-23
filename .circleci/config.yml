@@ -20,6 +20,22 @@ jobs:
             name: Compile
             command: make compile-native-ci
 
+        - run:
+            when: always
+            name: Package artifacts
+            command:  |
+                find duckuments-dist -name '*.old' -delete
+                make package-artifacts
+
+        - store_artifacts:
+              path: out/package.tgz
+              destination: out/package.tgz
+
+
         - store_artifacts:
               path: duckuments-dist
               destination: duckuments-dist
+
+
+        - test-results-store:
+            path: duckuments-dist/junit
