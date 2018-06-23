@@ -3,6 +3,10 @@ jobs:
     build:
         docker:
         - image: andreacensi/mcdp_books:duckuments
+          environment:
+              COLUMNS: 160
+              TERM: xterm
+
         resource_class: large
         steps:
         - checkout
