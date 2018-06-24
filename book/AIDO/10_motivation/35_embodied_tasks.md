@@ -74,7 +74,7 @@ $$
 
 This section focuses on the infrastructure and background of the embodied individual robotic tasks as outlined in [](#task_overview).
 
-For examples of Duckiebot driving see [a set of demo videos of Duckiebots driving in Duckietown](#demos).
+For examples of Duckiebot driving see [a set of demo videos of Duckiebots driving in Duckietown](+op_manual_duckiebot#demos).
 
 The actual embodied tasks will be described in more detail in [](#lf), [](#lf_v), [](#nav_v). Note that the sequence tasks was chosen to gradually increase the difficulty of tasks by extending previous task solutions to more general situations.
 
@@ -302,7 +302,7 @@ $$
 \end{cases}
 $$
 
-The yield situation at an intersection is depicted in [](#fig:yield).
+The yield situation at an intersection is depicted in [](#yield).
 
 
 #### Hierarchy of rules
