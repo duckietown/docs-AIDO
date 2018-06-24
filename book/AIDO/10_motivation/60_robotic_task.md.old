@@ -163,7 +163,7 @@ We will reuse this notation to connect objective $\objective$, environment $\env
 
 
 
-## Environment $\environment$ {#environment}
+## Environment $\environment$
 
 The environment $\environment$ is meant to model the "world" $\universe$ a robot is acting in. To adapt this notion to the purposes of a robotic task $\robotictask$, only the part of the universe that is external to the robot is considered. 
 
@@ -189,7 +189,7 @@ We now proceed from the general distribution $\environment$ to a specific instan
 \end{definition}
 
 
-## Robot $\robot$ {#robot}
+## Robot $\robot$ 
 
 TODO: AC: a general comment here. Could we define the sets that all of these functions are acting on more specifically for each map?
 
