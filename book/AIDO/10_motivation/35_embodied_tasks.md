@@ -302,7 +302,7 @@ $$
 \end{cases}
 $$
 
-The yield situation at an intersection is depicted in [](#yield).
+The yield situation at an intersection is depicted in [](#subfig:yield).
 
 
 #### Hierarchy of rules
