@@ -82,7 +82,7 @@ The actual embodied tasks will be described in more detail in [](#lf), [](#lf_v)
 
 There are three main parts in our system with which the participants will interact:
 
-1. The **physical Duckietown platform** ([](#fig:duckietown_nice)): miniature vision-based vehicles and cities in which the vehicles drive. This is an inexpensive setup (\$100/robot). The robot hardware and environment are rigorously specified, which makes the development extremely repeatable (For an example of this see [](#duckietown-specs).
+1. The **physical Duckietown platform** ([](#fig:duckietown_nice)): miniature vision-based vehicles and cities in which the vehicles drive. This is an inexpensive setup (\$100/robot). The robot hardware and environment are rigorously specified, which makes the development extremely repeatable (For an example of this see [](+opmanual_duckietown#duckietown-specs).
 2. A **cloud simulation** and training environment, which allows to test in simulation before trying on the real robots.
 3. **Remote "robotariums"** in which to try the code in controlled and reproducible conditions.
 
