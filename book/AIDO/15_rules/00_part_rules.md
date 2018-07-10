@@ -115,24 +115,22 @@ The indicator function $\mathbb{I}_{i-active}$ is $1$ if a trip is \emph{active}
 
 #### Autonomous mobility on demand (AMoD)
 
-
 An AMoD system needs to provide the highest possible service level in terms of journey times and wait times, while ensuring maximum fleet efficiency.
-We have two scoring metrics representing these goals in a simplified manner. In order to normalize their contributions, we supply a baseline case $\mathcal{B}$
+We have two scoring metrics representing these goals in a simplified manner. In order to normalize their contributions, we supply a baseline case 
+
+$$ \mathcal{B} $$
 
 We introduce the following variables:
 
 $$
-% &\alpha_1 = 0.5& &\textrm{weight for efficiency}& \\
-% &\alpha_2 = 0.5& &\textrm{weight for waiting times}& \\
-% &\alpha_3 = 0.5& &\textrm{weight for fleet size}& \\
-&d_T& &\textrm{total distance driven by fleet}& \\
-&d_E& &\textrm{empty distance driven by fleet}& \\
-& & & \textrm{without a customer on board} \\
-&R \in \mathbb{N}^+& &\textrm{number of requests in scenario}&\\
-&w_i \in \mathbb{R}& &\textrm{waiting time of request $i$}&\\
-&w_{i,\mathcal{B}} \in \mathbb{R}& &\textrm{$w_i$  in $\mathcal{B}$ case}&\\
-&N \in \mathbb{N}^+& &\textrm{number of taxis}&\\
-&N_\mathcal{B} \in \mathbb{N}^+& &\textrm{$N$ in $\mathcal{B}$ case}&\\
+& d_T & &\textrm{total distance driven by fleet}& \\
+& d_E & &\textrm{empty distance driven by fleet}& \\
+& & & \textrm{without a customer on board}  &\\
+& R \in \mathbb{N}^+& &\textrm{number of requests in scenario}&\\
+& w_i \in \mathbb{R}& &\textrm{waiting time of request $i$}&\\
+& w_{i,\mathcal{B}} \in \mathbb{R}& &\textrm{$w_i$  in $\mathcal{B}$ case}&\\
+& N \in \mathbb{N}^+& &\textrm{number of taxis}&\\
+& N_\mathcal{B} \in \mathbb{N}^+& &\textrm{$N$ in $\mathcal{B}$ case} &\\
 $$
 
 The first performance metric is for cases when the same number of vehicles as in the benchmark case $N_\mathcal{B}$ is used:
@@ -171,12 +169,12 @@ from the middle of the right lane, such that $d(t)=0$ corresponds to the robot b
 
 The "stay-in-lane" cost function is therefore defined as:
 
- $$
+$$
    \objective_{T-LF}(t) = \int_0^{T_{eps}} \begin{cases} 0  & d(t) < d_{safe} \\
      \beta d(t)^2 & d_{safe} \leq d(t) \leq d_{max} \\
    	\alpha & d(t) > d_{max}
    	\end{cases}
- $$
+$$
 
 An example situation where a Duckiebot does not stay in the lane is shown in Fig.~\ref{fig:crossing_lane}.
 
@@ -204,9 +202,9 @@ is in the stopping zone is denoted with ~$p(t) \in \mathcal{S}$.
 
 Then we write the objective as the cumulative sum of stopping at intersection rule infractions.
 
- $$
+$$
   	\objective_{T-SI}(t) &= \sum_{t_k} \gamma  \mathbb{I}_{\nexists t \text{ s.t. } v(t)=0 \wedge  p(t) \in S_{zone}}
- $$
+$$
 
 Here the sum over time increments $t_k$ denote the time intervals in which this conditions is checked. The rule penalty is only applied once the Duckiebot leaves the stopping zone. Only then is it clear that it did not stop within the stopping zone.
 
@@ -257,9 +255,9 @@ The Duckietown traffic laws say:
 
 Mathematically we accumulate penalties $\mu$ whenever the Duckiebot moves at an intersection while there is a Duckiebot (DB) on the right hand joining lane (RHL).
 
-  $$
+$$
  	\objective_{T-YR}(t) = \sum_{t_k} \mu \mathbb{I}_{v(t) >0 \wedge \exists \text{ DB in RHL}}
-  $$
+$$
 
 <div figure-id="fig:yield">
 <img src="images/yield.jpg" style="width:80%"/>
