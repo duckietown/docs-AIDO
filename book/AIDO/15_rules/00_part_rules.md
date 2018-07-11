@@ -115,23 +115,24 @@ The indicator function $\mathbb{I}_{i-active}$ is $1$ if a trip is \emph{active}
 
 #### Autonomous mobility on demand (AMoD)
 
-An AMoD system needs to provide the highest possible service level in terms of journey times and wait times, while ensuring maximum fleet efficiency.
-We have two scoring metrics representing these goals in a simplified manner. In order to normalize their contributions, we supply a baseline case 
 
-$$ \mathcal{B} $$
+An AMoD system needs to provide the highest possible service level in terms of journey times and wait times, while ensuring maximum fleet efficiency.
+We have two scoring metrics representing these goals in a simplified manner. In order to normalize their contributions, we supply a baseline case $\mathcal{B}$
 
 We introduce the following variables:
 
-$$
-& d_T & &\textrm{total distance driven by fleet}& \\
-& d_E & &\textrm{empty distance driven by fleet}& \\
-& & & \textrm{without a customer on board}  &\\
-& R \in \mathbb{N}^+& &\textrm{number of requests in scenario}&\\
-& w_i \in \mathbb{R}& &\textrm{waiting time of request $i$}&\\
-& w_{i,\mathcal{B}} \in \mathbb{R}& &\textrm{$w_i$  in $\mathcal{B}$ case}&\\
-& N \in \mathbb{N}^+& &\textrm{number of taxis}&\\
-& N_\mathcal{B} \in \mathbb{N}^+& &\textrm{$N$ in $\mathcal{B}$ case} &\\
-$$
+\begin{align*}
+&\alpha_1 = \frac{1}{2}& &\textrm{weight for efficiency}& \\
+&\alpha_2 = \frac{1}{2}& &\textrm{weight for waiting times}& \\
+&\alpha_3 = \frac{1}{2}& &\textrm{weight for fleet size}& \\
+&d_T& &\textrm{total distance driven by fleet}& \\
+&d_E& &\textrm{empty distance driven by fleet}& \\
+&R \in \mathbb{N}^+& &\textrm{total number of requests in the scenario}&\\
+&w_i \in \mathbb{R}& &\textrm{waiting time of request $i$}&\\
+&w_{i,B} \in \mathbb{R}& &\textrm{waiting time of request $i$ in the $\mathcal{B}$ case}&\\
+&N \in \mathbb{N}^+& &\textrm{number of robotic taxis used}&\\
+&N_B \in \mathbb{N}^+& &\textrm{number of robotic taxis used in the $\mathcal{B}$ case}&\\
+\end{align*}
 
 The first performance metric is for cases when the same number of vehicles as in the benchmark case $N_\mathcal{B}$ is used:
 
@@ -154,9 +155,8 @@ The following are a list of rule objectives the Duckiebots are supposed to abide
 #### Quantification of "Staying in the lane"
 
 <div figure-id="fig:crossing_lane">
-<img src="images/crossing_lane.jpg" style="width:80%"/>
-<figcaption>Picture depicting a situation in which the *staying-in-the-lane rule* applies.
-</figcaption>
+<img src="images/crossing_lane.jpg" style="width: 80%"/>
+<figcaption>Picture depicting a situation in which the "staying-in-the-lane rule" applies.</figcaption>
 </div>
 
 The Duckietown traffic laws say:
@@ -169,14 +169,14 @@ from the middle of the right lane, such that $d(t)=0$ corresponds to the robot b
 
 The "stay-in-lane" cost function is therefore defined as:
 
-$$
+ $$
    \objective_{T-LF}(t) = \int_0^{T_{eps}} \begin{cases} 0  & d(t) < d_{safe} \\
      \beta d(t)^2 & d_{safe} \leq d(t) \leq d_{max} \\
    	\alpha & d(t) > d_{max}
    	\end{cases}
-$$
+ $$
 
-An example situation where a Duckiebot does not stay in the lane is shown in Fig.~\ref{fig:crossing_lane}.
+An example situation where a Duckiebot does not stay in the lane is shown in \ref{fig:crossing_lane}.
 
 
 #### Quantification of "Stopping at red intersection line"
@@ -187,7 +187,7 @@ An example situation where a Duckiebot does not stay in the lane is shown in Fig
  the vehicle should come to a complete stop  in front of it, before continuing."
 
 
-<div figure-id="fig:crossing_lane">
+<div figure-id="fig:intersection">
 <img src="images/intersection_stop.jpg" style="width:80%"/>
 <figcaption>Picture depicting a Duckiebot stopping at a red intersection line.
 </figcaption>
@@ -195,16 +195,15 @@ An example situation where a Duckiebot does not stay in the lane is shown in Fig
 
 
 During each intersection traversal, the vehicle is penalized by~$\gamma$ if there was not a time~$t$ when the vehicle was at rest ($v(t) = 0$) in the stopping zone defined as the rectangular area of the same width as the red line between $a$ and $b$ cm distance from the start of the stop line perpendicular to the center of mass point of the Duckiebot. This situation is demonstrated in Fig.~\ref{fig:intersection}.
-%\JT{a more rigorous definition spelling out $\mathcal{S}$ should be introduced, possibly referring to a figure for clarity}
-%) and~$v_t = 0$, where~$v_t$ is the longitudinal velocity of the vehicle with respect to the direction of the lane.
+
 The condition that the position~$p(t)$ of the center of mass of the Duckiebot
 is in the stopping zone is denoted with ~$p(t) \in \mathcal{S}$.
 
 Then we write the objective as the cumulative sum of stopping at intersection rule infractions.
 
-$$
-  	\objective_{T-SI}(t) &= \sum_{t_k} \gamma  \mathbb{I}_{\nexists t \text{ s.t. } v(t)=0 \wedge  p(t) \in S_{zone}}
-$$
+ $$
+  	\objective_{T-SI}(t) = \sum_{t_k} \gamma  \mathbb{I}_{\nexists t \text{ s.t. } v(t)=0 \wedge  p(t) \in S_{zone}}
+ $$
 
 Here the sum over time increments $t_k$ denote the time intervals in which this conditions is checked. The rule penalty is only applied once the Duckiebot leaves the stopping zone. Only then is it clear that it did not stop within the stopping zone.
 
@@ -222,7 +221,6 @@ the center of mass of the Duckiebot and the center of mass of the closest Duckie
 
 $$
 \objective_{T-SD}(t) = \int_0^t \delta \cdot \max(0,b(t)- b_{\text{safe}})^2.
- \end{align*}
 $$
 
 #### Quantification of "Avoiding collisions"
@@ -255,9 +253,9 @@ The Duckietown traffic laws say:
 
 Mathematically we accumulate penalties $\mu$ whenever the Duckiebot moves at an intersection while there is a Duckiebot (DB) on the right hand joining lane (RHL).
 
-$$
+  $$
  	\objective_{T-YR}(t) = \sum_{t_k} \mu \mathbb{I}_{v(t) >0 \wedge \exists \text{ DB in RHL}}
-$$
+  $$
 
 <div figure-id="fig:yield">
 <img src="images/yield.jpg" style="width:80%"/>
