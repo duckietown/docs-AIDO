@@ -9,13 +9,23 @@ jobs:
               EXTRA_MCDP_RENDER_OPTIONS: --ignore_ref_errors
 
         resource_class: large
-        steps:
-        - checkout
+        - run:
+            name: Install Git LFS
+            command: |
+              curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
+              apt-get update
+              apt-get install -y git-lfs openssh-client
+              git lfs install
+              mkdir -p ~/.ssh
+              ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+              ssh git@github.com git-lfs-authenticate "${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}" download
+              git lfs pull
+        - restore_cache:
         - run:
             name: Download resources
             command: |
-              git submodule sync --recursive
-              git submodule update --init --recursive
+            git submodule sync --recursive
+            git submodule update --init --recursive
 
         - run:
             name: Compile

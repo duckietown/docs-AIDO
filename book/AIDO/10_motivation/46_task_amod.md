@@ -1,7 +1,5 @@
 # Task: Autonomous Mobility-on-Demand on AMoDeus {#amod status=beta}
 
-TODO for Claudio Ruch: Please match notation to overall document - cost function should be $\objective$
-
 In this task, we zoom out of Duckietown and switch to a task so big that it is not yet accessible in Duckietown but only in simulation. This is likely changing as Duckietowns across the world experience a tremendous growth in population, partly due to the surprising fertility rate of the Duckies themselves, partly due to the significant immigration of Duckies of engineering background.
 
 
@@ -55,58 +53,26 @@ Furthermore, as a basis for the decisions of the artificial intelligence algorit
 1. **Information on robotaxis.** This includes the status, location in the network and if the robotaxi can be diverted, i.e., reassigned to a new task.
 2. **Information on requests.** This includes the request id, its submission time, origin and destination.
 3. **Other information.** Furthermore, at very instant, the current time $t$ in the simulation can be accessed.
-4. **Performance metrics.** All performance metrics $\sigma: \mathbb{R}_{\geq 0} \to   \mathbb{R}_{\geq 0}$ can be accessed during simulation for the current timestep $\sigma(t)$ as well as an integrated quantity $\tilde{\sigma}(t) := \int_a^b \sigma(\tau) d \tau$.
+4. **Performance metrics.** All [performance metrics](#performance_amod) of the AMoD task can be accessed during simulation for the current timestep $t$ as well as an integrated quantity $\tilde{\mathcal{J}}(t) := \int_a^b \mathcal{J}(\tau) d \tau$.
 
 
 This challenge offers the opportunity to train and develop artificial intelligence algorithms for mobility-on-demand scenarios. The goal is to design an algorithm that captures the general problem well and can be used in another AMoD scenario than the ones provided. The final test will be held in a surprise city!
-
-
-## Performance Metrics
-
-As previously described, an AMoD system need to provide the highest possible service level in terms of journey times and wait times while ensuring maximum fleet efficiency and using as few vehicles as possible. We will have two different scoring metrics aiming to represent these goals in a simplified manner. In order to norm them, we will supply a benchmark case $B$ for every scenario. In the benchmark case, a simple heuristic principle is used to operate the AMoD system and the performance is recorded.
-
-We introduce the following variables:
-
-\begin{align*}
-&\alpha_1 = \frac{1}{2}& &\textrm{weight factor for efficiency}& \\
-&\alpha_2 = \frac{1}{2}& &\textrm{weight factor for waiting times}& \\
-&\alpha_3 = \frac{1}{2}& &\textrm{weight factor for fleet size}& \\
-&d_T& &\textrm{total distance driven by fleet}& \\
-&d_E& &\textrm{empty distance driven by fleet}& \\
-&R \in \mathbb{N}^+& &\textrm{total number of requests in the scenario}&\\
-&w_i \in \mathbb{R}& &\textrm{waiting time of request $i$}&\\
-&w_{i,B} \in \mathbb{R}& &\textrm{waiting time of request $i$ in the benchmark case}&\\
-&N \in \mathbb{N}^+& &\textrm{number of robotic taxis used}&\\
-&N_B \in \mathbb{N}^+& &\textrm{number of robotic taxis used in the benchmark case}&\\
-\end{align*}
-
-The first performance metric is for cases when the same number of vehicles as in the benchmark case $N_B$ is used:
-
-\begin{align}
-\Sigma_1 = \alpha_1 \cdot \frac{d_E}{d_T} + \alpha_2 \cdot \frac{\sum_{i=1}^K w_i}{\sum_{i=1}^K w_{i,B}}
-\label{eq:perfMetr1}
-\end{align}
-
-The second performance metric allows the designer to reduce the number of vehicles if possible or increase it if deemed useful:
-
-\begin{align}
-\Sigma_2 = \Sigma_1 + \alpha_3 \cdot \frac{N}{N_B}
-\label{eq:perfMetr2}
-\end{align}
 
 
 
 
 ## Interface
 
-The challenge can be accessed using a dedicated \verb|Python| environment that is built according to the schematics displayed in Figure \ref{fig:environmentGeneral}
+The challenge can be accessed using a dedicated *Python* environment.
 
-<div figure-id="fig:environmentGeneral">
+ <!-- that is built according to the schematics displayed in Figure \ref{fig:environmentGeneral} -->
+
+<!-- <div figure-id="fig:environmentGeneral">
 \input{generalStructure.pdf_tex}
 <figcaption>General structure of the challenge environment.</figcaption>
 </div>
 
-TODO for Julian Zilly: render generalStructure.pdf_tex
+TODO for Julian Zilly: render generalStructure.pdf_tex -->
 
 
 1. **Pre-Execution Steps:** In this part of the code, the designer can specify if a specific scenario should be used or a random scenario. It is possible to access the road network in \verb|XML| format (which does not include traffic information) and it is possible to set a possible reduction in population if wanted.
@@ -133,7 +99,7 @@ A graphic from the report showing the status distribution of robotaxis throughou
 
 ## Protocol
 
-The challenge is accessed via a \verb|Python| commands that are briefly outlined in pseudo-code in this section. Furthermore, the standard AMoDeus commands in \verb|JAVA| can be used, although this is not necessary to participate in the challenge.
+The challenge is accessed via a *Python* commands that are briefly outlined in pseudo-code in this section. Furthermore, the standard AMoDeus commands in *JAVA* can be used, although this is not necessary to participate in the challenge.
 
 ### Pre-Execution Steps
 
@@ -176,18 +142,10 @@ The next task is to retrieve the report and score information of the final simul
 For more in-depth analysis, the simulation information can be downloaded from the server and processed locally.
 
 
+## Evaluation
 
-## Related Work
+The AMoD task is evaluated on the following performance objectives.
 
-This section briefly and incomprehensibly presents related work to the AMoDeus challenge. In
+### Performance objective
 
-In \cite{horl2017fleet} several autonomous mobility-on-demand control algorithms were compared to a simulation scenario for the city of Zurich, Switzerland. It was shown
-that a simple load-balancing heuristic reaches peak mean waiting times of 5 min with 10’000
-vehicles, while more advanced control policies achieve the same performance with less than 9’000 vehicles.
-
-
-A case study for Berlin presented in \cite{bischoff2016simulation} simulates city-wide replacement of transportation systems with robotic taxis in Berlin. The results are obtained with a heuristic algorithm and for a large number of agents.
-
-In \cite{spieser2014toward} the authors use analytic results to estimate who  many robotic taxis could satisfy  the entire transportation demand of the country of Singapore. They estimate that $\approx 300,000$ taxis would be sufficient to serve demand with acceptable waiting times.
-
-In \cite{zhang2016control} the relation of AMoD systems and queueing systems is detailed and a method to compute the fleet sizes required for certain levels of performance is presented.
+The [*performance objective*](#performance_amod) measures how well a fleet of Duckiebots can serve customer requests specifying start and end points of journeys within Duckietown.

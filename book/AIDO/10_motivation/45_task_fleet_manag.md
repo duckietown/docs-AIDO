@@ -72,10 +72,9 @@ $$
 # Task: Fleet management in Duckietown (FM) {#fleet_manag status=beta}
 
 ## Description of task
-Task FM further scales task NAV. Now you are asked to control multiple Duckiebots at once. You will be provided with location pairs $(A,B,t)$ provided at time $t$. Performance will be measured based on how quickly these location pairs can be served with the available fleet of Duckiebots. The main idea is that the submitted code now operates at a higher level of abstraction that can choose to neglect lower level controls.
+Task [FM](#fleet_manag) further scales task [NAVV](#nav_v). Now you are asked to control multiple Duckiebots at once. You will be provided with location pairs $(A,B,t)$ provided at time $t$. Performance will be measured based on how quickly these location pairs can be served with the available fleet of Duckiebots. The main idea is that the submitted code now operates at a higher level of abstraction that can choose to neglect lower level controls.
 
 This scenario is meant to resemble a taxi-service. Customer request to go from location "A" to location "B" arrive sequentially and need to be served in an intelligent manner.
-
 
 
 <div figure-id="fig:Autolab_map">
@@ -116,48 +115,38 @@ Similar to the embodied tasks, the fleet management task takes place in Duckieto
 We will provide a cloud simulation environment for training based on the AMoDeus simulator \cite{amodeus}.
 
 
-## Performance metrics
+## Evaluation
 
-
+The navigation with dynamic vehicles task is evaluated on three separate objectives.
 
 ### Performance objective
 
-As performance objective on task FM, we again calculate the expected time to go from point A to point B. The difference to task NAV is that now multiple trips $(A,B)$ may be active at the same time. Likewise, multiple Duckiebots are now available to service the additional requests. To reliably evaluate the metric, multiple pairs of points A, B will be sampled.
+The [*performance objective*](#performance_fm) measures how well a fleet of Duckiebots can serve customer requests specifying start and end points of journeys within Duckietown.
 
 
-$$
-\objective_{speed}(t) = \expectation_{A,B}[T_{A \to B}]
-$$
+### Traffic law objective
+
+The following traffic laws apply in the fleet management task.
+
+* [Staying in the lane](#traffic_laws_lf)
+* [Collision avoidance](#traffic_laws_ac)
+* [Stopping at intersections](#traffic_laws_si)
+* [Keeping a safety-distance](#traffic_laws_sd)
 
 
-### Rule objectives
+### Comfort objective
 
-Similar to tasks LF and LFV, the rules of the road have to be observed.
+The following objective quantifies how "comfortable" a fleet of Duckiebots is serving customers. This quantifies how "enjoyable" such a service could be.
 
-
-### Comfort objectives
-
-Additionally, driving "comfortably" will be measured. Comfort in this case is trying to promote smoothness of the vehicle behavior by penalizing changes in the input commands.
-
-$$
-\objective_{CM} = \expectation[ ||\Delta u_k ||_{1} ] \approx \frac{1}{N} \sum_k^N |\Delta u_k|
-$$
-
-Maximal waiting time:
-
-$$
-\objective_{WT} = ||T_{wait} ||_\infty]
-$$
-
-The robot $\robot$ used in this task is a Duckiebot as described in [](#robot). The environment of the task is Duckietown as described in [](#environment). Different to task 1 and 2, the input to the Duckiebot now also includes a map of Duckietown.
-
-TODO: determine map of Duckietown
+[Comfortable fleet management](#comfort_fm)
 
 
-## Interface
-TODO:
 
-### Deployment technique
+
+
+
+
+<!-- ### Deployment technique
 
 We will use Docker containers to package, deploy, and run the applications on the physical Duckietown platform as well as on the cloud for simulation. Base Docker container images will be provided and distributed via [Docker HUB][dockerhub].
 
@@ -207,4 +196,4 @@ After each run in a robotarium, the participants can see the metrics statistics 
 
 Participants can choose whether to make public any of the results.
 
-Leaderboards are reset at the beginning of October 2018.
+Leaderboards are reset at the beginning of October 2018. -->
