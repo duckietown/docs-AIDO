@@ -78,6 +78,7 @@ This section provides a brief introduction to the fleet-level social tasks "Flee
 
   * [Autonomous Mobility-on-Demand (AMoD)](#amod): Task to control the movement of a fleet of autonomous vehicles in a simulated city to pick up customers and drive them to their destinations.
 
+----------------------------
 
 The fleet-level tasks aim to work at a higher level of abstraction than the previous embodied robotic tasks [LF](#lf), [LFV](#lf_v), [NAVV](#nav_v). Crucially instead of focusing on single robots, now a fleet of robots should be controlled.
 

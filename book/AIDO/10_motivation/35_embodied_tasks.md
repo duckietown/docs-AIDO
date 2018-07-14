@@ -71,7 +71,8 @@ $$
 \newcommand{\loss}{L}
 $$
 
-The embodied individual robotic tasks are the following. 
+There are three embodied individual robotic tasks.
+
 
   * [Lane following (LF)](#lf): Control of a Duckiebot to drive on the right lane on streets within Duckietown without other moving Duckiebots present.
 
@@ -82,19 +83,23 @@ The embodied individual robotic tasks are the following.
 
   * [Navigation + vehicles (NAVV)](#nav_v): Navigation task of a Duckiebot to drive from point $A$ to point $B$ within Duckietown while following the rules of the road and while other Duckiebots are likewise driving in the road.
 
+----------------------------
 
-This section focuses on the infrastructure and background of the embodied individual robotic tasks as outlined in [](#task_overview).
+
+This section focuses on the infrastructure and background of the embodied individual robotic tasks as outlined in the [task overview](#task_overview).
 
 For examples of Duckiebot driving see [a set of demo videos of Duckiebots driving in Duckietown](+op_manual_duckiebot#demos).
 
-The actual embodied tasks will be described in more detail in [](#lf), [](#lf_v), [](#nav_v). Note that the sequence tasks was chosen to gradually increase the difficulty of tasks by extending previous task solutions to more general situations.
+The actual embodied tasks will be described in more detail in [LF](#lf), [LF](#lf_v), [NAVV](#nav_v). Note that the sequence tasks was chosen to gradually increase the difficulty of tasks by extending previous task solutions to more general situations.
 
 ## Platform
 
 There are three main parts in our system with which the participants will interact:
 
 1. The **physical Duckietown platform** ([](#fig:duckietown_nice)): miniature vision-based vehicles and cities in which the vehicles drive. This is an inexpensive setup (\$100/robot). The robot hardware and environment are rigorously specified, which makes the development extremely repeatable (For an example of this see ["Duckietown specifications"](http://docs.duckietown.org/opmanual_duckietown/out/duckietown_specs.html).
+
 2. A **cloud simulation** and training environment, which allows to test in simulation before trying on the real robots.
+
 3. **Remote "robotariums"** in which to try the code in controlled and reproducible conditions.
 
 ### Device$\rightarrow$cloud$\rightarrow$device deployment pipeline
@@ -123,18 +128,20 @@ Duckiebots are designed with the objectives of affordability, modularity and eas
 All the *computation* is done onboard on a Raspberry Pi 3+ computer, equipped with a quad Core 1.4 GHz, 64 bit CPU and 1 GB of RAM.
 
 We will support other configurations for the purposes of deploying neural networks onto the robots.
-More details in [](#computation).
+More details in section [computational substrate](#computation).
 
 *Power* is provided by a $10000$ mAh battery which provides several hours ($>5$) of operation.
 
 #### Environment {#environment}
 
-Duckietowns are modular, structured environments built on two layers: the *road* and the *signal* layers ([](#fig:duckietown-environment)).
+Duckietowns are modular, structured environments built on two layers: the *road* and the *signal* layers ([](#fig:duckietown-environment)). Detailed specifications can be found [here](http://docs.duckietown.org/opmanual_duckietown/out/duckietown_specs.html).
 
 
 There are six well defined *road segments*: straight, left and right $90$ deg turns, 3-way intersection, 4-way intersection, and empty tile. Each is built on individual tiles, and their interlocking enables customizability of city sizes and topographies. The appearance specifications detail the color and size of the lines as well as the geometry of the roads.
 
-The signal layer comprises of street signs and traffic lights. *Street signs* enable global localization (knowing where they are within a predefined map)  of Duckiebots in the city and interpretation of intersection topologies. They are defined as the union of an AprilTag \cite{AprilTags} in addition to the typical road sign symbol. Their size, height and relative positioning with respect to the road are specified. Many signs are supported, including intersection type (3- or 4-way), stop signs, road names, and pedestrian crossings.
+The signal layer comprises of street signs and traffic lights. *Street signs* enable global localization (knowing where they are within a predefined map) of Duckiebots in the city and interpretation of intersection topologies. They are defined as the union of an AprilTag \cite{AprilTags} in addition to the typical road sign symbol. Their size, height and relative positioning with respect to the road are specified. Many signs are supported, including intersection type (3- or 4-way), stop signs, road names, and pedestrian crossings.
+
+Intersections are always separated by at least 2 tiles to avoid traffic jams of Duckiebots reaching into an intersection.
 
 *Traffic lights*  provide a centralized solution for intersection coordination, encoding signals in different LED blinking frequencies. They are equipped with an overhead camera, with field of view of one tile in every direction from the intersection.
 
@@ -150,7 +157,7 @@ Additionally, we will provide a cloud simulation environment for training.
 
 In a way similar to the last DARPA Robotics Challenge, we will use the simulation
 as a first screening of the participants. It will be necessary for the code to run in simulation
-to gain access to the robotariums.
+to gain access to the robotariums. In particular we emphasize that Duckiebots should not crash in simulation since a similar behavior may be disruptive to the physical Duckietown.
 
 Simulation environments for each of the individual challenges will be provided as Docker containers with clearly specified APIs. The baseline solutions for each challenge will be provided as separate containers. When both containers (the simulation and corresponding solution) are loaded and configured correctly, the simulation will effectively replace the real robot(s). A proposed solution can be uploaded to our cloud servers, at which point it will be automatically run against our pristine version of the simulation environment (on a cluster) and a score will be assigned and returned to the uploader.
 
@@ -166,7 +173,7 @@ navigating the tradeoff of simulation speed vs output accuracy.
 </figcaption>
 </div>
 
-For the mobility-on-demand task, in which the AI must respond to ride requests and allocate existing cars to each task, we will develop a standard neural-networks-friendly representations (for example, a pixel-based description of the map and the vehicles location.)
+For the [autonomous mobility-on-demand](#amod) (AMoD) task, in which the AI must respond to ride requests and allocate existing cars to each task, we will develop a standard neural-networks-friendly data representation.
 
 #### Robotariums
 
@@ -177,7 +184,7 @@ to conduct remote experiments. Two similar installations are under construction 
 </figcaption>
 </div>
 
-In the months before the competition, we will make available five robotariums for remote testing of the code in a controlled environment.
+In the months before the competition, we will make five robotariums available for remote testing of the code in a controlled environment.
 
 The idea of a robotarium (contraction of *robot* and *aquarium*) was conceived at Georgia Tech \cite{robotarium}. Currently the Georgia Tech robotarium has about 300 users. The users are able to submit programs that guide the movements of a swarm of robots. The system queues the requests, runs the programs, then sends the results, before resetting the robots to the initial state for the next user. Because there is no human intervention required, and the robot self-charge, the robotarium can run continuously.
 
@@ -186,6 +193,7 @@ The use of a robotarium has two advantages:
 1. Convenience: It allows convenient access to a complete robot setup.
 2. Reproducibility: It allows for multiple people to run the experiments in repeatable controlled conditions.
 
+-----------------------
 The Duckietown robotariums will be built in five institutions:
 
 1. At ETH Zürich. The projected size is sufficient to allocate 20 robots continuously running (20 robots on the road + 20 robots in charging stations).
@@ -200,10 +208,11 @@ as well as for regular research activities.
 
 #### Computational substrate available {#computation}
 
-The Duckietown platform uses the ROS middleware, so it is easy to run the computation off-board. For example, during the development, students usually edit code and run it directly on their laptops.
+For the competition we will two options for computational power.
 
+1. The first option is the "purist" computational substrate option: the only computation available is the Raspberry PI 3 processor on board.
 
-For the competition we will the "purist" computational substrate option: the only computation available is the Raspberry PI 3 processor on board. The baseline solutions we provide using conventional methods run in real time using the Raspberry PI processor only.
+2. The second option is the "non-purist" option, where additionally a Movidius computation stick may be used to run more computation intensive algorithms. The baseline solutions we provide using conventional methods run in real time using the Raspberry PI processor only.
 
 
 ## Performance metrics {#performance_metrics}
@@ -219,79 +228,30 @@ Each *Duckiebot* has the following interface to the physical or simulated *Ducki
 
 **Inputs:**
 
-Images, a map of Duckietown XXX
+A Duckiebot has a *single*  front-facing sensor, a camera as described [here](#robot).
 
-TODO: JZ: Example picture, Example map
+- Thus the Duckiebot receives images (both in simulation and physical reality) of resolution $640\times480$ reliably at a rate of $30$ fps.
+
+- For the [navigation](#nav_v) and [fleet management](#fleet_manag) task a map of current Duckietown will additionally be communicated.
+
+
+
+
+<!-- TODO: JZ: Example picture, Example map -->
 
 **Outputs:**
 
-TODO: JZ: check this. provide figure with output commands
+<!-- TODO: JZ: check this. provide figure with output commands -->
 
-steering command and speed command
+<!-- steering command and speed command -->
 
-Prior information
+The Duckiebot interacts with the world through its actuators, its wheel motors.
 
-## Protocol
 
-### Deployment technique
+- The output of the Duckiebot both in simulation and reality are its motor command signals.
 
-We will use Docker containers to package, deploy, and run the applications on the physical Duckietown platform as well as on the cloud for simulation. Base Docker container images will be provided and distributed via [Docker HUB][dockerhub].
 
-[dockerhub]: https://hub.docker.com/r/duckietown/
 
-A *Master* server will be used to collect and queue all submitted programs ([](#fig:dockerflow)) The *simulation evaluation agents* will execute each queued program as they become available. Submissions that pass the simulation environment will be queued for execution in the robotariums.
-
-<div figure-id="fig:dockerflow">
-\input{dockerflow.tex}
-<figcaption>Submission, Deployment, and Execution Flow
-</figcaption>
-</div>
-
-Access to Robotarium will be granted once submitted code passes the simulation stage of the competition.
-
-Robots
-
-Simulation
-
-Surprise environment
-
-TODO: finish
-
-### Submission of entries
-
-Upon enrollment in the competition (https://www2.duckietown.org/nips-2018-competition/register-for-nips-2018), participants can submit their code in the form of a docker container to a task or module of the AI-DO. Scripts will be provided for creating the container image in a conforming way.
-
-The system will schedule to run the code on the cloud on the challenges selected by the user, and, if simulations pass, on the robotariums.
-
-Participants can submit entries as many times as they would like. Access control policies are to be implemented, should certain participants monopolize the computational and physical resources available.
-
-Participants are required to open source their solutions source code. If auxiliary training data are used to train the models, that data must be made available.
-
-Submitted code will be evaluated in simulation and if sufficient on physical robotariums. Scores and logs generated with submitted code will be made available.
-
-How to get started: http://docs.duckietown.org/AIDO/out/aido_quickstart.html.
-
-### Simulators
-
-Simulation code will be available as open source for everybody to use on computers that they control.
-
-Amazon AWS will make available cloud resources to run the cloud simulations and the cloud learning. The access to these resources might be rationed if the utilization exceeds the projections.
-
-### Robotarium test and validation
-
-If there are $n$ robotariums available, $n-1$ robotariums can be used for training and testing, while 1 robotarium is used for validation.
-
-When an experiment is run in a training/testing robotarium, the participants receive, in addition to the score, detailed feedback, including logs, telemetry, videos from external cameras, etc.
-
-The sensory data generated by the robots is continuously recorded and becomes available immediately to the entire community.
-
-When an experiment is run in a validation robotarium, the only output to the user is the test score and minimal statistics (number of collisions, number of rule violations, etc.)
-
-### Leaderboards
-
-After each run in a robotarium, the participants can see the metrics statistics in the competition website.
-
-Leaderboards are reset at the beginning of October 2018.
 
 ## Related work
 

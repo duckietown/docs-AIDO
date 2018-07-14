@@ -1,4 +1,4 @@
-# Rules {#part:aido-rules}
+# Rules {#part:aido-rules status=beta}
 
 Maintainer: Julian Zilly
 
@@ -80,9 +80,9 @@ Measuring performance in robotics is less clear cut and more multidimensional th
 
 In the following we summarize the objectives used to quantify how well an embodied task is completed. We will produce scores in three different categories: *performance objective*, *traffic law objective* and *comfort objective*. Note that the these objectives are not merged into one single number.
 
-### Performance objective {#performance}
+## Performance objective {#performance}
 
-#### Lane following (LF / LFV) {#performance_lf}
+### Lane following (LF / LFV) {#performance_lf}
 As a performance indicator for the "lane following task" and the "lane following task with other dynamic vehicles", we choose the speed $v(t)$ along the road (not perpendicular to it) over time of the Duckiebot. This then in turn measures the moved distance per episode, where we fix the time length of an episode. This encourages both faster driving as well as algorithms with lower latency. An *episode* is used to mean running the code from a particular initial configuration.
 
 
@@ -92,7 +92,7 @@ $$
 
 The integral of speed is defined over the traveled distance of an episode up to time $t=T_{eps}$, where $T_{eps}$ is the length of an episode.
 
-##### Navigation (NAVV) {#performance_navv}
+### Navigation (NAVV) {#performance_navv}
 Similarly, for the "navigation with dynamic vehicles task" (NAVV), we choose the time it takes to go from point $A$ to point $B$ within a Duckietown map as performance indicator. A trip from $A$ to $B$ is *active* as soon as it is received as long as it has not been completed.
 
 
@@ -103,7 +103,7 @@ $$
 
 The indicator function $\mathbb{I}_{AB-active}$ is $1$ if a trip is *active* and $0$ otherwise. Again the integral of an episode is defined up to time $t=T_{eps}$, where $T_{eps}$ is the length of an episode.
 
-#### Fleet management (FM) {#performance_fm}
+### Fleet management (FM) {#performance_fm}
 
 As performance objective on task FM, we calculate the sum of trip times to go from $A_{i}$ to $B_{i}$. This generalizes the objective from task NAVV to multiple trips. The difference to task NAVV is that now multiple trips $(A_{i},B_{i})$ may be active at the same time. A trip is *active* as soon as it is requested and as long as it has not been completed. Likewise, multiple Duckiebots are now available to service the additional requests. To reliably evaluate the metric, multiple pairs of points A, B will be sampled at different time points within an episode.
 
@@ -113,7 +113,7 @@ $$
 
 The indicator function $\mathbb{I}_{i-active}$ is $1$ if a trip is \emph{active} and $0$ otherwise. Again the integral of an episode is defined up to time $t=T_{eps}$, where $T_{eps}$ is the length of an episode.
 
-#### Autonomous mobility on demand (AMoD) {#performance_amod}
+### Autonomous mobility on demand (AMoD) {#performance_amod}
 
 
 An AMoD system needs to provide the highest possible service level in terms of journey times and wait times, while ensuring maximum fleet efficiency.
@@ -148,11 +148,11 @@ $$
 
 For the AMoD task, only a performance metric will be evaluated. Robotic taxis are assumed to already observe the rules of the road as well as drive comfortably. Through the abstraction of the provided AMoD simulation, these conditions are already enforced.
 
-### Traffic law objective {#traffic_laws}
+## Traffic law objective {#traffic_laws}
 
 The following are a list of rule objectives the Duckiebots are supposed to abide by within Duckietown. All individual rule violations will be summarized in one overall traffic law objective $\objective_{T}$. These penalties hold for the lane following, navigation and fleet management tasks (LF, LFV, NAVV, FM).
 
-#### Quantification of "Staying in the lane" {#traffic_laws_lf}
+### Quantification of "Staying in the lane" {#traffic_laws_lf}
 
 <div figure-id="fig:crossing_lane">
 <img src="images/crossing_lane.jpg" style="width: 80%"/>
@@ -179,13 +179,14 @@ The "stay-in-lane" cost function is therefore defined as:
 An example situation where a Duckiebot does not stay in the lane is shown in \ref{fig:crossing_lane}.
 
 
-#### Quantification of "Stopping at red intersection line" and "Stopping at red traffic light" {#traffic_laws_si}
+### Quantification of "Stopping at red intersection line" and "Stopping at red traffic light" {#traffic_laws_si}
+
+There are two different possibilities forcing the Duckiebot to a stop at an intersection. Some intersections have red stopping lines whereas others have traffic lights. The stopping behavior in both cases is similar and serves a similar purpose however. We therefore join the two cases into the "stopping at intersection"-rule.
 
  The Duckietown traffic laws say:
 
  "Every time the vehicle arrives at an intersection with a red stop line,
  the vehicle should come to a complete stop  in front of it, before continuing."
-
 
 <div figure-id="fig:intersection">
 <img src="images/intersection_stop.jpg" style="width:80%"/>
@@ -193,11 +194,21 @@ An example situation where a Duckiebot does not stay in the lane is shown in \re
 </figcaption>
 </div>
 
+Likewise, the traffic law says that:
+"Every time the vehicle arrives at an intersection with a red traffic light,
+the vehicle should come to a complete stop in front of it, and shall remain at rest as long as the red light is turned on."
 
-During each intersection traversal, the vehicle is penalized by~$\gamma$ if there was not a time~$t$ when the vehicle was at rest ($v(t) = 0$) in the stopping zone defined as the rectangular area of the same width as the red line between $a$ and $b$ cm distance from the start of the stop line perpendicular to the center of mass point of the Duckiebot. This situation is demonstrated in Fig.~\ref{fig:intersection}.
+During each intersection traversal, the vehicle is penalized by~$\gamma$ if either of the above stopping rules are violated.
+
+Let $I_{IL}$ denote the red intersection line stopping rule.
+
+The red line stopping rule applies if there was not a time~$t$ when the vehicle was at rest ($v(t) = 0$) in the stopping zone defined as the rectangular area of the same width as the red line between $a$ and $b$ cm distance from the start of the stop line perpendicular to the center of mass point of the Duckiebot. This situation is demonstrated in Fig.~\ref{fig:intersection}. $a$ and $b$ will be determined empirically to ensure reasonable behavior.
 
 The condition that the position~$p(t)$ of the center of mass of the Duckiebot
 is in the stopping zone is denoted with ~$p(t) \in \mathcal{S}$.
+
+Let $I_{IL}$ denote the red line stopping rule.
+
 
 Then we write the objective as the cumulative sum of stopping at intersection rule infractions.
 
@@ -207,9 +218,9 @@ Then we write the objective as the cumulative sum of stopping at intersection ru
 
 Here the sum over time increments $t_k$ denote the time intervals in which this conditions is checked. The rule penalty is only applied once the Duckiebot leaves the stopping zone. Only then is it clear that it did not stop within the stopping zone.
 
-To measure this cost, the velocities $v(t)$ are evaluated while the robot is in the stopping zone $\mathcal{S}$. %An example of a Duckiebot stopping at a red intersection line is depicted in Fig.~\ref{fig:intersection}.
+To measure this cost, the velocities $v(t)$ are evaluated while the robot is in the stopping zone $\mathcal{S}$. An example of a Duckiebot stopping at a red intersection line is depicted in Fig.~\ref{fig:intersection}.
 
-#### Quantification of "Keep safety distance" {#traffic_laws_sd}
+### Quantification of "Keep safety distance" {#traffic_laws_sd}
 
 The Duckietown traffic laws say:
 
@@ -223,7 +234,7 @@ $$
 \objective_{T-SD}(t) = \int_0^t \delta \cdot \max(0,b(t)- b_{\text{safe}})^2.
 $$
 
-#### Quantification of "Avoiding collisions" {#traffic_laws_ac}
+### Quantification of "Avoiding collisions" {#traffic_laws_ac}
 
 The Duckietown traffic laws say:
 
@@ -265,7 +276,7 @@ Mathematically we accumulate penalties $\mu$ whenever the Duckiebot moves at an 
 
 The yield situation at an intersection is depicted in Fig.~\ref{fig:yield}. -->
 
-#### Hierarchy of rules {#traffic_laws_hierarchy}
+### Hierarchy of rules {#traffic_laws_hierarchy}
 
 To account for the relative importance of rules, the factors $\alpha, \beta, \gamma, \delta, \nu$ of the introduced rules will be weighted relatively to each other.
 
@@ -292,7 +303,7 @@ where $\mathbb{I}_{\objective_i \in \task}$ is the indicator function that is $1
 
 ## Comfort objective {#comfort}
 
-#### Lane following and navigation (LF, LFV, NAVV) {#comfort_embodied}
+### Lane following and navigation (LF, LFV, NAVV) {#comfort_embodied}
 
 In the single robot setting, we encourage "comfortable" driving solutions. We therefore penalize large accelerations to achieve smoother driving. This is quantified through smoothed changes in Duckiebot position $p_{bot}(t)$. Smoothing is performed by convolving the Duckiebot position $p_{bot}(t)$ with a smoothing filter $k_{smooth}$.
 
@@ -304,7 +315,7 @@ $$
 
 %where $M$ denotes the number of time steps \JT{throughout the whole task?}.
 
-#### Fleet management (FM) {#comfort_fm}
+### Fleet management (FM) {#comfort_fm}
 
 In the fleet management setting "customer experience" is influenced greatly by how fast and dependable a service is. If it is known that a taxi arrives quickly after ordering it, it makes the overall taxi service more convenient.
 

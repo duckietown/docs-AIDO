@@ -1,4 +1,4 @@
-# Introduction {#part:aido-introduction}
+# Introduction {#part:aido-introduction status=beta}
 
 Maintainer: Julian Zilly
 
@@ -8,32 +8,28 @@ We introduce the *AI Driving Olympics* (AIDO), its relevance, environment and ta
 
 The *AI Driving Olympics* comprise a set of five tasks each of which highlights a certain part of robotic driving. Tasks are evaluated both on how fast they drive as well as their traffic law abidance and comfort of driving. The following presents the description, performance and evaluation of tasks separately. Please follow the linked titles for further information.
 
+
+**Main links**
+---------------------------------
+
+
 For an overview of the tasks, please see: [**Task overview**](#task_overview).
 
-<!-- - talk about description - link, and which rules apply to each task
 
-- talk about Rules
+---------------------------------
 
-- talk about evaluation and fairness
-
-- Embodied tasks
-  - Lane following
-  -
-
-- Social tasks -->
 
 For a description of the performance objectives of each task, please see: [**Rules**](#part:aido-rules).
 
 
-<!-- TODO: needs link
-For a summary of the evaluation of the performance, please see: [**Evaluation**](). -->
+---------------------------------
+
+
+Where to get started with your code submission: [**User submission**](#part:aido-quickstart)
 
 
 
-
-
-
-
+---------------------------------
 
 
 **Important remarks**

@@ -1,9 +1,9 @@
-# Task: Lane following + Dynamic vehicles (LFV) {#lf_v status=draft}
+# Task: Lane following + Dynamic vehicles (LFV) {#lf_v status=beta}
 
 The second task of the *AI Driving Olympics* is "Lane following with dynamic vehicles".
 This task is an extension of Task LF to include additional rules of the road and other moving vehicles and static obstacles.
 
-Again we ask participants to submit code allowing the Duckiebot to drive on the right-hand side of the street within Duckietown. Due to interactions with other Duckiebots, the task is designed no longer completely \emph{reactive}. Intersections will be recognized and maneuvered using provided code from the organizers. 
+Again we ask participants to submit code allowing the Duckiebot to drive on the right-hand side of the street within Duckietown. Due to interactions with other Duckiebots, the task is designed no longer completely \emph{reactive}. Intersections will be recognized and maneuvered using provided code from the organizers.
 
 
 <div figure-id="fig:others1">
@@ -45,3 +45,10 @@ The following traffic laws apply in the lane following with dynamic vehicles tas
 The following objective quantifies how "comfortable" a Duckiebot is driving.
 
 [Comfortable driving](#comfort_embodied)
+
+
+<!-- ## Submission scenario
+
+TODO: user submits code, then what happens
+
+how does evaluation work -->

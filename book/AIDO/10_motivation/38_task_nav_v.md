@@ -1,4 +1,4 @@
-# Task: Navigation + Dynamic vehicles (NAV) {#nav_v status=draft}
+# Task: Navigation + Dynamic vehicles (NAV) {#nav_v status=beta}
 
 The third task of the *AI Driving Olympics* is "Navigation with dynamic vehicles".
 This task is an extension of task LF and task LFV and now focuses on navigating from location "A" to location "B" within Duckietown. The task also includes a map of Duckietown as input.

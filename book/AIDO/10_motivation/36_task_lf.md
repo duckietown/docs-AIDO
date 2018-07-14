@@ -1,4 +1,4 @@
-# Task: Lane following (LF) {#lf status=draft}
+# Task: Lane following (LF) {#lf status=beta}
 
 
 The first task of the *AI Driving Olympics* is "Lane following".

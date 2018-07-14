@@ -93,7 +93,7 @@ Tasks within which code to control a single Duckiebot is submitted.
 
 
 
-  * [Lane following + vehicles (LFV)](#lf_v): Control of a Duckiebot to drive on the right lane on streets within Duckietown with other moving Duckiebots present.
+  * [Lane following + vehicles (LFV)](#lf_v): Control of a Duckiebot to drive on the right lane on streets within Duckietown with other moving Duckiebots and static obstacles present.
 
 
   * [Navigation + vehicles (NAVV)](#nav_v): Navigation task of a Duckiebot to drive from point $A$ to point $B$ within Duckietown while following the rules of the road and while other Duckiebots are likewise driving in the road.
@@ -113,6 +113,64 @@ Tasks within which code to control multiple robots or agents is submitted while 
 
 
 Participants may submit code to each challenge individually. Tasks proposed in the *AI Driving Olympics* are ordered first by type and secondly by increasing difficulty in a way which encourages modular reuse of solutions to previous tasks.
+
+## Submission types
+
+There are two ways of participating in the AI Driving Olympics.
+
+### End-to-end type
+
+You are evaluated on the [objectives](#part:aido-rules) defined for the task you are submitting to.
+
+Either you can provide an end-to-end solution; or you can choose from a zoo of architectures, with interchangeable modules. You can write your own modules, or you can use those made available.
+
+
+#### Learning protocol for end-to-end entries
+
+The [end-to-end entries](#systems-modules) use this process:
+
+**Learning**
+
+* **Off-policy learning:** you are given sensorimotor logs taken in the robotariums, without any other annotation.
+* **Active learning in a simulator:** your learner is paired with a simulator that gives as feedback vectors of violation metrics.
+
+**Evaluation**
+
+* **Evaluation in simulation:** The learned agent is tested in simulation to make sure that it is safe.
+* **Evaluation in robotarium:** The learned agent is evaluated in robotariums to provide the final scores.
+
+After the evaluation in robotarium, the sensorimotor logs as well as violation metric annotations are made available to everybody to be used in off-policy learning.
+
+In addition, the developer also gets the logs of intermediate signals produced by their agent. (assuming these logs are reasonably small.)
+
+### Module type
+
+Another mode of submission is that people can also compete in simpler tasks by creating [modules](#systems-modules) for some well-defined tasks such as:
+
+* Lane localization: given image localize the robot in the lane
+* Vehicle detection: given image localize the other robot
+
+We compute metrics (e.g. memory usage, latency, etc.) but you are not scored on metrics.
+
+Other participants in the end-to-end type may use your module.
+
+You win if somebody else uses your module in the end-to-end type.
+Learning protocol for module entries
+
+This metric is formalized uses supervised learning from logged data and unsupervised learning from logged data.
+
+**Learning**
+
+* **Supervised learning from logged data:** You are given as input the input data, and the output data, produced either using a baseline solution, or by a ground truth system.
+* **Unsupervised learning from logged data:** You have access to other unlabeled logs.
+
+**Evaluation:**
+
+We compute a set of metrics (using e.g. ground truth data) but these are not used for winning.
+The module wins if it is used in an end-to-end entry that wins.
+
+
+
 
 <!-- For a mathematical introduction to solving tasks in the context in robotics, please refer to [](#general_problem). -->
 
