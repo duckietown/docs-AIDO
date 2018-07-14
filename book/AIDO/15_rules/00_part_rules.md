@@ -80,9 +80,9 @@ Measuring performance in robotics is less clear cut and more multidimensional th
 
 In the following we summarize the objectives used to quantify how well an embodied task is completed. We will produce scores in three different categories: *performance objective*, *traffic law objective* and *comfort objective*. Note that the these objectives are not merged into one single number.
 
-### Performance objective
+### Performance objective {#performance}
 
-#### Lane following (LF / LFV)
+#### Lane following (LF / LFV) {#performance_lf}
 As a performance indicator for the "lane following task" and the "lane following task with other dynamic vehicles", we choose the speed $v(t)$ along the road (not perpendicular to it) over time of the Duckiebot. This then in turn measures the moved distance per episode, where we fix the time length of an episode. This encourages both faster driving as well as algorithms with lower latency. An *episode* is used to mean running the code from a particular initial configuration.
 
 
@@ -92,7 +92,7 @@ $$
 
 The integral of speed is defined over the traveled distance of an episode up to time $t=T_{eps}$, where $T_{eps}$ is the length of an episode.
 
-##### Navigation (NAVV)
+##### Navigation (NAVV) {#performance_navv}
 Similarly, for the "navigation with dynamic vehicles task" (NAVV), we choose the time it takes to go from point $A$ to point $B$ within a Duckietown map as performance indicator. A trip from $A$ to $B$ is *active* as soon as it is received as long as it has not been completed.
 
 
@@ -103,7 +103,7 @@ $$
 
 The indicator function $\mathbb{I}_{AB-active}$ is $1$ if a trip is *active* and $0$ otherwise. Again the integral of an episode is defined up to time $t=T_{eps}$, where $T_{eps}$ is the length of an episode.
 
-#### Fleet management (FM)
+#### Fleet management (FM) {#performance_fm}
 
 As performance objective on task FM, we calculate the sum of trip times to go from $A_{i}$ to $B_{i}$. This generalizes the objective from task NAVV to multiple trips. The difference to task NAVV is that now multiple trips $(A_{i},B_{i})$ may be active at the same time. A trip is *active* as soon as it is requested and as long as it has not been completed. Likewise, multiple Duckiebots are now available to service the additional requests. To reliably evaluate the metric, multiple pairs of points A, B will be sampled at different time points within an episode.
 
@@ -113,7 +113,7 @@ $$
 
 The indicator function $\mathbb{I}_{i-active}$ is $1$ if a trip is \emph{active} and $0$ otherwise. Again the integral of an episode is defined up to time $t=T_{eps}$, where $T_{eps}$ is the length of an episode.
 
-#### Autonomous mobility on demand (AMoD)
+#### Autonomous mobility on demand (AMoD) {#performance_amod}
 
 
 An AMoD system needs to provide the highest possible service level in terms of journey times and wait times, while ensuring maximum fleet efficiency.
@@ -148,11 +148,11 @@ $$
 
 For the AMoD task, only a performance metric will be evaluated. Robotic taxis are assumed to already observe the rules of the road as well as drive comfortably. Through the abstraction of the provided AMoD simulation, these conditions are already enforced.
 
-### Traffic law objective
+### Traffic law objective {#traffic_laws}
 
 The following are a list of rule objectives the Duckiebots are supposed to abide by within Duckietown. All individual rule violations will be summarized in one overall traffic law objective $\objective_{T}$. These penalties hold for the lane following, navigation and fleet management tasks (LF, LFV, NAVV, FM).
 
-#### Quantification of "Staying in the lane"
+#### Quantification of "Staying in the lane" {#traffic_laws_lf}
 
 <div figure-id="fig:crossing_lane">
 <img src="images/crossing_lane.jpg" style="width: 80%"/>
@@ -179,7 +179,7 @@ The "stay-in-lane" cost function is therefore defined as:
 An example situation where a Duckiebot does not stay in the lane is shown in \ref{fig:crossing_lane}.
 
 
-#### Quantification of "Stopping at red intersection line"
+#### Quantification of "Stopping at red intersection line" and "Stopping at red traffic light" {#traffic_laws_si}
 
  The Duckietown traffic laws say:
 
@@ -209,7 +209,7 @@ Here the sum over time increments $t_k$ denote the time intervals in which this 
 
 To measure this cost, the velocities $v(t)$ are evaluated while the robot is in the stopping zone $\mathcal{S}$. %An example of a Duckiebot stopping at a red intersection line is depicted in Fig.~\ref{fig:intersection}.
 
-#### Quantification of "Keep safety distance"
+#### Quantification of "Keep safety distance" {#traffic_laws_sd}
 
 The Duckietown traffic laws say:
 
@@ -223,7 +223,7 @@ $$
 \objective_{T-SD}(t) = \int_0^t \delta \cdot \max(0,b(t)- b_{\text{safe}})^2.
 $$
 
-#### Quantification of "Avoiding collisions"
+#### Quantification of "Avoiding collisions" {#traffic_laws_ac}
 
 The Duckietown traffic laws say:
 
@@ -245,7 +245,7 @@ Time intervals are chosen to allow for maneuvering after collisions without incu
 
 An illustration of a collision is displayed in Fig.~\ref{fig:collision}.
 
-#### Quantification of "Yielding the right of way"
+<!-- #### Quantification of "Yielding the right of way" {#traffic_laws_yr}
 
 The Duckietown traffic laws say:
 
@@ -263,21 +263,21 @@ Mathematically we accumulate penalties $\mu$ whenever the Duckiebot moves at an 
 </figcaption>
 </div>
 
-The yield situation at an intersection is depicted in Fig.~\ref{fig:yield}.
+The yield situation at an intersection is depicted in Fig.~\ref{fig:yield}. -->
 
-#### Hierarchy of rules
+#### Hierarchy of rules {#traffic_laws_hierarchy}
 
-To account for the relative importance of rules, the factors $\alpha, \beta, \gamma, \delta, \nu, \mu$ of the introduced rules will be weighted relatively to each other.
+To account for the relative importance of rules, the factors $\alpha, \beta, \gamma, \delta, \nu$ of the introduced rules will be weighted relatively to each other.
 
 Letting $>$ here denote "more important than", we define the following rule hierarchy:
 
 $$
-\objective_{T-AC} > \objective_{T-SI} > \objective_{T-YR} > \objective_{T-SD} > \objective_{T-LF}
+\objective_{T-AC} > \objective_{T-SI} > \objective_{T-SD} > \objective_{T-LF}
 $$
 
 I.e.:
 
-\begin{center}Collision avoidance $>$ Stop line $>$ Yielding $>$ Safety distance $>$ Staying in the lane.
+\begin{center}Collision avoidance $>$ Stop line $>$ Safety distance $>$ Staying in the lane.
 \end{center}
 
 This constrains the factors $\alpha, \beta, \gamma, \delta, \nu, \mu$ whose exact values will be determined empirically to enforce this relative importance.
@@ -290,13 +290,13 @@ $$
 
 where $\mathbb{I}_{\objective_i \in \task}$ is the indicator function that is $1$ if a rule belongs to the task and $0$ otherwise.
 
-## Comfort metric
+## Comfort objective {#comfort}
 
-#### Lane following and navigation (LF, LFV, NAVV)
+#### Lane following and navigation (LF, LFV, NAVV) {#comfort_embodied}
 
 In the single robot setting, we encourage "comfortable" driving solutions. We therefore penalize large accelerations to achieve smoother driving. This is quantified through smoothed changes in Duckiebot position $p_{bot}(t)$. Smoothing is performed by convolving the Duckiebot position $p_{bot}(t)$ with a smoothing filter $k_{smooth}$.
 
-As a comfort metric, we measure the smoothed absolute changes in position $\Delta p_{bot}(t)$ over time.
+As a comfort objective, we measure the smoothed absolute changes in position $\Delta p_{bot}(t)$ over time.
 
 $$
 \objective_{C-LF/LFV/NAVV}(t) = \int_0^t k_{smooth} * \Delta p_{bot}(t) dt
@@ -304,14 +304,14 @@ $$
 
 %where $M$ denotes the number of time steps \JT{throughout the whole task?}.
 
-#### Fleet management (FM)
+#### Fleet management (FM) {#comfort_fm}
 
 In the fleet management setting "customer experience" is influenced greatly by how fast and dependable a service is. If it is known that a taxi arrives quickly after ordering it, it makes the overall taxi service more convenient.
 
-We therefore define the comfort metric as the maximal waiting time $T_{wait}$ until customer pickup. Let $T_{wait}$ denote the time beginning at the reception of a ride request until when the ride is started.  
+We therefore define the comfort objective as the maximal waiting time $T_{wait}$ until customer pickup. Let $T_{wait}$ denote the time beginning at the reception of a ride request until when the ride is started.  
 
 
-Let $S_{\text{wait}}(t) = \{T_{\text{wait}_1}, \dots \}$ denote the set of waiting times of all started ride requests $A_i \to B_i$ up to time $t$. Then the comfort metric of the fleet management task is the maximal waiting time stored in the set $S_{wait}$.
+Let $S_{\text{wait}}(t) = \{T_{\text{wait}_1}, \dots \}$ denote the set of waiting times of all started ride requests $A_i \to B_i$ up to time $t$. Then the comfort objective of the fleet management task is the maximal waiting time stored in the set $S_{wait}$.
 
 $$
 \objective_{C-FM}(t) = \max_{T_{\text{wait}}} S_{\text{wait}}

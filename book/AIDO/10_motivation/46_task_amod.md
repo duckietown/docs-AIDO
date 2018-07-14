@@ -1,7 +1,5 @@
 # Task: Autonomous Mobility-on-Demand on AMoDeus {#amod status=beta}
 
-TODO for Claudio Ruch: Please match notation to overall document - cost function should be $\objective$
-
 In this task, we zoom out of Duckietown and switch to a task so big that it is not yet accessible in Duckietown but only in simulation. This is likely changing as Duckietowns across the world experience a tremendous growth in population, partly due to the surprising fertility rate of the Duckies themselves, partly due to the significant immigration of Duckies of engineering background.
 
 
@@ -83,14 +81,14 @@ We introduce the following variables:
 The first performance metric is for cases when the same number of vehicles as in the benchmark case $N_B$ is used:
 
 \begin{align}
-\Sigma_1 = \alpha_1 \cdot \frac{d_E}{d_T} + \alpha_2 \cdot \frac{\sum_{i=1}^K w_i}{\sum_{i=1}^K w_{i,B}}
+\objective_1 = \alpha_1 \cdot \frac{d_E}{d_T} + \alpha_2 \cdot \frac{\sum_{i=1}^K w_i}{\sum_{i=1}^K w_{i,B}}
 \label{eq:perfMetr1}
 \end{align}
 
 The second performance metric allows the designer to reduce the number of vehicles if possible or increase it if deemed useful:
 
 \begin{align}
-\Sigma_2 = \Sigma_1 + \alpha_3 \cdot \frac{N}{N_B}
+\objective_2 = \Sigma_1 + \alpha_3 \cdot \frac{N}{N_B}
 \label{eq:perfMetr2}
 \end{align}
 
@@ -176,18 +174,10 @@ The next task is to retrieve the report and score information of the final simul
 For more in-depth analysis, the simulation information can be downloaded from the server and processed locally.
 
 
+## Evaluation
 
-## Related Work
+The AMoD task is evaluated on the following performance objectives.
 
-This section briefly and incomprehensibly presents related work to the AMoDeus challenge. In
+### Performance objective -
 
-In \cite{horl2017fleet} several autonomous mobility-on-demand control algorithms were compared to a simulation scenario for the city of Zurich, Switzerland. It was shown
-that a simple load-balancing heuristic reaches peak mean waiting times of 5 min with 10’000
-vehicles, while more advanced control policies achieve the same performance with less than 9’000 vehicles.
-
-
-A case study for Berlin presented in \cite{bischoff2016simulation} simulates city-wide replacement of transportation systems with robotic taxis in Berlin. The results are obtained with a heuristic algorithm and for a large number of agents.
-
-In \cite{spieser2014toward} the authors use analytic results to estimate who  many robotic taxis could satisfy  the entire transportation demand of the country of Singapore. They estimate that $\approx 300,000$ taxis would be sufficient to serve demand with acceptable waiting times.
-
-In \cite{zhang2016control} the relation of AMoD systems and queueing systems is detailed and a method to compute the fleet sizes required for certain levels of performance is presented.
+The [*performance objective*](#performance_amod) measures how well a fleet of Duckiebots can serve customer requests specifying start and end points of journeys within Duckietown.

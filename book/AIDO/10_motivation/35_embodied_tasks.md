@@ -71,6 +71,17 @@ $$
 \newcommand{\loss}{L}
 $$
 
+The embodied individual robotic tasks are the following. 
+
+  * [Lane following (LF)](#lf): Control of a Duckiebot to drive on the right lane on streets within Duckietown without other moving Duckiebots present.
+
+
+
+  * [Lane following + vehicles (LFV)](#lf_v): Control of a Duckiebot to drive on the right lane on streets within Duckietown with other moving Duckiebots present.
+
+
+  * [Navigation + vehicles (NAVV)](#nav_v): Navigation task of a Duckiebot to drive from point $A$ to point $B$ within Duckietown while following the rules of the road and while other Duckiebots are likewise driving in the road.
+
 
 This section focuses on the infrastructure and background of the embodied individual robotic tasks as outlined in [](#task_overview).
 
@@ -82,7 +93,7 @@ The actual embodied tasks will be described in more detail in [](#lf), [](#lf_v)
 
 There are three main parts in our system with which the participants will interact:
 
-1. The **physical Duckietown platform** ([](#fig:duckietown_nice)): miniature vision-based vehicles and cities in which the vehicles drive. This is an inexpensive setup (\$100/robot). The robot hardware and environment are rigorously specified, which makes the development extremely repeatable (For an example of this see [](+opmanual_duckietown#duckietown-specs).
+1. The **physical Duckietown platform** ([](#fig:duckietown_nice)): miniature vision-based vehicles and cities in which the vehicles drive. This is an inexpensive setup (\$100/robot). The robot hardware and environment are rigorously specified, which makes the development extremely repeatable (For an example of this see ["Duckietown specifications"](http://docs.duckietown.org/opmanual_duckietown/out/duckietown_specs.html).
 2. A **cloud simulation** and training environment, which allows to test in simulation before trying on the real robots.
 3. **Remote "robotariums"** in which to try the code in controlled and reproducible conditions.
 
@@ -109,7 +120,7 @@ Duckiebots are designed with the objectives of affordability, modularity and eas
 
 *Actuation* is provided through two DC motors that independently drive the front wheels (differential drive configuration), while the rear end of the Duckiebot is equipped with a passive omnidirectional wheel.
 
-All the *computation* is done onboard on a Raspberry Pi 3 computer, equipped with a quad Core 1.2 GHz, 64 bit CPU and 1 GB of RAM.
+All the *computation* is done onboard on a Raspberry Pi 3+ computer, equipped with a quad Core 1.4 GHz, 64 bit CPU and 1 GB of RAM.
 
 We will support other configurations for the purposes of deploying neural networks onto the robots.
 More details in [](#computation).
@@ -199,175 +210,7 @@ For the competition we will the "purist" computational substrate option: the onl
 
 Measuring performance in robotics is less clear cut and more multidimensional than traditionally encountered in machine learning settings. To nevertheless achieve reliable performance estimates, we define $N$ to be the number of experiments. Let $\objective$ denote our objective or cost function to optimize which we report for every experiment.
 
-In the following we will summarize the objectives used to quantify how well an embodied task is completed. We will evaluate performance in three different categories: *performance objective*, *traffic law objective* and *comfort objective*. Please note that the three provided objectives are not merged into one number.
-
-### Performance objective {#performance_indicators}
-
-As a performance indicator for the *lane following task* and the *lane following task with other dynamic vehicles*, we choose the average speed $v_t$ over time of the Duckiebot as measured across the moved distance (lap time). This both encourages faster driving as well as algorithms with lower latency. The factors $\kappa$ and $\rho$ are multiplied to be able to weigh the performance indicators relative to other metrics.
-
-$$
-\objective_{PS} = \expectation_t[-\kappa v_t]
-$$
-
-Similarly, for the *navigation with dynamic vehicles task*, we choose the average speed to go from point $A$ to point $B$ within Duckietown as performance indicator.
-
-$$
-\objective_{SAB}(t) = \expectation_{A,B}[T_{A \to B}]
-$$
-
-
-### Traffic law objective {#traffic_laws}
-
-The following are a list of rule objectives the Duckiebots are supposed to abide by within Duckietown. All individual rule violations will be summarized in one overall traffic law objective $\objective_{TL}$.
-
-#### Quantification of "Staying in the lane"
-
- The Duckietown traffic laws say:
-
- *The vehicle should stay at all times in the right lane, and ideally near the center.*
-
- We quantify this as follows: Suppose that $d$ is the absolute perpendicular distance of the body from the midline of the lane, such that $d=0$ corresponds to the robot at the center. While $d$ stays within an acceptable range no cost is incurred. When the small safety margin $d_{safety}$ is violated cost starts accruing proportional to the squared distance $d$ up to an upper bound $d_{max}$. If even this bound is violated a lump penalty $\alpha$ is incurred.
-
- So we define the "stay-in-lane" cost function as follows:
-
- $$
- \Delta \objective_{LF} = \begin{cases} 0  & \text{if } d < d_{safety} \\
-     \beta d^2 & \text{if } d_{safety} \leq d \leq d_{max} \\
-   	\alpha & \text{if } d > d_{max} \text{ or if $d$ is not within field-of-view anymore}
-   	\end{cases}
-$$
-
-
-
-
-
- #### Quantification of "Stopping at red intersection line"
-
- The Duckietown traffic laws say:
-
- *Every time the vehicle arrives at an intersection with a red stop line,
- the vehicle should come to a complete stop, before continuing.*
-
- During each intersection traversal, the vehicle gets a penalty $\gamma$ if
- there was not a time $t$ such that the vehicle was in the stopping zone (defined as being between $0$ and $5$ cm of the stop line) and $v_t = 0$, where $v_t$ is the longitudinal velocity of the vehicle with respect to the direction of the lane. The condition that the position $p$ of the Duckiebot is in the stopping zone is denoted with $p_{bot} \in S_{zone}$.
-
- $$
- 	\objective_{SI} = \begin{cases} 0  & \text{if } p_{bot} \notin S_{zone}\\
- 	\gamma & \text{if } \nexists t \text{ s.t. } v_t=0 \text{ and }  p_{bot} \in S_{zone}\\
- 	0 & \text{if } p_{bot} \in S_{zone} \text{ and } \exists v_t=0
- 	\end{cases}
- $$
-
-To measure this cost, the velocities $v_t$ are saved while the robot is in the stopping zone $S_{zone}$.
-
-#### Quantification of "Keep safety distance"
-
-The Duckietown traffic laws say:
-
- *The vehicle should stay at an adequate distance from vehicles in front of it at all times.*
-
- We quantify this rule as follows: Let $d$ denote the distance between the Duckiebot and the closest Duckiebot in front of it which is also in the same lane. Furthermore let $d_{safe}$ denote a cut-off distance after which a Duckiebot is deemed "far away" and let $W \times H$ be the dimensions of the Duckiebot. Let $\delta$ denote a scalar positive weighting factor. Then
- $$
- 	\objective_{SD} = \delta \max(0, d_{safe}-d)^2.
- $$
-
-#### Quantification of "Avoiding collisions"
-
-The Duckietown traffic laws say:
-
-> At any time a vehicle shall not collide with another object or vehicle.
-
- The vehicle gets a penalty $\nu$ if within a time interval in time of length $T$: $t \in [t, t+T]$, the distance $d$ between the vehicle and a nearby object or other vehicle is zero or near zero at any point in the interval (as measured by being greater than $\epsilon$). For each time interval $T$ the collision cost is:
-
- $$
- 	\objective_{AC} = \begin{cases} 0 & \text{if } d > \epsilon, \\
- 	\nu & \text{if } d < \epsilon.
- 	\end{cases}
- $$
-
-Time intervals are chosen to allow for maneuvering after collisions without incurring further costs.
-
-An illustration of a collision is displayed in [](#fig:collision1).
-
-#### Quantification of "Yielding the right of way"
-
-The law says:
-
-> Every time the vehicle arrives at an intersection with a lane joining on the right, it needs to check whether there are vehicles on the right-hand joining lane. If so these vehicles shall traverse the intersection first.
-
-
-$$
-\objective_{YR} = \begin{cases} 0 & \text{driving while right hand side if free at intersection} \\
-\mu & \text{driving while right hand side if occupied at intersection}
-\end{cases}
-$$
-
-The yield situation at an intersection is depicted in [](+opmanual_duckiebot#yield).
-
-
-#### Hierarchy of rules
-
-To account for the relative importance of rules, the factors $\alpha, \beta, \gamma, \delta, \nu, \mu$ of the introduced rules will be weighted relatively to each other.
-
-We hereby propose the following order of rule importance:
-
-$$
-\objective_{AC} > \objective_{SI} > \objective_{YR} > \objective_{SD} > \objective_{SL}
-$$
-
-Put into words:
-
-\begin{center}Collision avoidance $>$ stop sign line $>$ Yielding $>$ Respecting distances $>$ Staying in the lane.
-\end{center}
-
-This puts constraints on the factors $\alpha, \beta, \gamma, \delta, \nu, \mu$ whose exact values will be determined empirically to enforce this relative importance.
-
-While the infractions of individual rules will be reported, as a performance indicator all rule violations are merged into one overall traffic law objective $\objective_{TL}$. Let $\task$ denote a particular task, then the rule violation objective is the sum of all individual rule violations $\objective_i$ which are an element of that particular task.
-
-$$
-\objective_{TL} = \sum_i \mathbb{I}_{\objective_i \in \task} \objective_i,
-$$
-
-where $\mathbb{I}_{\objective_i \in \task}$ is the indicator function that is $1$ if a rule belongs to the task and $0$ otherwise.
-
-
-### Comfort metric {#comfort_metric}
-
-
-In the single robot setting, we would like to encourage "comfortable" solutions. In this case this refers to penalizing large accelerations to achieve smoother driving solutions. To this end, changes of the input commands are penalized.
-
-
-As a comfort metric, we measure the average absolute changes in input commands $u_k$ over time.
-
-$$
-\objective_{CM} = \expectation[ ||\Delta u_k ||_1] \approx \frac{1}{M} \sum_k^M |\Delta u_k|,
-$$
-
-where $M$ denotes the number of time steps.
-
-
-## Overview
-
-As a summary of the various costs for the embodied individual robotics tasks we provide [](#tab:summary_costs_embodied).
-
-<div figure-id="tab:summary_costs_embodied">
-	 <figcaption>Summary table of which cost function parts apply for which task. Mentioned cost function parts may be found in the previous subsections.</figcaption>
-	 \begin{tabular}{l|cccc}
-	   Task &
-	   Lane follow.  &
-	   Lane follow. + v   &
-	   Navigation + v & \\
-       Performance ind. & $\objective_{PS}$ & $\objective_{PS}$ &  $\objective_{SAB}$  \\
-	   Traffic law & $\objective_{SL}$ & $\objective_{SL} + \objective_{SD} + \objective_{AC} + \objective_{YR} + \objective_{SI}$ &  $\objective_{SL} + \objective_{SD} + \objective_{AC} + \objective_{YR} + \objective_{SI}$  \\
-	   Comfort & $\objective_{CM}$ & $\objective_{CM}$ &  $\objective_{CM}$  \\
-	 \end{tabular}
-</div>
-
-
-
-
-All weighting factors (Greek letters) will be chosen empirically to ensure adequate and non-degenerate solution spaces.
-
+We summarize the objectives used to quantify how well an embodied task is completed in the [rules](#part:aido-rules) section. We will evaluate performance in three different categories: *performance objective*, *traffic law objective* and *comfort objective*. Please note that the three provided objectives are not merged into one number.
 
 
 ## Interface
@@ -382,7 +225,7 @@ TODO: JZ: Example picture, Example map
 
 **Outputs:**
 
-TODO: JZ: check this}
+TODO: JZ: check this. provide figure with output commands
 
 steering command and speed command
 
@@ -404,7 +247,7 @@ A *Master* server will be used to collect and queue all submitted programs ([](#
 </figcaption>
 </div>
 
-Access to Robotarium....
+Access to Robotarium will be granted once submitted code passes the simulation stage of the competition.
 
 Robots
 
@@ -416,16 +259,17 @@ TODO: finish
 
 ### Submission of entries
 
-The website will allow for submission of entries by
-submitting a Docker container name, or an IPFS hash of a Docker container image to be downloaded.
-
-Scripts will be provided for creating the container image in a conforming way.
+Upon enrollment in the competition (https://www2.duckietown.org/nips-2018-competition/register-for-nips-2018), participants can submit their code in the form of a docker container to a task or module of the AI-DO. Scripts will be provided for creating the container image in a conforming way.
 
 The system will schedule to run the code on the cloud on the challenges selected by the user, and, if simulations pass, on the robotariums.
 
-Participants can submit entries as many times as they would like.
+Participants can submit entries as many times as they would like. Access control policies are to be implemented, should certain participants monopolize the computational and physical resources available.
 
-Access control policies are to be implemented, should certain participants monopolize the computational resources available.
+Participants are required to open source their solutions source code. If auxiliary training data are used to train the models, that data must be made available.
+
+Submitted code will be evaluated in simulation and if sufficient on physical robotariums. Scores and logs generated with submitted code will be made available.
+
+How to get started: http://docs.duckietown.org/AIDO/out/aido_quickstart.html.
 
 ### Simulators
 
@@ -446,8 +290,6 @@ When an experiment is run in a validation robotarium, the only output to the use
 ### Leaderboards
 
 After each run in a robotarium, the participants can see the metrics statistics in the competition website.
-
-Participants can choose whether to make public any of the results.
 
 Leaderboards are reset at the beginning of October 2018.
 

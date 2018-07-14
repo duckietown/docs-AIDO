@@ -62,28 +62,54 @@ The best possible  outcome is that a larger proportion of the ML community redir
 ## Overview of tasks {#task_overview}
 
 <div figure-id="fig:summary">
- <img src='images/in_lane.jpg'   figure-id="subfig:in_lane" figure-caption="Lane following"/>
- <img src='images/lane_following_v.jpg'   figure-id="subfig:lane_following_v2" figure-caption="Lane following+v"/>
- <img src='images/Autolab_map.png'   figure-id="subfig:Autolab_map" figure-caption="Navigation+v"/>
- <img src='images/fleet_management.jpg'  figure-id="subfig:fleet_management" figure-caption="Fleet management"/>
- <img src='images/amod_gray3.png'   figure-id="subfig:amod_gray3" figure-caption="AMOD coordination"/>
+ <img src='images/in_lane.jpg'   figure-id="subfig:in_lane"  figure-caption="Lane following"/>
+ <img src='images/lane_following_v.jpg'   figure-id="subfig:lane_following_v2"  figure-caption="Lane following + dynamic vehicles"/>
+ <img src='images/Autolab_map.png'   figure-id="subfig:Autolab_map"  figure-caption="Navigation + dynamic vehicles"/>
+ <img src='images/fleet_management.jpg'  figure-id="subfig:fleet_management"  figure-caption="Fleet management"/>
+ <img src='images/amod_gray3.png'   figure-id="subfig:amod_gray3"  figure-caption="AMoD coordination"/>
 </div>
+
+
+
 
 <style>
 #fig\:summary img {
-width: 16em;
+width: 14em;
 }
 </style>
 
+<!-- LF  |  LFV  |  NAVV  |  FM       |  AMoD
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+<img src="images/in_lane.jpg" width="90" height="80"/>  |  <img src="images/lane_following_v.jpg" width="90" height="80"/> |  <img src="images/Autolab_map.png" width="90" height="80"/> |  <img src="images/fleet_management.jpg" width="100" height="80"/> |  <img src="images/amod_gray3.png" width="90" height="80"/> -->
+
+
 The AI Driving Olympics competition is structured into the following five separate tasks:
 
-**Embodied individual robot tasks**: Tasks within which code to control a single Duckiebot is submitted.
-  * [Lane following](#lf): Control of a Duckiebot to drive on the right lane on streets within Duckietown without other moving Duckiebots present.
-  * [Lane following + vehicles](#lf_v): Control of a Duckiebot to drive on the right lane on streets within Duckietown with other moving Duckiebots present.
-  * [Navigation + vehicles](#nav_v): Navigation task of a Duckiebot to drive from point $A$ to point $B$ within Duckietown while following the rules of the road and while other Duckiebots are likewise driving in the road.
-**Fleet-level social tasks**: Tasks within which code to control multiple robots or agents is submitted while lower-level functions are already provided.
-  * [Fleet management](#nav_v): Task to control a small fleet of Duckiebots within Duckietown to pick up a set of virtual customers and drive them to a destination point.
-  * [Autonomous Mobility-on-Demand](#amod): Task to control the movement of a fleet of autonomous vehicles in a simulated city to pick up customers and drive them to their destinations.
+###[Embodied individual robot tasks](#embodied_tasks)
+
+Tasks within which code to control a single Duckiebot is submitted.
+
+  * [Lane following (LF)](#lf): Control of a Duckiebot to drive on the right lane on streets within Duckietown without other moving Duckiebots present.
+
+
+
+  * [Lane following + vehicles (LFV)](#lf_v): Control of a Duckiebot to drive on the right lane on streets within Duckietown with other moving Duckiebots present.
+
+
+  * [Navigation + vehicles (NAVV)](#nav_v): Navigation task of a Duckiebot to drive from point $A$ to point $B$ within Duckietown while following the rules of the road and while other Duckiebots are likewise driving in the road.
+
+
+
+
+###[Fleet-level social tasks](#social_tasks)
+
+Tasks within which code to control multiple robots or agents is submitted while lower-level functions are already provided.
+
+  * [Fleet management (FM)](#nav_v): Task to control a small fleet of Duckiebots within Duckietown to pick up a set of virtual customers and drive them to a destination point.
+
+
+  * [Autonomous Mobility-on-Demand (AMoD)](#amod): Task to control the movement of a fleet of autonomous vehicles in a simulated city to pick up customers and drive them to their destinations.
+
 
 
 Participants may submit code to each challenge individually. Tasks proposed in the *AI Driving Olympics* are ordered first by type and secondly by increasing difficulty in a way which encourages modular reuse of solutions to previous tasks.
