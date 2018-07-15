@@ -38,7 +38,10 @@ Please make sure you have the following installed on your PC:
 
 Point your browser to this URL: https://github.com/duckietown/gym-duckietown-agent, click the `Fork` button (top right) and then click your Github account when it asks you where you want to fork to.
 
-TODO: insert fork image here
+<figure id='screen-gym-fork'>
+<figcaption></figcaption>
+<img src="screenshots/screenshot-gym-duckietown-agent-fork2.png" class='diagram'/>
+</figure>
 
 Now you should see the page of your forked repo. Now let's clone that new repo. Click the green `Clone or Download` button (right side), copy the URL, open a terminal and clone your repo
 
@@ -65,11 +68,17 @@ Both of these actions should only take a bit longer on the first start. On conse
 
 In the process of starting both containers you should see this:
 
-TODO picture of the shell output of both containers starting up.
+<figure id='screen-gym-start'>
+<figcaption></figcaption>
+<img src="screenshots/screenshot-gym-duckietown-agent-startup.png" class='diagram'/>
+</figure>
 
 Then the two containers should run for a few seconds, generating steps and simulating the results. After that's done, you should see the final verdict, the average reward over 10 episodes in the terminal:
 
-TODO picture of shell reward
+<figure id='screen-gym-end'>
+<figcaption></figcaption>
+<img src="screenshots/screenshot-gym-duckietown-agent-end.png" class='diagram'/>
+</figure>
 
 This second to last line (the one with `The average reward of 10 episodes was -50.7127. Best epi....`) - that's your self-evaluation. That's how you measure your own performance. You should try to get this number as high as possible, but also keep in mind that there is always some randomness involved. So even if you run this twice without changing anything, the number can change quite a lot. Later in development you can modify how many episodes are averaged so that you get a better estimate. Currently that's 10 but that's quite low. 
 
