@@ -150,16 +150,13 @@ Another mode of submission is that people can also compete in simpler tasks by c
 * Lane localization: given image localize the robot in the lane
 * Vehicle detection: given image localize the other robot
 
-We compute metrics (e.g. memory usage, latency, etc.) but you are not scored on metrics.
+We compute metrics (e.g. memory usage, latency, etc.) but you are not scored on metrics. Other participants in the end-to-end type may use your module. You win if somebody else uses your module in the end-to-end type.
 
-Other participants in the end-to-end type may use your module.
 
-You win if somebody else uses your module in the end-to-end type.
-Learning protocol for module entries
+**Learning protocol for module entries**
 
 This metric is formalized uses supervised learning from logged data and unsupervised learning from logged data.
 
-**Learning**
 
 * **Supervised learning from logged data:** You are given as input the input data, and the output data, produced either using a baseline solution, or by a ground truth system.
 * **Unsupervised learning from logged data:** You have access to other unlabeled logs.

@@ -115,11 +115,11 @@ The robotariums are needed to enable reproducible testing in controlled conditio
 For winning the competitions, the only valid scores
 are the scores obtained at the live competition. The participants will not need to be physically at NIPS --- they can participate remotely by submitting a Docker container, which will be run for them following standardized procedures.
 
-### The physical Duckietown platform
+## The physical Duckietown platform
 
 We briefly describe the physical Duckietown platform, which comprises  autonomous vehicles (*Duckiebots*) and a customizable model urban environment (*Duckietown*).
 
-#### Robot {#robot}
+### Robot {#robot}
 
 Duckiebots are designed with the objectives of affordability, modularity and ease of construction. They are equipped with only one *sensor*: a front viewing camera with $160$ deg fish-eye lens capable of streaming $640\times480$ resolution images reliably at $30$ fps.
 
@@ -132,7 +132,7 @@ More details in section [computational substrate](#computation).
 
 *Power* is provided by a $10000$ mAh battery which provides several hours ($>5$) of operation.
 
-#### Environment {#environment}
+### Environment {#environment}
 
 Duckietowns are modular, structured environments built on two layers: the *road* and the *signal* layers ([](#fig:duckietown-environment)). Detailed specifications can be found [here](http://docs.duckietown.org/opmanual_duckietown/out/duckietown_specs.html).
 
@@ -151,7 +151,7 @@ Intersections are always separated by at least 2 tiles to avoid traffic jams of 
 </div>
 
 
-#### Cloud simulation
+### Cloud simulation
 
 Additionally, we will provide a cloud simulation environment for training.
 
@@ -175,7 +175,7 @@ navigating the tradeoff of simulation speed vs output accuracy.
 
 For the [autonomous mobility-on-demand](#amod) (AMoD) task, in which the AI must respond to ride requests and allocate existing cars to each task, we will develop a standard neural-networks-friendly data representation.
 
-#### Robotariums
+### Robotariums
 
 <div figure-id="fig:robotarium">
 <img src="images/robotarium.jpg" style="width:90%"/>
@@ -206,7 +206,7 @@ The Duckietown robotariums will be built in five institutions:
 These robotariums will remain available after the competition ends, for follow-up editions,
 as well as for regular research activities.
 
-#### Computational substrate available {#computation}
+### Computational substrate available {#computation}
 
 For the competition we will two options for computational power.
 
@@ -214,12 +214,6 @@ For the competition we will two options for computational power.
 
 2. The second option is the "non-purist" option, where additionally a Movidius computation stick may be used to run more computation intensive algorithms. The baseline solutions we provide using conventional methods run in real time using the Raspberry PI processor only.
 
-
-## Performance metrics {#performance_metrics}
-
-Measuring performance in robotics is less clear cut and more multidimensional than traditionally encountered in machine learning settings. To nevertheless achieve reliable performance estimates, we define $N$ to be the number of experiments. Let $\objective$ denote our objective or cost function to optimize which we report for every experiment.
-
-We summarize the objectives used to quantify how well an embodied task is completed in the [rules](#part:aido-rules) section. We will evaluate performance in three different categories: *performance objective*, *traffic law objective* and *comfort objective*. Please note that the three provided objectives are not merged into one number.
 
 
 ## Interface
@@ -249,7 +243,6 @@ The Duckiebot interacts with the world through its actuators, its wheel motors.
 
 
 - The output of the Duckiebot both in simulation and reality are its motor command signals.
-
 
 
 

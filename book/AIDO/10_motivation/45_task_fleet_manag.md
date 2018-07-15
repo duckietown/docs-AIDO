@@ -79,7 +79,7 @@ This scenario is meant to resemble a taxi-service. Customer request to go from l
 
 <div figure-id="fig:Autolab_map">
  <img src="images/Autolab_map.png" style="width: 90%"/>
- <figcaption>Map of a Duckietown provided to illustrate Task NAV and FM. Best viewed in color.</figcaption>
+ <figcaption>Map of a Duckietown provided to illustrate Task NAV and FM.</figcaption>
 </div>
 
 ## Platform
