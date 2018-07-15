@@ -1,4 +1,4 @@
-# The AI Driving Olympics {#book:AIDO status=draft}
+# The AI Driving Olympics {#book:AIDO status=beta}
 
 Maintainer: Andrea Censi, Liam Paull
 
@@ -13,4 +13,4 @@ The competition will be live at NIPS, but participants will not need to be physi
 There will be qualifying rounds in simulation, similar to the recent DARPA Robotics Challenge,
 and we will make available the use of "robotariums," which are facilities that allow remote experimentation in a reproducible setting.
 
-**Keywords**: robotics, safety-critical AI, self-driving cars, autonomous mobility on demand.
+**Keywords**: robotics, safety-critical AI, self-driving cars, autonomous mobility on demand, machine learning, artificial intelligence.
