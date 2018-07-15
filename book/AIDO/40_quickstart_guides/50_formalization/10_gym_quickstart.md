@@ -34,6 +34,22 @@ Please make sure you have the following installed on your PC:
 - Some Python code editor for modifying the agent. We'd recommend [PyCharm](https://www.jetbrains.com/pycharm/) or [Atom](https://atom.io/)
 - [Git](https://git-scm.com/downloads) for pulling the repositoy.
 
+## Install
+
+Point your browser to this URL: https://github.com/duckietown/gym-duckietown-agent, click the `Fork` button (top right) and then click your Github account when it asks you where you want to fork to.
+
+TODO: insert fork image here
+
+Now you should see the page of your forked repo. Now let's clone that new repo. Click the green `Clone or Download` button (right side), copy the URL, open a terminal and clone your repo
+
+    git clone https://github.com/[YOUR GITHUB USERNAME HERE]/gym-duckietown-agent.git
+    
+That's it for the "installation" part. :)
+
+## Run
+
+
+
 
 
 
