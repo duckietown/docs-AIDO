@@ -48,6 +48,30 @@ That's it for the "installation" part. :)
 
 ## Run
 
+Change into the directoy of you `gym-duckietown-agent`
+
+    cd gym-duckietown-agent
+    
+and launch both containers with this command
+
+    docker-compose pull && docker-compose up
+    
+What this will do:
+
+- Pull the latest `gym-duckietown-server` container from dockerhub (this is as of writing `1.9GB` and can take a bit to download) and run it
+- Build the agent into a container (including installing dependencies within the container) and run it
+
+Both of these actions should only take a bit longer on the first start. On consecutive starts this should be faster.
+
+In the process of starting both containers you should see this:
+
+TODO picture of the shell output of both containers starting up.
+
+Then the two containers should run for a few seconds, generating steps and simulating the results. After that's done, you should see the final verdict, the average reward over 10 episodes in the terminal:
+
+TODO picture of shell reward
+
+This second to last line (the one with `The average reward of 10 episodes was -50.7127. Best epi....`) - that's your self-evaluation. That's how you measure your own performance. You should try to get this number as high as possible, but also keep in mind that there is always some randomness involved. So even if you run this twice without changing anything, the number can change quite a lot. Later in development you can modify how many episodes are averaged so that you get a better estimate. Currently that's 10 but that's quite low. 
 
 
 
