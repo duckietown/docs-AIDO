@@ -15,7 +15,25 @@ repository called `gym-duckietown-agent`. We will guide you
 through the process of installing everything, forking this repo, 
 modifying the code and making a submission.
 
+**TL;DR** 
+There are two containers:
+
+- `gym-duckietown-server`, runs the actual gym environment
+- `gym-duckietown-agent`, hold the agent code (i.e. your code)
+
+We provide scripts for pulling, building and launching both containers.
+
 ## Prerequisites
+
+Currently we support development on Mac and Linux. We are working on supporting Windows soon.
+
+Please make sure you have the following installed on your PC:
+
+- [Docker CE](https://docs.docker.com/install/) for running the containers
+- [Docker Compose](https://docs.docker.com/compose/install/#install-compose) for starting both `server` and `agent` and make them communicate with each other in one command
+- Some Python code editor for modifying the agent. We'd recommend [PyCharm](https://www.jetbrains.com/pycharm/) or [Atom](https://atom.io/)
+- [Git](https://git-scm.com/downloads) for pulling the repositoy.
+
 
 
 
