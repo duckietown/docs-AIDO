@@ -71,21 +71,30 @@ $$
 
 # Fleet-level social tasks {#social_tasks status=beta}
 
-This section focuses on the infrastructure and background of the fleet-level social tasks as outlined in [](#task_overview).
+This section provides a brief introduction to the fleet-level social tasks "Fleet management" and "Autonomous Mobility-on-Demand". The subsequent two tasks are offered as social tasks in the AI Driving Olympics.
 
-The fleet-level tasks aim to work at a higher level of abstraction than the previous embodied robotic tasks [](#lf), [](#lf_v), [](#nav_v). Picture a city with several already autonomous vehicles. The question now posed at the fleet-level is how to best control vehicles to serve customers.  
+  * [Fleet management (FM)](#nav_v): Task to control a small fleet of Duckiebots within Duckietown to pick up a set of virtual customers and drive them to a destination point.
 
 
-The actual social tasks will be described in more detail in [](#fleet_manag), [](#amod). Note that the sequence tasks was chosen to gradually increase the difficulty of tasks by extending previous task solutions to more general situations.
+  * [Autonomous Mobility-on-Demand (AMoD)](#amod): Task to control the movement of a fleet of autonomous vehicles in a simulated city to pick up customers and drive them to their destinations.
+
+----------------------------
+
+The fleet-level tasks aim to work at a higher level of abstraction than the previous embodied robotic tasks [LF](#lf), [LFV](#lf_v), [NAVV](#nav_v). Crucially instead of focusing on single robots, now a fleet of robots should be controlled.
+
+Picture a city with several already autonomous vehicles. The question now posed at the fleet-level is how to best control vehicles to serve customers.  
+
+
+The actual social tasks will be described in more detail in ["Fleet management"](#fleet_manag) and ["Autonomous Mobility-on-Demand"](#amod). Note that the sequence tasks was chosen to gradually increase the difficulty of tasks by extending previous task solutions to more general situations.
 
 ## Further details
 
-Since the fleet-level tasks differ in some points in platform and evaluation detailed information is presented separately in [](#fleet_manag) and [](#amod).
+Since the fleet-level tasks differ in some points in terms of the used platform and evaluation, detailed information is presented separately in ["Fleet management"](#fleet_manag) and ["Autonomous Mobility-on-Demand"](#amod).
 
 
 ## Related Work
 
-This section briefly and incomprehensibly presents related work to the fleet management and AMoDeus challenge. 
+Fleet management is a field of research which is recently has received increase attention. This section briefly and non-exhaustively presents related work to the fleet management and AMoDeus challenge.
 
 In \cite{horl2017fleet} several autonomous mobility-on-demand control algorithms were compared to a simulation scenario for the city of Zurich, Switzerland. It was shown
 that a simple load-balancing heuristic reaches peak mean waiting times of 5 min with 10’000
