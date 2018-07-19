@@ -1,4 +1,4 @@
-# The AI Driving Olympics {#book:AIDO status=beta}
+# The AI Driving Olympics {#book:AIDO status=ready}
 
 Maintainer: Andrea Censi, Liam Paull
 
