@@ -113,3 +113,50 @@ And after a second or so, the matplotlib window should pop up and you should see
 <figcaption></figcaption>
 <img src="screenshots/matplotlib-render-animated.gif" class='diagram' style="width:100%"/>
 </figure>
+
+---
+
+The Duckietown team wishes you happy coding and best of luck! :)
+
+---
+
+## FAQ
+
+#### 1. "It looks like it's stuck / I see output like `sent action: 0 ...` but I don't see the line where it says `The average reward...`. What do?"
+
+Try removing any old `gym-duckietown-server` containers. You can do this by trying out the following commands:
+
+
+    docker container stop \
+    gym-duckietown-agent_gym-duckietown-server_1; \
+    docker container rm \
+    gym-duckietown-agent_gym-duckietown-server_1
+
+as well as
+
+    docker container stop gym-duckietown-server; \
+    docker container rm gym-duckietown-server
+
+
+#### 2. "I see a lot of lines that read something like `gym-duckietown-server_1  | step_count = 29, reward=-2.018, done = False` but I don't see the line where it says `The average reward...` . What do?"
+
+That's an easy one - the output of your agent is burried under all the console output of the server. That happens sometimes, but not super consistently. To alleviate this, just add `| less` after your `docker-compose up` command like so:
+
+
+    docker-compose pull && docker-compose up | less
+
+This way all the ouput is piped into the `less` text viewer program and you can scroll through it at your leisure (with the arrow keys). You can close the `less` program by pressing the <kbd>q</kbd> key.
+
+
+#### 3. "I get the error `Bind for 0.0.0.0:8902 failed: port is already allocated`"
+
+The full error looks something like this:
+
+    Creating gym-duckietown-agent_gym-duckietown-server_1 ... error
+
+    ERROR: for gym-duckietown-agent_gym-duckietown-server_1  Cannot start service gym-duckietown-server: driver failed programming external connectivity on endpoint gym-duckietown-agent_gym-duckietown-server_1 (0dddcea67fab4de58153d323788cc1baced4415c90471fce04fde2c1180273ea): Bind for 0.0.0.0:8902 failed: port is already allocated
+
+    ERROR: for gym-duckietown-server  Cannot start service gym-duckietown-server: driver failed programming external connectivity on endpoint gym-duckietown-agent_gym-duckietown-server_1 (0dddcea67fab4de58153d323788cc1baced4415c90471fce04fde2c1180273ea): Bind for 0.0.0.0:8902 failed: port is already allocated
+    ERROR: Encountered errors while bringing up the project.
+
+The problem here is that there is some container or service running that is occupying the same port (probably that's another `gym-duckietown-server` container that hasn't shut down properly). You can fix this by following the same steps as in answer 1.
