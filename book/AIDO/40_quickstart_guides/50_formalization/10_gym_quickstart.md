@@ -108,3 +108,8 @@ And now you can the agent on the shell:
     python3 agent.py
 
 And after a second or so, the matplotlib window should pop up and you should see your Duckiebot in action.
+
+<figure id='screen-gym-render'>
+<figcaption></figcaption>
+<img src="screenshots/matplotlib-render-animated.gif" class='diagram' width="466"/>
+</figure>
