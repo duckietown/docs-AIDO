@@ -40,7 +40,7 @@ Point your browser to this URL: https://github.com/duckietown/gym-duckietown-age
 
 <figure id='screen-gym-fork'>
 <figcaption></figcaption>
-<img src="screenshots/screenshot-gym-duckietown-agent-fork2.png" class='diagram' width="466"/>
+<img src="screenshots/screenshot-gym-duckietown-agent-fork2.png" class='diagram' style="width:100%"/>
 </figure>
 
 Now you should see the page of your forked repo. Now let's clone that new repo. Click the green `Clone or Download` button (right side), copy the URL, open a terminal and clone your repo
@@ -70,14 +70,14 @@ In the process of starting both containers you should see this:
 
 <figure id='screen-gym-start'>
 <figcaption></figcaption>
-<img src="screenshots/screenshot-gym-duckietown-agent-startup.png" class='diagram' width="466"/>
+<img src="screenshots/screenshot-gym-duckietown-agent-startup.png" class='diagram' style="width:100%"/>
 </figure>
 
 Then the two containers should run for a few seconds, generating steps and simulating the results. After that's done, you should see the final verdict, the average reward over 10 episodes in the terminal:
 
 <figure id='screen-gym-end'>
 <figcaption></figcaption>
-<img src="screenshots/screenshot-gym-duckietown-agent-end.png" class='diagram' width="466"/>
+<img src="screenshots/screenshot-gym-duckietown-agent-end.png" class='diagram' style="width:100%"/>
 </figure>
 
 This second to last line (the one with `The average reward of 10 episodes was -50.7127. Best epi....`) - that's your self-evaluation. That's how you measure your own performance. You should try to get this number as high as possible, but also keep in mind that there is always some randomness involved. So even if you run this twice without changing anything, the number can change quite a lot. Later in development you can modify how many episodes are averaged so that you get a better estimate. Currently that's 10 but that's quite low.
@@ -111,5 +111,5 @@ And after a second or so, the matplotlib window should pop up and you should see
 
 <figure id='screen-gym-render'>
 <figcaption></figcaption>
-<img src="screenshots/matplotlib-render-animated.gif" class='diagram' width="466"/>
+<img src="screenshots/matplotlib-render-animated.gif" class='diagram' style="width:100%"/>
 </figure>
