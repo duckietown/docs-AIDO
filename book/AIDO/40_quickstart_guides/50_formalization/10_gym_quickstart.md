@@ -77,7 +77,7 @@ Then the two containers should run for a few seconds, generating steps and simul
 
 <figure id='screen-gym-end'>
 <figcaption></figcaption>
-<img src="screenshots/screenshot-gym-duckietown-agent-end.png" class='diagram' style="width:100%"/>
+<img src="screenshot-gym-duckietown-agent-end.png" class='diagram' style="width:100%"/>
 </figure>
 
 This second to last line (the one with `The average reward of 10 episodes was -50.7127. Best epi....`) - that's your self-evaluation. That's how you measure your own performance. You should try to get this number as high as possible, but also keep in mind that there is always some randomness involved. So even if you run this twice without changing anything, the number can change quite a lot. Later in development you can modify how many episodes are averaged so that you get a better estimate. Currently that's 10 but that's quite low.
