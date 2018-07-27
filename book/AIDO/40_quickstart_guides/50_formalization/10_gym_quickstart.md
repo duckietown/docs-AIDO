@@ -1,5 +1,5 @@
 
-# Gym-Duckietown AIDO tutorial {#gym-tutorial status=draft}
+# Gym-Duckietown AIDO tutorial {#gym-tutorial status=ready}
 
 This is a tutorial on how to make a submission for the **LF**
 (lane following on a closed course) and **LFV** (lane following
