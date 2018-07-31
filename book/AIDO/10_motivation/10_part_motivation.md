@@ -11,27 +11,13 @@ The *AI Driving Olympics* comprise a set of five tasks each of which highlights 
 
 **Main links**
 
----------------------------------
+* For an overview of the tasks, please see: [**Task overview**](#task_overview).
+
+* For a description of the performance objectives of each task, please see: [**Rules**](#aido-rules).
 
 
-For an overview of the tasks, please see: [**Task overview**](#task_overview).
-
-
----------------------------------
-
-
-For a description of the performance objectives of each task, please see: [**Rules**](#part:aido-rules).
-
-
----------------------------------
-
-
-Where to get started with your code submission: [**User submission**](#part:aido-quickstart)
-
-
-
----------------------------------
-
+* Where to get started with your code submission: [**User submission**](#aido-quickstart)
+ 
 
 **Important remarks**
 
