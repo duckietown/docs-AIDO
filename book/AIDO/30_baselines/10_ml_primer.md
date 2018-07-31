@@ -84,14 +84,18 @@ As for what the standard gym functions are doing:
 - `env.render(mode)` - This is entirely optional. Many environments support rendering the state of the environment so that researchers can observe their agents (either during training or testing). In order to get the human observer mode, run this with `mode = "human"`. Another common example is `env.render("rgb_array")` which returns the same observation, but not as a graphic or window but as a NumPy array. In our case the observation in the `LF`, `LFV`, and `NAVV` tasks is the camera feed and the `env.render()` shows you the camera feed with some additional data on top that the agent doesn't see (like the center of the road, orientation, etc.).
 - `env.close()` - Is mostly here to adhere to the convention. There are some environments that need to be explicitly closed. Our doesn't. But it doesn't hurt to keep a good coding style and conform to this simple convention.
 
+If you want to see know about reinforcement learning or see an RL algorithm in action, please check out: (TODO put link to next page here, 20_reinforcement_learning.md).
+
 ---
 
 ## Supervised Learning (Imitation Learning)
 
 TODO
 
+(TODO put link to next page here, 30_imitation_learning.md).
+
 ---
 
 ## Transfer Learning
 
-TODO
+TODO how do you transfer what you learned through imitation learning into a RL algorithm?
