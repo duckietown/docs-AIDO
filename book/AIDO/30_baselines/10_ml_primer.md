@@ -1,5 +1,7 @@
 # Duckietown Machine Learning Primer {#ml-primer status=draft}
 
+Maintainer: Florian Golemo (but somebody please have a look at this)
+
 In here we'll show you what kinds of machine learning are possible in the context of our challenge and what they look like in practice.
 
 ## Overview
