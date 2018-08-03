@@ -10,7 +10,7 @@ This diagram should give you an idea of what kind of machine learning is applica
 
 <figure id='ml-overview'>
 <figcaption></figcaption>
-<img src="images/ml-overview.png" class='diagram' style="width:100%"/>
+<img src="images/ml-overview2.png" class='diagram' style="width:100%"/>
 </figure>
 
 ---
@@ -86,18 +86,57 @@ As for what the standard gym functions are doing:
 - `env.render(mode)` - This is entirely optional. Many environments support rendering the state of the environment so that researchers can observe their agents (either during training or testing). In order to get the human observer mode, run this with `mode = "human"`. Another common example is `env.render("rgb_array")` which returns the same observation, but not as a graphic or window but as a NumPy array. In our case the observation in the `LF`, `LFV`, and `NAVV` tasks is the camera feed and the `env.render()` shows you the camera feed with some additional data on top that the agent doesn't see (like the center of the road, orientation, etc.).
 - `env.close()` - Is mostly here to adhere to the convention. There are some environments that need to be explicitly closed. Our doesn't. But it doesn't hurt to keep a good coding style and conform to this simple convention.
 
-If you want to see know about reinforcement learning or see an RL algorithm in action, please check out: (TODO put link to next page here, 20_reinforcement_learning.md).
+If you want to see know about reinforcement learning or see an RL algorithm in action, please check out our  [Reinforcement Learning page](#reinforcement-learning).
 
 ---
 
 ## Supervised Learning (Imitation Learning)
 
-TODO
+Instead of learning purely through the reward signal you can also opt to teach your Duckiebot by being a good driver yourself. In reinforcement learning you are at some point learning a policy that takes an image as an input and outputs a an action. If you have data for this (combinations of images and correct driving signals/actions) then you can also train this policy in a supervised manner. This is called "imitation learning".
 
-(TODO put link to next page here, 30_imitation_learning.md).
+In order to pull this off, you need a good amount of data. You can get this data
+
+- (A) by recording your own dataset, i.e. driving the duckiebot around or
+- (B) by selecting and cleaning existing recordings from the Duckietown class that students provided
+
+### A - Recording your own dataset
+
+You can do this entirely in simulation. You can follow the instructions on the (quickstart page)[#gym-tutorial] up until and including the "Visual Debugging" section but instead of running `python3 agent.py` you run `python3 record.py` and every 100 timsteps the algorithm will ask you if you would like to save the last 100 steps. (TODO implement this)
+
+During recording you should make sure to achieve a reward as high as possible and not crash the car (but it might be good to include near-crash cases too in order to train the model for such occasions).
+
+You can run the script multiple times and every time it will append to the `recording/data.hdf5` file. You can analyze this file with the script `recording/analyze_data.py` - and by looking at the code of this script you can check how to read the HDF5 file back to Python.
+
+#### B - Selecting and cleaning existing data
+
+Please head on over to https://gateway.ipfs.io/ipfs/QmUbtwQ3QZKmmz5qTjKM3z8LJjsrKBWLUnnzoE5L4M7y7J/ and either look at the GIFs or the MP4 videos of the recordings. You want to find recordings that are quite long, but not too long (because you will have to watch it in its entirety), that take place within the boundaries of Duckietown (as opposed to off-road) and that don't contain any crashes or collisions.
+
+This last bit is crucial and you want to make sure you watch the entire recording to look for problems, because I contributed one of the recordings myself and at some point mid-recording I zoned out and drove the Duckie into a street sign. This can happen at any time in any recording.
+
+Therefore the suggested steps are:
+
+0. Create a new empty HDF5 dataset.
+1. Select some random Duckiebot.
+2. Check out the GIF. If it looks like the Duckie is offroad, go back to (1), otherwise continue.
+3. Watch the whole MP4 video. Note the sections that you'd like to keep (i.e. that contain "good" driving). If the video has too few or no sections like this, go back to (1) otherwise continue.
+4. Download and open the ROSbag corresponding to the recording.
+5. Extract the time sections that you highlighted earlier, scale the images to have the same format as the simulator output: `120x160x3` and append the images and actions to the HDF5 file.
+6. Go back to step (1) until you have a "reasonably" sized dataset.
+<!-- Sadly we can't tell you how much that is approximately  -->
+
+TODO: what to do once they have the data
+
+
+Check out more over at our [Supervised/Imitation Learning page](#imitation-learning).
 
 ---
 
 ## Transfer Learning
 
 TODO how do you transfer what you learned through imitation learning into a RL algorithm?
+
+---
+
+## Planning
+
+TODO
