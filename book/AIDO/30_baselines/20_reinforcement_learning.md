@@ -1,5 +1,6 @@
 # Reinforcement Learning {#reinforcement-learning status=draft}
 
-Maintainer: Florian Golemo (but I'd appreciate some help)
+Maintainer: Florian Golemo 
 
-TODO give details about common algorithms and go through one example and how a policy can evolve over time, etc.
+
+TODO: give details about common algorithms and go through one example and how a policy can evolve over time, etc.
