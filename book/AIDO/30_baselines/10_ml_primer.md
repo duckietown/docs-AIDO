@@ -127,7 +127,7 @@ Therefore the suggested steps are:
 TODO: what to do once they have the data
 
 
-Check out more over at our [Supervised/Imitation Learning page](+class_fall_2017#imitation-learning).
+Check out more over at our [Supervised/Imitation Learning page](#aido1-imitation-learning).
 
 ---
 
