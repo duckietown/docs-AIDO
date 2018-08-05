@@ -112,7 +112,7 @@ Similar to the embodied tasks, the fleet management task takes place in Duckieto
 
 #### Cloud simulation
 
-We will provide a cloud simulation environment for training based on the AMoDeus simulator \cite{amodeus}.
+We will provide a cloud simulation environment for training based on the [AMoDeus simulator](https://github.com/idsc-frazzoli/amodeus) \cite{AMoDeus-BASE}.
 
 
 ## Evaluation

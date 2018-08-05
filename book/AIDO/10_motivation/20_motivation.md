@@ -114,38 +114,39 @@ Tasks within which code to control multiple robots or agents is submitted while 
 
 Participants may submit code to each challenge individually. Tasks proposed in the *AI Driving Olympics* are ordered first by type and secondly by increasing difficulty in a way which encourages modular reuse of solutions to previous tasks.
 
-## Submission types
+## Submission
 
-There are two ways of participating in the AI Driving Olympics.
+<!-- There are two ways of participating in the AI Driving Olympics. -->
 
-### End-to-end type
+<!-- ### End-to-end type -->
 
 You are evaluated on the [objectives](#part:aido-rules) defined for the task you are submitting to.
 
-Either you can provide an end-to-end solution; or you can choose from a zoo of architectures, with interchangeable modules. You can write your own modules, or you can use those made available.
+<!-- Either you can provide an end-to-end solution; or you can choose from a zoo of architectures, with interchangeable modules. You can write your own modules, or you can use those made available. -->
 
 
-#### Learning protocol for end-to-end entries
+### Learning protocol
 
-The [end-to-end entries](#systems-modules) use this process:
+There are different ways to learn on Duckietown data and simulator interactions. We use this process:
 
-**Learning**
 
 * **Off-policy learning:** you are given sensorimotor logs taken in the robotariums, without any other annotation.
 * **Active learning in a simulator:** your learner is paired with a simulator that gives as feedback vectors of violation metrics.
 
-**Evaluation**
+### Evaluation
+
+There is a two-fold evaluation for submitted code. 
 
 * **Evaluation in simulation:** The learned agent is tested in simulation to make sure that it is safe.
 * **Evaluation in robotarium:** The learned agent is evaluated in robotariums to provide the final scores.
 
 After the evaluation in robotarium, the sensorimotor logs as well as violation metric annotations are made available to everybody to be used in off-policy learning.
 
-In addition, the developer also gets the logs of intermediate signals produced by their agent. (assuming these logs are reasonably small.)
+In addition, the developer also gets the logs of intermediate signals produced by their agent (assuming these logs are reasonably small).
 
-### Module type
+<!-- ### Modules type
 
-Another mode of submission is that people can also compete in simpler tasks by creating [modules](#systems-modules) for some well-defined tasks such as:
+Another mode of submission is that people can also compete in simpler tasks by creating modules for some well-defined tasks such as:
 
 * Lane localization: given image localize the robot in the lane
 * Vehicle detection: given image localize the other robot
@@ -159,12 +160,12 @@ This metric is formalized uses supervised learning from logged data and unsuperv
 
 
 * **Supervised learning from logged data:** You are given as input the input data, and the output data, produced either using a baseline solution, or by a ground truth system.
-* **Unsupervised learning from logged data:** You have access to other unlabeled logs.
+* **Unsupervised learning from logged data:** You have access to other unlabeled logs. -->
 
-**Evaluation:**
+<!-- **Evaluation:**
 
 We compute a set of metrics (using e.g. ground truth data) but these are not used for winning.
-The module wins if it is used in an end-to-end entry that wins.
+The module wins if it is used in an end-to-end entry that wins.  -->
 
 
 
@@ -172,31 +173,31 @@ The module wins if it is used in an end-to-end entry that wins.
 <!-- For a mathematical introduction to solving tasks in the context in robotics, please refer to [](#general_problem). -->
 
 
-<cite id="bib:Singh">TODO: find paper Singh</cite>
+<!-- <cite id="bib:Singh">TODO: find paper Singh</cite> -->
 
-<cite id="bib:darpa_grand_challenge">TODO: find paper DARLA</cite>
+<!-- <cite id="bib:darpa_grand_challenge">TODO: find paper DARLA</cite> -->
 
-<cite id="bib:cmu_self_driving_original">TODO: find paper autonomous_cmu</cite>
+<!-- <cite id="bib:cmu_self_driving_original">TODO: find paper autonomous_cmu</cite> -->
 
-<cite id="bib:autonomous_germany">TODO: find paper autonomous_germany</cite>
+<!-- <cite id="bib:autonomous_germany">TODO: find paper autonomous_germany</cite> -->
 
-<cite id="bib:robotarium">TODO: find paper Robotarium</cite>
+<!-- <cite id="bib:robotarium">TODO: find paper Robotarium</cite> -->
 
-<cite id="bib:AprilTags">TODO: find paper AprilTags</cite>
+<!-- <cite id="bib:AprilTags">TODO: find paper AprilTags</cite> -->
 
-<cite id="bib:amodeus">TODO: find paper amodeus</cite>
+<!-- <cite id="bib:amodeus">TODO: find paper amodeus</cite> -->
 
 
-<cite id="bib:DARLA">TODO: find paper DARLA</cite>
+<!-- <cite id="bib:DARLA">TODO: find paper DARLA</cite> -->
 
-<cite id="bib:overview_autonomous_vision">TODO: find paper overview_autonomous_vision</cite>
+<!-- <cite id="bib:overview_autonomous_vision">TODO: find paper overview_autonomous_vision</cite> -->
 
-<cite id="bib:japan_self_driving">TODO: find paper japan_self_driving</cite>
+<!-- <cite id="bib:japan_self_driving">TODO: find paper japan_self_driving</cite> -->
 
-<cite id="bib:autonomous_nvidia">TODO: find paper autonomous_nvidia</cite>
+<!-- <cite id="bib:autonomous_nvidia">TODO: find paper autonomous_nvidia</cite> -->
 
-<cite id="bib:paull2017duckietown">TODO: find paper paull2017duckietown</cite>
+<!-- <cite id="bib:paull2017duckietown">TODO: find paper paull2017duckietown</cite> -->
 
-<cite id="bib:schwarting2018planning">TODO: find paper schwarting2018planning</cite>
+<!-- <cite id="bib:schwarting2018planning">TODO: find paper schwarting2018planning</cite> -->
 
-<cite id="bib:Pfeiffer2017FromRobots">TODO: find paper Pfeiffer2017FromRobots</cite>
+<!-- <cite id="bib:Pfeiffer2017FromRobots">TODO: find paper Pfeiffer2017FromRobots</cite> -->

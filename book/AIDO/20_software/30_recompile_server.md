@@ -1,0 +1,51 @@
+# Modifying the `gym-duckietown-server` docker image {#modifying-gym-server status=beta}
+
+Maintainer: Florian Golemo
+
+For the tasks `LF`, `LFV`, and `NAVV` we provide a driving simulator (as opposed to the city/traffic simulator for the other challenges) contained in the `duckietown/gym-duckietown-server` image.
+
+There might be instances where you want to modify the actual code of the simulator (e.g. to run multiple instances of the simulator in parallel in the same container for parallel exploration). We don't officially support these kinds of changes, but if you decide you need to recreate the `gym-duckietown-server` image, here are the steps.
+
+### Clone, Change and Recompile
+
+Clone the `gym-duckietown` repository
+
+    $ git clone https://github.com/duckietown/gym-duckietown.git
+
+Change into the directory and make your changes
+
+    $ cd gym-duckietown
+    $ echo "\n" &#gt;&#gt; benchmark.py # very meaningful example
+
+**Make sure you are still in the root directory of the repository and not in the `docker` folder**, then recompile
+
+    $ docker build --file ./docker/amod/server/Dockerfile --tag gym-duckietown-server .
+
+...this will take a while. And that's it.
+
+### Version and Upload
+
+If you are part of the Duckietown team and you made changes to the container (or if the automatic build process failed and you are building it manually) you can upload it to dockerhub.
+
+First find out what the last version tag is using this command (to see all existing tags):
+
+    $ wget -q https://registry.hub.docker.com/v1/repositories/duckietown/gym-duckietown-server/tags -O -  | sed -e 's/[][]//g' -e 's/"//g' -e 's/ //g' | tr '}' '\n'  | awk -F: '{print $3}'
+
+Then find the version number that corresponds to you circumstances, in the format `YYYY.MM.Minor` where `YYYY` is the four digit year, `MM` is the zero-padded month and `Minor` is a running index for the current month. So for example if the last version number is `2018.07.01` and it's still July, then you just have to increment the last number: `2018.07.02`. If it's already August and there is no other release for this month you can use `2018.08.01`, etc.
+
+Once you found the next suitable version number, tag the image with that number
+
+    $ # substitute VERSION with your version number
+    $ docker tag gym-duckietown-server \
+    $ duckietown/gym-duckietown-server:VERSION
+
+And also update the image with the `latest` tag:
+
+    $ # here you don't substitute anything, just run this
+    $ docker tag gym-duckietown-server \
+    $ duckietown/gym-duckietown-server
+
+Now push both tags (your version and the `latest` tag) to the Dockerhub servers:
+
+    $ docker push duckietown/gym-duckietown-server:VERSION
+    $ docker push duckietown/gym-duckietown-server
