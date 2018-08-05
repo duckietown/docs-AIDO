@@ -17,6 +17,7 @@ jobs:
         - run:
             name: Download resources
             command: |
+              ssh -T git@github.com
               git submodule sync --recursive
               git submodule update --init --recursive
 
