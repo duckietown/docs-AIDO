@@ -3,7 +3,7 @@
 In this task, we zoom out of Duckietown and switch to a task so big that it is not yet accessible in Duckietown but only in simulation. This is likely changing as Duckietowns across the world experience a tremendous growth in population, partly due to the surprising fertility rate of the Duckies themselves, partly due to the significant immigration of Duckies of engineering background.
 
 
-In this task, we will therefore use the simulation platform [AMoDEUs](https://github.com/idsc-frazzoli/amodeus) to orchestrate thousands of robotic taxis in cities to pick up and deliver customers in this virtual autonomous mobility-on-demand system composed of **robotaxis**.
+In this task, we will therefore use the simulation platform [AMoDEUs](https://github.com/idsc-frazzoli/amodeus) \cite{AMoDeus-BASE} to orchestrate thousands of robotic taxis in cities to pick up and deliver customers in this virtual autonomous mobility-on-demand system composed of **robotaxis**.
 
 The design of operational policies for AMoD systems is a challenging tasks for various reasons that make it also very suitable as a machine learning problem:
 
