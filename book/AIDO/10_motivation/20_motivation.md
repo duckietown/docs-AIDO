@@ -129,12 +129,13 @@ You are evaluated on the [objectives](#part:aido-rules) defined for the task you
 
 There are different ways to learn on Duckietown data and simulator interactions. We use this process:
 
-**Learning**
 
 * **Off-policy learning:** you are given sensorimotor logs taken in the robotariums, without any other annotation.
 * **Active learning in a simulator:** your learner is paired with a simulator that gives as feedback vectors of violation metrics.
 
-**Evaluation**
+### Evaluation
+
+There is a two-fold evaluation for submitted code. 
 
 * **Evaluation in simulation:** The learned agent is tested in simulation to make sure that it is safe.
 * **Evaluation in robotarium:** The learned agent is evaluated in robotariums to provide the final scores.
