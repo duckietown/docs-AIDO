@@ -125,9 +125,9 @@ You are evaluated on the [objectives](#part:aido-rules) defined for the task you
 Either you can provide an end-to-end solution; or you can choose from a zoo of architectures, with interchangeable modules. You can write your own modules, or you can use those made available.
 
 
-#### Learning protocol for end-to-end entries
+#### Learning protocol 
 
-The [end-to-end entries](#systems-modules) use this process:
+We use this process:
 
 **Learning**
 
@@ -143,9 +143,9 @@ After the evaluation in robotarium, the sensorimotor logs as well as violation m
 
 In addition, the developer also gets the logs of intermediate signals produced by their agent. (assuming these logs are reasonably small.)
 
-### Module type
+### Modules type
 
-Another mode of submission is that people can also compete in simpler tasks by creating [modules](#systems-modules) for some well-defined tasks such as:
+Another mode of submission is that people can also compete in simpler tasks by creating modules for some well-defined tasks such as:
 
 * Lane localization: given image localize the robot in the lane
 * Vehicle detection: given image localize the other robot
