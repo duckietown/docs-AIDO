@@ -256,7 +256,7 @@ In 1979, Tsugawa et al. \cite{japan_self_driving} developed a first application 
 
 Already in 1987, Dickmanns and Zapp developed vision-based driving algorithms based on recursive estimation and were able to drive a car on structured roads at high speeds \cite{autonomous_germany}.
 
-Using machine learning for lane following dates back to 1989, where a neural network was trained to drive the Carnegie Mellon autonomous navigation test vehicle \cite{cmu_self_driving_original}. Similarly, the company Nvidia demonstrated that also in modern time an approach similar to \cite{cmu_self_driving_original} can yield interesting results \cite{autonomous_nvidia}.
+Using machine learning for lane following dates back to 1989, where a neural network was trained to drive the Carnegie Mellon autonomous navigation test vehicle \cite{cmu_self_driving_original}. Similarly, the company Nvidia demonstrated that also in modern time an approach similar to \cite{cmu_self_driving_original} can yield interesting results \cite{nvidia_autonomous}.
 
 Driving within Duckietowns has been likewise been explored by the creators of Duckietown \cite{paull2017duckietown} where they describe implemented model-based solutions for autonomous driving specifically in the Duckietown environment.
 
