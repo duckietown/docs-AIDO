@@ -5,6 +5,7 @@ This task is an extension of task LF and task LFV and now focuses on navigating 
 
 Again we ask participants to submit code allowing the Duckiebot to navigate from location to location by driving on the right-hand side of the street within Duckietown. Given interactions with other Duckiebots, the additional rules of the road compared to the lane following tasks have to be respected.
 
+An important addition to this task is the possibility to change the [intersection navigation protocol](#traffic_intersection).
 
 <img src="images/fleet_management.jpg" figure-id="fig:fleet_management" figure-caption="Map of a Duckietown provided to illustrate Task NAVV and FM."  style="width:90%"/>
 
