@@ -82,7 +82,7 @@ $$
 $$
 
 
-## Fleet management (FM) {#comfort_fm}
+<!-- ## Fleet management (FM) {#comfort_fm}
 
 In the fleet management setting "customer experience" is influenced greatly by how fast and dependable a service is. If it is known that a taxi arrives quickly after ordering it, it makes the overall taxi service more convenient.
 
@@ -93,4 +93,4 @@ Let $S_{\text{wait}}(t) = \{T_{\text{wait}_1}, \dots \}$ denote the set of waiti
 
 $$
 \objective_{C-FM}(t) = \max_{T_{\text{wait}}} S_{\text{wait}}
-$$
+$$ -->

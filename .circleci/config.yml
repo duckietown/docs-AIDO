@@ -10,10 +10,14 @@ jobs:
 
         resource_class: large
         steps:
+        - add_ssh_keys:
+            fingerprints:
+                - "1e:af:1c:cf:12:02:ec:5f:48:ff:06:e6:03:2b:6d:1f"
         - checkout
         - run:
             name: Download resources
             command: |
+              ssh -T git@github.com || true
               git submodule sync --recursive
               git submodule update --init --recursive
 

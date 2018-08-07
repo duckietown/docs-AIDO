@@ -89,6 +89,7 @@ In the following we summarize the objectives used to quantify how well an embodi
 Note that the these objectives are not merged into one single number.
 
 
+
 For general rules about participation and what happens with submitted code, collected logs and evaluated scores, please see [general rules](#general_rules).
 
 
