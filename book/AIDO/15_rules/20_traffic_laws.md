@@ -71,7 +71,7 @@ $$
 \newcommand{\loss}{L}
 $$
 
-The following are a list of rule objectives the Duckiebots are supposed to abide by within Duckietown. All individual rule violations will be summarized in one overall traffic law objective $\objective_{T}$. These penalties hold for the lane following, navigation and fleet management tasks (LF, LFV, NAVV, FM).
+The following are a list of rule objectives the Duckiebots are supposed to abide by within Duckietown. All individual rule violations will be summarized in one overall traffic law objective $\objective_{T}$. These penalties hold for the lane following, and navigation tasks (LF, LFV, NAVV).
 
 ## Quantification of "Staying in the lane" {#traffic_laws_lf}
 
@@ -104,9 +104,9 @@ An example situation where a Duckiebot does not stay in the lane is shown in \re
 
 Traditionally for real-world car travel, intersections are traversed with a fixed protocol in place, e.g. in Germany the driver on the right joining lane has the right of way.
 
-Robotic drivers do not have these inherent restrictions. Therefore for the tasks of [navigation](#nav_v) and [fleet management](#fleet_manag), we will provide a base intersection protocol. This protocol is able to guide Duckiebots safely through intersections. For the lane following tasks, a fixed intersection protocol will be used and the performance during intersection navigation will not be scored.
+Robotic drivers do not have these inherent restrictions. Therefore for the task of [navigation](#nav_v), we will provide a base intersection protocol. This protocol is able to guide Duckiebots safely through intersections. For the lane following tasks, a fixed intersection protocol will be used and the performance during intersection navigation will not be scored.
 
-Participants are then able to change the intersection protocol in the hope of improving driving through intersections, thereby enabling them to achieve better navigation and fleet management. The following rule penalties around intersections will however stay in place.  
+Participants are then able to change the intersection protocol in the hope of improving driving through intersections, thereby enabling them to achieve better navigation. The following rule penalties around intersections will however stay in place.  
 
 
 ## Quantification of "Stopping at red intersection line" and "Stopping at red traffic light" {#traffic_laws_si}
