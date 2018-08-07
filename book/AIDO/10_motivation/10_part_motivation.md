@@ -24,13 +24,13 @@ In total the following ways of participating are offered. There are different ta
 
 * [Lane following (LF)](#lf)
 * [Lane following with dynamic vehicles (LFV)](#lf_v)      
-* [Navigation with dynamic vehicles (NAVV)](#nav_v) 
+* [Navigation with dynamic vehicles (NAVV)](#nav_v)
 * [Autonomous mobility-on-demand (AMOD)](#amod)
 
 ### Computational resources
 
 * [Purist option - RaspberryPi](#computation)
-* [Additional Movidius stick](#computation)
+* [Non-purist option - Additional Movidius stick](#computation)
 
 
 ### Performance metrics
