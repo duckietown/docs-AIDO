@@ -2,10 +2,10 @@
 # Gym-Duckietown AIDO tutorial {#gym-tutorial status=ready}
 
 This is a tutorial on how to make a submission for the **LF**
-(lane following on a closed course) and **LFV** (lane following
-with dynamic obstacles) AIDO challenge. This challenge uses
-the gym-duckietown environment from https://github.com/duckietown/gym-duckietown
-but packs it up in a docker container.
+(lane following on a closed course), **LFV** (lane following
+with dynamic obstacles), and the **NAVV** (Navigation with dynamic vehicles) AIDO challenges. These challenges all use
+the `gym-duckietown` environment from https://github.com/duckietown/gym-duckietown
+but pack it up into a docker container.
 
 To this end the `gym-duckietown` environment lives in one
 container called `gym-duckietown-server`. The code for the agent that
@@ -55,9 +55,10 @@ Change into the directoy of you `gym-duckietown-agent`
 
     cd gym-duckietown-agent
 
-and launch both containers with this command
+and launch both containers (on the LF task) with this command
 
-    docker-compose pull && docker-compose up
+    docker-compose -f docker-compose-lf.yml pull && \                                                 
+    docker-compose -f docker-compose-lf.yml up
 
 What this will do:
 
@@ -77,10 +78,12 @@ Then the two containers should run for a few seconds, generating steps and simul
 
 <figure id='screen-gym-end'>
 <figcaption></figcaption>
-<img src="screenshot-gym-duckietown-agent-end.png" class='diagram' style="width:100%"/>
+<img src="screenshots/screenshot-gym-duckietown-agent-end.png" class='diagram' style="width:100%"/>
 </figure>
 
-This second to last line (the one with `The average reward of 10 episodes was -50.7127. Best epi....`) - that's your self-evaluation. That's how you measure your own performance. You should try to get this number as high as possible, but also keep in mind that there is always some randomness involved. So even if you run this twice without changing anything, the number can change quite a lot. Later in development you can modify how many episodes are averaged so that you get a better estimate. Currently that's 10 but that's quite low.
+This second to last line (the one with `The average reward of 10 episodes was -538.5323. Best epi....`) - that's your self-evaluation. That's how you measure your own performance. You should try to get this number as high as possible, but also keep in mind that there is always some randomness involved. So even if you run this twice without changing anything, the number can change quite a lot. Later in development you can modify how many episodes are averaged so that you get a better estimate. Currently that's 10 but that's quite low.
+
+In order to stop the server and get your terminal back, press <kbd>CTRL</kbd>+<kbd>c</kbd>
 
 ## Seeing the Policy in Action aka Visual Debugging
 
@@ -94,10 +97,12 @@ You need `python3` installed, as well as `pip3` and we assume you have sudo acce
 
 If you don't have sudo access, you can run the code without the `sudo` and with `--user` instead, i.e. `pip3 install --user -e .`
 
-Then launch the `gym-duckietown-server` container in the background:
+Then launch the `gym-duckietown-server` container in the background (and change the task to either `LF` or `LFV` by changing the `DUCKIETOWN_CHALLENGE` parameter below):
 
     docker run -tid -p 8902:8902 -p 5558:5558 \
-    -e DISPLAY=$DISPLAY --name gym-duckietown-server \
+    -e DISPLAY=$DISPLAY \
+    -e DUCKIETOWN_CHALLENGE=LF \
+    --name gym-duckietown-server \
     --rm -v /tmp/.X11-unix:/tmp/.X11-unix \
     duckietown/gym-duckietown-server
 
