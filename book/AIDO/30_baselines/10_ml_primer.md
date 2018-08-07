@@ -96,20 +96,18 @@ Instead of learning purely through the reward signal you can also opt to teach y
 
 In order to pull this off, you need a good amount of data. You can get this data
 
-- (A) by recording your own dataset, i.e. driving the duckiebot around or
+- (A) by recording your own dataset, i.e. driving the duckiebot around (behavioral cloning) or following a more complex data gather approach like DAgger
 - (B) by selecting and cleaning existing recordings from the Duckietown class that students provided
 
 ### A - Recording your own dataset
 
-You can do this entirely in simulation. You can follow the instructions on the (quickstart page)[#gym-tutorial] up until and including the "Visual Debugging" section but instead of running `python3 agent.py` you run `python3 record.py` and every 100 timsteps the algorithm will ask you if you would like to save the last 100 steps. (TODO implement this)
+You can do this entirely in simulation. You can follow the instructions on the (quickstart page)[#gym-tutorial] up until and including the "Visual Debugging" section but instead of running `python3 agent.py` you run `python3 agent-keyboard-control.py` and by pressing <kbd>s</kbd> you can store the current observations and actions to a HDF5 file (more about this on the [Supervised/Imitation Learning page](#aido1-imitation-learning)).
 
-During recording you should make sure to achieve a reward as high as possible and not crash the car (but it might be good to include near-crash cases too in order to train the model for such occasions).
-
-You can run the script multiple times and every time it will append to the `recording/data.hdf5` file. You can analyze this file with the script `recording/analyze_data.py` - and by looking at the code of this script you can check how to read the HDF5 file back to Python.
+You can run the script multiple times and every time it will append to the `recording/data.hdf5` file. You can analyze this file with the script `recording/analyze_data.py` - and by looking at the code of this script you can check how to read the HDF5 file back to Python (TODO: this paragraph's code isn't implemented yet).
 
 #### B - Selecting and cleaning existing data
 
-Please head on over to https://gateway.ipfs.io/ipfs/QmUbtwQ3QZKmmz5qTjKM3z8LJjsrKBWLUnnzoE5L4M7y7J/ and either look at the GIFs or the MP4 videos of the recordings. You want to find recordings that are quite long, but not too long (because you will have to watch it in its entirety), that take place within the boundaries of Duckietown (as opposed to off-road) and that don't contain any crashes or collisions.
+Please head on over to http://logs.duckietown.org/ and either look at the GIFs or the MP4 videos of the recordings. You want to find recordings that are quite long, but not too long (because you will have to watch it in its entirety), that take place within the boundaries of Duckietown (as opposed to off-road) and that don't contain any crashes or collisions.
 
 This last bit is crucial and you want to make sure you watch the entire recording to look for problems, because I contributed one of the recordings myself and at some point mid-recording I zoned out and drove the Duckie into a street sign. This can happen at any time in any recording.
 
@@ -122,10 +120,8 @@ Therefore the suggested steps are:
 4. Download and open the ROSbag corresponding to the recording.
 5. Extract the time sections that you highlighted earlier, scale the images to have the same format as the simulator output: `120x160x3` and append the images and actions to the HDF5 file.
 6. Go back to step (1) until you have a "reasonably" sized dataset.
-<!-- Sadly we can't tell you how much that is approximately  -->
 
-TODO: what to do once they have the data
-
+Once you have this dataset, if you're following the "behavior cloning" approach, you can train a neural network to predict the expert's action from the input (image). This can be done with a simple convolutional neural network, where the output layer is `tanh`-activated.
 
 Check out more over at our [Supervised/Imitation Learning page](#aido1-imitation-learning).
 
