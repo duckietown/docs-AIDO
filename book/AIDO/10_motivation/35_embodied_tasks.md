@@ -226,7 +226,7 @@ A Duckiebot has a *single*  front-facing sensor, a camera as described [here](#r
 
 - Thus the Duckiebot receives images (both in simulation and physical reality) of resolution $640\times480$ reliably at a rate of $30$ fps.
 
-- For the [navigation](#nav_v) and [fleet management](#fleet_manag) task a map of current Duckietown will additionally be communicated.
+- For the [navigation](#nav_v) task a map of current Duckietown will additionally be communicated.
 
 
 

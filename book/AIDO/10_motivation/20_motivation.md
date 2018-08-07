@@ -1,6 +1,6 @@
 # Overview of the competition {#aido-overview status=beta}
 
-What are the *AI Driving Olympics*? The AI Driving Olympics (AIDO) are a set of 5 challenges designed to exemplify the unique characteristics of data science in the context of autonomous driving.
+What are the *AI Driving Olympics*? The AI Driving Olympics (AIDO) are a set of robotics challenges designed to exemplify the unique characteristics of data science in the context of autonomous driving.
 
 To understand how to solve a robotics challenge, we will explore the various dimensions of performance and difficulties involved.
 
@@ -65,7 +65,7 @@ The best possible  outcome is that a larger proportion of the ML community redir
  <img src='images/in_lane.jpg'   figure-id="subfig:in_lane"  figure-caption="Lane following"/>
  <img src='images/lane_following_v.jpg'   figure-id="subfig:lane_following_v2"  figure-caption="Lane following + dynamic vehicles"/>
  <img src='images/Autolab_map.png'   figure-id="subfig:Autolab_map"  figure-caption="Navigation + dynamic vehicles"/>
- <img src='images/fleet_management.jpg'  figure-id="subfig:fleet_management"  figure-caption="Fleet management"/>
+ <!-- <img src='images/fleet_management.jpg'  figure-id="subfig:fleet_management"  figure-caption="Fleet management"/> -->
  <img src='images/amod_gray3.png'   figure-id="subfig:amod_gray3"  figure-caption="AMoD coordination"/>
 </div>
 
@@ -83,14 +83,13 @@ width: 14em;
 <img src="images/in_lane.jpg" width="90" height="80"/>  |  <img src="images/lane_following_v.jpg" width="90" height="80"/> |  <img src="images/Autolab_map.png" width="90" height="80"/> |  <img src="images/fleet_management.jpg" width="100" height="80"/> |  <img src="images/amod_gray3.png" width="90" height="80"/> -->
 
 
-The AI Driving Olympics competition is structured into the following five separate tasks:
+The AI Driving Olympics competition is structured into the following four separate tasks:
 
 ###[Embodied individual robot tasks](#embodied_tasks)
 
 Tasks within which code to control a single Duckiebot is submitted.
 
   * [Lane following (LF)](#lf): Control of a Duckiebot to drive on the right lane on streets within Duckietown without other moving Duckiebots present.
-
 
 
   * [Lane following + vehicles (LFV)](#lf_v): Control of a Duckiebot to drive on the right lane on streets within Duckietown with other moving Duckiebots and static obstacles present.
@@ -101,11 +100,11 @@ Tasks within which code to control a single Duckiebot is submitted.
 
 
 
-###[Fleet-level social tasks](#social_tasks)
+###[Fleet-level social task](#social_tasks)
 
 Tasks within which code to control multiple robots or agents is submitted while lower-level functions are already provided.
 
-  * [Fleet management (FM)](#nav_v): Task to control a small fleet of Duckiebots within Duckietown to pick up a set of virtual customers and drive them to a destination point.
+  <!-- * [Fleet management (FM)](#fm): Task to control a small fleet of Duckiebots within Duckietown to pick up a set of virtual customers and drive them to a destination point. -->
 
 
   * [Autonomous Mobility-on-Demand (AMoD)](#amod): Task to control the movement of a fleet of autonomous vehicles in a simulated city to pick up customers and drive them to their destinations.
@@ -135,7 +134,7 @@ There are different ways to learn on Duckietown data and simulator interactions.
 
 ### Evaluation
 
-There is a two-fold evaluation for submitted code. 
+There is a two-fold evaluation for submitted code.
 
 * **Evaluation in simulation:** The learned agent is tested in simulation to make sure that it is safe.
 * **Evaluation in robotarium:** The learned agent is evaluated in robotariums to provide the final scores.

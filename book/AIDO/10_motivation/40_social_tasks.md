@@ -71,9 +71,9 @@ $$
 
 # Fleet-level social tasks {#social_tasks status=beta}
 
-This section provides a brief introduction to the fleet-level social tasks "Fleet management" and "Autonomous Mobility-on-Demand". The subsequent two tasks are offered as social tasks in the AI Driving Olympics.
+This section provides a brief introduction to the fleet-level social task "Autonomous Mobility-on-Demand".
 
-  * [Fleet management (FM)](#nav_v): Task to control a small fleet of Duckiebots within Duckietown to pick up a set of virtual customers and drive them to a destination point.
+  <!-- * [Fleet management (FM)](#nav_v): Task to control a small fleet of Duckiebots within Duckietown to pick up a set of virtual customers and drive them to a destination point. -->
 
 
   * [Autonomous Mobility-on-Demand (AMoD)](#amod): Task to control the movement of a fleet of autonomous vehicles in a simulated city to pick up customers and drive them to their destinations.
@@ -85,11 +85,11 @@ The fleet-level tasks aim to work at a higher level of abstraction than the prev
 Picture a city with several already autonomous vehicles. The question now posed at the fleet-level is how to best control vehicles to serve customers.  
 
 
-The actual social tasks will be described in more detail in ["Fleet management"](#fleet_manag) and ["Autonomous Mobility-on-Demand"](#amod). Note that the sequence tasks was chosen to gradually increase the difficulty of tasks by extending previous task solutions to more general situations.
+The actual social tasks will be described in more detail in ["Autonomous Mobility-on-Demand"](#amod). Note that the sequence of tasks was chosen to gradually increase the difficulty of tasks by extending previous task solutions to more general situations.
 
-## Further details
+<!-- ## Further details
 
-Since the fleet-level tasks differ in some points in terms of the used platform and evaluation, detailed information is presented separately in ["Fleet management"](#fleet_manag) and ["Autonomous Mobility-on-Demand"](#amod).
+Since the fleet-level tasks differ in some points in terms of the used platform and evaluation, detailed information is presented separately in ["Fleet management"](#fleet_manag) and ["Autonomous Mobility-on-Demand"](#amod). -->
 
 
 ## Related Work
