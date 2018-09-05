@@ -26,7 +26,7 @@ jobs:
             command: |
                 # linkcheck drops permissions to nobody, so we need to make everything readable
                 chmod -R go+rwX /root
-                # chmod go+rwX /root/project
+                
                 . /project/deploy/bin/activate && make linkcheck || true
 
         - run:
