@@ -93,8 +93,8 @@ The "stay-in-lane" cost function is therefore defined as:
  $$
    \objective_{T-LF}(t) = \int_0^{T_{eps}} \begin{cases} 0  & d(t) < d_{safe} \\
      \beta d(t)^2 & d_{safe} \leq d(t) \leq d_{max} \\
-   	\alpha & d(t) > d_{max}
-   	\end{cases}
+       \alpha & d(t) > d_{max}
+       \end{cases}
  $$
 
 An example situation where a Duckiebot does not stay in the lane is shown in \ref{fig:crossing_lane}.
@@ -106,7 +106,7 @@ Traditionally for real-world car travel, intersections are traversed with a fixe
 
 Robotic drivers do not have these inherent restrictions. Therefore for the task of [navigation](#nav_v), we will provide a base intersection protocol. This protocol is able to guide Duckiebots safely through intersections. For the lane following tasks, a fixed intersection protocol will be used and the performance during intersection navigation will not be scored.
 
-Participants are then able to change the intersection protocol in the hope of improving driving through intersections, thereby enabling them to achieve better navigation. The following rule penalties around intersections will however stay in place.  
+Participants are then able to change the intersection protocol in the hope of improving driving through intersections, thereby enabling them to achieve better navigation. The following rule penalties around intersections will however stay in place.
 
 
 ## Quantification of "Stopping at red intersection line" and "Stopping at red traffic light" {#traffic_laws_si}
@@ -154,7 +154,7 @@ $$
 Then we write the objective as the cumulative sum of stopping at intersection rule infractions. The sum is over all intersection time periods, in which a rule violation may have occurred.
 
  $$
-  	\objective_{T-SI}(t) = \sum_{t_k} \gamma  (\mathbb{I}_{SI1} + \mathbb{I}_{SI2})
+      \objective_{T-SI}(t) = \sum_{t_k} \gamma  (\mathbb{I}_{SI1} + \mathbb{I}_{SI2})
  $$
 
 Here the sum over time increments $t_k$ denote the time intervals in which this conditions is checked. The rule penalty is only applied once the Duckiebot leaves the stopping zone. Only then is it clear that it did not stop within the stopping zone.
@@ -192,7 +192,7 @@ Collisions in Duckietown are generally not desired. We distinguish additionally 
 The vehicle is penalized by $\nu_j$ if within a time a time interval of length $t_k$ $t \in [t, t+t_k)$, the distance $\ell(t)$ between the vehicle and a nearby duckie, object or other vehicle is zero or near zero. $\ell(t)$ denotes the perpendicular distance between any object and the Duckiebot rectangular surface. The collision cost objective therefore is
 
   \begin{align*}
- 	\objective_{T-AC}(t) = \sum_{t_k} \nu_j \mathbb{I}_{\exists t \in [ t-t_k, t ) \ell(t) < \epsilon}
+     \objective_{T-AC}(t) = \sum_{t_k} \nu_j \mathbb{I}_{\exists t \in [ t-t_k, t ) \ell(t) < \epsilon}
   \end{align*}
 
 where $\nu_j$ depends on the type of collision with
@@ -214,7 +214,7 @@ The Duckietown traffic laws say:
 Mathematically we accumulate penalties $\mu$ whenever the Duckiebot moves at an intersection while there is a Duckiebot (DB) on the right hand joining lane (RHL).
 
   $$
- 	\objective_{T-YR}(t) = \sum_{t_k} \mu \mathbb{I}_{v(t) >0 \wedge \exists \text{ DB in RHL}}
+     \objective_{T-YR}(t) = \sum_{t_k} \mu \mathbb{I}_{v(t) >0 \wedge \exists \text{ DB in RHL}}
   $$
 
 <div figure-id="fig:yield">
