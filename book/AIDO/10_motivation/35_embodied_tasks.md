@@ -88,7 +88,7 @@ There are three embodied individual robotic tasks.
 
 This section focuses on the infrastructure and background of the embodied individual robotic tasks as outlined in the [task overview](#task_overview).
 
-For examples of Duckiebot driving see [a set of demo videos of Duckiebots driving in Duckietown](+op_manual_duckiebot#demos).
+For examples of Duckiebot driving see [a set of demo videos of Duckiebots driving in Duckietown](+opmanual_duckiebot#demos).
 
 The actual embodied tasks will be described in more detail in [LF](#lf), [LF](#lf_v), [NAVV](#nav_v). Note that the sequence tasks was chosen to gradually increase the difficulty of tasks by extending previous task solutions to more general situations.
 
