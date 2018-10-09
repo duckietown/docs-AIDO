@@ -1,9 +1,9 @@
-# CLI reference  {#interacting status=ready}
+# CLI reference  {#cli status=ready}
 
 This section is a reference for how to interact with the challenges server with the command line.
 
 
-## Account info
+## Account info {#cli-info}
 
 Use this command to see the status of your account:
 
@@ -11,8 +11,8 @@ Use this command to see the status of your account:
     
 
 
-## Submitting a submission
-
+## Submitting a submission {#cli-submit}
+ 
 The `submit` command allows you to see all of your submissions:
 
     $ dts challenges submit
@@ -20,35 +20,35 @@ The `submit` command allows you to see all of your submissions:
 There are many options for this command, explained in [](#submit-advanced).
     
     
-## List submissions
+## List submissions {#cli-list}
 
 The `list` command allows you to see all of your submissions:
 
     $ dts challenges list
     
-## Reset a submission
+## Reset a submission {#cli-reset}
 
 *Resetting a submission* means that you discard the evaluations 
 already perfomed and you force them to be done again.
 
     $ dts challenges reset --submission ![ID] 
 
-## Retire a submission
+## Retire a submission {#cli-retire}
 
 *Retiring a submission* means that you declare the submission void.
 It will not be evaluated and previous results will be discarded.
 
     $ dts challenges retire --submission ![ID]
 
-## Follow the fate of a submission
+## Follow the fate of a submission {#cli-follow}
 
 The `follow` command polls the server to see whether there are updated:
 
     $ dts challenges follow --submission ![ID]
 
-## Defining a submission
+## Defining a challenge {#cli-define}
 
-The `define` command allows to *define* a submission:
+The `define` command allows to *define* a challenge:
 
     $ dts challenges define
     
