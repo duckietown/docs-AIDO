@@ -62,4 +62,4 @@ For example, you can pretend that you have an Nvidia GPU using:
 
     $ dts challenges evaluator --features 'gpu: 1'
     
-You can find the list of features [here](#evalution-features). 
+You can find the list of features [here](#evaluation-features). 
