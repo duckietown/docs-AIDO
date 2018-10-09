@@ -1,1 +1,0 @@
-# Software {#part:aido-sw}

@@ -1,4 +1,4 @@
-# Advanced submission options {#submit-advanced status=draft}
+# Advanced submission options {#submit-advanced status=ready}
 
 This section describes additional options for the `dts challenges submit`
 command.

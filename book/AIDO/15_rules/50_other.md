@@ -1,5 +1,6 @@
-# Quickstart guides {#part:aido-quickstart}
+# Other rules {#other-rules status=beta}  
 
+TODO: some repetition
 
 ## Protocol
 
@@ -9,7 +10,7 @@ We will use Docker containers to package, deploy, and run the applications on th
 
 [dockerhub]: https://hub.docker.com/r/duckietown/
 
-A *Master* server will be used to collect and queue all submitted programs. The *simulation evaluation agents* will execute each queued program as they become available. Submissions that pass the simulation environment will be queued for execution in the robotariums.
+A *Challenges Server* server will be used to collect and queue all submitted programs. The *simulation evaluation agents* will execute each queued program as they become available. Submissions that pass the simulation environment will be queued for execution in the robotariums.
 
 <!-- <div figure-id="fig:dockerflow">
 \input{dockerflow.tex}

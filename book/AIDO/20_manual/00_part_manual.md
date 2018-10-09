@@ -1,4 +1,4 @@
-# AIDO manual {#part:competitors status=ready}
+# AIDO manual {#part:manual status=ready}
 
 This part describes the logistics of the competition.
 
