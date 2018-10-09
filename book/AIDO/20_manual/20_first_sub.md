@@ -2,14 +2,15 @@
 
 This section describes the steps to make your first submission.
 
-## Checkout the test repo
+## Checkout the test repo {#cm-first-checkout}
 
-Checkout this repo:
+Checkout the [`challenge-aido1_luck` repo][repo]:
 
-    $ git clone https://github.com/duckietown/challenge-aido1_luck.git
+    $ git clone -b v3 https://github.com/duckietown/challenge-aido1_luck.git
 
+[repo]: https://github.com/duckietown/challenge-aido1_luck
 
-## Submit 
+## Submit {#cm-first-submit}
 
 Go to the submission directory:
 
@@ -40,7 +41,7 @@ The expected output is something along the lines of:
     
        dts challenges follow --submission 23
 
-## Monitor the submission
+## Monitor the submission {#cm-first-monitor}
 
 There are 2 ways to monitor the submission:
 
@@ -54,7 +55,7 @@ The second way is to use the `dts challenges follow` command:
      $ dts challenges follow --submission ![submission ID]
      
      
-## Look at the leaderboard
+## Look at the leaderboard {#cm-first-leaderboard}
 
 
 The leaderboard is available at the URL 
