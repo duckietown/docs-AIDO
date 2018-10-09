@@ -1,4 +1,4 @@
-# API for solution {#api-solution status=draft}
+# API for solution {#api-solution status=ready}
 
 
 ## Examples {#api-solution-examples}
