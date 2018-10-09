@@ -59,7 +59,7 @@ The second way is to use the `dts challenges follow` command:
 
 The leaderboard is available at the URL 
 
-    > [`https://challenges.duckietown.org/v3/humans/challenges/aido1_luck-v3/leaderboard`][leaderboard]
+> [`https://challenges.duckietown.org/v3/humans/challenges/aido1_luck-v3/leaderboard`][leaderboard]
     
     
 [leaderboard]: https://challenges.duckietown.org/v3/humans/challenges/aido1_luck-v3/leaderboard
