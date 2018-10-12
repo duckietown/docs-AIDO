@@ -28,7 +28,7 @@ and the aforementioned problem is visualized in the image below. Although a cont
   <img src="images/synchronization_issue.png" class='diagram'  width="700" align="center"/>
 </p>
 
-It is stated that in this case the synchronization is based on the fact that when using the lane controller car commands occur from images and not the other way around and between two consecutive images there should be only one car command. For your convenience, in the provided baseline there is a script that takes care of these two steps for you by typing `make preprocess`. 
+It is stated that in this case the synchronization is based on the fact that when using the lane controller car commands occur from images and not the other way around and second, between two consecutive images there should be only one car command. For your convenience, in the provided baseline there is a script that takes care of these two steps for you by typing `make preprocess`. 
 
 ## How to train your model
 
