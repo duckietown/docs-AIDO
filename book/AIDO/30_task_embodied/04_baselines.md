@@ -1,16 +1,17 @@
-# Baselines {#embodied-baselines status=ready}
+# Baselines for `aido1_lf1` {#embodied-baselines status=ready}
 
 assigned: Breandan
 
-First thing first, we invite you to run our baselines.
+We have prepared for you several baselines you can try.
 
 ## The "Random Motion" Baseline {#baseline-random_motion status=draft}
 
-We have prepared for you several baselines you can try.
+
+TODO: to write
 
 ## The TensorFlow Baseline {#baseline-tensorflow status=draft}
 
-Describe learning with tensorflow here.
+TODO: Describe learning with tensorflow here.
 
 ### Learning
 
@@ -71,5 +72,8 @@ Are you on the top? Awesome! No? Well, keep trying... we are sure you will be!
 
 ## The Pytorch Baseline {#baseline-pytorch status=draft}
 
+TODO: to write
 
 ## The "Classic" Duckietown Baseline {#baseline-classic_duckietown status=draft}
+
+TODO: to write
