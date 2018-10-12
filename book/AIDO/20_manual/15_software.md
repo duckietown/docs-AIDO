@@ -27,11 +27,11 @@ for certain steps. There is so much divergence in how OS X environments are conf
 
 ## Docker  {#cm-sw-docker}
 
-TODO: copy or link intructions from the Duckiebot manual
+Install Docker [from these instructions](https://docs.docker.com/install/).
 
 ## Git {#cm-sw-git}
 
-TODO:  copy or link intructions from the Duckiebot manual
+We are sure you already have Git, right?
 
 
 ## Duckietown Shell {#cm-sw-dts}
@@ -42,7 +42,7 @@ Install the Duckietown Shell using [these instructions](https://github.com/ducki
 
 Make sure it's installed using:
 
-    $ dts info
+    $ dts version
     
     
 ### Authentication token {#cm-sw-dts-token}

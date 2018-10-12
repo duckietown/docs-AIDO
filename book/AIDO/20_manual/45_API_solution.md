@@ -1,5 +1,9 @@
 # API for solution {#api-solution status=ready}
 
+This is a more in-depth look at the API for the solutions.
+
+Each template already has this glue code written, and you do not need to understand this
+if you don't want to take advantage of advanced options.
 
 ## Examples {#api-solution-examples}
 
@@ -10,13 +14,11 @@ These are:
 
 - [`challenge-aido1_luck`][challenge-aido1_luck]: the simplest possible challenge;
 - [`challenge-aido1_log_processing`][challenge-aido1_log_processing]: a test for log processing;
-- [`challenge-aido1_dummy_sim`][challenge-aido1_dummy_sim]: a test for the gym simulation environment;
 - [`challenge-aido1_test_multistep`][challenge-aido1_test_multistep]: shows the multi-step logic.
 
 
 [challenge-aido1_luck]: https://github.com/duckietown/challenge-aido1_luck
 [challenge-aido1_log_processing]: https://github.com/duckietown/challenge-aido1_log_processing
-[challenge-aido1_dummy_sim]: https://github.com/duckietown/challenge-aido1_dummy_sim
 [challenge-aido1_test_multistep]: https://github.com/duckietown/challenge-aido1_test_multistep
 
 
@@ -44,7 +46,7 @@ COPY requirements.txt /project/requirements.txt
 RUN pip install -r /project/requirements.txt
 ```
 
-[See here](https://github.com/duckietown/challenge-aido1_luck/tree/v3/submission-random) 
+[See here](https://github.com/duckietown/challenge-aido1_luck/tree/v3/evaluation) 
 for an example of this mechanism.
 
 

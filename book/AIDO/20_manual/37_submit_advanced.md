@@ -4,6 +4,26 @@ This section describes additional options for the `dts challenges submit`
 command.
 
 
+## `submission.yaml` file {#submission-config}
+
+Each submission directory has a file `submission.yaml` containing the following information:
+
+    protocol: ![protocol] # do not change
+    challenge: ![challenge name]
+    user-label: ![optional label]
+    user-payload: ![optional user payload]
+    
+You can override these using the command line, as explained below.
+
+## Specifying the challenge {#submit-advanced-name}
+
+However you can also pass the name as a parameter `--challenge`:
+
+    $ dts challenges submit --challenge ![challenge name]
+    
+The names of the challenges can be seen [at this page][list-challenges].
+
+[list-challenges]: https://challenges.duckietown.org/v3/humans/challenges
 
 ## Metadata {#submit-advanced-metadata}
 
@@ -21,25 +41,12 @@ To specify the payload, use the option `--user-meta` and specify a JSON structur
 
     $ dts challenges submit --user-meta '{"param":"1"}
    
+   
 ## Skip Docker cache {#submit-advanced-skip-cache}
 
-Use the option `--no-cache` to avoid using the Docker cache:
+Use the option `--no-cache` to avoid using the Docker cache and re-build your containers from scratch:
 
     $ dts challenges submit --no-cache
-
-## Specifying the challenge {#submit-advanced-name}
-
-In the template repositories there is a file `challenge.yaml` that contains
-the name of the challenge, so that `dts challenges submit` knows what 
-challenge to submit to.
-
-However you can also pass the name as a parameter `--challenge`:
-
-    $ dts challenges submit --challenge ![challenge name]
-    
-The names of the challenges can be seen [at this page][list-challenges].
-
-[list-challenges]: https://challenges.duckietown.org/v3/humans/challenges
 
 
 ## Other options useful for debugging {#submit-advanced-debug}

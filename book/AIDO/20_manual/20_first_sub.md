@@ -8,13 +8,20 @@ Checkout the [`challenge-aido1_luck` repo][repo]:
 
     $ git clone -b v3 https://github.com/duckietown/challenge-aido1_luck.git
 
+and its submission template [`challenge-aido1_luck-template-python`][template]:
+
+    $ git clone -b v3 https://github.com/duckietown/challenge-aido1_luck-template-python.git
+
+
 [repo]: https://github.com/duckietown/challenge-aido1_luck
+[template]: https://github.com/duckietown/challenge-aido1_luck-template-python
+
 
 ## Submit {#cm-first-submit}
 
 Go to the submission directory:
 
-    $ cd challenge-aido1_luck/submission-random
+    $ cd challenge-aido1_luck-template-python
 
 Submit using:
 
