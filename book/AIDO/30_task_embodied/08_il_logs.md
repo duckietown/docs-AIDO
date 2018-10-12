@@ -32,7 +32,7 @@ It is stated that in this case the synchronization is based on the fact that whe
 
 ## How to train your model
 
-The type of neural network, its architecture and hyperparameters are choices that you are asked to make, but as a baseline a CNN model is provided which takes as inputs images and predicts angular velocities. This model is not only relatively simple but also takes as input low resolution images indicating that extremely complex models may not necessarily be required to solve the task of lane following without dynamic objects. In any case, since in the end you will have submit as well a compiled Movidius graph, you should prepare the ground with the following actions during training:
+The type of neural network, its architecture and hyperparameters are choices that you are asked to make, but as a baseline a CNN model which takes as inputs images and predicts angular velocities is provided. This model is not only relatively simple but also takes as input low resolution images indicating that extremely complex models may not necessarily be required to solve the task of lane following without dynamic objects. In any case, since in the end you will have submit as well a compiled Movidius graph, you should prepare the ground with the following actions during training:
 1) name all your layers in order to be able to tell later which is the output layer of your neural network
 2) prepare model for mobile deployment generating a `graph.pb` file (TensorFlow GraphDef file in binary format)
 
