@@ -114,7 +114,6 @@ to conduct remote experiments. Two similar installations are under construction 
 </figcaption>
 </div>
 
-In the months before the competition, we will make five robotariums available for remote testing of the code in a controlled environment.
 
 The idea of a robotarium (contraction of *robot* and *aquarium*) was conceived at Georgia Tech \cite{robotarium}. Currently the Georgia Tech robotarium has about 300 users. The users are able to submit programs that guide the movements of a swarm of robots. The system queues the requests, runs the programs, then sends the results, before resetting the robots to the initial state for the next user. Because there is no human intervention required, and the robot self-charge, the robotarium can run continuously.
 

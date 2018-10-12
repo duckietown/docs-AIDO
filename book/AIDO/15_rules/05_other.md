@@ -1,4 +1,4 @@
-# General rules {#other-rules status=beta}  
+# General rules {#other-rules status=ready}  
 
 
 ## Protocol

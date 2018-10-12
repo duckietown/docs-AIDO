@@ -13,7 +13,9 @@ In order to pull this off, you need a good amount of data. You can get this data
 
 ## A - Recording your own dataset
 
-You can do this entirely in simulation. You can follow the instructions on the (quickstart page)[#gym-tutorial] up until and including the "Visual Debugging" section but instead of running `python3 agent.py` you run `python3 agent-keyboard-control.py` and by pressing <kbd>s</kbd> you can store the current observations and actions to a HDF5 file (more about this on the [Supervised/Imitation Learning page](#aido1-imitation-learning)).
+You can do this entirely in simulation. You can follow the instructions on the quickstart page up until and including the "Visual Debugging" section but instead of running `python3 agent.py` you run `python3 agent-keyboard-control.py` and by pressing <kbd>s</kbd> you can store the current observations and actions to a HDF5 file.
+ 
+<!-- (more about this on the [Supervised/Imitation Learning page](#aido1-imitation-learning)).-->
 
 You can run the script multiple times and every time it will append to the `recording/data.hdf5` file. You can analyze this file with the script `recording/analyze_data.py` - and by looking at the code of this script you can check how to read the HDF5 file back to Python (TODO: this paragraph's code isn't implemented yet).
 
@@ -35,7 +37,7 @@ Therefore the suggested steps are:
 
 Once you have this dataset, if you're following the "behavior cloning" approach, you can train a neural network to predict the expert's action from the input (image). This can be done with a simple convolutional neural network, where the output layer is `tanh`-activated.
 
-Check out more over at our [Supervised/Imitation Learning page](#aido1-imitation-learning).
+<!--Check out more over at our [Supervised/Imitation Learning page](#aido1-imitation-learning).-->
 
 ## How to train your model
 
