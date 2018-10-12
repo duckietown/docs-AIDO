@@ -1,4 +1,4 @@
-# The embodied challenges {#part:embodied status=ready}
+# The Embodied Challenges {#part:embodied status=ready}
 
 This part describes the instructions regarding the embodied tasks.
 
