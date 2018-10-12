@@ -48,7 +48,7 @@ COPY requirements.txt /project/requirements.txt
 RUN pip install -r /project/requirements.txt
 ```
 
-[See here](https://github.com/duckietown/challenge-aido1_luck/tree/v3/submission-random) 
+[See here](https://github.com/duckietown/challenge-aido1_luck/tree/v3/evaluation) 
 for an example of this mechanism.
 
 
