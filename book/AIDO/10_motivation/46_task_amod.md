@@ -1,4 +1,4 @@
-# Task: Autonomous Mobility-on-Demand on AMoDeus {#amod status=beta}
+# Task: Autonomous Mobility-on-Demand on AMoDeus {#amod status=ready}
 
 In this task, we zoom out of Duckietown and switch to a task so big that it is not yet accessible in Duckietown but only in simulation. This is likely changing as Duckietowns across the world experience a tremendous growth in population, partly due to the surprising fertility rate of the Duckies themselves, partly due to the significant immigration of Duckies of engineering background.
 

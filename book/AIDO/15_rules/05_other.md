@@ -1,6 +1,5 @@
-# Other rules {#other-rules status=beta}  
+# General rules {#other-rules status=beta}  
 
-TODO: some repetition
 
 ## Protocol
 
@@ -26,7 +25,7 @@ For validation of submitted code and evaluation for finals at NIPS a surprise en
 
 ### Submission of entries
 
-Upon enrollment in the competition (https://www2.duckietown.org/nips-2018-competition/register-for-nips-2018), participants can submit their code in the form of a docker container to a task or module of the AI-DO. Scripts will be provided for creating the container image in a conforming way.
+Upon [enrollment in the competition](https://www.duckietown.org/research/ai-driving-olympics/get-started), participants can submit their code in the form of a docker container to a task or module of the AI-DO. Scripts will be provided for creating the container image in a conforming way.
 
 The system will schedule to run the code on the cloud on the challenges selected by the user, and, if simulations pass, on the robotariums.
 
@@ -36,7 +35,6 @@ Participants are required to open source their solutions source code. If auxilia
 
 Submitted code will be evaluated in simulation and if sufficient on physical robotariums. Scores and logs generated with submitted code will be made available.
 
-How to get started: http://docs.duckietown.org/AIDO/out/aido_quickstart.html.
 
 ### Simulators
 
@@ -57,5 +55,14 @@ When an experiment is run in a validation robotarium, the only output to the use
 ### Leaderboards
 
 After each run in a robotarium, the participants can see the metrics statistics in the competition website.
+ 
 
-Leaderboards are reset at the beginning of October 2018.
+## Eligibility
+
+Employees and affiliates of nuTonomy and Amazon AWS are ineligible from participation in the competition. Employees and affiliates of nuTonomy and Amazon AWS may submit baseline solutions that will be reported in a special leaderboard.
+
+Students of ETH Zurich, Georgia Tech, NCTU, Tsinghua, UCLA, TTIC, are eligible to participate in the competition as part of coursework, if they do not work in the organization of the competition.
+
+## Intellectual property
+
+After the competition in the beginning of 2019, we can ask you to contribute a paper to a forthcoming book detailing the lessons learned and successful approaches in the AI Driving Olympics.

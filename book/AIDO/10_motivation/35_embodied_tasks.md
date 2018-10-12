@@ -1,75 +1,5 @@
-# Embodied individual robot tasks {#embodied_tasks status=beta}
+# Embodied individual robot tasks {#embodied_tasks status=ready}
 
-$$
-\newcommand{\AC}[1]{{\color{blue}AC: #1}}
-\newcommand{\JZ}[1]{{\color{olive}JZ: #1}}
-\newcommand{\fix}{\marginpar{FIX}}
-\newcommand{\new}{\marginpar{NEW}}
-% Robot:
-\newcommand{\dynamical}{\mathcal{D}}
-\newcommand{\robot}{\mathcal{R}} % Robot
-\newcommand{\config}{\mathcal{Q}} % Configuration space (of robot)
-\newcommand{\sensors}{\{z\}} % Sensor set
-\newcommand{\bandwidth}{\mathcal{B}}
-\newcommand{\computation}{\mathcal{C}}
-\newcommand{\memory}{\mathcal{M}}
-\newcommand{\actuators}{\mathcal{A}}
-\newcommand{\knowledge}{\mathcal{K}}
-\newcommand{\perception}{P}
-\newcommand{\control}{U}
-\newcommand{\actions}{\mathcal{U}}
-% Robot mathematics
-\newcommand{\operator}{T}
-% Groups:
-\newcommand{\groups}{G}
-%\newcommand{\group}{g}
-\newcommand{\groupalgebra}{\mathfrak{g}}
-% Scene space
-\newcommand{\timespace}{\mathbb{T}}
-\newcommand{\environment}{E}
-\newcommand{\scene}{\xi}
-\newcommand{\scenespace}{\Xi}
-\newcommand{\universe}{U}
-% Sensor space
-\newcommand{\sensor}{\zeta}
-\newcommand{\sensorproj}{z}
-\newcommand{\sensorspace}{Z}
-\newcommand{\projection}{\pi}
-\newcommand{\projectionspace}{\Pi}
-\newcommand{\viewport}{v}
-\newcommand{\viewportspace}{\mathcal{V}}
-% Data space
-\newcommand{\dataspace}{\mathcal{X}}
-\newcommand{\data}{x}
-\newcommand{\dataproj}{\phi}
-\newcommand{\datakernel}{\psi}
-% Output space
-\newcommand{\outputy}{y}
-\newcommand{\outputspace}{\mathcal{Y}}
-% Task space
-\newcommand{\task}{T}
-\newcommand{\taskspace}{\mathcal{T}}
-\newcommand{\objective}{\mathcal{J}}
-\newcommand{\robotictask}{RT}
-\newcommand{\rules}{\Phi}
-\newcommand{\constraints}{\Lambda}
-% Action space
-\newcommand{\action}{u}
-\newcommand{\actionspace}{\mathcal{U}}
-\newcommand{\nuisance}{\nu}
-% Other characteristics / symbols
-\newcommand{\place}{\eta}
-\newcommand{\image}{I}
-\newcommand{\noise}{n}
-\newcommand{\pose}{p}
-\newcommand{\shape}{S}
-\newcommand{\albedo}{\rho}
-% Information theory
-\newcommand{\information}{\mathcal{I}}
-\newcommand{\expectation}{\mathbb{E}}
-% Optimization
-\newcommand{\loss}{L}
-$$
 
 There are three embodied individual robotic tasks.
 
@@ -198,9 +128,7 @@ The Duckietown robotariums will be built in five institutions:
 
 1. At ETH Zürich. The projected size is sufficient to allocate 20 robots continuously running (20 robots on the road + 20 robots in charging stations).
 2.  At National Chiao Tung University, Taiwan. The size will be similar to the ETH Zürich installation.
-3. At Tsinghua University, People's Republic of China.  The size will be similar to the ETH Zürich installation.
-4. At the University of Montréal. The size is to be determined; it will likely be smaller than Zürich and Taiwan.
-5. At Georgia Tech. Size to be determined.
+3. At the University of Montréal. The size is to be determined; it will likely be smaller than Zürich and Taiwan.
 
 
 These robotariums will remain available after the competition ends, for follow-up editions,
