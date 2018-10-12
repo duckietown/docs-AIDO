@@ -15,15 +15,20 @@ One hint, is to search for data which were collected using the lane controller. 
 ## How to prepare your data for training
 
 The second step is to extract the desired data from the bag files and prepare them for training. When working with real log data, this can be splitted into the following two subtasks:
-1) extract desired data from the bag files
+1) extract desired topics from bag files
 2) synchronize data from different topics
 
 The first part should be clear, so let us focus to the second one. ROS messages from different topics are neither always of the same number nor properly arranged in the files. In this implementation the topics of interest are 
 * /camera\_node/camera/compressed
 * /lane\_controller\_node/car\_cmd
 
-and the aforementioned problem is visualized in the following image. 
+and the aforementioned problem is visualized in the image below. Although a continuous sequence of images and car commands is expected, images and/or velocities could be omitted or even saved in slighlty translated timestamps. For this reason, in order to ensure the validity of our pairs of data, a synchronization is necessary.
 
+<p align="center">
+  <img src="images/synchronization_issue.png" class='diagram'  width="700" align="center"/>
+</p>
+
+It is stated that in this case the synchronization is based on the fact that when using the lane controller car commands occur from images and not the other way around and between two consecutive images there should be only one car command. For your convenience, in the provided baseline there is a script that takes care of these two steps for you by typing `make preprocess`. 
 
 ## How to train your model
 
