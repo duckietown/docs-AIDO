@@ -37,9 +37,11 @@ The submission consists of the following files:
     
 The file `submission.yaml` contains the configuration for this submission:
 
-    challenge: aido1_LF1-v3     # which challenge to submit to
-    protocol: aido1_remote1-v3  # which protocol this submission can speak
-    user-label: "Random execution"
+```yaml
+challenge: aido1_LF1-v3     # which challenge to submit to
+protocol: aido1_remote1-v3  # which protocol this submission can speak
+user-label: "Random execution"
+```
     
 You may change the `user-label` to any short string that you want
 

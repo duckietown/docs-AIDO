@@ -14,13 +14,11 @@ These are:
 
 - [`challenge-aido1_luck`][challenge-aido1_luck]: the simplest possible challenge;
 - [`challenge-aido1_log_processing`][challenge-aido1_log_processing]: a test for log processing;
-- [`challenge-aido1_dummy_sim`][challenge-aido1_dummy_sim]: a test for the gym simulation environment;
 - [`challenge-aido1_test_multistep`][challenge-aido1_test_multistep]: shows the multi-step logic.
 
 
 [challenge-aido1_luck]: https://github.com/duckietown/challenge-aido1_luck
 [challenge-aido1_log_processing]: https://github.com/duckietown/challenge-aido1_log_processing
-[challenge-aido1_dummy_sim]: https://github.com/duckietown/challenge-aido1_dummy_sim
 [challenge-aido1_test_multistep]: https://github.com/duckietown/challenge-aido1_test_multistep
 
 
