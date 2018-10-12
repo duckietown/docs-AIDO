@@ -1,4 +1,4 @@
-# Challenge `aido1_lf1` {#challenge-aido1_lf1-v3 status=ready}
+# Challenge `aido1_lf1` {#challenge-aido1_lf1 status=ready}
 
 The challenge `aido1_lf1` tests the agent using a simulator.
 
