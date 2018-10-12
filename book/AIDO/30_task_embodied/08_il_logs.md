@@ -8,7 +8,7 @@ In this part, you can find all the required steps in order to implement Imitatio
 The important note here is to feed your agent with *appropriate* data. Appropriate log data are considered those which:
 1) are relevant to the lane following task
 2) execute this task well the whole time 
-2) present smooth driving of the duckiebots around the city
+2) and present smooth driving of the duckiebots around the city.
 
 One hint, is to search for data which were collected using the lane controller. In order to check if the lane controller was enabled, use rqt_bag to see if there is inside the node `/duckiebot_name/lane_controller/`. Within the *LF_IL_tensorflow* baseline, type `make download` in order to download 5 bag files with approximately 10 minutes of appropriate lane following data.
 
