@@ -42,7 +42,7 @@ Install the Duckietown Shell using [these instructions](https://github.com/ducki
 
 Make sure it's installed using:
 
-    $ dts info
+    $ dts version
     
     
 ### Authentication token {#cm-sw-dts-token}
