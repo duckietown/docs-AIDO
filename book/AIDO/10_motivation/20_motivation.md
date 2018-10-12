@@ -1,4 +1,4 @@
-# Overview of the competition {#aido-overview status=beta}
+# Overview of the competition {#aido-overview status=ready}
 
 What are the *AI Driving Olympics*? The AI Driving Olympics (AIDO) are a set of robotics challenges designed to exemplify the unique characteristics of data science in the context of autonomous driving.
 

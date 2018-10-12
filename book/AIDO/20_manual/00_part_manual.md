@@ -1,9 +1,12 @@
 # AIDO manual {#part:manual status=ready}
 
-This part describes the logistics of the competition.
+This part describes the mechanics of the competition, including:
+
+* how to get your accounts setup;
+* how to run the test challenges.
 
 
-**How to get help**:
+### Getting help {#part-help nonumber notoc}
 
 If there is a clear step indicated in this manual that fails,
 please [file an issue][file] with the [`docs-AIDO` repository][repo].

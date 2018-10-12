@@ -1,4 +1,4 @@
-# Introduction {#part:aido-introduction status=beta}
+# Introduction {#part:aido-introduction}
 
 Maintainer: Julian Zilly
 
