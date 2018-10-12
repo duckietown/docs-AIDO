@@ -15,6 +15,10 @@ Here is how it looks like:
 ## Repositories
 
 * [Challenge definition repository](https://github.com/duckietown/challenge-aido1_lf1)
+
+Templates:
+
+* [Random template](https://github.com/duckietown/challenge-aido1_LF1-template-random)
 * [Solution template using Tensorflow](https://github.com/duckietown/challenge-aido1_LF1-template-tensorflow)
 
 ## Interaction protocol: `aido1_remote1` {#protocol-aido1_remote1-v3}

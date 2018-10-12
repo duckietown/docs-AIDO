@@ -6,7 +6,7 @@ This section describes the contents of the simplest baseline: a "random" agent.
 
 Check out [the repository](https://github.com/duckietown/challenge-aido1_LF1-template-random):
 
-    $ git clone git@github.com:duckietown/challenge-aido1_LF1-template-random.git
+    $ git clone -b v3 git@github.com:duckietown/challenge-aido1_LF1-template-random.git
 
 ## Submit
 
