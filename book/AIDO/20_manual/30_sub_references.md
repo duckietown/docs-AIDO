@@ -10,7 +10,6 @@ Use this command to see the status of your account:
     $ dts challenges info
     
 
-
 ## Submitting a submission {#cli-submit}
  
 The `submit` command allows you to see all of your submissions:

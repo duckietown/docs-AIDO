@@ -6,14 +6,13 @@ This section describes the accounts that you need before competing.
 
 This account is necessary to submit container images.
 
-
-TODO: write instructions
+Create an account [here](https://hub.docker.com/).
 
 
 ## Duckietown account
 
 This account is necessary to interact with the challenges server.
 
-TODO: write instructions
+Create an account [here](https://www.duckietown.org/research/ai-driving-olympics/ai-do-register).
 
 

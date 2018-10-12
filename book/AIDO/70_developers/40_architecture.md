@@ -3,6 +3,10 @@
 This section explains exactly what is going on when you create a submission.
 
 
+## Actors 
+
+We have the following 
+
 ## Definition of a challenge
 
 

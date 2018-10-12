@@ -1,5 +1,9 @@
 # API for solution {#api-solution status=ready}
 
+This is a more in-depth look at the API for the solutions.
+
+Each template already has this glue code written, and you do not need to understand this
+if you don't want to take advantage of advanced options.
 
 ## Examples {#api-solution-examples}
 
