@@ -32,11 +32,23 @@ It is stated that in this case the synchronization is based on the fact that whe
 
 ## How to train your model
 
-The type of neural network, its architecture and hyperparameters are choices that you are asked to make, but as a baseline a CNN model is provided which takes as inputs images and predicts angular velocities. This model is not only relatively simple but also takes as input low resolution images indicating that extremely complex models may not necessarily be required to solve the task of lane following without dynamic objects. However, since in the end you will have submit as well a compiled Movidius graph, you should prepare the ground with the following actions during training:
+The type of neural network, its architecture and hyperparameters are choices that you are asked to make, but as a baseline a CNN model is provided which takes as inputs images and predicts angular velocities. This model is not only relatively simple but also takes as input low resolution images indicating that extremely complex models may not necessarily be required to solve the task of lane following without dynamic objects. In any case, since in the end you will have submit as well a compiled Movidius graph, you should prepare the ground with the following actions during training:
 1) name all your layers in order to be able to tell later which is the output layer of your neural network
 2) prepare model for mobile deployment generating a `graph.pb` file (TensorFlow GraphDef file in binary format)
 
-
+In order to execute this part of the *LF_IL_tensorflow* baseline, type `make learn`.
 
 ## How to turn the model into an AI-DO submission
+
+At this point you have your model and it is time to turn it into an AI-DO submission. First, you should freeze the TensorFlow graph. This procedure consists of the following steps:
+* combine the TensorFlow graph of your CNN model and its weights in a single file
+* convert variables into inline constants
+* given the output node of your output layer, keep only those operations that are necessary for the predictions
+* get rid of all training node
+* and apply optimization flags.
+
+The script `freeze_graph.py` which can be executed by typing `make build-image`, is part of the baseline and can be your guide for this procedure. The only tricky part here is to define correctly the output node which should not be confused with the output layer. In general, the output node should be easily found by the following name `scope_name(if exists)/output_layer_name/BiasAdd`.  
+
+Once you have the frozen graph, you are only one step away from the submission. The last step is to install NCSDK v2.05 (https://movidius.github.io/ncsdk/index.html) in order to use its SDK tools to compile the TensorFlow file to a Movidius graph.
+After installing NCSDK v2.05, you just have to execute the command `mvNCCompile -s 12 frozen_graph.pb -in input_node_of_TensorFlow_model -on output_node_of_TensorFlow_model -o path_to_save_the_movidius_graph.graph`. The installation of NCSDK v2.05 and compilation to Movidius graph is provided in the baseline and run by typing `make build-real-local-laptop`.
 
