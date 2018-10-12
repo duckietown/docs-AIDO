@@ -22,7 +22,7 @@ We have the following actors:
 
 ### Submission
 
-* The host computer connects to the Challenges Server using REST and proposes the submission. The information passed include the label of the container, the challenge name and protocol, and an optional user label and JSON payload.
+* The host computer connects to the Challenges Server using REST and proposes the submission. The information passed includes the label of the container, the challenge name and protocol, and an optional user label and JSON payload.
 * The Challenges Server checks that the challenge exists, the protocol declared is compatible, and that you have a valid token.
 
 ### Waiting
