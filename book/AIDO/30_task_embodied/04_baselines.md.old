@@ -1,14 +1,9 @@
-# Baselines {#embodied-baselines status=ready}
+# Baselines for `aido1_lf1` {#embodied-baselines status=ready}
 
-First thing first, we invite you to run our baselines.
-
-## Lane Following Baseline
+assigned: Breandan
 
 We have prepared for you several baselines you can try.
-
-## Learning with Tensorflow
-
-Describe learning with tensorflow here.
+ 
 
 ### Learning
 
@@ -65,4 +60,3 @@ This means your submission has been evaluated.
 You can now check the score of the submission and its position on the leaderboard via the Challenges Dashboard. 
 
 Are you on the top? Awesome! No? Well, keep trying... we are sure you will be!
-
