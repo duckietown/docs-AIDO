@@ -3,15 +3,7 @@
 assigned: Breandan
 
 We have prepared for you several baselines you can try.
-
-## The "Random Motion" Baseline {#baseline-random_motion status=draft}
-
-
-TODO: to write
-
-## The TensorFlow Baseline {#baseline-tensorflow status=draft}
-
-TODO: Describe learning with tensorflow here.
+ 
 
 ### Learning
 
@@ -68,12 +60,3 @@ This means your submission has been evaluated.
 You can now check the score of the submission and its position on the leaderboard via the Challenges Dashboard. 
 
 Are you on the top? Awesome! No? Well, keep trying... we are sure you will be!
-
-
-## The Pytorch Baseline {#baseline-pytorch status=draft}
-
-TODO: to write
-
-## The "Classic" Duckietown Baseline {#baseline-classic_duckietown status=draft}
-
-TODO: to write
