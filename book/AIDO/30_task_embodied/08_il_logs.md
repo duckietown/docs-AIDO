@@ -28,9 +28,15 @@ and the aforementioned problem is visualized in the image below. Although a cont
   <img src="images/synchronization_issue.png" class='diagram'  width="700" align="center"/>
 </p>
 
-It is stated that in this case the synchronization is based on the fact that when using the lane controller images cause the car commands and not the other way around, while between two consecutive images there should be only one car command. For your convenience, in the provided baseline there is a script that takes care of these two steps for you by typing `make preprocess` and saved the images with their respect velocities in HDF5 files. 
+It is stated that in this case the synchronization is based on the fact that when using the lane controller images cause the car commands and not the other way around, while between two consecutive images there should be only one car command. For your convenience, in the provided baseline there is a script that takes care of these two steps for you by typing `make preprocess` and eventually saves the images with their respect car commands to HDF5 files. 
 
 ## How to train your model
+
+The type of neural network, its architecture and hyperparameters are choices that you are asked to make, but as a baseline a CNN model is provided which takes as inputs images and predicts angular velocities. This model is not only relatively simple but also takes as input low resolution images indicating that extremely complex models may not necessarily be required to solve the task of lane following without dynamic objects. However, since in the end you will have submit as well a compiled Movidius graph, you should prepare the ground with the following actions during training:
+1) name all your layers in order to be able to tell later which is the output layer of your neural network
+2) prepare model for mobile deployment generating a `graph.pb` file (TensorFlow GraphDef file in binary format)
+
+
 
 ## How to turn the model into an AI-DO submission
 
