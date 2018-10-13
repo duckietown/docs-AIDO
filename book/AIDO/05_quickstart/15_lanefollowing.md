@@ -1,4 +1,4 @@
-# Lane Following Quickstart {#quickstart-lanefollowing}
+# Lane Following Quickstart {#quickstart-lanefollowing status=ready}
 
 Maintainer: Liam and Andrea C.
 
@@ -11,7 +11,7 @@ Result: You have made a submission to the Lane Following AI-DO challenge and you
 </div>
 
 
-1. Do a submission by following the [random template](#challenge-aido1_lf1-template-random) or the [tensorflow template](#tensorflow-template) ([pytorch template](#baseline-pytorch) and [ROS template](#embodied-classic) coming shortly)
+1. Do a submission by following the [random template](#challenge-aido1_lf1-template-random) or the [tensorflow template](#tensorflow-template) ([pytorch template](#baseline-pytorch) and [ROS template](#ros-baseline) coming shortly)
 
 Congrats you have now made a submission, but it probably wasn't very good (unless you got very lucky).
 

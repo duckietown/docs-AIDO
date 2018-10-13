@@ -1,4 +1,4 @@
-# AMOD Quickstart {#amod-quickstart status=ready}
+# AMOD Quickstart {#amod-quickstart status=draft}
 
 Maintainer: Panos ?
 
