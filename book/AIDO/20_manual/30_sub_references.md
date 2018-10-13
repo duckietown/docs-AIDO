@@ -41,7 +41,7 @@ It will not be evaluated and previous results will be discarded.
 
 ## Follow the fate of a submission {#cli-follow}
 
-The `follow` command polls the server to see whether there are updated:
+The `follow` command polls the server to see whether there are updates:
 
     $ dts challenges follow --submission ![ID]
 
