@@ -2,18 +2,12 @@
 
 This section describes the steps to make your first submission.
 
-## Checkout the test repo {#cm-first-checkout}
-
-Checkout the [`challenge-aido1_luck` repo][repo]:
-
-    $ git clone -b v3 https://github.com/duckietown/challenge-aido1_luck.git
+## Checkout the submission repo {#cm-first-checkout}
 
 and its submission template [`challenge-aido1_luck-template-python`][template]:
 
     $ git clone -b v3 https://github.com/duckietown/challenge-aido1_luck-template-python.git
 
-
-[repo]: https://github.com/duckietown/challenge-aido1_luck
 [template]: https://github.com/duckietown/challenge-aido1_luck-template-python
 
 

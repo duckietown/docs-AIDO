@@ -37,7 +37,7 @@ We are sure you already have Git, right?
 ## Duckietown Shell {#cm-sw-dts}
 
 
-Install the Duckietown Shell using [these instructions](https://github.com/duckietown/duckietown-shell).
+Install the Duckietown Shell using the instructions at the bottom of [this page](https://github.com/duckietown/duckietown-shell).
 
 
 Make sure it's installed using:
