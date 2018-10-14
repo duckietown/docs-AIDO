@@ -9,10 +9,18 @@ Use this command to see the status of your account:
 
     $ dts challenges info
     
+ 
+## Local evaluation {#cli-evaluate}
+
+The `evaluate` command allows you to do a local evaluation of your 
+submission:
+
+    $ dts challenges evaluate
+    
 
 ## Submitting a submission {#cli-submit}
  
-The `submit` command allows you to see all of your submissions:
+The `submit` command allows you to submit the solution in the current directory:
 
     $ dts challenges submit
     
