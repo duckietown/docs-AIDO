@@ -24,17 +24,17 @@ Inside, you will find a few important files:
     template.launch # The launchfile to start nodes and a ROSMaster
     rosagent.py # An interface to bridge your nodes and the submission interface
 
-The workflow is as follows. The evalutor will launch `solution.py`, which includes calls to the `roslaunch` API, which points to and launches `template.launch`. In more [involved][#lanefollowing-ros-baseline] implementations, this launch file will also launch other nodes, but in this minimal example, its only purpose is to launch the ROSCore. After this call occurs (`roslaunch` occurs asynchronously), the code instantiates a `ROSAgent`, which will serve as the interface to communicate with the ROS Nodes you launch. The two main functions are:
-- `_publish_img(observation)`, which takes the observation from the environment, and publishes it to the topic that you specify in the constructor of the `ROSAgent` (You will want to replace the placeholder with the topic name that your node is expected the image to come through on)
-- `_action_cb(msg)`, which listens to the action topic you specify and pulls the `Twist2DStamped` message and assigns it to `self.action`, which is where the loop in `solution.py` pulls the action from. 
+The workflow is as follows. The evalutor will launch `solution.py`. This file includes calls to the `roslaunch` API, which points to and launches `template.launch`. In more [involved][#lanefollowing-ros-baseline] implementations, this launch file will also launch other nodes, but in this minimal example, its only purpose is to launch the ROSCore. After this call occurs (`roslaunch` occurs asynchronously), the code instantiates a `ROSAgent`, which will serve as the interface to communicate with the ROS Nodes you launch. The two main functions are:
+- `_publish_img(observation)`, which takes the observation from the environment, and publishes it to the topic that you specify in the constructor of the `ROSAgent` (You will want to replace the placeholder with the topic name that your node is expecting the image to come through on)
+- `_action_cb(msg)`, which listens to the action topic you specify and pulls the `Twist2DStamped` message and assigns it to `self.action`, which is where the loop in `solution.py` pulls the action from. This same loop also executes that action in the environment, and will continue to execute that action until you tell it otherwise. 
 
-You will notice that there is a publisher which publishes random actions to the topic. You will want to change this when you make your submission.
+You will notice that there is a publisher which publishes random actions to the action topic. You will want to change this when you make your submission.
 
-Back inside of the `solution.py` code, you will see calls to `rospy.Rate()` and `r.sleep` - these control the rate at which the stepping loop runs, and you may need to change this parameter to suit your custom code.
+Back inside of the `solution.py` code, you will see calls to `rospy.Rate()` and `r.sleep` - these control the rate at which the stepping loop runs, and you may need to change this parameter to suit latencies in your own code.
 
 ## Lane Following (from the Duckietown Stack) ROS Baseline {#lanefollowing-ros-baseline status=ready}
 
-We also provide a more involved working example of Lane Following, which extends the image: `duckietown/challenge-aido1_LF1-template-ros:v3`. Since it extends the random template, you will again be able to run this code on both the simulator and Duckiebot.
+We also provide a more-involved, working example of Lane Following, which extends the image described above: `duckietown/challenge-aido1_LF1-template-ros:v3`. Since it extends the random template, you will again be able to run this code on both the simulator and Duckiebot.
 
 Clone the [example repo](https://github.com/duckietown/challenge-aido1_LF1-example-ros):
 
@@ -46,7 +46,7 @@ Inside of the Dockerfile, you will also see how to build and maintain your own `
 
 ## Running Locally {#ros-running-locally status=ready}
 
-In the debugging phase, you may notice that the submission interface for the AIDO Lane Following Challenge may be slightly restricting, especially when you want to use ROS debugging tools like the `rostopic` or `roslogging` interfaces. For convenience, we've also provided a standalone version of this code (which will not give any rewards or AIDO task evaluation, but provides a way to easily visualize the output and behavior of your code) which can be found [here](https://github.com/duckietown/sim-duckiebot-lanefollowing-demo). 
+In the debugging phase, you may notice that the submission interface for the AIDO Lane Following Challenge may be slightly restricting, especially when you want to use ROS debugging tools like the `rostopic` or `roslogging` interfaces. For convenience, we've also provided a standalone version of this code (which will not give any rewards or AIDO task evaluation, but provides a way to easily visualize the output and behavior of your code) which can be found [here](https://github.com/duckietown/sim-duckiebot-lanefollowing-demo). This code will not be able to run on the Duckiebot, since it extends the `ros:kinetic` image, which by default, will not build the ARM version.
 
 Clone the [standalone repo](https://github.com/duckietown/sim-duckiebot-lanefollowing-demo):
 
