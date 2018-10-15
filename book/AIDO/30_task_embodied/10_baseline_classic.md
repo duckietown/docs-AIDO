@@ -50,7 +50,7 @@ In the debugging phase, you may notice that the submission interface for the AID
 
 Clone the [standalone repo](https://github.com/duckietown/sim-duckiebot-lanefollowing-demo):
 
-    $ git clone -b v3 git@github.com:duckietown/sim-duckiebot-lanefollowing-demo.gitt
+    $ git clone -b v3 git@github.com:duckietown/sim-duckiebot-lanefollowing-demo.git
 
 The interface is mainly the same, except now, the `rosagent.py` file itself controls the simulation. Again, you will mainly want to focus on `rosagent.py`, and you will again be able to see the `Dockerfile` for how to build and maintain your own `catkin_ws`.
 
