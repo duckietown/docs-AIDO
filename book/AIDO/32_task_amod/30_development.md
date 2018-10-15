@@ -4,47 +4,37 @@ Assigned: Claudio, Jan
 
 ## Protocol {status=ready}
 
-The challenge is accessed via a *Python* commands that are briefly outlined in pseudo-code in this section. Furthermore, the standard AMoDeus commands in *JAVA* can be used, although this is not necessary to participate in the challenge.
+The protocol of these challenges is well-documented at
+
+https://github.com/idsc-frazzoli/amod/blob/master/doc/aido-client-protocol.md
+
+Read it carefully at this location before getting started. A brief qualitative explanation of the contained steps is presented in the following subsections.
+
+Furthermore a JAVA and a Python baseline are available at these locations:
+
+[the repository `challenge-aido1_amod1-template-java`][challenge-aido1_amod1-template-java]
+[`challenge-aido1_amod1-template-python`][challenge-aido1_amod1-template-python]
+
 
 ### Pre-Execution Steps
 
-The first command is used to specify all settings for the simulation, i.e., if a specific scenario should be chosen, if $N_B$ or custom fleet sizes are chosen and if the full population should be reduced to a percentage $p$. Finally the number of simulation runs can be specified.
+Before a simualtion scenario is started, the user neeeds to select a scenario, e.g.,  SanFrancisco.20080518, which represents a scenario based on taxi trips recorded in SanFrancisco on 18th of May, 2008. Other scenarios include TelAviv, Santiago, Berlin or other days of San Fancisco taxi demand.
 
-    void setSimulationSettings(ScenarioName, ...Optional N, Optional p )
+The Server responds with the total number of requests in the scenario, a bouding box in WGS84 coordinates and the nominal fleet size to serve all requests. 
 
-The second command is used to retrieve all static information for the chosen case.
-
-    (network, N_B, N, K, p) = getSimulationSettings()
+Then, the client, i.e., the Aido-Guest can respond with the desired number of requests and the desired fleet size. 
 
 
 ### Simulation Execution
 
-The first command can be used to access all simulation information live:
+In the main loop of a simulation, the Aido-Guest client continuously receives information on location of open customer requests and the status of the fleet, e.g., vehicles locations and statuses. 
 
-
-    (sigma(t), sigma_bar(t), robotaxi information, ... request information) = // getStatus()
-
-The second command is used to send a robotaxi to pickup a customer:
-
-    void setRoboTaxiPickup(Robotaxi, Request)
-
-The third possible command is used to send a robotaxi to another link in the network (rebalancing):
-
-    void setRoboTaxiRebalance(Robotaxi, Request)
-
+The client then needs to direct the action of the fleet, i.e., assign avaialble vehicles to pickup requests and relocate empty vehicles to improve performance. 
 
 
 ### Post-Execution Steps
 
-With the first task, the designer can access the viewer for the final simulation run:
-
-    void openViewer()
-
-The next task is to retrieve the report and score information of the final simulation run:
-
-    (html-report, score-information) = getFinalScore()
-
-For more in-depth analysis, the simulation information can be downloaded from the server and processed locally.
+Finally, the client responds with the final score creates detailed overviews of the achieved performance including a detailed fleet performance report in HTML. 
 
 
 ## How to create your own submission {status=draft}
