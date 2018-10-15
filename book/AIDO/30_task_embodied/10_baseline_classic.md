@@ -31,9 +31,12 @@ Inside, you will find a few important files:
 
 The workflow is as follows. The evalutor will launch `solution.py`. This file includes calls to the `roslaunch` API, which points to and launches `template.launch`. In more [involved][#lanefollowing-ros-baseline] implementations, this launch file will also launch other nodes, but in this minimal example, its only purpose is to launch the ROSCore. After this call occurs (`roslaunch` occurs asynchronously), the code instantiates a `ROSAgent`, which will serve as the interface to communicate with the ROS Nodes you launch. 
 
-The two main functions are:
+The three main functions are:
 - `_publish_img(observation)`, which takes the observation from the environment, and publishes it to the topic that you specify in the constructor of the `ROSAgent` (You will want to replace the placeholder with the topic name that your node is expecting the image to come through on)
-- `_action_cb(msg)`, which listens to the action topic you specify and pulls the `Twist2DStamped` message and assigns it to `self.action`, which is where the loop in `solution.py` pulls the action from. This same loop also executes that action in the environment, and will continue to execute that action until you tell it otherwise. 
+- `_action_cb(msg)`, which listens to the action topic you specify and pulls the `Twist2DStamped` message 
+- `_ik_action_cb(msg)`, listens on the inverse kinematic action topic, and assigns it to `self.action`. Because we are using wheel velocities as the action, but the output of many Duckietown nodes is a `Twist2DStamped` message, we need a way to convert this back into the actions we are interested in.
+
+The loop in `solution.py` pulls the action from `self.action`. This same loop also executes that action in the environment, and will continue to execute that action until you tell it otherwise. 
 
 
 You will notice that there is a publisher which publishes random actions to the action topic. You will want to change this when you make your submission.
