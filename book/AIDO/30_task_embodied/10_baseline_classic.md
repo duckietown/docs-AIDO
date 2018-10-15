@@ -53,3 +53,5 @@ Clone the [standalone repo](https://github.com/duckietown/sim-duckiebot-lanefoll
     $ git clone -b v3 git@github.com:duckietown/sim-duckiebot-lanefollowing-demo.gitt
 
 The interface is mainly the same, except now, the `rosagent.py` file itself controls the simulation. Again, you will mainly want to focus on `rosagent.py`, and you will again be able to see the `Dockerfile` for how to build and maintain your own `catkin_ws`.
+
+The instructions on the repository walk you through the steps to get started. To run this, you will need to have `docker-compose` installed on your local machine, as unlike the AIDO submissions, this will emulate both the server and agent all on your local machines.
