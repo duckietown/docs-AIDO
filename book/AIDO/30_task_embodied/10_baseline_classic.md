@@ -49,9 +49,9 @@ Back inside of the `solution.py` code, you will see calls to `rospy.Rate()` and 
 We also provide a more-involved, working example of Lane Following, which extends the image described above: `duckietown/challenge-aido1_LF1-template-ros:v3`. Since it extends the random template, you will again be able to run this code on both the simulator and Duckiebot.
 
 
-Clone the [example repo](https://github.com/duckietown/challenge-aido1_LF1-example-ros):
+Clone the [baseline repo](https://github.com/duckietown/challenge-aido1_LF1-baseline-duckietown):
 
-    $ git clone -b v3 git@github.com:duckietown/challenge-aido1_LF1-example-ros.git
+    $ git clone -b v3 git@github.com:duckietown/challenge-aido1_LF1-baseline-duckietown.git
 
 
 You will notice that the launchfile argument in the `solution.py` code now points to `lf_slim.launch`, which launches a slimmed-down version of the [Duckietown Lane Following code](https://github.com/duckietown/Software/tree/master18/catkin_ws/src/10-lane-control). The action and image topics are both adjusted to match the inputs and outputs of the original stack. 
