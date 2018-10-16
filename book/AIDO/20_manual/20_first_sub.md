@@ -13,7 +13,7 @@ and its submission template [`challenge-aido1_luck-template-python`][template]:
 
 ## Submit {#cm-first-submit}
 
-Go to the submission directory:
+Go to the repository root:
 
     $ cd challenge-aido1_luck-template-python
 
@@ -65,6 +65,18 @@ The leaderboard is available at the URL
     
     
 [leaderboard]: https://challenges.duckietown.org/v3/humans/challenges/aido1_luck-v3/leaderboard
+
+
+       
+
+     
+## Local evaluation {#cm-local}
+
+You can also evaluate the submission *locally*.  This is useful for debugging and development.
+
+Use this command:
+
+    $ dts challenges evaluate 
 
 
        

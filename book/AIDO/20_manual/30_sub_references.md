@@ -16,7 +16,8 @@ The `evaluate` command allows you to do a local evaluation of your
 submission:
 
     $ dts challenges evaluate
-    
+
+
 
 ## Submitting a submission {#cli-submit}
  
