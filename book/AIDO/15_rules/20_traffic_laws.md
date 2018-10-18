@@ -3,6 +3,7 @@
 The following are a list of rule objectives the Duckiebots are supposed to abide by within Duckietown. All individual rule violations will be summarized in one overall traffic law objective $\objective_{T}$. These penalties hold for the lane following, and navigation tasks (LF, LFV, NAVV).
 
 ## Quantification of "Staying in the lane" {#traffic_laws_lf}
+TODO: To be implemented
 
 <div figure-id="fig:crossing_lane">
 <img src="images/crossing_lane.jpg" style="width: 80%"/>
@@ -39,6 +40,7 @@ Participants are then able to change the intersection protocol in the hope of im
 
 
 ## Quantification of "Stopping at red intersection line" and "Stopping at red traffic light" {#traffic_laws_si}
+TODO: To be implemented
 
 There are two different possibilities forcing the Duckiebot to a stop at an intersection. Some intersections have red stopping lines whereas others have traffic lights. The stopping behavior in both cases is similar and serves a similar purpose however. We therefore join the two cases into the "stopping at intersection"-rule.
 
@@ -91,6 +93,7 @@ Here the sum over time increments $t_k$ denote the time intervals in which this 
 To measure this cost, the velocities $v(t)$ are evaluated while the robot is in the stopping zone $\mathcal{S}$. An example of a Duckiebot stopping at a red intersection line is depicted in Fig. \ref{fig:intersection}.
 
 ## Quantification of "Keep safety distance" {#traffic_laws_sd}
+TODO: To be implemented
 
 The Duckietown traffic laws say:
 
@@ -105,6 +108,7 @@ $$
 $$
 
 ## Quantification of "Avoiding collisions" {#traffic_laws_ac}
+TODO: To be implemented
 
 The Duckietown traffic laws say:
 
