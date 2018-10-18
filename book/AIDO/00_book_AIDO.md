@@ -17,9 +17,9 @@ We call this competition the "AI Driving Olympics" because there will be a set o
 Participants will not need to be physically present---they will just need to send their source code packaged as a Docker image.  There will be qualifying rounds in simulation, similar to the recent DARPA Robotics Challenge,
 and we will make available the use of "robotariums," which are facilities that allow remote experimentation in a reproducible setting.
 
-**AIDO 1** is in conjuction with NIPS 2018. 
+**AIDO 1** is in conjunction with NIPS 2018. 
 
-**AIDO 2** is in conjuction with ICRA 2019. 
+**AIDO 2** is in conjunction with ICRA 2019. 
 
 
 ## Leaderboards {#book-leaderboard nonumber notoc}
