@@ -48,7 +48,6 @@ There are 2 ways to monitor the submission:
 
 The first way is to use the web interface, at the URL indicated; in the example, this is:
 
-
 > [`https://challenges.duckietown.org/v3/humans/submissions/2`](https://challenges.duckietown.org/v3/humans/submissions/2)
 
 The second way is to use the `dts challenges follow` command:
@@ -66,9 +65,6 @@ The leaderboard is available at the URL
     
 [leaderboard]: https://challenges.duckietown.org/v3/humans/challenges/aido1_luck-v3/leaderboard
 
-
-       
-
      
 ## Local evaluation {#cm-local}
 
@@ -77,6 +73,10 @@ You can also evaluate the submission *locally*.  This is useful for debugging an
 Use this command:
 
     $ dts challenges evaluate 
+
+Note: This is the most "brittle" command because it needs a very healthy Docker environment. (It spawns a container that downloads other containers, etc.). If this fails, chances are that your Docker installation is not setup correctly.
+
+See: [](#dts-challenges-troubleshooting)
 
 
        
