@@ -61,7 +61,7 @@ To only build and push, but not submitting, use the option `--no-submit`:
 
 ### Do not push  {#submit-advanced-no-push}
 
-To only build and not pushing, use the option `--no-push`
+To only build and not pushing, use the option `--no-push`:
 
     $ dts challenges submit --no-push
 
