@@ -77,7 +77,15 @@ You can also evaluate the submission *locally*.  This is useful for debugging an
 Use this command:
 
     $ dts challenges evaluate 
+    
+### Troubleshooting
 
+If this doesn't work and fails with complaints about Docker permissions - please file an issue, as we are trying to fix that problem.
 
-       
+In the mean time, you can try the following alternative route:
+
+    $ pip install duckietown-challenges-runner
+    $ dt-challenges-evaluate-local
+
+This removes one indirection step.
       
