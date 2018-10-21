@@ -31,37 +31,70 @@ $$
 
 The indicator function $\mathbb{I}_{i-active}$ is $1$ if a trip is \emph{active} and $0$ otherwise. Again the integral of an episode is defined up to time $t=T_{eps}$, where $T_{eps}$ is the length of an episode. -->
 
+
 ## Autonomous mobility on demand (AMoD) {#performance_amod}
 
 
-An AMoD system needs to provide the highest possible service level in terms of journey times and wait times, while ensuring maximum fleet efficiency.
-We have two scoring metrics representing these goals in a simplified manner. In order to normalize their contributions, we supply a baseline case $\mathcal{B}$
+In an autonomous mobility-on-demand system a coordinated fleet of robotic taxis serves customers in an on-demand fashion. An operational policy for the system must optimize in three conflicting dimensions:
 
-We introduce the following variables:
+
+
+1. The system must perform at the **highest possible service level**, i.e., at smallest possible wait times and smallest possible journey times.
+2. The system's **operation must be as efficient as possible**, i.e., it must reduce its empty mileage to a minimum.
+3. The system's **capital cost must be as inexpensive as possible**, i.e, the fleet size must be reduced to a minimum.
+
+We consider robotic taxis that can carry one customer. To compare different AMoD system operational policies, we introduce the following variables:
 
 \begin{align*}
-&\alpha_1 = \frac{1}{2}& &\textrm{weight for efficiency}& \\
-&\alpha_2 = \frac{1}{2}& &\textrm{weight for waiting times}& \\
-&\alpha_3 = \frac{1}{2}& &\textrm{weight for fleet size}& \\
-&d_T& &\textrm{total distance driven by fleet}& \\
-&d_E& &\textrm{empty distance driven by fleet}& \\
-&R \in \mathbb{N}^+& &\textrm{total number of requests in the scenario}&\\
-&w_i \in \mathbb{R}& &\textrm{waiting time of request $i$}&\\
-&w_{i,B} \in \mathbb{R}& &\textrm{waiting time of request $i$ in the $\mathcal{B}$ case}&\\
-&N \in \mathbb{N}^+& &\textrm{number of robotic taxis used}&\\
-&N_B \in \mathbb{N}^+& &\textrm{number of robotic taxis used in the $\mathcal{B}$ case}&\\
+&d_E &= &\textnormal{ empty distance driven by the fleet} \\
+&d_C &= &\textnormal{ occupied distance driven by the fleet} \\
+&d_T = d_C + d_E &= &\textnormal{ total distance driven by the fleet} \\
+&N &= &\textnormal{ fleet size} \\
+&R &= &\textnormal{ number of customer requests served} \\
+&w_i &= &\textnormal{ waiting time of request } i\in \{1,...,R\} \\
+&W &= &\textnormal{ total waiting time } W = \sum_{i=1}^{R} w_i 
 \end{align*}
 
-The first performance metric is for cases when the same number of vehicles as in the benchmark case $N_\mathcal{B}$ is used:
 
-$$
-\objective_{P-AMOD-1} = 0.5 \cdot \frac{d_E}{d_T} + 0.5 \cdot \frac{\sum_{i=1}^K w_i}{\sum_{i=1}^K w_{i,\mathcal{B}}}
-$$
+The provided simulation environment is designed in the standard reinforcement framework: Rewards are issued after each simulation step. The (undiscounted) sum of all rewards is the final score. The higher the score, the better the performance.
 
-The second performance metric allows the designer to reduce the number of vehicles, if possible, or increase it if deemed useful:
+For the AMoD-Task, there are 3 different championships (sub-tasks) which constitute separate competitions. The simulation environment computes the reward value for each category and conatenates them into a vector of length 3, which is then communicated as feedback to the learning agent. The agent can ignore but the entry of the reward vector from the category that they wish to maximize.
 
-$$
-\objective_{P-AMOD-2} = \objective_{AMOD-1} + 0.5 \cdot \frac{N}{N_B}
-$$
+The three championships are as follows:
 
-For the AMoD task, only a performance metric will be evaluated. Robotic taxis are assumed to already observe the rules of the road as well as drive comfortably. Through the abstraction of the provided AMoD simulation, these conditions are already enforced.
+### Service Quality Championship
+
+In the **Service Quality Championship**, the principal goal of the operator is to provide the highest possible service quality at bounded operational cost. Two negative scalar weights $\alpha_1<0$ and $\alpha_2<0$ are introduced. The performance metric to maximize is
+
+\begin{align*}
+\mathcal{J}_{P-AMoD,1} = \alpha_1 W + \alpha_2 d_E
+\end{align*}
+
+The values $\alpha_1$ and $\alpha_2$ are chosen such that the term $W$ dominantes the metric. The number of robotic taxis is fixed at some fleet size $\bar{N} \in \mathbb{N}_{>0}$.
+
+
+
+
+### Efficiency Championship
+
+In the **Efficiency Championship**, the principal goal of the operator is to perform as efficiently as possible while maintaining the best possible service level. Two negative scalar weights $\alpha_3<0$ and $\alpha_4<0$ are introduced. The performance metric to maximize is
+
+\begin{align*}
+\mathcal{J}_{P-AMoD,2} = \alpha_3 W + \alpha_4 d_E
+\end{align*}
+
+$\alpha_3$ and $\alpha_4$ are chosen such that the term $d_E$ dominantes the metric. The number of robotic taxis is fixed at some fleet size $\bar{N} \in \mathbb{N}_{>0}$.
+
+
+
+### Fleet Size Championship}
+
+
+In the **Fleet Size Championship**, the goal is to reduce the fleet size as much as possible while keeping the total waiting time $W$ below a fixed level $\bar{W}>0$. The condition $W\leq\bar{W}$ is equivalent to guaranteeing average waiting times smaller than $\frac{\bar{W}}{R}$. Therefore, the performance score to maximize is
+
+\begin{align*}
+\mathcal{J}_{P-AMoD,3} =
+\begin{cases} -N & \text{if }W\leq\bar{W} \\
+-\infty & \text{else}
+\end{cases}
+\end{align*}
