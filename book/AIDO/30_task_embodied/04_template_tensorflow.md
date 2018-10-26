@@ -1,4 +1,4 @@
-# Tensorflow template for `aido1_LF1_r2-v3` {#tensorflow-template status=ready}
+# Tensorflow template for `aido1_LF1` {#tensorflow-template status=ready}
 
 ## Repository
 
