@@ -9,7 +9,7 @@ We will start from the Random ROS Baseline. This image extends `duckietown/rpi-d
 
 Clone the [template repo](https://github.com/duckietown/challenge-aido1_LF1-template-ros):
 
-    $ git clone -b v3 git@github.com:duckietown/challenge-aido1_LF1-template-ros.git
+    $ git clone  git@github.com:duckietown/challenge-aido1_LF1-template-ros.git
 
 
 You will be able to submit this as is, with:
