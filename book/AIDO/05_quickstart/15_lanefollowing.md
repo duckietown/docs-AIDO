@@ -11,9 +11,13 @@ Result: You have made a submission to the Lane Following AI-DO challenge and you
 </div>
 
 
-1. Do a submission by following the [random template](#challenge-aido1_lf1-template-random) or the [tensorflow template](#tensorflow-template) ([pytorch template](#baseline-pytorch) and [ROS template](#ros-baseline) coming shortly)
+1. Do a submission by following one of the templates:
+  1. [Random template](#challenge-aido1_lf1-template-random)
+  2. [Tensorflow template](#tensorflow-template) 
+  3. [PyTorch template](#pytorch-template) 
+  4. [ROS template](#ros-template) 
 
-Congrats! you have now made a submission, but it probably wasn't very good (unless you got very lucky).
+    Congrats! you have now made a submission, but it probably wasn't very good (unless you got very lucky).
 
 
 2. Try to make your score go up. Now is when you might want to take a look at [](#part:aido-rules) which describe in detail how your score is generated for the specific challenges. For the lane following challenge,  we are currently offering 4 suggested methods to do this (our baseline templates for these options are at various stages of readiness but will be getting updated very soon):

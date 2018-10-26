@@ -1,4 +1,4 @@
-# Learning-based approaches for the embodied tasks   {#part:embodied-strategies status=ready}
+# Embodied Challenges Solution Baselines   {#part:embodied-strategies status=ready}
 
 This part describes several strategies for approaching the embodied tasks, including:
 

@@ -1,4 +1,4 @@
-# ROS baseline {#ros-baseline status=ready}
+# ROS baseline {#ros-template status=ready}
 
 To create a submission for ROS, there are a few templates that you can start from. 
 
