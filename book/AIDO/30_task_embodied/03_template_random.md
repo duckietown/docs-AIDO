@@ -2,26 +2,34 @@
 
 This section describes the contents of the simplest baseline: a "random" agent.
 
-## Repository
+<div class='requirements' markdown='1'>
 
-Check out [the repository](https://github.com/duckietown/challenge-aido1_LF1-template-random):
+Requires: That you have setup your [accounts](#cm-accounts).
 
-    $ git clone -b v3 git@github.com:duckietown/challenge-aido1_LF1-template-random.git
+Requires: That you meet the [software requirement](#cm-sw).
 
-## Submit
+Result: You make a submission and see your entry [here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3).
 
-Change into the directory:
+</div>
+
+
+## Quickstart
+
+1. Check out [the repository](https://github.com/duckietown/challenge-aido1_LF1-template-random):
+
+    $ git clone git@github.com:duckietown/challenge-aido1_LF1-template-random.git
+
+
+2. Change into the directory:
 
     $ cd challenge-aido1_LF1-template-random
     
-First, let's try if your environment is configured correctly, by checking that 
-you are able to submit using the command:
+3.
 
     $ dts challenges submit 
 
-If it works, you will be able to see your submission [here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1-v3). 
+4. You should be able to see your submission [here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3). 
 
-But you will probably not appear in the [leaderboard](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1-v3/leaderboard).
 
 
 ## Anatomy of the submission
