@@ -1,22 +1,34 @@
 # Tensorflow template for `aido1_LF1` {#tensorflow-template status=ready}
 
-## Repository
+This section describes the basic procedure for making a submission with a model trained in using [TensorFlow](https://www.tensorflow.org/)
 
-Clone the [template repo](https://github.com/duckietown/challenge-aido1_LF1-template-tensorflow):
+<div class='requirements' markdown='1'>
+
+Requires: That you have setup your [accounts](#cm-accounts).
+
+Requires: That you meet the [software requirement](#cm-sw).
+
+Result: You make a submission and see your entry [here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3).
+
+</div>
+
+
+## Quickstart
+
+1. Clone the [template repo](https://github.com/duckietown/challenge-aido1_LF1-template-tensorflow):
 
     $ git clone git@github.com:duckietown/challenge-aido1_LF1-template-tensorflow.git
 
-## Submit
 
-Make sure that you can submit the submission as it is.
-
-Change in the `submission` dir:
+2. Change in the `submission` dir:
 
     $ cd challenge-aido1_LF1-template-tensorflow/submission
     
-And run the submission:
+3. And run the submission:
 
     $ dts challenges submit
+
+4. You should be able to see your submission [here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3). 
 
 ## Anatomy of the submission
 

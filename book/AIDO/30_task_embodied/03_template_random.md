@@ -13,24 +13,22 @@ Result: You make a submission and see your entry [here](https://challenges.ducki
 </div>
 
 
-## Repository
+## Quickstart
 
-Check out [the repository](https://github.com/duckietown/challenge-aido1_LF1-template-random):
+1. Check out [the repository](https://github.com/duckietown/challenge-aido1_LF1-template-random):
 
     $ git clone git@github.com:duckietown/challenge-aido1_LF1-template-random.git
 
-## Submit
 
-Change into the directory:
+2. Change into the directory:
 
     $ cd challenge-aido1_LF1-template-random
     
-First, let's try if your environment is configured correctly, by checking that 
-you are able to submit using the command:
+3.
 
     $ dts challenges submit 
 
-You should be able to see your submission [here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3). 
+4. You should be able to see your submission [here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3). 
 
 
 
