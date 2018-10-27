@@ -17,16 +17,16 @@ Result: You make a submission and see your entry [here](https://challenges.ducki
 
 1. Check out [the repository](https://github.com/duckietown/challenge-aido1_LF1-template-random):
 
-    $ git clone git@github.com:duckietown/challenge-aido1_LF1-template-random.git
+        $ git clone git@github.com:duckietown/challenge-aido1_LF1-template-random.git
 
 
 2. Change into the directory:
 
-    $ cd challenge-aido1_LF1-template-random
+        $ cd challenge-aido1_LF1-template-random
     
-3.
+3. Submit!
 
-    $ dts challenges submit 
+        $ dts challenges submit 
 
 4. You should be able to see your submission [here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3). 
 

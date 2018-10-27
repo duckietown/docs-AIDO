@@ -13,25 +13,20 @@ Result: You make a submission and see your entry on the [Leaderboard](https://ch
 </div>
 
 
-
-To create a submission for ROS, there are a few templates that you can start from. 
-
-## Random ROS Baseline {#random-ros-baseline status=ready}
-
-We will start from the Random ROS Baseline. This image extends `duckietown/rpi-duckiebot-base:master18`, which means that you will be able to run this exact code with the both the simulator and Duckiebot.
+## Quickstart 
 
 
-Clone the [template repo](https://github.com/duckietown/challenge-aido1_LF1-template-ros):
+1. Clone the [ repo](https://github.com/duckietown/challenge-aido1_LF1-template-ros):
 
-    $ git clone git@github.com:duckietown/challenge-aido1_LF1-template-ros.git
+        $ git clone git@github.com:duckietown/challenge-aido1_LF1-template-ros.git
 
-Enter the repo:
+2. Enter the repo:
 
-    $ cd challenge-aido1-LF1-template-ros
+        $ cd challenge-aido1-LF1-template-ros
 
-Either make a submission with:
+3. Either make a submission with:
 
-    $ dts challenges submit
+        $ dts challenges submit
 
 
 Or, run local evaluation with:
@@ -39,4 +34,7 @@ Or, run local evaluation with:
     $ dts challenges evaluate
     
 
-Once this finishes, you'll receive a link where you can follow the progress of your evaluation. Once it's done check out how you did on the  [Leaderboard](https://challenges.duckietown.org/).
+4. You should be able to see your submission [here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3).
+
+
+For more tips on how to make your submission better by using the existing Duckietown codebase see [here](#ros-baseline). 
