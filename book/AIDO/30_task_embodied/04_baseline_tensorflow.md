@@ -4,7 +4,7 @@
 
 Clone the [template repo](https://github.com/duckietown/challenge-aido1_LF1-template-tensorflow):
 
-    $ git clone -b v3 git@github.com:duckietown/challenge-aido1_LF1-template-tensorflow.git
+    $ git clone git@github.com:duckietown/challenge-aido1_LF1-template-tensorflow.git
 
 ## Submit
 
