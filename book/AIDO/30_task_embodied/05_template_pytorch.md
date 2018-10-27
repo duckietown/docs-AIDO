@@ -1,4 +1,4 @@
-# Pytorch template {#pytorch-template status=ready}
+# Pytorch template for `aido1_LF1` {#pytorch-template status=ready}
 
 This section describes the basic procedure for making a submission with a model trained in using [PyTorch](https://pytorch.org/).
 
@@ -8,7 +8,7 @@ Requires: That you have setup your [accounts](#cm-accounts).
 
 Requires: That you meet the [software requirement](#cm-sw).
 
-Result: You make a submission and see your entry on the [Leaderboard](https://challenges.duckietown.org/).
+Result: You make a submission and see your entry on [here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3).
 
 </div>
 
@@ -16,17 +16,17 @@ Result: You make a submission and see your entry on the [Leaderboard](https://ch
 
 1. Clone this repo:
 
-        git clone https://github.com/duckietown/challenge-aido1_LF1-template-pytorch.git
+        $ git clone https://github.com/duckietown/challenge-aido1_LF1-template-pytorch.git
 
 2. Change into the directory that you cloned:
     
-        cd challenge-aido1_LF1-template-pytorch
+        $ cd challenge-aido1_LF1-template-pytorch
         
 3. Submit :)
 
-        dts challenges submit
+        $ dts challenges submit
         
-4. Once this finishes, you'll receive a link where you can follow the progress of your evaluation.
+4. You should be able to see your submission [here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3).
 
 
 ## Description

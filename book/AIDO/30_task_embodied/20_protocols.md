@@ -1,5 +1,9 @@
 # Agent protocols {#agent-protocols status=ready}
 
+The section describes the different protocols that should be followed by agents that are submitted. 
+
+Note: The currently used protocol is `aido1_remote3-v3`
+
 ## `aido1_remote1-v3` {#aido1_remote1-v3}
 
 Communication: Duckietown Slimremote
