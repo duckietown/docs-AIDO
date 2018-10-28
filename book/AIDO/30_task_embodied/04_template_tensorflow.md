@@ -15,20 +15,21 @@ Result: You make a submission and see your entry [here](https://challenges.ducki
 
 ## Quickstart
 
-1. Clone the [template repo](https://github.com/duckietown/challenge-aido1_LF1-template-tensorflow):
+### Clone the [template repo](https://github.com/duckietown/challenge-aido1_LF1-template-tensorflow):
 
         $ git clone git@github.com:duckietown/challenge-aido1_LF1-template-tensorflow.git
 
 
-2. Change in the `submission` dir:
+### Change in the `submission` dir:
 
         $ cd challenge-aido1_LF1-template-tensorflow/submission
     
-3. And run the submission:
+### And run the submission:
 
         $ dts challenges submit
 
-4. You should be able to see your submission [here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3). 
+### You should be able to see your submission [here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3). 
+
 
 ## Anatomy of the submission
 

@@ -14,19 +14,21 @@ Result: You make a submission and see your entry on [here](https://challenges.du
 
 ## Quickstart
 
-1. Clone this repo:
+### Clone the repo:
 
         $ git clone https://github.com/duckietown/challenge-aido1_LF1-template-pytorch.git
 
-2. Change into the directory that you cloned:
+### Change into the directory that you cloned:
     
         $ cd challenge-aido1_LF1-template-pytorch
         
-3. Submit :)
+### Submit :)
 
         $ dts challenges submit
         
-4. You should be able to see your submission [here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3).
+### Verify the submission
+
+You should be able to see your submission [here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3).
 
 
 ## Description
