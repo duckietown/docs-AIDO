@@ -1,9 +1,18 @@
-# Tensorflow from logs baseline {#tensorflow-from-logs-baseline status=ready}
+# Imitation Learning from Logs Baseline (tensorflow) {#embodied_il_logs status=ready}
 
-To create an imitation learning submission using Tensorflow learning from logs use this baseline.
+In this part, you can find all the required steps in order to make a submission based on Imitation Learning with Tensorflow for the lane following task using real log data .
+
+<div class='requirements' markdown='1'>
+
+Requires: That you have made a submission with the [tensorflow template](#tensorflow-template).
+
+Result: You win the AI-DO!
+
+</div>
 
 
-## Workflow {#tensorflow-from-logs-workflow status=ready}
+
+## Quickstart {#tensorflow-from-logs-workflow status=ready}
 
 Clone the [baseline Tensorflow imitation learning from logs repository](https://github.com/duckietown/challenge-aido1_LF1-baseline-IL-logs-tensorflow):
 
@@ -20,13 +29,13 @@ The code you find is structured into 3 folders.
 
 Steps 1 and 2 can be run either using Docker or without.
 
-## Extracting data {#tensorflow-from-logs-data status=ready}
+### Extract data {#tensorflow-from-logs-data status=ready}
 
 Go to the `extract_data` folder:
 
     $ cd extract_data
 
-### Docker data extraction
+#### Docker data extraction
 If using Docker (to avoid a ROS installation), type:
 
     $ make docker_extract_data
@@ -35,7 +44,7 @@ Once extraction is completed, move the extracted data to the learning folder. Ty
 
     $ make docker_copy_for_learning
 
-### Regular ROS data extraction
+#### ROS data extraction
 
 If you already have ROS on your system, you may be able to not use Docker. Then type:
 
@@ -51,13 +60,13 @@ Once extraction is completed, move the extracted data to the learning folder. Ty
 
     $ make regular_copy_for_learning
 
-## Learning {#tensorflow-from-logs-learning status=ready}
+### Learning {#tensorflow-from-logs-learning status=ready}
 
 Go to the `learning` folder
 
     $ cd ../learning
 
-### Docker learning
+#### Docker learning
 If using Docker (to avoid a ROS installation), type:
 
     $ make learn-docker
@@ -69,7 +78,7 @@ Once learning is completed, move the learned model to the submission folder. Typ
 
     $ make copy_for_submission
 
-### Regular learning
+#### ROS learning
 
 If you already have your Tensorflow learning pipeline on your system setup and do not use Docker. Then type:
 
@@ -85,7 +94,7 @@ Once learning is completed, move the learned model to the submission folder. Typ
 
     $ make regular_copy_for_submission
 
-## Submission {#tensorflow-from-logs-submission status=ready}
+### Submission {#tensorflow-from-logs-submission status=ready}
 
 If you have completed the previous steps, you will be able to submit this as is, with:
 
@@ -97,22 +106,69 @@ Or, run local evaluation with:
     $ dts challenges evaluate
 
 
-## Changing the code
+## Details and Workflow
+
+
+### Changing the code
 
 You may change the code to your needs. The code is located in the `src` folders in the respective folders.
 
-### Neural network design
+#### Neural network design
 
 In particular you can adapt the neural network model in `learning/src/cnn_training_functions.py`.
 
-Furthermore using different ROS bags to learn from may be of interest.
+The type of neural network, its architecture and hyperparameters are choices that you are asked to make, but as a baseline a CNN model which takes as inputs images and predicts angular velocities is provided. This model is not only relatively simple but also takes as input low resolution images indicating that extremely complex models may not necessarily be required to solve the task of lane following without dynamic objects. In any case, since in the end you will have submit as well a compiled Movidius graph, you should prepare the ground with the following actions during training:
+1) name all your layers in order to be able to tell later which is the output layer of your neural network
+2) prepare model for mobile deployment generating a `graph.pb` file (TensorFlow GraphDef file in binary format)
 
-### Logs selection
+
+#### Logs selection
 
 Which logs are downloaded is specified at the bottom of `extract_data/src/download_logs.py`.
 
+Such data are saved in `.bag` files which are available in **Duckietown Logs Database** on http://logs.duckietown.org. 
+The important note here is to feed your agent with *appropriate* data. Appropriate log data are considered those which:
+1) are relevant to the lane following task
+2) execute this task well the whole time 
+2) and present smooth driving of the duckiebots around the city.
 
-### Image preprocessing
+One hint, is to search for data which were collected using the lane controller. In order to check if the lane controller was enabled, use rqt_bag to see if there is inside the node `/duckiebot_name/lane_controller/`. Within the *LF_IL_tensorflow* baseline, type `make download` in order to download 5 bag files with approximately 10 minutes of appropriate lane following data.
+
+#### How to prepare your data for training
+
+TODO: Panos is this neccessary?
+
+When working with real log data, this can be splitted into the following two subtasks:
+1) extract desired topics from bag files
+2) synchronize pairs of data from different topics
+
+The first part should be clear, so let us focus to the second one. ROS messages from different topics are neither always of the same number nor properly arranged in the bag files. In this implementation the topics of interest are 
+* /camera\_node/camera/compressed
+* /lane\_controller\_node/car\_cmd
+
+and the aforementioned problem is visualized in the image below. Although a continuous sequence of images and car commands is expected, images and/or velocities could be omitted or even saved in slighlty translated timestamps. For this reason, in order to ensure the validity of our pairs of data, a synchronization is necessary.
+
+<p align="center">
+  <img src="images/synchronization_issue.png" class='diagram'  width="700" align="center"/>
+</p>
+
+It is stated that in this case the synchronization is based on the fact that when using the lane controller images cause the car commands and not the other way around, while between two consecutive images there should be only one car command. For your convenience, in the provided baseline there is a script that takes care of these two steps for you by typing `make preprocess` and eventually saves the images with their respect car commands to HDF5 files. 
+
+
+#### Image preprocessing
 
 Additionally, the way images are preprocessed is specified in `extract_data/src/extract_data_functions.py`
 and `learning/src/cnn_predictions.py`.
+
+### A submission with the Movidius Neural Compute Stick
+
+At this point you have your model and it is time to turn it into an AI-DO submission. First, you should freeze the TensorFlow graph. This procedure consists of the following steps:
+* combine the TensorFlow graph of your CNN model and its weights in a single file
+* convert variables into inline constants
+* given the output node of your output layer, keep only those operations that are necessary for the predictions
+* get rid of all training node
+* and apply optimization flags.
+
+The script `freeze_graph.py` which can be executed by typing `make build-image`, is part of the baseline and can be your guide for this procedure. The only tricky part here is to define correctly the output node which should not be confused with the output layer. In general, the output node should be easily found by the following name `scope_name(if exists)/output_layer_name/BiasAdd`.  
+
+Once you have the frozen graph, you are only one step away from the submission. The last step is to install NCSDK v2.05 (https://movidius.github.io/ncsdk/index.html) in order to use its SDK tools to compile the TensorFlow frozen graph to a Movidius graph. After installing NCSDK v2.05, you just have to execute the command `mvNCCompile -s 12 frozen_graph.pb -in input_node_of_TensorFlow_model -on output_node_of_TensorFlow_model -o path_to_save_the_movidius_graph.graph`. The installation of NCSDK v2.05 and compilation to Movidius graph is provided in the baseline and run by typing `make build-real-local-laptop`.

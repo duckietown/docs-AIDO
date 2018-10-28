@@ -1,4 +1,4 @@
-# Imitation Learning in Simulation Workflow {#embodied_il_sim status=draft}
+# Imitation Learning from Simulation Baseline (tensorlow) {#embodied_il_sim status=draft}
 
 assigned: Manfred
 

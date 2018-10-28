@@ -1,6 +1,6 @@
-# ROS Baseline and Workflow {#ros-baseline status=ready}
+# Classical Duckietown Baseline (ROS) {#ros-baseline status=ready}
 
-This section describes the basic procedure for making a submission with a model trained in using the [Robot Operating System](http://www.ros.org/).
+This section describes the basic procedure for making a submission using the [Robot Operating System](http://www.ros.org/) and the  [Duckietown software stack](https://github.com/duckietown/Software) .
 
 <div class='requirements' markdown='1'>
 
@@ -12,7 +12,7 @@ Result: You win the AI-DO!
 
 ## General Workflow {#ros-workflow}
 
-First follow the instructions in [](#ros-template).
+First make sure you have followed the instructions in [](#ros-template).
 
 If you enter into the directory `challenges-aido1-LF1-template-ros` that you clone in [](#ros-template), you will find a few important files:
     
