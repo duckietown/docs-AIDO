@@ -17,19 +17,18 @@ Result: You make a submission and see your entry [here](https://challenges.ducki
 
 ### Clone the [template repo](https://github.com/duckietown/challenge-aido1_LF1-template-tensorflow):
 
-        $ git clone git@github.com:duckietown/challenge-aido1_LF1-template-tensorflow.git
+    $ git clone git@github.com:duckietown/challenge-aido1_LF1-template-tensorflow.git
 
 
 ### Change in the `submission` dir:
 
-        $ cd challenge-aido1_LF1-template-tensorflow/submission
+    $ cd challenge-aido1_LF1-template-tensorflow/submission
     
 ### And run the submission:
 
-        $ dts challenges submit
+    $ dts challenges submit
 
 ### You should be able to see your submission [here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3). 
-
 
 ## Anatomy of the submission
 

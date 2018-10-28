@@ -18,17 +18,17 @@ Result: You make a submission and see your entry on the [Leaderboard](https://ch
 
 ### Clone the [ repo](https://github.com/duckietown/challenge-aido1_LF1-template-ros):
 
-        $ git clone git@github.com:duckietown/challenge-aido1_LF1-template-ros.git
+    $ git clone git@github.com:duckietown/challenge-aido1_LF1-template-ros.git
 
 ### Enter the repo:
 
-        $ cd challenge-aido1-LF1-template-ros
+    $ cd challenge-aido1-LF1-template-ros
 
 ### Test the submission:
 
 Either make a submission with:
 
-        $ dts challenges submit
+    $ dts challenges submit
 
 
 Or, run local evaluation with:

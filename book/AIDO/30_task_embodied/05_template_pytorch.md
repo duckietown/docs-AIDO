@@ -16,15 +16,15 @@ Result: You make a submission and see your entry on [here](https://challenges.du
 
 ### Clone the repo:
 
-        $ git clone https://github.com/duckietown/challenge-aido1_LF1-template-pytorch.git
+    $ git clone git://github.com/duckietown/challenge-aido1_LF1-template-pytorch.git
 
 ### Change into the directory that you cloned:
     
-        $ cd challenge-aido1_LF1-template-pytorch
+    $ cd challenge-aido1_LF1-template-pytorch
         
 ### Submit :)
 
-        $ dts challenges submit
+    $ dts challenges submit
         
 ### Verify the submission
 
