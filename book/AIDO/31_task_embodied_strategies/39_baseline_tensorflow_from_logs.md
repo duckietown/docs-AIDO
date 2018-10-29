@@ -168,7 +168,7 @@ and `learning/src/cnn_predictions.py`.
 
 ### A submission with the Movidius Neural Compute Stick
 
-At this point you have your trained model and it is time to turn it into an AI-DO submission. First, you should freeze the TensorFlow graph. This procedure consists of the following steps:
+At this point your model is trained and you are asked to compile it to a Movidius graph. First, you should freeze the TensorFlow graph. This procedure consists of the following steps:
 
 - combine the TensorFlow graph of your CNN model and its weights in a single file
 - convert variables into inline constants
