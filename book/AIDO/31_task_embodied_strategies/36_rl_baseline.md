@@ -119,4 +119,4 @@ Install the HyperDash app for Android/iOS. You can follow the progress of he var
 
 ## Warning
 
-In the scripts "2-/3-" currently predict the action in the format `[speed,steering angle]` and not the format that is required for this challenge, `[speed left wheel, speed right wheel]`. This can be fixed by using the scripts `4-/5-` or by waiting for a bit until we add the inverse kinematics wrapper.
+In the scripts "2-/3-" currently predict the action in the format `[speed,steering angle]` and not the format that is required for this challenge, `[speed left wheel, speed right wheel]`. This can be fixed by using the scripts `4-/5` or by using `SteeringToWheelVelWrapper`, located inside of `wrappers.py`.
