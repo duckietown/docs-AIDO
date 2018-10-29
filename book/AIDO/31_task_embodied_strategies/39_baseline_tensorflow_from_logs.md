@@ -161,7 +161,7 @@ It is stated that in this case the synchronization is based on the fact that whe
 
 #### Image preprocessing
 
-Additionally, the way images are preprocessed is specified in `extract_data/src/extract_data_functions.py`
+Additionally, the way images are preprocessed is specified in `extract_data/src/extract_data_functions.py` 
 and `learning/src/cnn_predictions.py`.
 
 ### A submission with the Movidius Neural Compute Stick
