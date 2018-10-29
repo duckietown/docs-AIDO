@@ -138,8 +138,6 @@ One hint, is to search for data which were collected using the lane controller. 
 
 #### How to prepare your data for training
 
-TODO: Panos is this neccessary?
-
 When working with real log data, this can be splitted into the following two subtasks:
 
 1. extract desired topics from bag files
