@@ -108,7 +108,7 @@ Here are some idea for improving your policy:
 
 ## Optional: track experiment progress with HyperDash
 
-Install Hyperdash (an open source experiment tracker and plotting tool), and create a profile or login (for more info check out [hyperdash.io](hyperdash.io)
+Install Hyperdash (an open source experiment tracker and plotting tool), and create a profile or login (for more info check out [hyperdash.io](https://hyperdash.io)
 
         pip install hyperdash && hyperdash signup # for conda users
         # OR for system-wide installation
