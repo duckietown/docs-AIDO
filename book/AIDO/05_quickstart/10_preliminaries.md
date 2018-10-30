@@ -1,7 +1,9 @@
 # Preliminaries {#quickstart-preliminaries status=ready}
 
-1. Make sure you have the [accounts needed](#cm-accounts)
+In order to compete in AI-DO, first ensure that you:
 
-2. Make sure you meet the [software requirements](#cm-sw)
+1) Have the [accounts needed](#cm-accounts)
 
-3. Make a [test submission](#cm-first) to make sure things are working properly
+2) Meet the [software requirements](#cm-sw)
+
+3) Make a [test submission](#cm-first) to verify things are working properly
