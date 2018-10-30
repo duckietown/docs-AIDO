@@ -1,6 +1,6 @@
 # Traffic law objective {#traffic_laws status=ready}
- 
-The following are a list of rule objectives the Duckiebots are supposed to abide by within Duckietown. All individual rule violations will be summarized in one overall traffic law objective $\objective_{T}$. These penalties hold for the lane following, and navigation tasks (LF, LFV, NAVV).
+
+The following are a list of rule objectives the Duckiebots are supposed to abide by within Duckietown. All individual rule violations will be summarized in one overall traffic law objective $\objective_{T}$. These penalties hold for the embodied tasks (LF, LFV).
 
 ## Quantification of "Staying in the lane" {#traffic_laws_lf}
 TODO: To be implemented
@@ -30,17 +30,17 @@ The "stay-in-lane" cost function is therefore defined as:
 An example situation where a Duckiebot does not stay in the lane is shown in \ref{fig:crossing_lane}.
 
 
-## Intersection navigation {#traffic_intersection}
+<!-- ## Intersection navigation {#traffic_intersection}
 
 Traditionally for real-world car travel, intersections are traversed with a fixed protocol in place, e.g. in Germany the driver on the right joining lane has the right of way.
 
 Robotic drivers do not have these inherent restrictions. Therefore for the task of [navigation](#nav_v), we will provide a base intersection protocol. This protocol is able to guide Duckiebots safely through intersections. For the lane following tasks, a fixed intersection protocol will be used and the performance during intersection navigation will not be scored.
 
-Participants are then able to change the intersection protocol in the hope of improving driving through intersections, thereby enabling them to achieve better navigation. The following rule penalties around intersections will however stay in place.
+Participants are then able to change the intersection protocol in the hope of improving driving through intersections, thereby enabling them to achieve better navigation. The following rule penalties around intersections will however stay in place. -->
 
 
 ## Quantification of "Stopping at red intersection line" and "Stopping at red traffic light" {#traffic_laws_si}
-TODO: To be implemented
+TODO: To be implemented or removed
 
 There are two different possibilities forcing the Duckiebot to a stop at an intersection. Some intersections have red stopping lines whereas others have traffic lights. The stopping behavior in both cases is similar and serves a similar purpose however. We therefore join the two cases into the "stopping at intersection"-rule.
 
@@ -159,6 +159,7 @@ Mathematically we accumulate penalties $\mu$ whenever the Duckiebot moves at an 
 The yield situation at an intersection is depicted in Fig.~\ref{fig:yield}. -->
 
 ## Hierarchy of rules {#traffic_laws_hierarchy}
+TODO: finalize this section
 
 To account for the relative importance of rules, the factors $\alpha, \beta, \gamma, \delta, \nu$ of the introduced rules will be weighted relatively to each other.
 

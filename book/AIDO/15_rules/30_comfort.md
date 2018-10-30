@@ -1,6 +1,7 @@
 # Comfort objective {#comfort status=ready}
- 
+
 ## Lane following and navigation (LF, LFV, NAVV) {#comfort_embodied}
+TODO: To be implemented
 
 In the single robot setting, we encourage "comfortable" driving solutions. We therefore penalize large accelerations to achieve smoother driving. This is quantified through smoothed changes in Duckiebot position $p_{bot}(t)$. Smoothing is performed by convolving the Duckiebot position $p_{bot}(t)$ with a smoothing filter $k_{smooth}$.
 

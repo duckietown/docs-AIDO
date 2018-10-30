@@ -1,6 +1,8 @@
 # Performance objective {#performance status=ready}
- 
+
 ## Lane following (LF / LFV) {#performance_lf}
+TODO: Executive decision on final form of this traveled distance
+
 As a performance indicator for both the "lane following task" and the "lane following task with other dynamic vehicles", we choose the speed $v(t)$ along the road (not perpendicular to it) over time of the Duckiebot. This measures the moved distance along the road per episode, where we fix the time length of an episode. This encourages both faster driving as well as algorithms with lower latency. An *episode* is used to mean running the code from a particular initial configuration.
 
 
@@ -10,7 +12,7 @@ $$
 
 The integral of speed is defined over the traveled distance of an episode up to time $t=T_{eps}$, where $T_{eps}$ is the length of an episode.
 
-## Navigation (NAVV) {#performance_navv}
+<!-- ## Navigation (NAVV) {#performance_navv}
 Similarly, for the "navigation with dynamic vehicles task" (NAVV), we choose the time it takes to go from point $A$ to point $B$ within a Duckietown map as performance indicator. A trip from $A$ to $B$ is *active* as soon as it is received as long as it has not been completed.
 
 
@@ -19,7 +21,7 @@ $$
 \objective_{P-NAVV}(t)  =  \int_{0}^{t}  \mathbb{I}_{AB-active} dt
 $$
 
-The indicator function $\mathbb{I}_{AB-active}$ is $1$ if a trip is *active* and $0$ otherwise. Again the integral of an episode is defined up to time $t=T_{eps}$, where $T_{eps}$ is the length of an episode.
+The indicator function $\mathbb{I}_{AB-active}$ is $1$ if a trip is *active* and $0$ otherwise. Again the integral of an episode is defined up to time $t=T_{eps}$, where $T_{eps}$ is the length of an episode. -->
 
 <!-- ## Fleet management (FM) {#performance_fm}
 
@@ -46,13 +48,13 @@ In an autonomous mobility-on-demand system a coordinated fleet of robotic taxis 
 We consider robotic taxis that can carry one customer. To compare different AMoD system operational policies, we introduce the following variables:
 
 \begin{align*}
-&d_E &= &\textnormal{ empty distance driven by the fleet} \\
-&d_C &= &\textnormal{ occupied distance driven by the fleet} \\
-&d_T = d_C + d_E &= &\textnormal{ total distance driven by the fleet} \\
-&N &= &\textnormal{ fleet size} \\
-&R &= &\textnormal{ number of customer requests served} \\
-&w_i &= &\textnormal{ waiting time of request } i\in \{1,...,R\} \\
-&W &= &\textnormal{ total waiting time } W = \sum_{i=1}^{R} w_i 
+&d_E &= &\text{ empty distance driven by the fleet} \\
+&d_C &= &\text{ occupied distance driven by the fleet} \\
+&d_T = d_C + d_E &= &\text{ total distance driven by the fleet} \\
+&N &= &\text{ fleet size} \\
+&R &= &\text{ number of customer requests served} \\
+&w_i &= &\text{ waiting time of request } i\in \{1,...,R\} \\
+&W &= &\text{ total waiting time } W = \sum_{i=1}^{R} w_i
 \end{align*}
 
 

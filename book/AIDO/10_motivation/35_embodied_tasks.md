@@ -8,10 +8,10 @@ There are three embodied individual robotic tasks.
 
 
 
-  * [Lane following + vehicles (LFV)](#lf_v): Control of a Duckiebot to drive on the right lane on streets within Duckietown with other moving Duckiebots present.
+  * [Lane following + vehicles (LFV)](#lf_v): Control of a Duckiebot to drive on the right lane on streets within Duckietown with other Duckiebots and duckies present.
 
 
-  * [Navigation + vehicles (NAVV)](#nav_v): Navigation task of a Duckiebot to drive from point $A$ to point $B$ within Duckietown while following the rules of the road and while other Duckiebots are likewise driving in the road.
+  <!-- * [Navigation + vehicles (NAVV)](#nav_v): Navigation task of a Duckiebot to drive from point $A$ to point $B$ within Duckietown while following the rules of the road and while other Duckiebots are likewise driving in the road. -->
 
 ----------------------------
 
@@ -20,7 +20,8 @@ This section focuses on the infrastructure and background of the embodied indivi
 
 For examples of Duckiebot driving see [a set of demo videos of Duckiebots driving in Duckietown](+opmanual_duckiebot#demos).
 
-The actual embodied tasks will be described in more detail in [LF](#lf), [LF](#lf_v), [NAVV](#nav_v). Note that the sequence tasks was chosen to gradually increase the difficulty of tasks by extending previous task solutions to more general situations.
+The actual embodied tasks will be described in more detail in [LF](#lf), [LF](#lf_v). <!--, [NAVV](#nav_v).-->
+Note that the sequence tasks was chosen to gradually increase the difficulty of tasks by extending previous task solutions to more general situations.
 
 ## Platform
 
@@ -153,7 +154,7 @@ A Duckiebot has a *single*  front-facing sensor, a camera as described [here](#r
 
 - Thus the Duckiebot receives images (both in simulation and physical reality) of resolution $640\times480$ reliably at a rate of $30$ fps.
 
-- For the [navigation](#nav_v) task a map of current Duckietown will additionally be communicated.
+<!-- - For the [navigation](#nav_v) task a map of current Duckietown will additionally be communicated. -->
 
 
 

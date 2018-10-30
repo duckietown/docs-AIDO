@@ -24,7 +24,7 @@ In total the following ways of participating are offered. There are different ta
 
 * [Lane following (LF)](#lf)
 * [Lane following with dynamic vehicles (LFV)](#lf_v)      
-* [Navigation with dynamic vehicles (NAVV)](#nav_v)
+<!-- * [Navigation with dynamic vehicles (NAVV)](#nav_v) -->
 * [Autonomous mobility-on-demand (AMOD)](#amod)
 
 ### Computational resources
@@ -45,4 +45,4 @@ In total the following ways of participating are offered. There are different ta
 
 The rules and descriptions in this document are subject to change at the discretion of the authors. In particular we aim to avoid cases where due to "loop holes" the best solution to a task ends up breaking with the spirit of the task, e.g. it should not be favorable to drive off road to get to a destination faster. Likewise if circumstances in the AIDO software and hardware require adjustments to the rules these will be taken. Having clarified this, the foremost goal is not to change the rules unless necessary.
 
-We invite discussion of the rules and evaluation by participants. At the bottom of each webpage we provide a link to ask questions and suggest improvements.
+We invite discussion of the rules and evaluation by participants. Each webpage provides a link to suggest improvements via Github. Additionally, there is [forum](https://www.duckietown.org/forum) to ask questions.
