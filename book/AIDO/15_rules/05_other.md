@@ -5,11 +5,11 @@
 
 ### Deployment technique
 
-We will use Docker containers to package, deploy, and run the applications on the physical Duckietown platform as well as on the cloud for simulation. Base Docker container images will be provided and distributed via [Docker HUB][dockerhub].
+We use Docker containers to package, deploy, and run the applications on the physical Duckietown platform as well as on the cloud for simulation. Base Docker container images are provided and distributed via [Docker HUB][dockerhub].
 
 [dockerhub]: https://hub.docker.com/r/duckietown/
 
-A *Challenges Server* server will be used to collect and queue all submitted programs. The *simulation evaluation agents* will execute each queued program as they become available. Submissions that pass the simulation environment will be queued for execution in the robotariums.
+A *Challenges Server* server is used to collect and queue all submitted programs. The *simulation evaluation agents* execute each queued program as they become available. Submissions that pass the simulation environment will be queued for execution in the robotariums.
 
 <!-- <div figure-id="fig:dockerflow">
 \input{dockerflow.tex}
@@ -38,9 +38,11 @@ Submitted code will be evaluated in simulation and if sufficient on physical rob
 
 ### Simulators
 
-Simulation code will be available as open source for everybody to use on computers that they control.
+[Simulation code](https://github.com/duckietown/gym-duckietown/) is available as open source for everybody to use on computers that they control.
 
-Amazon AWS will make available cloud resources to run the cloud simulations and the cloud learning. The access to these resources might be rationed if the utilization exceeds the projections.
+TODO: Pointer to this
+
+Amazon AWS has made cloud resources available to run the cloud simulations and the cloud learning. The access to these resources might be rationed if the utilization exceeds the projections.
 
 ### Robotarium test and validation
 

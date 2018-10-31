@@ -120,19 +120,20 @@ The Duckietown traffic laws say:
 </figcaption>
 </div>
 
-Collisions in Duckietown are generally not desired. We distinguish additionally what the controlled Duckiebot collides with. For collisions with people of Duckietown (duckies) a higher penalty $\nu_1$ is incurred as for collisions with other cars $\nu_2)$ (Duckiebots) or objects $\nu_3$.
+Collisions in Duckietown are generally not desired.
+<!-- We distinguish additionally what the controlled Duckiebot collides with. For collisions with people of Duckietown (duckies) a higher penalty $\nu_1$ is incurred as for collisions with other cars $\nu_2)$ (Duckiebots) or objects $\nu_3$. -->
 
-The vehicle is penalized by $\nu_j$ if within a time a time interval of length $t_k$ $t \in [t, t+t_k)$, the distance $\ell(t)$ between the vehicle and a nearby duckie, object or other vehicle is zero or near zero. $\ell(t)$ denotes the perpendicular distance between any object and the Duckiebot rectangular surface. The collision cost objective therefore is
+The vehicle is penalized by $\nu$ if within a time a time interval of length $t_k$ $t \in [t, t+t_k)$, the distance $\ell(t)$ between the vehicle and a nearby duckie, object or other vehicle is zero or near zero. $\ell(t)$ denotes the perpendicular distance between any object and the Duckiebot rectangular surface. The collision cost objective therefore is
 
   \begin{align*}
-     \objective_{T-AC}(t) = \sum_{t_k} \nu_j \mathbb{I}_{\exists t \in [ t-t_k, t ) \ell(t) < \epsilon}
+     \objective_{T-AC}(t) = \sum_{t_k} \nu \mathbb{I}_{\exists t \in [ t-t_k, t ) \ell(t) < \epsilon}
   \end{align*}
 
-where $\nu_j$ depends on the type of collision with
+where $\nu$ is the penalty constant of the collision.
 
-$$
-\text{Duckie collision } \nu_1 > \text{Duckiebot collision } \nu_2 > \text{Object collision } \nu_3
-$$
+<!-- $$ -->
+<!-- \text{Duckie collision } \nu_1 > \text{Duckiebot collision } \nu_2 > \text{Object collision } \nu_3 -->
+<!-- $$ -->
 
 Time intervals are chosen to allow for maneuvering after collisions without incurring further costs.
 

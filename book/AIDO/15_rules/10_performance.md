@@ -1,9 +1,8 @@
 # Performance objective {#performance status=ready}
 
 ## Lane following (LF / LFV) {#performance_lf}
-TODO: Executive decision on final form of this traveled distance
 
-As a performance indicator for both the "lane following task" and the "lane following task with other dynamic vehicles", we choose the speed $v(t)$ along the road (not perpendicular to it) over time of the Duckiebot. This measures the moved distance along the road per episode, where we fix the time length of an episode. This encourages both faster driving as well as algorithms with lower latency. An *episode* is used to mean running the code from a particular initial configuration.
+As a performance indicator for both the "lane following task" and the "lane following task with other dynamic vehicles", we choose the integrated speed $v(t)$ along the road (not perpendicular to it) over time of the Duckiebot. This measures the moved distance along the road per episode, where we fix the time length of an episode. This encourages both faster driving as well as algorithms with lower latency. An *episode* is used to mean running the code from a particular initial configuration.
 
 
 $$
@@ -11,6 +10,13 @@ $$
 $$
 
 The integral of speed is defined over the traveled distance of an episode up to time $t=T_{eps}$, where $T_{eps}$ is the length of an episode.
+
+The way we measure this is in units of "tiles traveled":
+
+$$
+\objective_{P-LF(V)}(t) = \text{# of tiles traveled}
+$$
+
 
 <!-- ## Navigation (NAVV) {#performance_navv}
 Similarly, for the "navigation with dynamic vehicles task" (NAVV), we choose the time it takes to go from point $A$ to point $B$ within a Duckietown map as performance indicator. A trip from $A$ to $B$ is *active* as soon as it is received as long as it has not been completed.

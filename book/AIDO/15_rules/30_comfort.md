@@ -1,14 +1,15 @@
 # Comfort objective {#comfort status=ready}
 
-## Lane following and navigation (LF, LFV, NAVV) {#comfort_embodied}
-TODO: To be implemented
+## Lane following (LF, LFV) {#comfort_embodied}
+TODO: To be clarified - "good angle measure"
 
-In the single robot setting, we encourage "comfortable" driving solutions. We therefore penalize large accelerations to achieve smoother driving. This is quantified through smoothed changes in Duckiebot position $p_{bot}(t)$. Smoothing is performed by convolving the Duckiebot position $p_{bot}(t)$ with a smoothing filter $k_{smooth}$.
+In the single robot setting, we encourage "comfortable" driving solutions. We therefore penalize large angular deviations from the forward lane direction to achieve smoother driving. This is quantified through changes in Duckiebot angular orientation $\theta_{bot}(t)$.
+<!-- Smoothing is performed by convolving the Duckiebot position $p_{bot}(t)$ with a smoothing filter $k_{smooth}$. -->
 
-As a comfort objective, we measure the smoothed absolute changes in position $\Delta p_{bot}(t)$ over time.
+As a comfort objective, we measure the average absolute changes in angular orientation $\Delta \theta_{bot}(t)$ over time.
 
 $$
-\objective_{C-LF/LFV/NAVV}(t) = \int_0^t k_{smooth} * \Delta p_{bot}(t) dt
+\objective_{C-LF/LFV}(t) = \frac{1}{t} \int_0^t \Delta \theta_{bot}(t) dt
 $$
 
 
