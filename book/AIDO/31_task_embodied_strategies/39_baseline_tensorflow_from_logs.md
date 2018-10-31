@@ -67,6 +67,10 @@ Go to the `learning` folder
     $ cd ../learning
 
 #### Docker learning
+Before being able to conduct the learning experiments in docker, you will need the Nvidia-runtime environment. To get this dependency type:
+
+    $ make prepare-docker
+
 If using Docker (to avoid a ROS installation), type:
 
     $ make learn-docker
@@ -127,11 +131,11 @@ The type of neural network, its architecture and hyperparameters are choices tha
 
 Which logs are downloaded is specified at the bottom of `extract_data/src/download_logs.py`.
 
-Such data are saved in `.bag` files which are available in [Duckietown Logs Database](http://logs.duckietown.org). 
+Such data are saved in `.bag` files which are available in [Duckietown Logs Database](http://logs.duckietown.org).
 The important note here is to feed your agent with *appropriate* data. Appropriate log data are considered those which:
 
 1. are relevant to the lane following task
-2. execute this task well the whole time 
+2. execute this task well the whole time
 3. and present smooth driving of the duckiebots around the city.
 
 One hint, is to search for data which were collected using the lane controller. In order to check if the lane controller was enabled, use rqt_bag to see if there is inside the node `/duckiebot_name/lane_controller/`. The *LF_IL_tensorflow* baseline, provides 5 bag files with approximately 10 minutes of appropriate lane following data.
@@ -143,7 +147,7 @@ When working with real log data, this can be splitted into the following two sub
 1. extract desired topics from bag files
 2. synchronize pairs of data from different topics
 
-The first part should be clear, so let us focus to the second one. ROS messages from different topics are neither always of the same number nor properly arranged in the bag files. In this implementation the topics of interest are: 
+The first part should be clear, so let us focus to the second one. ROS messages from different topics are neither always of the same number nor properly arranged in the bag files. In this implementation the topics of interest are:
 
 - /camera\_node/camera/compressed
 - /lane\_controller\_node/car\_cmd
@@ -156,12 +160,12 @@ and the aforementioned problem is visualized in Figure \ref{fig:synch}. Although
 </div>
 
 
-It is stated that in this case the synchronization is based on the fact that when using the lane controller images cause the car commands and not the other way around, while between two consecutive images there should be only one car command. For your convenience, in the provided baseline there is a script that takes care of these two steps for you and eventually saves the images with their respective car commands to HDF5 files. 
+It is stated that in this case the synchronization is based on the fact that when using the lane controller images cause the car commands and not the other way around, while between two consecutive images there should be only one car command. For your convenience, in the provided baseline there is a script that takes care of these two steps for you and eventually saves the images with their respective car commands to HDF5 files.
 
 
 #### Image preprocessing
 
-Additionally, the way images are preprocessed is specified in `extract_data/src/extract_data_functions.py` 
+Additionally, the way images are preprocessed is specified in `extract_data/src/extract_data_functions.py`
 and `learning/src/cnn_predictions.py`.
 
 ### A submission with the Movidius Neural Compute Stick
@@ -177,7 +181,5 @@ At this point your model is trained and you are asked to compile it to a Movidiu
 The script `/learning/src/freeze_graph.py` is part of the baseline and can be your guide for this procedure. The only tricky part here is to define correctly the output node which should not be confused with the output layer. In general, the output node should be easily found by the following name `scope_name(if exists)/output_layer_name/BiasAdd`.  
 
 Once you have the frozen graph, you are only one step away from the Movidius graph. The last step is to [install NCSDK v2.05](https://movidius.github.io/ncsdk/index.html) in order to use its SDK tools to compile the TensorFlow frozen graph to a Movidius graph. After installing NCSDK v2.05, you just have to execute the command:
-    
-    $ mvNCCompile -s 12 path_to_frozen_graph.pb -in input_node_of_TensorFlow_model -on output_node_of_TensorFlow_model -o path_to_save_the_movidius_graph.graph 
 
-
+    $ mvNCCompile -s 12 path_to_frozen_graph.pb -in input_node_of_TensorFlow_model -on output_node_of_TensorFlow_model -o path_to_save_the_movidius_graph.graph

@@ -1,4 +1,4 @@
-# Task: Navigation + Dynamic vehicles (NAVV) {#nav_v status=ready}
+<!-- # Task: Navigation + Dynamic vehicles (NAVV) {#nav_v status=ready}
 
 The third task of the *AI Driving Olympics* is "Navigation with dynamic vehicles".
 This task is an extension of task LF and task LFV and now focuses on navigating from location "A" to location "B" within Duckietown. The task also includes a map of Duckietown as input.
@@ -40,4 +40,4 @@ The following traffic laws apply in the navigation task.
 
 The following objective quantifies how "comfortable" a Duckiebot is driving.
 
-[Comfortable driving](#comfort_embodied)
+[Comfortable driving](#comfort_embodied) -->
