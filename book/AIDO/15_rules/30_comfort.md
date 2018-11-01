@@ -1,17 +1,27 @@
 # Comfort objective {#comfort status=ready}
 
 ## Lane following (LF, LFV) {#comfort_embodied}
-TODO: To be clarified - "good angle measure"
 
-In the single robot setting, we encourage "comfortable" driving solutions. We therefore penalize large angular deviations from the forward lane direction to achieve smoother driving. This is quantified through changes in Duckiebot angular orientation $\theta_{bot}(t)$.
+In the single robot setting, we encourage "comfortable" driving solutions. We therefore penalize large angular deviations from the forward lane direction to achieve smoother driving. This is quantified through changes in Duckiebot angular orientation $\theta_{bot}(t)$ with respect to the lane driving direction.
 <!-- Smoothing is performed by convolving the Duckiebot position $p_{bot}(t)$ with a smoothing filter $k_{smooth}$. -->
 
-As a comfort objective, we measure the average absolute changes in angular orientation $\Delta \theta_{bot}(t)$ over time.
+### "Good angle metric"
+
+As a comfort objective, we measure the average absolute squared changes in angular orientation of $\theta_{bot}(t)$ over time ("good_angle metric").
 
 $$
-\objective_{C-LF/LFV}(t) = \frac{1}{t} \int_0^t \Delta \theta_{bot}(t) dt
+\objective_{C-LF/LFV}(t) = \frac{1}{t} \int_0^t |\theta_{bot}(t)|^2 dt
 $$
 
+### "Valid direction metric"
+
+As an additional pointer we calculate the fraction of times the Duckiebot has a "good" angular heading or valid direction (VD, "valid_direction metric").
+
+$$
+\objective_{VD-LF/LFV}(t) = \frac{1}{t} \int_0^t \mathbb{I}_{|\theta_{bot}(t)| < \theta_{good}} dt,
+$$
+
+where $\theta_{good}$ corresponds to an angle of 20 degrees (converted to radians).
 
 <!-- ## Fleet management (FM) {#comfort_fm}
 
