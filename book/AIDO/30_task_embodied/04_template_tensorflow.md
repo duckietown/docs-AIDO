@@ -22,7 +22,7 @@ Result: You make a submission and see your entry [here](https://challenges.ducki
 
 ### Change in the `submission` dir:
 
-    $ cd challenge-aido1_LF1-template-tensorflow/submission
+    $ cd challenge-aido1_LF1-template-tensorflow
     
 ### And run the submission:
 
