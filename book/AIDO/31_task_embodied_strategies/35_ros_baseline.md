@@ -10,6 +10,10 @@ Result: You win the AI-DO!
 
 </div>
 
+## Quickstart
+
+### Clone this (repo)
+
 ## General Workflow {#ros-workflow}
 
 First make sure you have followed the instructions in [](#ros-template).
