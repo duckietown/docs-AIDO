@@ -154,6 +154,12 @@ rosagent.py sets up a class that can be used to interface with the rest of the R
 
 It sets up a Publisher and Subscriber. The publisher sends out the camera imagery received from the Duckietown OpenAI gym server, and the subscriber receives wheel commands. 
 
+The three main functions are:
+- `_publish_img(observation)`, which takes the observation from the environment, and publishes it to the topic that you specify in the constructor of the `ROSAgent` (You will want to replace the placeholder with the topic name that your node is expecting the image to come through on)
+- `_action_cb(msg)`, which listens to the action topic you specify and pulls the `Twist2DStamped` message 
+- `_ik_action_cb(msg)`, listens on the inverse kinematic action topic, and assigns it to `self.action`. Because we are using wheel velocities as the action, but the output of many Duckietown nodes is a `Twist2DStamped` message, we need a way to convert this back into the actions we are interested in.
+
+
 At present, the function `_TEMPLATE_action_publisher` gets called which chooses a random action:
 
 ```python
