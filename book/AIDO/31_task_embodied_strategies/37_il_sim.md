@@ -1,47 +1,90 @@
 # Imitation Learning from Simulation Baseline (tensorlow) {#embodied_il_sim status=draft}
 
-assigned: Manfred
-
-## Supervised Learning (Imitation Learning)
-
-Instead of learning purely through the reward signal you can also opt to teach your Duckiebot by being a good driver yourself. In reinforcement learning you are at some point learning a policy that takes an image as an input and outputs a an action. If you have data for this (combinations of images and correct driving signals/actions) then you can also train this policy in a supervised manner. This is called "imitation learning".
-
-In order to pull this off, you need a good amount of data. You can get this data by either:
-
-- (A) recording your own dataset, i.e. driving the duckiebot around (behavioral cloning) or following a more complex data gather approach like [DAgger](https://www.cs.cmu.edu/~sross1/publications/Ross-AIStats11-NoRegret.pdf)
-- (B) selecting and cleaning existing recordings from the Duckietown class that students provided
-
-## A - Recording your own dataset
-
-You can do this entirely in simulation. You can follow the instructions on the quickstart page up until and including the "Visual Debugging" section but instead of running `python3 agent.py` you run `python3 agent-keyboard-control.py` and by pressing <kbd>s</kbd> you can store the current observations and actions to a HDF5 file.
- 
-<!-- (more about this on the [Supervised/Imitation Learning page](#aido1-imitation-learning)).-->
-
-You can run the script multiple times and every time it will append to the `recording/data.hdf5` file. You can analyze this file with the script `recording/analyze_data.py` - and by looking at the code of this script you can check how to read the HDF5 file back to Python (TODO: this paragraph's code isn't implemented yet).
-
-## B - Selecting and cleaning existing data
-
-Visit the [Duckietown logs server](http://logs.duckietown.org/) and look at either the GIFs or the MP4 videos of the recordings. You want to find recordings that are quite long, but not too long (as you will have to watch it in its entirety), that take place within the road boundaries of Duckietown and which do not contain any crashes or collisions.
-
-This last bit is crucial and you want to make sure to watch the entire recording to check for problems, as they are likely to contain collisions from human drivers who were not paying attention. This may happen at any time during a recording.
-
-Therefore the suggested steps are:
-
-1) Create a new empty HDF5 dataset.
-2) Select some random Duckiebot.
-3) Check out the GIF. If it looks like the Duckie is offroad, go back to (1), otherwise continue.
-4) Watch the whole MP4 video. Note the sections that you would like to keep (i.e. that contain "good" driving). If the video has too few or no sections like this, go back to (1) otherwise continue.
-5) Download and open the ROSbag corresponding to the recording.
-6) Extract the time sections highlighted in step 4, and scale the images to have the same format as the simulator output: `120x160x3` then append the images and actions to the HDF5 file.
-7) Go back to step (1) until you have a sufficiently large dataset.
-
-Once you have this dataset, if you are following the "behavior cloning" approach, you can train a neural network to predict the expert's action from the input (image). This can be done with a simple convolutional neural network, where the output layer uses the `tanh` activation function.
-
-<!--Check out more over at our [Supervised/Imitation Learning page](#aido1-imitation-learning).-->
-
-## How to train your model
+This section describes the procedure for generating logs from the [gym-duckietown](https://github.com/duckietown/gym-duckietown), and then using them to train a model with imitation learning using [tensorflow](https://www.tensorflow.org/).
 
 
-## How to make your model into an AI-DO submission
+<div class='requirements' markdown='1'>
 
----
+Requires: That you have made a submission with the [Tensorflow template](#tensorflow-template) and you understand how it works.
+
+Requires: You already know something about Tensorflow.
+
+Result: You could win the AI-DO!
+
+</div>
+
+## Quickstart 
+
+### Clone this [repo](https://github.com/duckietown/challenge-aido1_LF1-baseline-IL-sim-tensorflow)
+
+    $ git clone git@github.com:duckietown/challenge-aido1_LF1-baseline-IL-sim-tensorflow.git
+    
+### Change into the directory you cloned
+
+    $ cd challenge-aido1_LF1-baseline-IL-sim-tensorflow
+    
+### Evaluate your submission
+
+Either locally with 
+
+    $ dts challenges evaluate
+    
+Or make an official submission
+
+    $ dts challengs submit
+    
+
+## How to Improve your Submission
+
+
+###  Logging
+
+Most of of the logging procedure is implemented on `log.py` and `_loggers.py`.
+There are two crucial aspects that can impact your final results:
+
+1. The quality of the expert.
+2. The number and variety of samples.
+
+The performance of pure pursuit controller implemented on `teacher.py` is not precisely great.
+Even though it uses the internal state of the environment to compute the appropriate action, there are several parameters that need to be fine tuned.
+We have prepare some basic debugging capabilities (the `DEBUG=False` flag, line HERE) to help you debug this implementation.
+In any case, feel free to provide an expert implementation of your own creation.
+
+Another important aspect you need to take care of is the number of samples.
+The number of samples logged are controlled by the `EPISODES` and `STEPS` parameters.
+Obviously, the bigger these numbers are, the more samples you get.
+
+As we are using Deep Learning here, the amount of data is crucial, but so it is the variety of the samples we see.
+Remember, we are estimating a policy, so the better we capture the underlying distribution of the data, the more robust our policy is.
+
+
+##  Training
+
+The output of the logging procedure is a file that we called `train.log`, but you can rename it to your convenience.
+We have prepared a very simple `Reader` class in `_loggers.py` that is capable of reading the logs we store in the previous step.
+
+The training procedure implemented in `train.py` is quite simple.
+The baseline CNN is a one Residual module (Resnet1) network trained to regress the velocity and the steering angle of our simulated duckiebot.
+All the Tensorflow boilerplate code is encapsulated in `TensorflowModel` class implemented on `model.py`.
+You may find this abstraction quite useful as it is already handling model initialization and persistence ofr you.
+
+Then, the training procedure is quite clear.
+We trained the model for a number of `EPOCHS`, using `BATCH_SIZE` samples at each step and the model is persisted every 10 episodes of training.
+
+
+##  Local Evaluation (Optional)
+
+A simple evaluation script `eval.py` is provided with this implementation.
+It loads the latest model from the `trained_models` directory and runs it on the simulator.
+Although it is not an official metric for the challenge, you can use the cumulative reward emitted by the `gym` to evaluate the performance of your latest model.
+
+With the current implementation and hyper-parameters selection, we get something like:
+
+```
+total reward: -5646.22255589, mean reward: -565.0
+```
+
+which is not by any standard a good performance.
+
+
+
