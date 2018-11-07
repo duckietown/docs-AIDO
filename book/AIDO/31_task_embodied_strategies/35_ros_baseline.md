@@ -75,6 +75,7 @@ The interface is mainly the same, except now, the `rosagent.py` file itself cont
 
 
 The instructions on the repository walk you through the steps to get started. To run this, you will need to have `docker-compose` installed on your local machine, as unlike the AIDO submissions, this will emulate both the server and agent all on your local machine.
+<!--
 
 ## Building your own workspace
 
@@ -90,3 +91,4 @@ To **add** your node to the pipeline, we give some simple example code. The file
 `lf_slim.launch`: A launch file that launches the whole lane following stack, but at the bottom, commented out, has the code to launch our simple test node. It launches nodes just the way you normally might in ROS, and because our workspaces are overlayed, will be able to find code or nodes in both your new workspace, as well as the old one.
 
 To **(B) Cut the pipeline**, and insert your node in, you'll want to make use of `<remap>` in the launch files. Simply take the topics you need from the last node from the existing pipeline, and <remap> them to what you're node takes in (usually, the node name will come first, to help ambiguities between nodes). Then, add your node(s), chaining them together with the remapping, and finally, remap your last nodes output to the topic you're interested in using - whether it be another node in the existing pipeline, or just the `WheelCmd` message that the `rosagent.py` is looking for to step in the environment.
+-->
