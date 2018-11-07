@@ -75,3 +75,18 @@ The interface is mainly the same, except now, the `rosagent.py` file itself cont
 
 
 The instructions on the repository walk you through the steps to get started. To run this, you will need to have `docker-compose` installed on your local machine, as unlike the AIDO submissions, this will emulate both the server and agent all on your local machine.
+
+## Building your own workspace
+
+Most likely, you'll want to work off of some of the standalone Duckietown code, but change a node or two. We will look at two examples:
+**(A) Adding to the pipeline** and **(B) "Cutting" the pipeline** and inserting your node inside.
+
+To **add** your node to the pipeline, we give some simple example code. The files we're concerned with are:
+
+`Dockerfile`: You will notice a good portion of code that's commented out. To add your nodes to the `catkin_ws`, follow the commented out instructions, paying close attention to which lines you should and should not be removing. We use something called [overlayed ROS workspaces](http://wiki.ros.org/catkin/Tutorials/workspace_overlaying), to make sure that your code (which most likely depends on the Duckietown ROS stack in some way) can find all of its dependencies.
+
+`dt_dependent_node`: A simple, toy example of how to build a node that has a dependency with the current stack. You can use this as a model to build and add your own ROS nodes, making sure to edit the CMakeLists.txt (inside of your node, for dependencies + building things like msgs & services) and the Dockerfile to ensure your files and folders get copied into the catkin_ws/src directory before you build with catkin_make.
+
+`lf_slim.launch`: A launch file that launches the whole lane following stack, but at the bottom, commented out, has the code to launch our simple test node. It launches nodes just the way you normally might in ROS, and because our workspaces are overlayed, will be able to find code or nodes in both your new workspace, as well as the old one.
+
+To **(B) Cut the pipeline**, and insert your node in, you'll want to make use of `<remap>` in the launch files. Simply take the topics you need from the last node from the existing pipeline, and <remap> them to what you're node takes in (usually, the node name will come first, to help ambiguities between nodes). Then, add your node(s), chaining them together with the remapping, and finally, remap your last nodes output to the topic you're interested in using - whether it be another node in the existing pipeline, or just the `WheelCmd` message that the `rosagent.py` is looking for to step in the environment.
