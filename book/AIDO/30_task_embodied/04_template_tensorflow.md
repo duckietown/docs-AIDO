@@ -32,28 +32,37 @@ Result: You make a submission and see your entry [here](https://challenges.ducki
 
 ## Anatomy of the submission
 
-There are two folders:
+The submission consists of all of the basic files that required for a [basic submission](#challenge-aido1_lf1-template-random).
 
-    learning/
-    submission/
-    
-The `learning` folder describes how to run the learning;
-the `submission` part 
+### solution.py
+
+The `solution.py` differs from the basic version in the following important was. First, the model is instantiated with:
+
+```python
+    from model import TfInference
+    # define observation and output shapes
+    model = TfInference(observation_shape=(1,) + expect_shape,  # this is the shape of the image we get.
+                        action_shape=(1, 2),  # we need to output v, omega.
+                        graph_location='tf_models/')  # this is the folder where our models are st
+```
+
+Then in the infinite loop we have to run inference on the model:
+
+```python
+    # we passe the observation to our model, and we get an action in return
+    action = model.predict(observation)
+```
 
 
-## Submission
+### Model files
 
-In the `submission/` directory you will find:
+The other additional files are the following:
 
     tf_models/
     model.py
     
-The directory `tf_models/` contains the Tensorflow learned models,
-produced by the learning step described below.
+The directory `tf_models/` contains the Tensorflow learned models.
 
 The `model.py` code is the code that runs the Tensorflow model
 
-
-## Learning {#tf-learning status=draft}
-
-TODO: for Manfred to write
+For some options for how to train these models you can check out [](#embodied_il_sim) or [](#embodied_il_logs).
