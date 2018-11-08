@@ -114,7 +114,3 @@ Install Hyperdash (an open source experiment tracker and plotting tool), and cre
     sudo pip install hyperdash && hyperdash signup
 
 Install the HyperDash app for Android/iOS. You can follow the progress of he various experiments there and you'll get a push notification when your experiment finishes or breaks for some reason.
-
-## Warning
-
-In the scripts "2-/3-" currently predict the action in the format `[speed,steering angle]` and not the format that is required for this challenge, `[speed left wheel, speed right wheel]`. This can be fixed by using the scripts `4-/5` or by using `SteeringToWheelVelWrapper`, located inside of `wrappers.py`.
