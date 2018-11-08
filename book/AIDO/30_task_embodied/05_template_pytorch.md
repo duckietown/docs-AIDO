@@ -46,3 +46,7 @@ Basically, you need to copy your PyTorch network here (and probably replace the 
 Also include any gym wrappers if you included any during training (however, only observation/action wrappers, not reward wrappers).
 
 Finally, change the code in `solution.py` line 20-45 to represent the steps to load your model and load the saved network weights and the wrappers.
+
+## Running Locally
+
+If you'd like to run on your local machine, edit `local_experiment.py` to match the environment setup and model loading with the one you have in `solution.py`, and run.
