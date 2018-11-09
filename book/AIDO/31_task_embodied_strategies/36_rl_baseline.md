@@ -40,41 +40,14 @@ and install gym-duckietown (Use `sudo` if system-wide)
 
     cd scripts
         
-5) Now you have two options. You can train on environment **(a)** that is **local**, randomized - therefore easier to transfer to the real robot -, more customizable, easier to debug, and faster but it might not run on your machine and there is option **(b)** the **docker-based** environment that is the opposite but runs everywhere.
-
----
-
-(5a) Run the training script
+(5) Run the training script
 
     $ python3 2-train-ddpg-cnn.py --seed 123
         
-(6a) When it finishes, check it out (but first edit this following file and set the seed to the one you used above, like `123` in line 10)
+(6) When it finishes, check it out (but first edit this following file and set the seed to the one you used above, like `123` in line 10)
 
     $ python3 3-test-ddpg-cnn.py
         
----
-        
-(5b) Start the gym-duckietown-server and keep it running in the background for both training and testing 
-
-    $ docker run -tid -p 8902:8902 -p 5558:5558 \
-    -e DISPLAY=$DISPLAY -e DUCKIETOWN_CHALLENGE=LF \
-    --name gym-duckietown-server --rm \
-    -v /tmp/.X11-unix:/tmp/.X11-unix \
-    duckietown/gym-duckietown-server
-
-(6b) Run the training script
-
-    $ python3 4-train-ddpg-cnn-remote.py --seed 123
-        
-(7b) When it finishes, check it out (but first edit this following file and set the seed to the one you used above, like `123` in line 10)
-
-    $ python3 5-test-ddpg-cnn-remote.py
-        
-(8b) When you're done, stop the container with
-         
-    $ docker stop gym-duckietown-server
-
-
 ## How to submit the trained policy
 
 Once you're done training, you need to copy your model and the saved weights of the policy network.
