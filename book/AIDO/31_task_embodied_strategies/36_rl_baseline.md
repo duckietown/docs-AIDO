@@ -36,17 +36,13 @@ and install gym-duckietown (Use `sudo` if system-wide)
 
     $ pip3 install -e git://github.com/duckietown/gym-duckietown.git#egg=gym-duckietown
         
-4) Now change into the scripts directory
+(4) Run the training script
 
-    cd scripts
+    $ python3 -m scripts.2-train-ddpg-cnn.py --seed 123
         
-(5) Run the training script
+(5) When it finishes, check it out (but first edit this following file and set the seed to the one you used above, like `123` in line 10)
 
-    $ python3 2-train-ddpg-cnn.py --seed 123
-        
-(6) When it finishes, check it out (but first edit this following file and set the seed to the one you used above, like `123` in line 10)
-
-    $ python3 3-test-ddpg-cnn.py
+    $ python3 -m scripts.3-test-ddpg-cnn.py
         
 ## How to submit the trained policy
 
