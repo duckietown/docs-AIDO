@@ -92,8 +92,9 @@ To run this, you will need to have `docker-compose` installed on your local mach
 
 To launch the lane following demo, run the following command:
     
-    $ docker network create gym-duckietown-net && \
-    $ docker-compose -f docker-compose-lf.yml pull && \
+    $ docker network create gym-duckietown-net
+    $ docker-compose -f docker-compose-lf.yml pull
+    $ docker-compose -f docker-compose-lf.yml build
     $ docker-compose -f docker-compose-lf.yml up
     
 The first two commands don't need to be run every time, so after pulling, you may just want to run the `up` command.
@@ -161,6 +162,7 @@ Then follow the same workflow as above:
 
     $ docker network create gym-duckietown-net 
     $ docker-compose -f docker-compose-lf.yml pull
+    $ docker-compose -f docker-compose-lf.yml build
     $ docker-compose -f docker-compose-lf.yml up
     
 You can go ahead and make changes in the `Software` directory and these changes will propagate into your container. This is done by mounting the `Software` directory as a volume which effectively overwrites the existing software repo in the container. 
