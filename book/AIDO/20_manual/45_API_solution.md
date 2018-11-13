@@ -66,7 +66,7 @@ class MySolution(ChallengeSolution):
         # run your script here
         myscript()
     
-        # make this call to ma    
+        # make this call to mark the submission as complete    
         cis.set_solution_output_dict({})
 
 
