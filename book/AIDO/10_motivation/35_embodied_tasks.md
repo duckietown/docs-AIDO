@@ -27,7 +27,7 @@ Note that the sequence tasks was chosen to gradually increase the difficulty of 
 
 There are three main parts in our system with which the participants will interact:
 
-1. The **physical Duckietown platform** ([](#fig:duckietown_nice)): miniature vision-based vehicles and cities in which the vehicles drive. This is an inexpensive setup (\$100/robot). The robot hardware and environment are rigorously specified, which makes the development extremely repeatable (For an example of this see ["Duckietown specifications"](http://docs.duckietown.org/opmanual_duckietown/out/duckietown_specs.html).
+1. The **physical Duckietown platform** ([](#fig:duckietown_nice)): miniature vision-based vehicles and cities in which the vehicles drive. This is an inexpensive setup. The robot hardware and environment are rigorously specified, which makes the development extremely repeatable (For an example of this see ["Duckietown specifications"](http://docs.duckietown.org/opmanual_duckietown/out/duckietown_specs.html).
 
 2. A **cloud simulation** and training environment, which allows to test in simulation before trying on the real robots.
 
