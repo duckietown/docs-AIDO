@@ -95,7 +95,7 @@ $\alpha_3$ and $\alpha_4$ are chosen such that the term $d_E$ dominantes the met
 
 
 
-### Fleet Size Championship}
+### Fleet Size Championship
 
 
 In the **Fleet Size Championship**, the goal is to reduce the fleet size as much as possible while keeping the total waiting time $W$ below a fixed level $\bar{W}>0$. The condition $W\leq\bar{W}$ is equivalent to guaranteeing average waiting times smaller than $\frac{\bar{W}}{R}$. Therefore, the performance score to maximize is
