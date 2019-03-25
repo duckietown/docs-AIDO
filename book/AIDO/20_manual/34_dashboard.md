@@ -1,6 +1,5 @@
 # Using the Duckietown Dashboard {#dashboard status=ready}
 
-Maintainer: Andrea Daniele
 
 The Duckietown Dashboard is a visual alternative to the command line for monitoring your AIDO submissions.
 
@@ -54,10 +53,8 @@ You can decide to list only the submissions that are relative to a specific
 subset of challenges by turning OFF all the challenges you wish to hide
 in the *Select the challenges* section.
 
-From the *Results bar*, shown right above the list
-of submissions, you can filter the results by status, and/or label.
-This will show you only the
-results that match your search criteria.
+From the *Results bar*, shown right above the list of submissions, you can filter the results by status, and/or label.
+This will show you only the results that match your search criteria.
 
 It is possible to retire a submission by clicking on the orange button
 (trash icon) corresponding to the submission that you wish to retire from

@@ -50,7 +50,7 @@ a finite-state machine mechanism).
 
 Some submissions or evaluation containers require special features.
 
-You can see the value of these features in [the description page of an evaluator](https://challenges.duckietown.org/v3/humans/evaluators/1).
+You can see the value of these features in [the description page of an evaluator](https://challenges.duckietown.org/v4/humans/evaluators/1).
 
 These include:
 

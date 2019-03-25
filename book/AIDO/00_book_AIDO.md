@@ -1,8 +1,7 @@
 # The AI Driving Olympics {#book:AIDO status=ready}
+ 
 
-Maintainer: Andrea Censi, Liam Paull
-
-
+TODO: change logo to new one
 
 <p style='text-align: center'>
   <img src="AIDO-768x512.png" width="60%"/>
@@ -40,32 +39,6 @@ tasks.
 
 [](#part:task-amod) describes the AMOD tasks.
 
-[](#part:developers) containes information for challenges organizers.
+[](#part:developers) contains information for challenges organizers.
 
 
-
-<!--
-
-### LF: Lane following 
-
-<img style="width: 24em" src="https://challenges.duckietown.org/v3/humans/challenges/aido1_lf1-v3/leaderboard/image.png"/>
-
-For more details, see [the online leaderboard](https://challenges.duckietown.org/v3/humans/challenges/aido1_lf1-v3/leaderboard).
-
-
-### LF: Lane following + vehicles
-
-Not online yet. 
-
-### NAV: Navigation
-
-Not online yet.
-
-
-### AMOD: Simulated Autonomous Mobility on Demand
-
-
-<img style="width: 24em" src="https://challenges.duckietown.org/v3/humans/challenges/aido1_amod1-v3/leaderboard/image.png"/>
-
-For more details, see [the online leaderboard](https://challenges.duckietown.org/v3/humans/challenges/aido1_amod1-v3/leaderboard).
--->

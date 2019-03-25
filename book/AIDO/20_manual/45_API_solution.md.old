@@ -29,24 +29,26 @@ The API is implemented in the [`duckietown-challenges` repository][duckietown-ch
 [duckietown-challenges]: https://github.com/duckietown/duckietown-challenges
 
 The suggested way to install it is to specify it as a `requirements.txt` as follows,
-with a pinned version/branch `v3`.
+with a pinned version/branch `v4`.
 
 ```
--e git://github.com/duckietown/duckietown-shell.git@v3#egg=duckietown-shell
--e git://github.com/duckietown/duckietown-challenges.git@v3#egg=duckietown-challenges
+-e git://github.com/duckietown/duckietown-shell.git@v4#egg=duckietown-shell
+-e git://github.com/duckietown/duckietown-challenges.git@v4#egg=duckietown-challenges
 ```
 
-The tag `v3` specifies the current protocol of client and servers and makes sure that
+The tag `v4` specifies the current protocol of client and servers and makes sure that
 we can have forward-compatibility.
+
+Note: For AI-DO 1, the magic tag was `v4`.
 
 In the Dockerfile you can then do the following:
 
 ```Dockerfile
-COPY requirements.txt /project/requirements.txt
-RUN pip install -r /project/requirements.txt
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 ```
 
-[See here](https://github.com/duckietown/challenge-aido1_luck/tree/v3/evaluation) 
+[See here](https://github.com/duckietown/challenge-aido1_luck/tree/v4/evaluation) 
 for an example of this mechanism.
 
 

@@ -1,12 +1,10 @@
 # Lane Following Quickstart {#quickstart-lanefollowing status=ready}
 
-Maintainer: Liam and Andrea C.
-
 <div class='requirements' markdown='1'>
 
-Requires: You have done the [](#quickstart-preliminaries)
+Requires: You have done the [](#quickstart-preliminaries).
 
-Result: You have made a submission to the Lane Following AI-DO challenge and you know how to try to make it better
+Result: You have made a submission to the Lane Following AI-DO challenge, and you know how to try to make it better.
 
 </div>
 
@@ -21,6 +19,8 @@ Congrats! you have now made a submission, but it probably wasn't very good (unle
 
 2) Try to make your score go up. Now is when you might want to take a look at [](#part:aido-rules) which describe in detail how your score is generated for the specific challenges. For the lane following challenge,  we are currently offering 4 suggested methods to do this (our baseline templates for these options are at various stages of readiness but will be getting updated very soon):
 
+TODO: fix link missing below
+
 * Use [good old fashioned classical robotics and ROS](#embodied_classic)
 * Use reinforement learning (coming soon)
 * Use [imitation learning from data generated in the simulator](#embodied_il_sim)
@@ -28,4 +28,4 @@ Congrats! you have now made a submission, but it probably wasn't very good (unle
   
 Of course you may also choose to use these methods in combination. 
 
-If you choose on the "Learning-based" methods (i.e. 2-4) then you may want to look at the [](#ml-primer)
+If you choose  the "Learning-based" methods (i.e. 2-4) then you may want to look at the [](#ml-primer).

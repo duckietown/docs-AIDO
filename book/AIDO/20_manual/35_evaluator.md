@@ -9,19 +9,19 @@ An evaluator is a machine that is in charge of evaluating the protocols.
 
 You can see the [list of connected evaluators here][list].
 
-[list]: https://challenges.duckietown.org/v3/humans/evaluators
+[list]: https://challenges.duckietown.org/v4/humans/evaluators
 
 ## Running your own evaluator {#evaluator-run}
 
 We have several evaluators online that process jobs.
 
-If you want to avoid being in the queue, you can run your own evaluator.
+If you want to avoid waiting in the queue for to long, you can run your own evaluator.
 
 The command line is:
 
     $ dts challenges evaluator
     
-This evaluator will connect to the server and execute preferentially your submission.
+This evaluator will connect to the server and execute preferentially your submissions.
 
 
 
@@ -54,11 +54,11 @@ Note that to force re-evaluation of a submission, you must first [reset the subm
 Also note that you cannot re-evaluate a submission that has been "retired".
 
 
-### Features specification {#evaluator-advanced-features}
+### (Advanced) Features specification {#evaluator-advanced-features}
 
 The option `--features` is useful to force the identification of specific features.
 
-For example, you can pretend that you have an Nvidia GPU using:
+For example, you can pretend that you have an NVidia GPU using:
 
     $ dts challenges evaluator --features 'gpu: 1'
     

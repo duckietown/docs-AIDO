@@ -10,7 +10,7 @@ Requires: That you meet the [software requirement](#cm-sw).
 
 Requires: That you have a basic understanding of [ROS](http://www.ros.org/).
 
-Result: You make a submission and see your entry on the [here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3).
+Result: You make a submission and see your entry on the [here](https://challenges.duckietown.org/v4/humans/challenges/aido1_LF1_r3-v3).
 
 </div>
 
@@ -40,7 +40,7 @@ Or, run local evaluation with:
 
 ### Verify the submission:
 
-You should be able to see your submission [here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3).
+You should be able to see your submission [here](https://challenges.duckietown.org/v4/humans/challenges/aido1_LF1_r3-v3).
 
 For more tips on how to make use of the existing Duckietown codebase try [](#ros-baseline). The important part of the code is the following block:
 

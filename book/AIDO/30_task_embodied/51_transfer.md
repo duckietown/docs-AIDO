@@ -17,13 +17,13 @@ Note: always make sure that you `duckietown-shell` is up to date
 
 ## Running an Existing Submission
 
-In this case, you have an existing submission that you have already made (i.e. you can view the submission by navigating to https://challenges.duckietown.org/v3/humans/submissions/`![submission_number]`.
+In this case, you have an existing submission that you have already made (i.e. you can view the submission by navigating to https://challenges.duckietown.org/v4/humans/submissions/`![submission_number]`.
 
 There are basically two simple steps: 1) Find the name of your docker image, 2) run it.
 
 ### Find the Image Associated with your Submission
 
- - Navigate to https://challenges.duckietown.org/v3/humans/submissions/`![submission_number]` where `![submision_number]` is the number of the submission that you would like to test on your robot. 
+ - Navigate to https://challenges.duckietown.org/v4/humans/submissions/`![submission_number]` where `![submision_number]` is the number of the submission that you would like to test on your robot. 
 
  - Scroll down and click on the triangle next to `29 artifacts` in the row for `step1-simulation`.
 

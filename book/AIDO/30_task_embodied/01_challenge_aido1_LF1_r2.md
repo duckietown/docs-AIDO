@@ -9,7 +9,7 @@ Here is how the simulator looks:
   <source src="http://duckietown-ai-driving-olympics-1.s3.amazonaws.com/v3/frankfurt/by-value/sha256/db648be4473470451c3ff8131f5c9a96849c812ab30db88ea48e61e089c60405" type="video/mp4"/>
 </video>
  
-* Check out the [Leaderboard](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3/leaderboard) to see who's currently winning!
+* Check out the [Leaderboard](https://challenges.duckietown.org/v4/humans/challenges/aido1_LF1_r3-v3/leaderboard) to see who's currently winning!
  
 
 * This challenge uses the Duckietown challenge infrastructure. The precise definition of the challenge is in the [challenge definition repository](https://github.com/duckietown/challenge-aido1_lf1)
@@ -25,7 +25,7 @@ Interaction protocol: [`aido1_remote3-v3`](#aido1_remote3-v3)
 
 ## Simulator parameters
 
-The Duckietown Gym Parameters are [available here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3#step1-simulation).
+The Duckietown Gym Parameters are [available here](https://challenges.duckietown.org/v4/humans/challenges/aido1_LF1_r3-v3#step1-simulation).
 
 In particular:
 
@@ -37,7 +37,7 @@ DTG_MAP: loop_obstacles
 
 ## Metrics 
 
-Metrics are [described here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3#scoring).
+Metrics are [described here](https://challenges.duckietown.org/v4/humans/challenges/aido1_LF1_r3-v3#scoring).
 
 
 
