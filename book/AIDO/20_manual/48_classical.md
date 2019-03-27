@@ -1,14 +1,12 @@
 # The Classical Duckietown Software Stack {#embodied_classic status=ready}
 
-Maintainer: Liam and Bhairav
-
 ## Getting the Docker images
 
-Finding and pulling the right Docker images is documented [here](http://docs.duckietown.org/DT18/AIDO/out/ros_baseline.html). Depending on your use case, you may want to start from either the Lane Following [baseline repo](https://github.com/duckietown/challenge-aido1_LF1-baseline-duckietown) or the random agent ROS [template repo](https://github.com/duckietown/challenge-aido1_LF1-template-ros).
+Finding and pulling the right Docker images is documented [here](#ros-baseline). Depending on your use case, you may want to start from either the Lane Following [baseline repo](https://github.com/duckietown/challenge-aido1_LF1-baseline-duckietown) or the random agent ROS [template repo](https://github.com/duckietown/challenge-aido1_LF1-template-ros).
 
 ## Modifying Launch Files
 
-As discussed [here](http://docs.duckietown.org/DT18/AIDO/out/ros_baseline.html#lanefollowing-ros-baseline), you can easily write your own launch files for your nodes. You will want to modify your equivalent of `lf_slim.launch` in the [baseline repo](https://github.com/duckietown/challenge-aido1_LF1-baseline-duckietown), and make sure your `rosagent.py` is updated to listen to the correct topics. Remember, the challenges take `action = [vel_left, vel_right]` as input, so be sure to convert your actions using something like the `inverse_kinematic_node` if necessary.
+You can easily write your own launch files for your nodes. You will want to modify your equivalent of `lf_slim.launch` in the [baseline repo](https://github.com/duckietown/challenge-aido1_LF1-baseline-duckietown), and make sure your `rosagent.py` is updated to listen to the correct topics. Remember, the challenges take `action = [vel_left, vel_right]` as input, so be sure to convert your actions using something like the `inverse_kinematic_node` if necessary.
 
 ## Modifying Parameters
 

@@ -1,6 +1,5 @@
 # AMOD Quickstart {#amod-quickstart status=draft}
 
-Maintainer: Claudio Ruch
 
 <div class='requirements' markdown='1'>
 

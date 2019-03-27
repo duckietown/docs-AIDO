@@ -23,7 +23,7 @@ However you can also pass the name as a parameter `--challenge`:
     
 The names of the challenges can be seen [at this page][list-challenges].
 
-[list-challenges]: https://challenges.duckietown.org/v3/humans/challenges
+[list-challenges]: https://challenges.duckietown.org/v4/humans/challenges
 
 ## Metadata {#submit-advanced-metadata}
 

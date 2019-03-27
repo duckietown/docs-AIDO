@@ -8,7 +8,7 @@ Requires: That you have setup your [accounts](#cm-accounts).
 
 Requires: That you meet the [software requirement](#cm-sw).
 
-Result: You make a submission and see your entry [here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3).
+Result: You make a submission and see your entry [here](https://challenges.duckietown.org/v4/humans/challenges/aido1_LF1_r3-v3).
 
 </div>
 
@@ -30,7 +30,7 @@ Result: You make a submission and see your entry [here](https://challenges.ducki
 
 ### Verify your submission
 
-You should be able to see your submission [here](https://challenges.duckietown.org/v3/humans/challenges/aido1_LF1_r3-v3). 
+You should be able to see your submission [here](https://challenges.duckietown.org/v4/humans/challenges/aido1_LF1_r3-v3). 
 
 
 
@@ -94,7 +94,7 @@ if __name__ == '__main__':
 ```
 
 This boilerplate is used to make sure that the evaluation and server containers are properly synchronized.
-More details about this are [here](#api-solution).
+
 
 ### `solution.py` agent connection code
 

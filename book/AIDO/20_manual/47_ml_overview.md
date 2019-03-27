@@ -1,8 +1,6 @@
 # Using Machine Learning in Duckietown {#ml-primer status=draft}
 
-Maintainer: Florian Golemo (but somebody please have a look at this)
-
-In here we'll show you what kinds of machine learning are possible in the context of our challenge and what they look like in practice.
+In this section we will show you what kinds of machine learning are possible in the context of AI-DOand what they look like in practice.
 
 ## Overview
 
@@ -18,6 +16,8 @@ This diagram should give you an idea of what kind of machine learning is applica
 Please take this with a grain of salt - these are just recommendations. Feel free to surprise us with cool or novel combinations of methods.
 
 ## Input and Output Data
+
+TODO: this part is confusing --- what is the point?
 
 #### LF, LFV, NAVV challenges
 
