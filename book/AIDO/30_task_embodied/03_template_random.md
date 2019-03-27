@@ -94,7 +94,7 @@ if __name__ == '__main__':
 ```
 
 This boilerplate is used to make sure that the evaluation and server containers are properly synchronized.
-More details about this are [here](#api-solution).
+
 
 ### `solution.py` agent connection code
 
