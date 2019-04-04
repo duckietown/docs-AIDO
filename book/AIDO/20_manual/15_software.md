@@ -10,6 +10,8 @@ This section describes the required software to participate in the competition.
 ### Ubuntu 18
 
 Ubuntu 18 is the best supported environment. 
+
+We use Python 3 for our tools.
  
 *Change from AI-DO 1*: In AI-DO 1, the best supported platform was Ubuntu 16. 
 
@@ -19,7 +21,7 @@ Ubuntu 18 is the best supported environment.
 OS X is well supported; however we don't have full instructions for certain steps. 
 (There is so much divergence in how OS X environments are configured.)
 
-### Other OSes
+### Other operating systems
 
 Any other OS with Python of at least version 3.6 should work. However,
 we only support ufficially Ubuntu.
@@ -30,7 +32,7 @@ Install Docker [from these instructions](https://docs.docker.com/install/).
 
 ## Git {#cm-sw-git}
 
-We are sure you already have Git, right?
+We are sure you already have Git.
 
 
 ## Duckietown Shell {#cm-sw-dts}

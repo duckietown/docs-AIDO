@@ -4,19 +4,19 @@ This section describes the steps to make your first submission.
 
 ## Checkout the submission repo {#cm-first-checkout}
 
-Check out the submission template [`challenge-aido1_luck-template-python`][template]:
+Check out the competition template [`challenge-prediction`][template]:
 
-    $ git clone -b v4 https://github.com/duckietown/challenge-aido1_luck-template-python.git
+    $ git clone -b v4 https://github.com/duckietown/challenge-prediction
     
 
-[template]: https://github.com/duckietown/challenge-aido1_luck-template-python
+[template]: https://github.com/duckietown/challenge-prediction
 
 
 ## Submit {#cm-first-submit}
 
-Go to the repository root:
+Go to one of the sample submissions:
 
-    $ cd challenge-aido1_luck-template-python
+    $ cd challenge-prediction/predictor_last
 
 Submit using:
 
@@ -37,20 +37,17 @@ The expected output is something along the lines of:
     ...
     Successfully created submission 23
     
-    You can track the progress at: https://challenges.duckietown.org/v4/humans/submissions/23
+    You can track the progress at: https://challenges.duckietown.org/v4/humans/submissions/NNN
     
     You can also use the command:
     
-       dts challenges follow --submission 23
+       dts challenges follow --submission NNN
 
 ## Monitor the submission {#cm-first-monitor}
 
 There are 2 ways to monitor the submission:
 
-The first way is to use the web interface, at the URL indicated; in the example, this is:
-
-
-> [`https://challenges.duckietown.org/v4/humans/submissions/2`](https://challenges.duckietown.org/v4/humans/submissions/2)
+The first way is to use the web interface, at the URL indicated.
 
 The second way is to use the `dts challenges follow` command:
 
@@ -62,7 +59,7 @@ The second way is to use the `dts challenges follow` command:
 
 The leaderboard is available at the URL 
 
-> [`https://challenges.duckietown.org/v4/humans/challenges/aido4_luck-v4/leaderboard`][leaderboard]
+> [`https://challenges.duckietown.org/v4/humans/challenges/aido_/leaderboard`][leaderboard]
     
     
 [leaderboard]: https://challenges.duckietown.org/v4/humans/challenges/aido2_luck-v4/leaderboard

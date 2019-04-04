@@ -59,7 +59,6 @@ These include:
 * GPU available;
 * ...
 
-TODO: make page with the codes for all features.
 
 Most features are auto-detected by the evaluator. A user can force values for the features [using the `--features` command](#evaluator-advanced-features).
 

@@ -9,7 +9,7 @@ command.
 Each submission directory has a file `submission.yaml` containing the following information:
 
     protocol: ![protocol] # do not change
-    challenge: ![challenge name]
+    challenge: ![challenge name(s)]
     user-label: ![optional label]
     user-payload: ![optional user payload]
     
@@ -47,21 +47,4 @@ To specify the payload, use the option `--user-meta` and specify a JSON structur
 Use the option `--no-cache` to avoid using the Docker cache and re-build your containers from scratch:
 
     $ dts challenges submit --no-cache
-
-
-## Other options useful for debugging {#submit-advanced-debug}
-
-
-### Do not submit {#submit-advanced-no-submit}
-
-
-To only build and push, but not submitting, use the option `--no-submit`:
-
-    $ dts challenges submit --no-submit
-
-### Do not push  {#submit-advanced-no-push}
-
-To only build and not pushing, use the option `--no-push`:
-
-    $ dts challenges submit --no-push
 
