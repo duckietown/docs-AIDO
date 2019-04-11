@@ -6,7 +6,7 @@ This section describes the steps to make your first submission.
 
 Check out the competition template [`challenge-prediction`][template]:
 
-    $ git clone -b v4 https://github.com/duckietown/challenge-prediction
+    $ git clone  https://github.com/duckietown/challenge-prediction
     
 
 [template]: https://github.com/duckietown/challenge-prediction
@@ -57,12 +57,12 @@ The second way is to use the `dts challenges follow` command:
 ## Look at the leaderboard {#cm-first-leaderboard}
 
 
-The leaderboard is available at the URL 
+The leaderboard for this challenge is available at the URL 
 
 > [`https://challenges.duckietown.org/v4/humans/challenges/aido_/leaderboard`][leaderboard]
     
     
-[leaderboard]: https://challenges.duckietown.org/v4/humans/challenges/aido2_luck-v4/leaderboard
+[leaderboard]: https://challenges.duckietown.org/v4/humans/challenges/aido2_simple_prediction_r1/leaderboard
 
 
       

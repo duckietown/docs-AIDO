@@ -1,11 +1,11 @@
 # The AI Driving Olympics {#book:AIDO status=ready}
  
 
-TODO: change logo to new one
-
 <p style='text-align: center'>
-  <img src="AIDO-768x512.png" width="60%"/>
+  <img src="AIDO_no_text.png" width="60%"/>
 </p>
+
+## Welcome to AI Driving Olympics! {#aido-welcome nonumber notoc}
 
 <abbr>ML</abbr>, deep learning, and deep reinforcement learning have shown remarkable success on a variety of tasks in the very recent past. However, the ability of these methods to supersede classical approaches on  physically embodied agents is still unclear. In particular, it remains to be seen whether learning-based approached can be completely trusted to control safety-critical systems such as self-driving cars.
 
@@ -16,9 +16,11 @@ We call this competition the "AI Driving Olympics" because there will be a set o
 Participants will not need to be physically present---they will just need to send their source code packaged as a Docker image.  There will be qualifying rounds in simulation, similar to the recent DARPA Robotics Challenge,
 and we will make available the use of "robotariums," which are facilities that allow remote experimentation in a reproducible setting.
 
-**AIDO 1** is in conjunction with NIPS 2018. 
+**AIDO 1** is in conjunction with NeurIPS 2018. 
 
-**AIDO 2** is in conjunction with ICRA 2019. 
+**AIDO 2** is in conjunction with ICRA 2019.
+
+**AIDO 3** is in conjunction with NeurIPS 2019.
 
 
 ## Leaderboards {#book-leaderboard nonumber notoc}
@@ -28,17 +30,5 @@ to check who is currently winning.
 
 ## Book organization {#book-org nonumber notoc}
 
-[](#part:aido-introduction) provides a high-level overview of the scientific motivation and the various 
-tasks.
-
-[](#part:aido-rules) describes the logistics.
-
-[](#part:manual) is a reference manual for setting up your environment.
-
-[](#part:embodied) describes the embodied tasks.
-
-[](#part:task-amod) describes the AMOD tasks.
-
-[](#part:developers) contains information for challenges organizers.
-
+Use the menu on the left to get started
 
