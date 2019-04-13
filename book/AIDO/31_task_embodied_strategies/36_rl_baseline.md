@@ -15,9 +15,7 @@ Result: You win the AI-DO!
 
 ## Quickstart
 
-To train a policy... 
-
-(We assume you have Python3 and Docker installed)
+To train a policy:
     
 1) Clone this repo
 

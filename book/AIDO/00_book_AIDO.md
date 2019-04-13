@@ -7,20 +7,24 @@
 
 ## Welcome to AI Driving Olympics! {#aido-welcome nonumber notoc}
 
-<abbr>ML</abbr>, deep learning, and deep reinforcement learning have shown remarkable success on a variety of tasks in the very recent past. However, the ability of these methods to supersede classical approaches on  physically embodied agents is still unclear. In particular, it remains to be seen whether learning-based approached can be completely trusted to control safety-critical systems such as self-driving cars.
-
-This live competition is designed to explore which approaches work  best for what tasks and subtasks in a complex robotic system. The participants will need to design algorithms that implement either part or all of the management and navigation required for a fleet of self-driving miniature taxis.
-
-We call this competition the "AI Driving Olympics" because there will be a set of different trials that correspond to progressively more sophisticated behaviors for the cars. These  vary in complexity, from the reactive task of lane following to more complex and "cognitive" behaviors, such as obstacle avoidance, point-to-point navigation, and finally coordinating a vehicle fleet while adhering to the entire set of the "rules of the road". We will provide  baseline solutions for the tasks based on conventional autonomy architectures; the participants will be free to replace any or all of the components with custom learning-based solutions.
+Despite recent breakthroughs, the ability of deep learning and reinforcement learning to out performtraditional approaches to control physically embodied robotic agents remains largely unproven. 
+To help bridge this gap, we created the “AI Driving Olympics” (AI-DO), a competition with the objective of evaluating the state of the art in machine learning and artificial intelligence for mobile robotics. 
+Based on the simple and well specified autonomous driving and navigation environment called “Duckietown,” AI-DO includes aseries of tasks of increasing complexity – from simple lane-following to fleet management. 
+For each task, we provide tools for competitors to use in the form of simulators, logs, code templates, baseline implementations and low-cost access to robotic hardware. We evaluate submissions in simulation online, on standardizedhardware environments, and finally at the competition event.
 
 Participants will not need to be physically present---they will just need to send their source code packaged as a Docker image.  There will be qualifying rounds in simulation, similar to the recent DARPA Robotics Challenge,
 and we will make available the use of "robotariums," which are facilities that allow remote experimentation in a reproducible setting.
 
-**AIDO 1** is in conjunction with NeurIPS 2018. 
+ - **AIDO 1** is in conjunction with NeurIPS Dec. 2018. 
 
-**AIDO 2** is in conjunction with ICRA 2019.
+ - **AIDO 2** is in conjunction with ICRA May 2019.
 
-**AIDO 3** is in conjunction with NeurIPS 2019.
+ - **AIDO 3** is in conjunction with NeurIPS Dec 2019.
+
+<figure>
+    <figcaption>The AIDO 1 at NeurIPS in Montreal</figcaption>
+    <img style='width:30em' src="AIDO1.jpg"/>
+</figure>
 
 
 ## Leaderboards {#book-leaderboard nonumber notoc}
@@ -28,7 +32,24 @@ and we will make available the use of "robotariums," which are facilities that a
 See the leaderboards at the site [`https://challenges.duckietown.org/`](https://challenges.duckietown.org) 
 to check who is currently winning.
 
-## Book organization {#book-org nonumber notoc}
+## How to get help {#book-help nonumber}
 
-Use the menu on the left to get started
+If you are stuck try one of the following things:
 
+ - Look through the contents of this documentation using the links on the left. Not that the "Parts" have many "Chapters" that you can see when you click on the Part title,
+ - Look at the [questions](https://www.duckietown.org/questions) page on the website and see if someone has asked the question that you have (and if not feel free to ask it),
+ - Join our [slack community](https://join.slack.com/t/duckietown/shared_invite/enQtNTU0Njk4NzU2NTY1LTQ2MDI4MTY1OTE1YjhjMTU4YTdkMDViMzJmNmJkNGQxN2U1ZGJlZjk2NGM0M2FiODY3YmQ2MTQ3MGM2MjY1ZTI),
+ - If you are sure you actually found a bug, file a github issue in the appropriate repo.
+
+
+## How to cite {#how-to-cite nonumber notoc}
+
+If you use the AI-DO platform in your work and want to cite it please use:
+
+```
+@misc{zilly2019ai,
+    title={The AI Driving Olympics at NeurIPS 2018},
+    author={Julian Zilly and Jacopo Tani and Breandan Considine and Bhairav Mehta and Andrea F. Daniele and Manfred Diaz and Gianmarco Bernasconi and Claudio Ruch and Jan Hakenberg and Florian Golemo and A. Kirsten Bowser and Matthew R. Walter and Ruslan Hristov and Sunil Mallya and Emilio Frazzoli and Andrea Censi and Liam Paull},
+    year={2019},
+}
+```
