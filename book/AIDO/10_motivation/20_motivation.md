@@ -1,10 +1,10 @@
-# Overview of the competition {#aido-overview status=ready}
+# Overview and Motivation {#aido-overview status=ready}
 
 What are the *AI Driving Olympics*? The AI Driving Olympics (AIDO) are a set of robotics challenges designed to exemplify the unique characteristics of data science in the context of autonomous driving.
 
 To understand how to solve a robotics challenge, we will explore the various dimensions of performance and difficulties involved.
 
-## Novelty
+## Novelty {#aido-novelty status=ready}
 
 Many competitions exist in the robotics field.
 
@@ -30,7 +30,7 @@ We believe that these unique elements within robotics make it a unique and timel
 
 ## Background and impact
 
-This event will probe the frontier of the state of the art in ML: the interactive and embodied setting. Deep learning has been an astounding success for pattern recognition / supervised learning, and synthetic domains (Go, Atari, ...). It is an open question whether the same success can be repeated for embodied interactive tasks that happen in the messy real world. Despite many enthusiastic research efforts , the state of the art is way behind what is required in a safety-critical application like self-driving cars.
+This event probes the frontier of the state of the art in ML: the interactive and embodied setting. Deep learning has been an astounding success for pattern recognition / supervised learning, and synthetic domains (Go, Atari, ...). It is an open question whether the same success can be repeated for embodied interactive tasks that happen in the messy real world. Despite many enthusiastic research efforts , the state of the art is way behind what is required in a safety-critical application like self-driving cars.
 
 Can "black box", symbol-less AI power safety-critical systems like self-driving cars?
 
@@ -39,7 +39,7 @@ self-driving cars of "Duckietown", a platform for autonomy education and researc
 
 To learn more about Duckietown, the reader might start [by watching a few videos](http://vimeo.com/duckietown).
 
-At present, the Duckietown platform comprises mostly "classical" (non-neural) baseline implementations of typical robotics navigation tasks, with learning used only in a few instances (such as object detection). The promise of DL is that these methods should be able to easily eclipse classical methods---but is this really the case?
+At present, the Duckietown platform comprises mostly "classical" (non-learning based) baseline implementations of typical robotics navigation tasks, with learning used only in a few instances (such as object detection). The promise of DL is that these methods should be able to easily eclipse classical methods---but is this really the case?
 
 <div figure-id="fig:duckietown_nice">
 <img src="images/duckietown_nice_with_bot2.jpg" figure-id="subfig:duckietown_nice_with_bot2" style="width: 80%"/>
@@ -61,53 +61,46 @@ The best possible  outcome is that a larger proportion of the ML community redir
 
 ## Overview of tasks {#task_overview}
 
-<div figure-id="fig:summary">
- <img src='images/in_lane.jpg'   figure-id="subfig:in_lane"  figure-caption="Lane following"/>
- <img src='images/lane_following_v.jpg'   figure-id="subfig:lane_following_v2"  figure-caption="Lane following + dynamic vehicles"/>
- <!-- <img src='images/Autolab_map.png'   figure-id="subfig:Autolab_map"  figure-caption="Navigation + dynamic vehicles"/> -->
- <!-- <img src='images/fleet_management.jpg'  figure-id="subfig:fleet_management"  figure-caption="Fleet management"/> -->
- <img src='images/amod_gray3.png'   figure-id="subfig:amod_gray3"  figure-caption="AMoD coordination"/>
-</div>
+<figure class="flow-subfigures">  
+    <figcaption>The AI-DO challenges</figcaption>
+    <figure>
+        <figcaption figure-id="subfig:in_lane">LF</figcaption>
+        <img style='width:8em' src="in_lane.jpg"/>
+    </figure>
+    <figure>
+        <figcaption figure-id="subfig:lane_following_v2">LFV</figcaption>
+        <img style='width:8em' src="lane_following_v.jpg"/>
+    </figure>
+    <figure>
+        <figcaption figure-id="subfig:Autolab_map">LFVI</figcaption>
+        <img style='width:8em' src="Autolab_map.png"/>
+    </figure>
+    <figure>
+        <figcaption figure-id="subfig:amod_gray3">AMOD</figcaption>
+        <img style='width:8em' src="amod_gray3.png"/>
+    </figure>
+</figure>
 
-
-
-
-<style>
-#fig\:summary img {
-width: 14em;
-}
-</style>
 
 <!-- LF  |  LFV  |  NAVV  |  FM       |  AMoD
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
 <img src="images/in_lane.jpg" width="90" height="80"/>  |  <img src="images/lane_following_v.jpg" width="90" height="80"/> |  <img src="images/Autolab_map.png" width="90" height="80"/> |  <img src="images/fleet_management.jpg" width="100" height="80"/> |  <img src="images/amod_gray3.png" width="90" height="80"/> -->
 
 
-The AI Driving Olympics competition is structured into the following four separate tasks:
+The AI Driving Olympics competition is structured into the following separate tasks:
 
-###[Embodied individual robot tasks](#embodied_tasks)
-
-Tasks within which code to control a single Duckiebot is submitted.
 
   * [Lane following (LF)](#lf): Control of a Duckiebot to drive on the right lane on streets within Duckietown without other moving Duckiebots present.
 
 
-  * [Lane following + vehicles (LFV)](#lf_v): Control of a Duckiebot to drive on the right lane on streets within Duckietown with other moving Duckiebots and static obstacles present.
+  * [Lane following + vehicles (LFV)](#lf_v): Control of a Duckiebot to drive on the right lane on streets within Duckietown **with other moving Duckiebots and static obstacles present**.
 
+
+  * [Lane following with vehicles and intersections (LFVI)](#lf_v_i): Control of a Duckiebot to drive on the right lane **and through intersections** on streets with Duckietown with other moving Duckiebots and static obstacles.
 
   <!-- * [Navigation + vehicles (NAVV)](#nav_v): Navigation task of a Duckiebot to drive from point $A$ to point $B$ within Duckietown while following the rules of the road and while other Duckiebots are likewise driving in the road. -->
 
-
-
-
-###[Fleet-level social task](#social_tasks)
-
-Tasks within which code to control multiple robots or agents is submitted while lower-level functions are already provided.
-
-  <!-- * [Fleet management (FM)](#fm): Task to control a small fleet of Duckiebots within Duckietown to pick up a set of virtual customers and drive them to a destination point. -->
-
-
-  * [Autonomous Mobility-on-Demand (AMoD)](#amod): Task to control the movement of a fleet of autonomous vehicles in a simulated city to pick up customers and drive them to their destinations.
+###[Autonomous Mobility-on-Demand (AMoD)](#amod): Control the movement of a fleet of autonomous vehicles in a simulated city to pick up customers and drive them to their destinations.
 
 
 
@@ -115,22 +108,7 @@ Participants may submit code to each challenge individually. Tasks proposed in t
 
 ## Submission
 
-<!-- There are two ways of participating in the AI Driving Olympics. -->
-
-<!-- ### End-to-end type -->
-
-You are evaluated on the [objectives](#part:aido-rules) defined for the task you are submitting to.
-
-<!-- Either you can provide an end-to-end solution; or you can choose from a zoo of architectures, with interchangeable modules. You can write your own modules, or you can use those made available. -->
-
-
-### Learning protocol
-
-There are different ways to learn on Duckietown data and simulator interactions. We use this process:
-
-
-* **Off-policy learning:** you are given sensorimotor logs taken in the robotariums, without any other annotation.
-* **Active learning in a simulator:** your learner is paired with a simulator that gives as feedback vectors of violation metrics.
+A process for making a submission is explained in [](#cm-first).
 
 ### Evaluation
 
@@ -139,9 +117,7 @@ There is a two-fold evaluation for submitted code.
 * **Evaluation in simulation:** The learned agent is tested in simulation to make sure that it is safe.
 * **Evaluation in robotarium:** The learned agent is evaluated in robotariums to provide the final scores.
 
-After the evaluation in robotarium, the sensorimotor logs as well as violation metric annotations are made available to everybody to be used in off-policy learning.
-
-In addition, the developer also gets the logs of intermediate signals produced by their agent (assuming these logs are reasonably small).
+After the evaluation in robotarium, the sensorimotor logs as well as violation metric annotations are made available to the submitter.
 
 <!-- ### Modules type
 

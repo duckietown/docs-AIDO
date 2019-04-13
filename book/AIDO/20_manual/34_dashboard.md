@@ -1,4 +1,4 @@
-# Using the Duckietown Dashboard {#dashboard status=ready}
+# Duckietown Dashboard {#dashboard status=beta}
 
 
 The Duckietown Dashboard is a visual alternative to the command line for monitoring your AIDO submissions.

@@ -1,14 +1,10 @@
 # Introduction {#part:aido-introduction}
 
-Maintainer: Julian Zilly
 
-We introduce the *AI Driving Olympics* (AIDO), its relevance, environment and tasks. This competition is aimed as a stepping stone to understand the role of AI in robotics in general and in self-driving cars in particular. For more on the motivation and reasoning behind the competition see our ["announcement paper"](https://drive.google.com/file/d/1bRERCWWt2k-zGO0f5kB8pDRAuRCrZ4Wv/view) and [AIDO overview](#aido-overview).
-
-
-The *AI Driving Olympics* comprise a set of four tasks each of which highlights a certain part of robotic driving. Tasks are evaluated both on how fast they drive as well as their traffic law abidance and comfort of driving. Furthermore we offer a "purist" (P) and "non-purist" (NP) way of participating depending on whether computation is performed on the RaspberryPi or uses additional computational resources. The following presents the description, performance and evaluation of tasks separately. Please follow the linked titles for further information.
+For a detailed description of the scientific objectives and outcomes please see [our recent paper about the AI-DO 1 at NeurIPS](https://arxiv.org/pdf/1903.02503.pdf).
 
 
-**Main links**
+### Quick links
 
 * For an overview of the tasks, please see: [**Task overview**](#task_overview).
 
@@ -17,32 +13,27 @@ The *AI Driving Olympics* comprise a set of four tasks each of which highlights 
 * Where to get started with your code submission: [**Manual**](#manual)
 
 
-
 In total the following ways of participating are offered. There are different tasks, different computational resource regimes and different performance categories in which to compete.
 
 ### Tasks
 
 * [Lane following (LF)](#lf)
-* [Lane following with dynamic vehicles (LFV)](#lf_v)      
-<!-- * [Navigation with dynamic vehicles (NAVV)](#nav_v) -->
+* [Lane following with dynamic vehicles (LFV)](#lf_v)
+* [Lane following with dynamic vehicles and intersections (LFVI)](#lf_v_i)
 * [Autonomous mobility-on-demand (AMOD)](#amod)
 
 ### Computational resources
 
 * [Purist option - RaspberryPi](#computation)
-* [Non-purist option - Additional Movidius stick](#computation)
+* [Non-purist option - Additional Movidius stick](#computation) (still under development)
+* [Remote option](#computation)
 
 
-### Performance metrics
+### Evaluation metrics
 
-* [Performance](#performance)
-* [Traffic law abidance](#traffic_laws)
-* [Comfort](#comfort)
+For details about the evaluation metrics please refer to the [definitions of the challenges][challenges]
 
------------------------------------------
+[challenges]: https://challenges.duckietown.org/v4/humans/challenges
 
-**Important remarks**
 
-The rules and descriptions in this document are subject to change at the discretion of the authors. In particular we aim to avoid cases where due to "loop holes" the best solution to a task ends up breaking with the spirit of the task, e.g. it should not be favorable to drive off road to get to a destination faster. Likewise if circumstances in the AIDO software and hardware require adjustments to the rules these will be taken. Having clarified this, the foremost goal is not to change the rules unless necessary.
-
-We invite discussion of the rules and evaluation by participants. Each webpage provides a link to suggest improvements via Github. Additionally, there is [forum](https://www.duckietown.org/forum) to ask questions.
+Maintainer: Julian Zilly
