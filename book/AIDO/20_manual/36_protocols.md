@@ -2,7 +2,12 @@
 
 The section describes the different protocols that should be followed by agents that are submitted. 
 
-Note: The currently used protocol is `aido1_remote3-v3`
+Note: The currently used protocol is `aido2_db18_agent-z2`
+
+## `aido2-db18-agent-z2` {#aido2_db18_agent-z2}
+
+TODO: fill this in
+
 
 ## `aido1_remote1-v3` {#aido1_remote1-v3}
 
