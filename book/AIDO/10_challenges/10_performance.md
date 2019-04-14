@@ -1,4 +1,4 @@
-# Performance objective {#performance status=ready}
+# Performance criteria {#performance status=ready}
 
 ## Lane following (LF / LFV) {#performance_lf}
 

@@ -1,7 +1,6 @@
-# Rules {#part:aido-rules}
+# The Challenges {#part:aido-rules}
 
-Maintainer: Julian Zilly
+This sections describes the various rules, evaluation metrics, and challenge definitions. Please see the index on the left. 
 
-The following pages detail how submissions to the AI Driving Olympics will be evaluated. Most importantly we do not rely on a single metric, a single number that specifies how well an entry performs.
 
-For a starting baseline, please refer to the [template and baseline sections](#part:embodied-strategies). 
+

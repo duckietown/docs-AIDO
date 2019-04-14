@@ -81,6 +81,11 @@ For the [autonomous mobility-on-demand](#amod) (AMoD) task, in which the AI must
 
 ### Robotariums
 
+<figure>
+    <figcaption figure-id="fig:robotarium">The robotarium at ETH Zurich</figcaption>
+    <img style='width:15em' src="robotarium.jpg"/>
+</figure>
+
 
 The idea of a robotarium (contraction of *robot* and *aquarium*) was conceived at Georgia Tech \cite{robotarium}. Currently the Georgia Tech robotarium has about 300 users. The users are able to submit programs that guide the movements of a swarm of robots. The system queues the requests, runs the programs, then sends the results, before resetting the robots to the initial state for the next user. Because there is no human intervention required, and the robot self-charge, the robotarium can run continuously.
 
