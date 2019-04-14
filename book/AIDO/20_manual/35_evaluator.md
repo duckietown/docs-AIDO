@@ -7,10 +7,6 @@ This section describes how to use the Challenges evaluators.
 
 An evaluator is a machine that is in charge of evaluating the protocols.
 
-You can see the [list of connected evaluators here][list].
-
-[list]: https://challenges.duckietown.org/v4/humans/evaluators
-
 ## Running your own evaluator {#evaluator-run}
 
 We have several evaluators online that process jobs.

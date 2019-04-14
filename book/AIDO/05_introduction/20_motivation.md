@@ -59,7 +59,7 @@ Ultimately, the hope is that we can use this competition to benchmark the state 
 
 The best possible  outcome is that a larger proportion of the ML community redirects its efforts towards real physical agents acting in the real world, and helps to address the unique characteristics of the problem. The guaranteed impact is that we can establish a baseline for where the state of the art really is in this domain.
 
-## Overview of tasks {#task_overview}
+## Overview of challenges {#challenge_overview}
 
 <figure class="flow-subfigures">  
     <figcaption>The AI-DO challenges</figcaption>
@@ -87,7 +87,7 @@ The best possible  outcome is that a larger proportion of the ML community redir
 <img src="images/in_lane.jpg" width="90" height="80"/>  |  <img src="images/lane_following_v.jpg" width="90" height="80"/> |  <img src="images/Autolab_map.png" width="90" height="80"/> |  <img src="images/fleet_management.jpg" width="100" height="80"/> |  <img src="images/amod_gray3.png" width="90" height="80"/> -->
 
 
-The AI Driving Olympics competition is structured into the following separate tasks:
+The AI Driving Olympics competition is structured into the following separate challenges:
 
 
   * [Lane following (LF)](#lf): Control of a Duckiebot to drive on the right lane on streets within Duckietown without other moving Duckiebots present.
@@ -98,13 +98,13 @@ The AI Driving Olympics competition is structured into the following separate ta
 
   * [Lane following with vehicles and intersections (LFVI)](#lf_v_i): Control of a Duckiebot to drive on the right lane **and through intersections** on streets with Duckietown with other moving Duckiebots and static obstacles.
 
-  <!-- * [Navigation + vehicles (NAVV)](#nav_v): Navigation task of a Duckiebot to drive from point $A$ to point $B$ within Duckietown while following the rules of the road and while other Duckiebots are likewise driving in the road. -->
+  <!-- * [Navigation + vehicles (NAVV)](#nav_v): Navigation challenge of a Duckiebot to drive from point $A$ to point $B$ within Duckietown while following the rules of the road and while other Duckiebots are likewise driving in the road. -->
 
 ###[Autonomous Mobility-on-Demand (AMoD)](#amod): Control the movement of a fleet of autonomous vehicles in a simulated city to pick up customers and drive them to their destinations.
 
 
 
-Participants may submit code to each challenge individually. Tasks proposed in the *AI Driving Olympics* are ordered first by type and secondly by increasing difficulty in a way which encourages modular reuse of solutions to previous tasks.
+Participants may submit code to each challenge individually. Challenges proposed in the *AI Driving Olympics* are ordered first by type and secondly by increasing difficulty in a way which encourages modular reuse of solutions to previous challenges.
 
 ## Submission
 
@@ -121,7 +121,7 @@ After the evaluation in robotarium, the sensorimotor logs as well as violation m
 
 <!-- ### Modules type
 
-Another mode of submission is that people can also compete in simpler tasks by creating modules for some well-defined tasks such as:
+Another mode of submission is that people can also compete in simpler challenges by creating modules for some well-defined challenges such as:
 
 * Lane localization: given image localize the robot in the lane
 * Vehicle detection: given image localize the other robot
@@ -145,7 +145,7 @@ The module wins if it is used in an end-to-end entry that wins.  -->
 
 
 
-<!-- For a mathematical introduction to solving tasks in the context in robotics, please refer to [](#general_problem). -->
+<!-- For a mathematical introduction to solving challenges in the context in robotics, please refer to [](#general_problem). -->
 
 
 <!-- <cite id="bib:Singh">TODO: find paper Singh</cite> -->

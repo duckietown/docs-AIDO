@@ -2,12 +2,12 @@
 
 
 
-This section focuses on the infrastructure and background of the embodied individual robotic tasks as outlined in the [task overview](#task_overview).
+This section focuses on the infrastructure and background of the embodied individual robotic challenges as outlined in the [challenge overview](#challenge_overview).
 
 For examples of Duckiebot driving see [a set of demo videos of Duckiebots driving in Duckietown](+opmanual_duckiebot#demos).
 
-The actual embodied tasks will be described in more detail in [LF](#lf), [LF](#lf_v), [LFVI](#lf_v_i). <!--, [NAVV](#nav_v).-->
-Note that the sequence tasks was chosen to gradually increase the difficulty of tasks by extending previous task solutions to more general situations.
+The actual embodied challenges will be described in more detail in [LF](#lf), [LF](#lf_v), [LFVI](#lf_v_i). <!--, [NAVV](#nav_v).-->
+Note that the sequence challenges was chosen to gradually increase the difficulty of challenges by extending previous challenge solutions to more general situations.
 
 ## The Duckietown Platform {#aido-duckietown status=ready}
 
@@ -21,7 +21,7 @@ There are three main parts in our system with which the participants will intera
 
 
 
-## The physical Duckietown platform
+## Duckiebots and Duckietowns
 
 We briefly describe the physical Duckietown platform, which comprises  autonomous vehicles (*Duckiebots*) and a customizable model urban environment (*Duckietown*).
 
@@ -77,7 +77,7 @@ The left panel shows a lightweight simulator with low-level timing control built
 </figure>
 
 
-For the [autonomous mobility-on-demand](#amod) (AMoD) task, in which the AI must respond to ride requests and allocate existing cars to each task, we will develop a standard neural-networks-friendly data representation.
+For the [autonomous mobility-on-demand](#amod) (AMoD) challenge, in which the AI must respond to ride requests and allocate existing cars to each challenge, we will develop a standard neural-networks-friendly data representation.
 
 ### Robotariums
 
@@ -124,7 +124,7 @@ A Duckiebot has a *single*  front-facing sensor, a camera as described [here](#r
 
 - Thus the Duckiebot receives images (both in simulation and physical reality) of resolution $640\times480$ reliably at a rate of $30$ fps.
 
-<!-- - For the [navigation](#nav_v) task a map of current Duckietown will additionally be communicated. -->
+<!-- - For the [navigation](#nav_v) challenge a map of current Duckietown will additionally be communicated. -->
 
 
 

@@ -47,14 +47,14 @@ For more tips on how to make use of the existing Duckietown codebase try [](#ros
 
 ## Anatomy of the submission
 
-Just like [any submission](#challenge-aido1_lf1-template-random), your submission contains the following files:
+Just like [any submission](#minimal-template), your submission contains the following files:
 
     submission.yaml
     Dockerfile
     requirements.txt
     solution.py
 
-Here we will only highlight difference from the agent template, so for a basic understanding of the use of these files, please see [any submission](#challenge-aido1_lf1-template-random).
+Here we will only highlight difference from the agent template, so for a basic understanding of the use of these files, please see [any submission](#minimal-template).
 
 There are also a few other **new** files in this submission, which we will explain:
 
@@ -78,7 +78,7 @@ Also note that in this Dockerfile we are not copying the entire directory over, 
 
 ### solution.py
 
-Just like the [random-template](#challenge-aido1_lf1-template-random), `solution.py` uses the OpenAI gym interface for interacting with the server environment. This done through the line: 
+Just like the [random-template](#minimal-template), `solution.py` uses the OpenAI gym interface for interacting with the server environment. This done through the line: 
 
 ```python
 observation, reward, done, info = env.step(action)

@@ -1,4 +1,4 @@
-# `dts challenges` command line interface reference  {#cli status=ready}
+# `dts challenges` CLI  {#cli status=ready}
 
 This section is a reference for how to interact with the challenges server with the command line.
 

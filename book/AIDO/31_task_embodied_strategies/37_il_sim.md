@@ -1,4 +1,4 @@
-# Imitation Learning from Simulation Baseline (tensorlow) {#embodied_il_sim status=draft}
+# Imitation Learning from Simulation {#embodied_il_sim status=draft}
 
 This section describes the procedure for generating logs from the [gym-duckietown](https://github.com/duckietown/gym-duckietown), and then using them to train a model with imitation learning using [tensorflow](https://www.tensorflow.org/).
 

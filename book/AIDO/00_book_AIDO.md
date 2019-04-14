@@ -21,16 +21,26 @@ and we will make available the use of "robotariums," which are facilities that a
 
  - **AIDO 3** is in conjunction with NeurIPS Dec 2019.
 
+
 <figure>
     <figcaption>The AIDO 1 at NeurIPS in Montreal</figcaption>
     <img style='width:30em' src="AIDO1.jpg"/>
 </figure>
 
 
-## Leaderboards {#book-leaderboard nonumber notoc}
+## How to use this documentation {#how-to-use nonumber}
 
-See the leaderboards at the site [`https://challenges.duckietown.org/`](https://challenges.duckietown.org) 
-to check who is currently winning.
+If you would like to compete in the AI-DO, you will probably want to do something like:
+
+ - Read [the brief introduction to the competition](#part:aido-introduction) (~5 mins)
+ - Find [the challenge that you would like to try](#part:aido-rules) (~5 mins)
+ - [Get started and make a submission](#part:quickstart) (~5-20 mins depending on your setup)
+ 
+ At this point you are all setup and you should try to make your submission better. To do this the following tools might prove useful:
+ 
+ - The [AIDO API](#part:manual) so that your workflow is efficient using our tools.
+ - The [reference algorithms](#part:embodied-strategies) where we have implemented some different approaches to solve the challenges
+
 
 ## How to get help {#book-help nonumber}
 
@@ -40,6 +50,11 @@ If you are stuck try one of the following things:
  - Look at the [questions](https://www.duckietown.org/questions) page on the website and see if someone has asked the question that you have (and if not feel free to ask it),
  - Join our [slack community](https://join.slack.com/t/duckietown/shared_invite/enQtNTU0Njk4NzU2NTY1LTQ2MDI4MTY1OTE1YjhjMTU4YTdkMDViMzJmNmJkNGQxN2U1ZGJlZjk2NGM0M2FiODY3YmQ2MTQ3MGM2MjY1ZTI),
  - If you are sure you actually found a bug, file a github issue in the appropriate repo.
+
+
+## The challenges server {#book-leaderboard nonumber}
+
+See the leaderboards and many other things at the site [`https://challenges.duckietown.org/`](https://challenges.duckietown.org).
 
 
 ## How to cite {#how-to-cite nonumber notoc}

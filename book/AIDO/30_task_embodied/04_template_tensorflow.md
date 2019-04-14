@@ -32,7 +32,7 @@ Result: You make a submission and see your entry [here](https://challenges.ducki
 
 ## Anatomy of the submission
 
-The submission consists of all of the basic files that required for a [basic submission](#challenge-aido1_lf1-template-random).
+The submission consists of all of the basic files that required for a [basic submission](#minimal-template).
 
 ### solution.py
 
