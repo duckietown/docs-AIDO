@@ -1,4 +1,4 @@
-# Quickstart Guide {#part:quickstart status=ready}
+# Getting Started {#part:quickstart status=ready}
 
 This part describes the necessary steps to get started competing in the AI-DO.
 
