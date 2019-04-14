@@ -6,16 +6,16 @@ For a detailed description of the scientific objectives and outcomes please see 
 
 ### Quick links
 
-* For an overview of the tasks, please see: [**Task overview**](#task_overview).
+* [Overview of the challenges](#challenge_overview).
 
-* For a description of the performance objectives of each task, please see: [**Rules**](#aido-rules).
+* [Description of the performance metrics](#measuring-performance).
 
-* Where to get started with your code submission: [**Manual**](#manual)
+* [Get started with your code submission](#part:quickstart)
 
 
-In total the following ways of participating are offered. There are different tasks, different computational resource regimes and different performance categories in which to compete.
+There are different challenges, different computational resource regimes and different performance categories in which to compete.
 
-### Tasks
+### Challenges
 
 * [Lane following (LF)](#lf)
 * [Lane following with dynamic vehicles (LFV)](#lf_v)
@@ -31,8 +31,6 @@ In total the following ways of participating are offered. There are different ta
 
 ### Evaluation metrics
 
-For details about the evaluation metrics please refer to the [definitions of the challenges][challenges]
-
-[challenges]: https://challenges.duckietown.org/v4/humans/challenges
+For details about the evaluation metrics please refer to the [performance metrics](#measuring-performance)
 
 

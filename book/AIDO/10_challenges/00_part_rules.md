@@ -1,6 +1,14 @@
 # The Challenges {#part:aido-rules}
 
-This sections describes the various rules, evaluation metrics, and challenge definitions. Please see the index on the left. 
+Here we precisely define the [general rules](#other-rules) and [performance metrics](#measuring-performance) and then detail each of the challenges:
 
+ - [Lane following](#lf)
+ - [Lane following with obstacles and other vehicles](#lf_v)
+ - [Lane following with obstacles and other vehicles and intersections](#lf_v_i)
+ - [Autonomous mobility on demand](#amod)
+ 
+ The up-to-date status of the challenges and leaderboard can be viewed on the [challenges server][challenges]
+ 
+ [challenges]:https://challenges.duckietown.org/
 
 
