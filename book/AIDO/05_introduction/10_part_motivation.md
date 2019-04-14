@@ -6,21 +6,21 @@ For a detailed description of the scientific objectives and outcomes please see 
 
 ### Quick links
 
-* [Overview of the challenges](#challenge_overview).
+* [Overview of the challenges](#challenge_overview)
 
-* [Description of the performance metrics](#measuring-performance).
+* [Description of the performance metrics](#measuring-performance)
 
 * [Get started with your code submission](#part:quickstart)
 
 
-There are different challenges, different computational resource regimes and different performance categories in which to compete.
+There are different challenges, different computational resource regimes and different performance categories in this competition.
 
 ### Challenges
 
 * [Lane following (LF)](#lf)
-* [Lane following with dynamic vehicles (LFV)](#lf_v)
-* [Lane following with dynamic vehicles and intersections (LFVI)](#lf_v_i)
-* [Autonomous mobility-on-demand (AMOD)](#amod)
+* [Lane following with vehicles (LFV)](#lf_v)
+* [Lane following with vehicles and intersections (LFVI)](#lf_v_i)
+* [Autonomous mobility-on-demand (AMoD)](#amod)
 
 ### Computational resources
 
