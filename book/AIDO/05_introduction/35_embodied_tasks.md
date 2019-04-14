@@ -1,4 +1,4 @@
-# Duckietown Infrastructure {#embodied_tasks status=ready}
+# The Duckietown Platform {#embodied_tasks status=ready}
 
 
 

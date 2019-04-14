@@ -2,14 +2,19 @@
 
 <div class='requirements' markdown='1'>
 
-Requires: You have done the [](#quickstart-preliminaries).
+Requires: You have [set up your accounts](#cm-accounts).
+
+Requires: You have [the software requirement](#cm-sw).
+
+Requires: You have [made a submission](#cm-first).
 
 Result: You have made a submission to the Lane Following AI-DO challenge, and you know how to try to make it better.
 
 </div>
 
+The objective of this quickstart guide is to describe all of the "strawman solutions" so that you may use your desired framework, and then describe the baseline implementations as options for ways to try to build a better entry.
 
-### Do a submission by following one of the templates
+## Do a submission by following one of the strawman solutions
 
 * [Random template](#challenge-aido1_lf1-template-random)
 * [Tensorflow template](#tensorflow-template) 
@@ -18,7 +23,7 @@ Result: You have made a submission to the Lane Following AI-DO challenge, and yo
 
 Congrats! you have now made a submission, but it probably wasn't very good (unless you got very lucky).
 
-### Try to make your score go up
+## Try to make your score go up
 
 Now is when you might want to take a look at [](#part:aido-rules) which describe in detail how your score is generated for the specific challenges. For the lane following challenge,  we are currently offering 4 suggested methods to do this (our baseline templates for these options are at various stages of readiness but will be getting updated very soon):
 
@@ -30,6 +35,6 @@ Now is when you might want to take a look at [](#part:aido-rules) which describe
   
 Of course you may also choose to use these methods in combination. 
 
-### Try one of the harder challenges 
+## Try one of the harder challenges 
 
 Like [LFV](#lf_v) or [LFVI](#lf_v_i).
