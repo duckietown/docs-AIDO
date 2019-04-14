@@ -7,7 +7,7 @@
 
 ## Welcome to AI Driving Olympics! {#aido-welcome nonumber notoc}
 
-Despite recent breakthroughs, the ability of deep learning and reinforcement learning to out performtraditional approaches to control physically embodied robotic agents remains largely unproven. 
+Despite recent breakthroughs, the ability of deep learning and reinforcement learning to out perform traditional approaches to control physically embodied robotic agents remains largely unproven. 
 To help bridge this gap, we created the “AI Driving Olympics” (AI-DO), a competition with the objective of evaluating the state of the art in machine learning and artificial intelligence for mobile robotics. 
 Based on the simple and well specified autonomous driving and navigation environment called “Duckietown,” AI-DO includes aseries of tasks of increasing complexity – from simple lane-following to fleet management. 
 For each task, we provide tools for competitors to use in the form of simulators, logs, code templates, baseline implementations and low-cost access to robotic hardware. We evaluate submissions in simulation online, on standardizedhardware environments, and finally at the competition event.
