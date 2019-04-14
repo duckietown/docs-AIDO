@@ -16,7 +16,7 @@ The objective of this quickstart guide is to describe all of the "strawman solut
 
 ## Do a submission by following one of the strawman solutions
 
-* [Random template](#challenge-aido1_lf1-template-random)
+* [Random template](#minimal-template)
 * [Tensorflow template](#tensorflow-template) 
 * [PyTorch template](#pytorch-template) 
 * [ROS template](#ros-template) 
