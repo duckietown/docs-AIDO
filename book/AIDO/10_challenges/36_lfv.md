@@ -1,100 +1,69 @@
 # Challenge `LFV` {#lf_v status=ready}
 
-The second task of the *AI Driving Olympics* is "Lane following with dynamic vehicles".
-This task is an extension of Task LF to include additional rules of the road and other moving vehicles and static obstacles.
-
-Again we ask participants to submit code allowing the Duckiebot to drive on the right-hand side of the street within Duckietown. Due to interactions with other Duckiebots, the task is designed no longer completely \emph{reactive}. Intersections will be recognized and maneuvered using provided code from the organizers.
-
-
-<div figure-id="fig:others1">
-<img src='images/lane_following_v.jpg' figure-id="subfig:lane_following_v" style="width:90%"/>
-<img src='images/in_lane_sideview.jpg' figure-id="subfig:lane_following_v_ego"  style="width:90%"/>
-</div>
-
-<div figure-id="fig:others2">
-<img src='images/collision1.jpg' figure-id="subfig:collision1"  style="width:90%"/>
-<img src='images/yield.jpg' figure-id="subfig:aido-yield"  style="width:90%"/>
-</div>
+The second challenge of the *AI Driving Olympics* is "lane following with dynamic vehicles" (`LFV`).
+This challenge is an extension of Challenge `LF` to include additional rules of the road and other moving vehicles and static obstacles.
 
 
 
-The robot used in this task is a Duckiebot as described in [](#robot). The environment of the task is Duckietown as described in [](#environment). The main addition to the lane following task is that now obstacles may appear on the road which shall be avoided.
+<figure>
+    <figcaption figure-id="fig:lane-following-vehicles">A Duckiebot doing lane following with other vehicles</figcaption>
+    <img style='width:15em' src="lane_following_v.jpg"/>
+</figure>
 
 
+Again we ask participants to submit code allowing the Duckiebot to drive on the right-hand side of the street within Duckietown. Due to interactions with other Duckiebots, a successful solution will likely not be completely \emph{reactive}. 
 
-## Evaluation
-
-The lane following task is evaluated on three separate objectives.
-
-### Performance objective
-
-The [*performance objective*](#performance_lf) measures how fast a Duckiebot moves.
+* This challenge uses the Duckietown challenge infrastructure. The precise definition of the challenge is in the [challenge definition repository](https://github.com/duckietown/challenge-aido_LF)
 
 
-### Traffic law objective
+## `LFV` in Simulation {#challenge-aido2_lfv status=ready}
 
-The following traffic laws apply in the lane following with dynamic vehicles task.
+The current versions of the lane following with vehicles in simulation are `aido2-LFV-sim-testing` and `aido2-LF-sim-validation`. These two challenges are identical except for the output that you are allowed to see. In the case of `testing` you will be able to see performance of your agent ([](#fig:submission-output-lfv))  and you will be able to download the logs and artifacts. 
 
-* [Staying in the lane](#traffic_laws_lf)
-* [Collision avoidance](#traffic_laws_ac)
+<figure>
+    <figcaption figure-id="fig:submission-output-lfv">Visual output for submission</figcaption>
+    <img style='width:30em' src="submission-output-lfv.png"/>
+</figure>
 
-
-
-### Comfort objective
-
-The following objective quantifies how "comfortable" a Duckiebot is driving.
-
-[Comfortable driving](#comfort_embodied)
-
-
-<!-- ## Submission scenario
-
-TODO: user submits code, then what happens
-
-how does evaluation work -->
-
-
-## Challenge `aido1_LFV1`: Lane Following with Obstacles {#challenge-aido1_lfv1 status=ready}
-
-The current version of the lane following challenge is `aido1_LFV1_r3-v3`.
-The lane following challenge tests an agent using a simulator.
-
-Here is how the simulator looks:
-
-<video autoplay="1" controls="1" loop="1" style="border: solid 1px black" width="320">
-  <source src="http://duckietown-ai-driving-olympics-1.s3.amazonaws.com/v3/frankfurt/by-value/sha256/db648be4473470451c3ff8131f5c9a96849c812ab30db88ea48e61e089c60405" type="video/mp4"/>
-</video>
- 
-* Check out the [Leaderboard](https://challenges.duckietown.org/v4/humans/challenges/aido1_LF1_r3-v3/leaderboard) to see who's currently winning!
- 
-
-* This challenge uses the Duckietown challenge infrastructure. The precise definition of the challenge is in the [challenge definition repository](https://github.com/duckietown/challenge-aido1_lf1)
-
-To get started, try on of the existing templates but change the challenge name in `submission.yaml` to `aido1_LFV_r1-v3`:
+To get started, try on of the existing templates:
 
 * The [random template](#minimal-template) is the most flexible
 * The [Tensorflow template](#tensorflow-template) is the place to submit a [tensorflow](https://www.tensorflow.org/) submission
 * The [Pytorch template](#pytorch-template) is the place to submit a [pytorch](https://pytorch.org/) submission
-* The [ROS baseline](#ros-template) is the place to submit a submission using the [Robot Operating System](http://www.ros.org/). 
+* The [ROS template](#ros-template) is the place to submit a submission using the [Robot Operating System](http://www.ros.org/). 
 
-Interaction protocol: [`aido1_remote3-v3`](#aido1_remote3-v3)
+or baseline algorithms:
 
-### Simulator parameters
+ - [Classical Duckietown stack](#ros-baseline),
+ - [Reinforcement learning](#embodied_rl) (with PyTorch),
+ - [Imitation learning from simulation](#embodied_il_sim) (with tensorflow),
+ - [Imitation learning from real logs](#embodied_il_logs) (with tensorflow).
 
-The Duckietown Gym Parameters are [available here](https://challenges.duckietown.org/v4/humans/challenges/aido1_LFV_r1-v3#step1-simulation).
 
-In particular:
+### `aido2-LFV-sim-testing` Details {#aido2-LFV-sim-testing status=ready}
 
-```yaml
-DTG_EPISODES: 5
-DTG_STEPS_PER_EPISODE: 500
-DTG_MAP: loop_obstacles
-```
+ - [Challenge overview](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFV-sim-testing)
+ - [Leaderboard](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFV-sim-testing/leaderboard)
+ - [All submissions](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFV-sim-testing/submissions)
 
-### Metrics 
 
-Metrics are [described here](https://challenges.duckietown.org/v4/humans/challenges/aido1_LFV_r1-v3#scoring).
+Interaction protocol: [`aido2_db18_agent-z2`](#aido2_db18_agent-z2)
 
+The details for "experiment manager", "simulator", and "scenario maker" parameters may be of interest and are [available here](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFV-sim-testing) (Under "Details").
+
+### `aido2-LFV-sim-validation` Details {#aido2-LFV-sim-validation status=ready}
+
+ - [Challenge overview](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFV-sim-validation)
+ - [Leaderboard](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFV-sim-validation/leaderboard)
+ - [All submissions](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFV-sim-validation/submissions)
+
+
+Interaction protocol: [`aido2_db18_agent-z2`](#aido2_db18_agent-z2)
+
+
+## `LFV` in the Robotarium {#challenge-aido2_lfv_robotarium status=ready}
+
+Details coming soon...
 
 
 
