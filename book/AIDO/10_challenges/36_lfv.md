@@ -1,4 +1,4 @@
-# Challenge `LFV` {#lfv status=ready}
+# Challenge `LFV` {#lf_v status=ready}
 
 The second task of the *AI Driving Olympics* is "Lane following with dynamic vehicles".
 This task is an extension of Task LF to include additional rules of the road and other moving vehicles and static obstacles.
