@@ -1,4 +1,4 @@
-# Imitation Learning from Logs Baseline (tensorflow) {#embodied_il_logs status=ready}
+# Imitation Learning from Logs {#embodied_il_logs status=ready}
 
 In this part, you can find all the required steps in order to make a submission based on Imitation Learning with Tensorflow for the lane following task using real log data .
 

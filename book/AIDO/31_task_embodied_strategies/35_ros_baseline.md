@@ -1,4 +1,4 @@
-# Classical Duckietown Baseline (ROS) {#ros-baseline status=ready}
+# Classical Duckietown Stack  {#ros-baseline status=ready}
 
 This section describes the basic procedure for making a submission using the [Robot Operating System](http://www.ros.org/) and the  [Duckietown software stack](https://github.com/duckietown/Software) .
 
