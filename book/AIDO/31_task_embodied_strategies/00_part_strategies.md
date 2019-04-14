@@ -1,4 +1,4 @@
-# Solution Baselines   {#part:embodied-strategies status=ready}
+# Baseline Algorithms   {#part:embodied-strategies status=ready}
 
 This part describes several strategies for approaching the embodied tasks, including:
 
