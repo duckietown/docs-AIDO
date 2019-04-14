@@ -1,7 +1,5 @@
 # Reinforcement Learning Baseline (PyTorch) {#embodied_rl status=beta}
 
-Maintainer: Florian and Bhairav
-
 This section describes the basic procedure for making a submission with a model trained in simulation using reinforcement learning with PyTorch.
 
 <div class='requirements' markdown='1'>

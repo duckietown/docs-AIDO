@@ -1,4 +1,4 @@
-# Your first submission {#cm-first status=ready}
+# Make a submission {#cm-first status=ready}
 
 This section describes the steps to make your first submission.
 

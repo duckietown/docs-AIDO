@@ -36,4 +36,3 @@ For details about the evaluation metrics please refer to the [definitions of the
 [challenges]: https://challenges.duckietown.org/v4/humans/challenges
 
 
-Maintainer: Julian Zilly

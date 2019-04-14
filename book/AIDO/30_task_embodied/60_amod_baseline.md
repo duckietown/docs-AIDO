@@ -1,4 +1,4 @@
-# Running the baselines {#amod-baselines status=ready}
+# Agent template for `AMOD` {#amod-baselines status=ready}
 
 If you have not done this yet, study the general introduction to the task and the explanation of the performance objectives on these two pages:
 
