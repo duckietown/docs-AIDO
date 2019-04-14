@@ -8,16 +8,16 @@ Requires: That you have setup your [accounts](#cm-accounts).
 
 Requires: That you meet the [software requirement](#cm-sw).
 
-Result: You make a submission and see your entry [here](https://challenges.duckietown.org/v4/humans/challenges/aido1_LF1_r3-v3).
+Result: You make a submission to all of the `LF*` challenges and can view their status and output. 
 
 </div>
 
 
 ## Quickstart
 
-### Check out [the repository](https://github.com/duckietown/challenge-aido1_LF1-template-random):
+### Check out [the repository](https://github.com/duckietown/challenge-aido_LF-template-random):
 
-    $ git clone git@github.com:duckietown/challenge-aido1_LF1-template-random.git
+    $ git clone git@github.com:duckietown/challenge-aido_LF-template-random.git
 
 
 ### Change into the directory:
@@ -28,9 +28,15 @@ Result: You make a submission and see your entry [here](https://challenges.ducki
 
     $ dts challenges submit 
 
-### Verify your submission
+### Verify your submission(s)
 
-You should be able to see your submission [here](https://challenges.duckietown.org/v4/humans/challenges/aido1_LF1_r3-v3). 
+This will make a number of submissions (as described below). You can track the status of these submissions in the command line with:
+
+    $ dts challenges follow --submission ![SUBMISSION_NUMBER]
+
+or through your browser by navigating the webpage: `https://challenges.duckietown.org/v4/humans/submissions/![SUBMISSION_NUMBER]`
+
+where `![SUBMISSION_NUMBER]` should be replaced with the number of the submission which is reported in the terminal output. 
 
 
 
@@ -39,99 +45,64 @@ You should be able to see your submission [here](https://challenges.duckietown.o
 The submission consists of the following files:
 
     submission.yaml
-    Dockerfile	
+    Dockerfile
+	Makefile
     requirements.txt	
-    solution.py	
+    random_agent.py	
 
 ### `submission.yaml`
     
 The file `submission.yaml` contains the configuration for this submission:
 
 ```yaml
-challenge: aido1_LF1_r3-v3     # which challenge to submit to
-protocol: aido1_remote3-v3  # which protocol this submission can speak
-user-label: "Random execution"
+challenge: [c1,c2]
+protocol: aido2_db18_agent-z2
+user-label: random_agent
+user-payload: {}
 ```
-    
-You may change the `user-label` to any short string that you want
+
+ - With `challenge` you can list [the challenges](#part:aido-rules) that you want your submission to be run on. 
+ - The `user-label` can be changed to your liking
+ - The `protocol` and `user-payload` should probably be left as they are. 
 
 ### `requirements.txt`
 
-This file contains the requirements that are need to run the "glue" code.
+This file contains any python requirements that are need your code.
 
-The requirements for interfacing with the server are:
+### `random_agent.py`
 
-* `duckietown-shell`
-* `duckietown-challenges`
+The `random_agent.py` solution file illustrates the protocol interace.
 
-The requirements for connecting to the simulator are:
-
-* `gym-duckietown-agent`
-* `duckietown-slimremote`
-
-
-Feel free to *add* but not subtract to this file.
-
-
-### `solution.py` boilerplate
-
-All the submissions use the same boilerplate code:
+The import parts are:
 
 ```python
-class Submission(ChallengeSolution):
-    def run(self, cis):
-        assert isinstance(cis, ChallengeInterfaceSolution) 
-        
-        # run the actual code here
-        my_solution()
-        
-        cis.set_solution_output_dict({})
-        
-
-if __name__ == '__main__':
-    print('Starting submission')
-    wrap_solution(Submission())
+    def on_received_observations(self,  data: Duckiebot1Observations):
+        camera: JPGImage = data.camera
+        _rgb = jpg2rgb(camera.jpg_data)
 ```
 
-This boilerplate is used to make sure that the evaluation and server containers are properly synchronized.
-
-
-### `solution.py` agent connection code
-
-Moving on to the `solve()` function, we see it has the following pattern:
+which reads an image whenever one becomes available, and 
 
 ```python
-def solve(gym_environment, cis):
-    
-    # the Gym environment knows how to connect to the container
-    env = gym.make(gym_environment)
-    
-    # typical Gym loop
-    
-    observation = env.reset()
-    # While there are no signal of completion (simulation done)
-    # we run the predictions for a number of episodes, don't worry, we have the control on this part
-    while True:
-        action = YOUR_AGENT(observation)
-        # we tell the environment to perform this action and we get some info back in OpenAI Gym style
-        observation, reward, done, info = env.step(action)
-        
-        # it is important to check for this flag, the Evalution Engine will let us know when should we finish
-        # if we are not careful with this the Evaluation Engine will kill our container and we will get no score
-        # from this submission
-        if 'simulation_done' in info:
-            break
-            
-        # end of an episode
-        if done:
-            env.reset()
+    def on_received_get_commands(self, context: Context):
+        if self.n == 0:
+            pwm_left = 0.0
+            pwm_right = 0.0
+        else:
+            pwm_left = np.random.uniform(0.5, 1.0)
+            pwm_right = np.random.uniform(0.5, 1.0)
+        self.n += 1
+
+        # pwm_left = 1.0
+        # pwm_right = 1.0
+        grey = RGB(0.0, 0.0, 0.0)
+        led_commands = LEDSCommands(grey, grey, grey, grey, grey)
+        pwm_commands = PWMCommands(motor_left=pwm_left, motor_right=pwm_right)
+        commands = Duckiebot1Commands(pwm_commands, led_commands)
+        context.write('commands', commands)
 ```
 
-Please follow the following rules:
+which asks for wheel commands to be sent to the robot. Your code must finish by sending the commands to the robot with the `context.write` command.
 
-* When you get `done = False`, the episode is over. Call `env.reset()`.
-* When you get `simulation_done` in the `info` dict, break and exit cleanly.
 
-The `action = YOUR_AGENT(observation)` line is where you should put the computation of the action.
 
-Read on to know more details about who to integrate this template with tensorflow.
