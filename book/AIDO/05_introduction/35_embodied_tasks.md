@@ -17,7 +17,7 @@ There are three main parts in our system with which the participants will intera
 
 2. **Remote "robotariums"** in which to try the code in controlled and reproducible conditions.
 
-3. **Physical Duckietown platform** ([](#fig:duckietown_nice)): miniature vision-based vehicles and cities in which the vehicles drive. The robot hardware and environment are rigorously specified, which makes the development extremely repeatable (For an example of this see ["Duckietown specifications"](+opmanual_duckietown#duckietown_specs). If you have a Duckiebot then you will want to refer to the [Duckiebot manual](+opmanual_duckiebot#building_duckiebot_c0). If you would like to acquire a Duckiebot please go to [duckietown.org](https://www.duckietown.org/).
+3. **Physical Duckietown platform** ([](#fig:duckietown_nice)): miniature vision-based vehicles and cities in which the vehicles drive. The robot hardware and environment are rigorously specified, which makes the development extremely repeatable (For an example of this see ["Duckietown specifications"](+opmanual_duckietown#dt-ops-appearance-specifications). If you have a Duckiebot then you will want to refer to the [Duckiebot manual](+opmanual_duckiebot#assembling-duckiebot-db18). If you would like to acquire a Duckiebot please go to [duckietown.org](https://www.duckietown.org/).
 
 
 
@@ -40,7 +40,7 @@ More details in section [computational substrate](#computation).
 
 ### The Duckietown {#environment}
 
-Duckietowns are modular, structured environments built on two layers: the *road* and the *signal* layers ([](#fig:duckietown-environment)). Detailed specifications can be found [here](+opmanual_duckietown#duckietown_specs).
+Duckietowns are modular, structured environments built on two layers: the *road* and the *signal* layers ([](#fig:duckietown-environment)). Detailed specifications can be found [here](+opmanual_duckietown#dt-ops-appearance-specifications).
 
 
 There are six well defined *road segments*: straight, left and right $90$ deg turns, 3-way intersection, 4-way intersection, and empty tile. Each is built on individual tiles, and their interlocking enables customizability of city sizes and topographies. The appearance specifications detail the color and size of the lines as well as the geometry of the roads.
@@ -69,7 +69,7 @@ to gain access to the robotariums. In particular we emphasize that Duckiebots sh
 Simulation environments for each of the individual challenges will be provided as Docker containers with clearly specified APIs. The baseline solutions for each challenge will be provided as separate containers. When both containers (the simulation and corresponding solution) are loaded and configured correctly, the simulation will effectively replace the real robot(s). A proposed solution can be uploaded to our cloud servers, at which point it will be automatically run against our pristine version of the simulation environment (on a cluster) and a score will be assigned and returned to the uploader.
 
 Examples of the simulators provided are shown in [](#fig:maxsim).
-The left panel shows a lightweight simulator with low-level timing control built on OpenGL. This simulator is also integrated with the OpenAI Gym environment for reinforcement learning agent training. An API for designing reward functions or tweaking domain randomization will be provided. 
+The left panel shows a lightweight simulator with low-level timing control built on OpenGL. This simulator is also integrated with the OpenAI Gym environment for reinforcement learning agent training. An API for designing reward functions or tweaking domain randomization will be provided.
 
 <figure>
     <figcaption figure-id="fig:maxsim">Lightweight simulation environment for training and development</figcaption>
@@ -100,7 +100,7 @@ The Duckietown robotariums will be built in the following  institutions:
 1. ETH Zürich
 2. National Chiao Tung University, Taiwan
 3. University of Montréal
-4. TTI Chicago. 
+4. TTI Chicago.
 
 Want to add your university to the list? [Contact us](mailto:info@duckietown.org).
 
@@ -141,6 +141,3 @@ The Duckiebot interacts with the world through its actuators, its wheel motors.
 
 
 - The output of the Duckiebot both in simulation and reality are its motor command signals.
-
-
-
