@@ -1,6 +1,6 @@
 # ROS Template for `aido1_LF1` {#ros-template status=ready}
 
-This section describes the basic procedure for making a submission with a model trained in using the [Robot Operating System](http://www.ros.org/). It can be used as a starting point for any of the [`LF`](#lf), [`LFV`](#lfv), and [`LFVI`](#lfvi) challenges.
+This section describes the basic procedure for making a submission with a model trained in using the [Robot Operating System](http://www.ros.org/). It can be used as a starting point for any of the [`LF`](#lf), [`LFV`](#lf_v), and [`LFVI`](#lf_v_i) challenges.
 
 <div class='requirements' markdown='1'>
 

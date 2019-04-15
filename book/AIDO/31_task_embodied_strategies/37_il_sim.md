@@ -1,6 +1,6 @@
 # Imitation Learning from Simulation {#embodied_il_sim status=draft}
 
-This section describes the procedure for generating logs from the [gym-duckietown](https://github.com/duckietown/gym-duckietown), and then using them to train a model with imitation learning using [tensorflow](https://www.tensorflow.org/).
+This section describes the procedure for generating logs from the [gym-duckietown](https://github.com/duckietown/gym-duckietown), and then using them to train a model with imitation learning using [tensorflow](https://www.tensorflow.org/). It can be used as a starting point for any of the [`LF`](#lf), [`LFV`](#lf_v), and [`LFVI`](#lf_v_i) challenges.
 
 
 <div class='requirements' markdown='1'>
@@ -15,13 +15,13 @@ Result: You could win the AI-DO!
 
 ## Quickstart 
 
-### Clone this [repo](https://github.com/duckietown/challenge-aido1_LF1-baseline-IL-sim-tensorflow)
+### Clone this [repo](https://github.com/duckietown/challenge-aido_LF-baseline-IL-sim-tensorflow)
 
-    $ git clone git@github.com:duckietown/challenge-aido1_LF1-baseline-IL-sim-tensorflow.git
+    $ git clone git@github.com:duckietown/challenge-aido_LF-baseline-IL-sim-tensorflow.git
     
 ### Change into the directory you cloned
 
-    $ cd challenge-aido1_LF1-baseline-IL-sim-tensorflow
+    $ cd challenge-aido_LF-baseline-IL-sim-tensorflow
     
 ### Evaluate your submission
 
@@ -39,7 +39,7 @@ Or make an official submission
 
 ###  Logging
 
-Most of of the logging procedure is implemented on `log.py` and `_loggers.py`.
+Most of of the logging procedure is implemented on `learning/log.py` and `learning/_loggers.py`.
 There are two crucial aspects that can impact your final results:
 
 1. The quality of the expert.
@@ -61,11 +61,11 @@ Remember, we are estimating a policy, so the better we capture the underlying di
 ##  Training
 
 The output of the logging procedure is a file that we called `train.log`, but you can rename it to your convenience.
-We have prepared a very simple `Reader` class in `_loggers.py` that is capable of reading the logs we store in the previous step.
+We have prepared a very simple `Reader` class in `learning/_loggers.py` that is capable of reading the logs we store in the previous step.
 
-The training procedure implemented in `train.py` is quite simple.
+The training procedure implemented in `learning/train.py` is quite simple.
 The baseline CNN is a one Residual module (Resnet1) network trained to regress the velocity and the steering angle of our simulated duckiebot.
-All the Tensorflow boilerplate code is encapsulated in `TensorflowModel` class implemented on `model.py`.
+All the Tensorflow boilerplate code is encapsulated in `TensorflowModel` class implemented on `learning/model.py`.
 You may find this abstraction quite useful as it is already handling model initialization and persistence ofr you.
 
 Then, the training procedure is quite clear.

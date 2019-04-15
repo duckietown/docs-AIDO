@@ -1,6 +1,6 @@
 # Imitation Learning from Logs {#embodied_il_logs status=ready}
 
-In this part, you can find all the required steps in order to make a submission based on Imitation Learning with Tensorflow for the lane following task using real log data .
+In this part, you can find all the required steps in order to make a submission based on Imitation Learning with Tensorflow for the lane following task using real log data. It can be used as a starting point for any of the [`LF`](#lf), [`LFV`](#lf_v), and [`LFVI`](#lf_v_i) challenges.
 
 <div class='requirements' markdown='1'>
 
@@ -14,10 +14,10 @@ Result: You win the AI-DO!
 
 ## Quickstart {#tensorflow-from-logs-workflow status=ready}
 
-Clone the [baseline Tensorflow imitation learning from logs repository](https://github.com/duckietown/challenge-aido1_LF1-baseline-IL-logs-tensorflow):
+Clone the [baseline Tensorflow imitation learning from logs repository](https://github.com/duckietown/challenge-aido_LF-baseline-IL-logs-tensorflow):
 
-    $ git clone https://github.com/duckietown/challenge-aido1_LF1-baseline-IL-logs-tensorflow.git
-    $ cd challenge-aido1_LF1-baseline-IL-logs-tensorflow
+    $ git clone https://github.com/duckietown/challenge-aido_LF-baseline-IL-logs-tensorflow.git
+    $ cd challenge-aido_LF-baseline-IL-logs-tensorflow
 
 The code you find is structured into 3 folders.
 

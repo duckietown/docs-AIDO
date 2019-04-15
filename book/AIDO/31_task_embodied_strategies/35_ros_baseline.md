@@ -1,6 +1,6 @@
 # Classical Duckietown Stack  {#ros-baseline status=ready}
 
-This section describes the basic procedure for making a submission using the [Robot Operating System](http://www.ros.org/) and the  [Duckietown software stack](https://github.com/duckietown/Software) .
+This section describes the basic procedure for making a submission using the [Robot Operating System](http://www.ros.org/) and the  [Duckietown software stack](https://github.com/duckietown/Software). It can be used as a starting point for any of the [`LF`](#lf), [`LFV`](#lf_v), and [`LFVI`](#lf_v_i) challenges.
 
 <div class='requirements' markdown='1'>
 
@@ -14,13 +14,13 @@ Result: You could win the AI-DO!
 
 ## Quickstart
 
-### Clone this [repo](https://github.com/duckietown/challenge-aido1_LF1-baseline-duckietown)
+### Clone this [repo](https://github.com/duckietown/challenge-aido_LF-baseline-duckietown):
 
-    $ git clone git://github.com/duckietown/challenge-aido1_LF1-baseline-duckietown.git
+    $ git clone git://github.com/duckietown/challenge-aido_LF-baseline-duckietown.git
 
-### Change into the directory you cloned
+### Change into the directory:
 
-    $ cd challenge-aido1_LF1-baseline-duckietown
+    $ cd challenge-aido_LF-baseline-duckietown
     
 
 ### Evaluate your submission
@@ -33,6 +33,7 @@ Or make an official submission when you are ready with
 
     $ dts challenges submit
     
+
 
 ## Workflows
 
@@ -88,7 +89,7 @@ The interface is mainly the same, except now, the `rosagent.py` file itself cont
 To run this, you will need to have `docker-compose` installed on your local machine, as unlike the AIDO submissions, this will emulate both the server and agent all on your local machine. Follow instructions [here](https://docs.docker.com/compose/install/) to install.
 
 
-## Usage
+### Usage
 
 To launch the lane following demo, run the following command:
     
@@ -103,20 +104,20 @@ You will then start to see output from the Lane Following code, which can be fou
 
 You can terminate the run at any time by pressing <kbd>CTRL</kbd>+<kbd>c</kbd>.
 
-## Write your own agent
+### Write your own agent
 
 To write your own ROS agent, first fork this repository. Since we are going to be running a few containers, the best way to run is the `docker-compose` command found above.
 
 Inside of the `docker-compose-lf.yml` file, you'll find that for purposes of this demo, we are using the `HOSTNAME=default`; the `HOSTNAME` can be thought of as the vehicle name. This is to help mitigate the discrepencies between the real robot and simulator when finding things like configuration files when using the old Duckietown stack.
 
-### Making Edits
+#### Making Edits
 
 With `docker-compose`, your Dockerfiles will not rebuilt unless you tell them. There are two ways of going about this:
 
 1. To rebuild everything, run `docker-compose -f docker-compose-lf.yml build [--no-cache]` before running `docker-compose -f docker-compose-lf.yml up`
 2. (Preferred) Rebuild the container you've changed with `docker build -t "{your-containers-tag}" -f {corresponding-Dockerfile}` . and then `docker-compose -f docker-compose-lf.yml up`.
 
-## Using your own ROS Nodes / Custom `catkin_ws`
+### Using your own ROS Nodes / Custom `catkin_ws`
 
 Most likely, you'll want to work off of some of the standalone Duckietown code, but change a node or two. We will look at two examples:
 

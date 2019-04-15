@@ -1,6 +1,6 @@
 # Reinforcement Learning {#embodied_rl status=beta}
 
-This section describes the basic procedure for making a submission with a model trained in simulation using reinforcement learning with PyTorch.
+This section describes the basic procedure for making a submission with a model trained in simulation using reinforcement learning with PyTorch. It can be used as a starting point for any of the [`LF`](#lf), [`LFV`](#lf_v), and [`LFVI`](#lf_v_i) challenges.
 
 <div class='requirements' markdown='1'>
 
@@ -15,11 +15,11 @@ Result: You win the AI-DO!
 
 To train a policy:
     
-1) Clone this repo
+1) Clone [this repo](https://github.com/duckietown/challenge-aido_LF-baseline-RL-sim-pytorch)
 
-    $ git clone git://github.com/duckietown/challenge-aido1_LF1-baseline-RL-sim-pytorch.git
+    $ git clone git://github.com/duckietown/challenge-aido_LF-baseline-RL-sim-pytorch.git
     
-2) Change into the directory that you cloned
+2) Change into the directory:
     
     $ cd challenge-aido1_LF1-baseline-RL-sim-pytorch
         
