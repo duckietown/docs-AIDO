@@ -61,9 +61,10 @@ See the leaderboards and many other things at the site [`https://challenges.duck
 If you use the AI-DO platform in your work and want to cite it please use:
 
 ```
-@misc{zilly2019ai,
-    title={The AI Driving Olympics at NeurIPS 2018},
-    author={Julian Zilly and Jacopo Tani and Breandan Considine and Bhairav Mehta and Andrea F. Daniele and Manfred Diaz and Gianmarco Bernasconi and Claudio Ruch and Jan Hakenberg and Florian Golemo and A. Kirsten Bowser and Matthew R. Walter and Ruslan Hristov and Sunil Mallya and Emilio Frazzoli and Andrea Censi and Liam Paull},
-    year={2019},
+@article{zilly2019ai,
+  title={The AI Driving Olympics at NeurIPS 2018},
+  author={Julian Zilly and Jacopo Tani and Breandan Considine and Bhairav Mehta and Andrea F. Daniele and Manfred Diaz and Gianmarco Bernasconi and Claudio Ruch and Jan Hakenberg and Florian Golemo and A. Kirsten Bowser and Matthew R. Walter and Ruslan Hristov and Sunil Mallya and Emilio Frazzoli and Andrea Censi and Liam Paull},
+  journal={arXiv preprint arXiv:1903.02503},
+  year={2019}
 }
 ```
