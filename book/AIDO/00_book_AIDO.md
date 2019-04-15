@@ -7,13 +7,12 @@
 
 ## Welcome to AI Driving Olympics! {#aido-welcome nonumber notoc}
 
-Despite recent breakthroughs, the ability of deep learning and reinforcement learning to out perform traditional approaches to control physically embodied robotic agents remains largely unproven. 
-To help bridge this gap, we created the “AI Driving Olympics” (AI-DO), a competition with the objective of evaluating the state of the art in machine learning and artificial intelligence for mobile robotics. 
-Based on the simple and well specified autonomous driving and navigation environment called “Duckietown,” AI-DO includes a series of tasks of increasing complexity – from simple lane-following to fleet management. 
+Despite recent breakthroughs, the ability of deep learning and reinforcement learning to outperform traditional approaches to control physically embodied robotic agents remains largely unproven. 
+The “AI Driving Olympics” (AI-DO) is a competition with the objective of evaluating the state of the art in machine learning and artificial intelligence for mobile robotics. 
+Based on the Duckietown platform, AI-DO includes a series of tasks of increasing complexity – from simple lane-following to fleet management. 
 For each task, we provide tools for competitors to use in the form of simulators, logs, code templates, baseline implementations and low-cost access to robotic hardware. We evaluate submissions in simulation online, on standardized hardware environments, and finally at the competition event.
 
-Participants will not need to be physically present---they will just need to send their source code packaged as a Docker image.  There will be qualifying rounds in simulation, similar to the recent DARPA Robotics Challenge,
-and we will make available the use of "robotariums," which are facilities that allow remote experimentation in a reproducible setting. New this edition is onsite testing on the competition grounds in the days leading up to the final.
+Participants will not need to be physically present at any stage of the competition --- they will just need to send their source code packaged as a Docker image.  There will be qualifying rounds in simulation, similar to the recent DARPA Robotics Challenge, and we will make available the use of "robotariums," which are facilities that allow remote experimentation in a reproducible setting. New to the AI-DO 2 edition is onsite testing on the competition grounds in the days leading up to the final.
 
  - **AIDO 1** is in conjunction with NeurIPS Dec. 2018. 
 
