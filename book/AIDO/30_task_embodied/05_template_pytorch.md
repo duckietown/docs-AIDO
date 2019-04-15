@@ -1,6 +1,6 @@
 # Pytorch template for `aido1_LF1` {#pytorch-template status=ready}
 
-This section describes the basic procedure for making a submission with a model trained in using [PyTorch](https://pytorch.org/).
+This section describes the basic procedure for making a submission with a model trained in using [PyTorch](https://pytorch.org/). It can be used as a starting point for any of the [`LF`](#lf), [`LFV`](#lfv), and [`LFVI`](#lfvi) challenges.
 
 <div class='requirements' markdown='1'>
 
@@ -8,45 +8,66 @@ Requires: That you have setup your [accounts](#cm-accounts).
 
 Requires: That you meet the [software requirement](#cm-sw).
 
-Result: You make a submission and see your entry on [here](https://challenges.duckietown.org/v4/humans/challenges/aido1_LF1_r3-v3).
+Result: You make a submission to all of the `LF*` challenges and can view their status and output.
 
 </div>
 
 ## Quickstart
 
-### Clone the repo:
+### Clone the [template repo](https://github.com/duckietown/challenge-aido_LF-template-pytorch):
 
-    $ git clone git://github.com/duckietown/challenge-aido1_LF1-template-pytorch.git
+    $ git clone git://github.com/duckietown/challenge-aido_LF-template-pytorch.git
 
-### Change into the directory that you cloned:
+### Change into the directory:
     
-    $ cd challenge-aido1_LF1-template-pytorch
+    $ cd challenge-aido_LF-template-pytorch
         
-### Submit :)
+### Run the submission:
+
+Either make a submission with:
 
     $ dts challenges submit
-        
-### Verify the submission
-
-You should be able to see your submission [here](https://challenges.duckietown.org/v4/humans/challenges/aido1_LF1_r3-v3).
 
 
-## Description
+Or, run local evaluation with:
 
-This is a simple template for an agent that uses PyTorch/DDPG for inference.
+    $ dts challenges evaluate
 
-[This code is documented here](https://docs.duckietown.org/DT18/AIDO/out/pytorch_template.html).
+### Verify the submission(s)
 
-## How to change the model
+This will make a number of submissions (as described below). You can track the status of these submissions in the command line with:
 
-Once you trained your own policy, check out line 20-45 of file [solution.py](solution.py#L20).
+    $ dts challenges follow --submission ![SUBMISSION_NUMBER]
 
-Basically, you need to copy your PyTorch network here (and probably replace the `model.py` file with one that contains your own model). And also copy the weights of the network you trained into the `models` directory.
+or through your browser by navigating the webpage: `https://challenges.duckietown.org/v4/humans/submissions/![SUBMISSION_NUMBER]`
 
-Also include any gym wrappers if you included any during training (however, only observation/action wrappers, not reward wrappers).
+where `![SUBMISSION_NUMBER]` should be replaced with the number of the submission which is reported in the terminal output. 
 
-Finally, change the code in `solution.py` line 20-45 to represent the steps to load your model and load the saved network weights and the wrappers.
+## Anatomy of the submission
 
-## Running Locally
+The submission consists of all of the basic files that required for a [basic submission](#minimal-template). Below we will highlight the specifics with respect to this template.
 
-If you'd like to run on your local machine, edit `local_experiment.py` to match the environment setup and model loading with the one you have in `solution.py`, and run.
+### `solution.py`
+
+The only difference in `solution.py` is that we are calling our model to compute an action with the following code:
+
+```python
+    def compute_action(self, observation):
+        if observation.shape != self.preprocessor.transposed_shape:
+            observation = self.preprocessor.preprocessor(observation)
+        action = self.model.predict(observation)
+        return action.astype(float)
+```
+
+## Model files
+
+The other addition files are the following:
+
+    wrappers.py
+    model.py
+    models
+
+`wrappers.py` contains a simple wrapper for resizing the input image. `model.py` is used for training the model, and the models are stored in `models`.
+
+For an example of how the template can be used see [](#embodied_rl).
+

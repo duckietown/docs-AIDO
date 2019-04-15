@@ -1,6 +1,6 @@
-# Tensorflow template for `aido1_LF1` {#tensorflow-template status=ready}
+# Tensorflow template for `aido2_LF*` {#tensorflow-template status=ready}
 
-This section describes the basic procedure for making a submission with a model trained in using [TensorFlow](https://www.tensorflow.org/)
+This section describes the basic procedure for making a submission with a model trained in using [TensorFlow](https://www.tensorflow.org/). It can be used as a starting point for any of the [`LF`](#lf), [`LFV`](#lfv), and [`LFVI`](#lfvi) challenges.
 
 <div class='requirements' markdown='1'>
 
@@ -20,13 +20,20 @@ Result: You make a submission to all of the `LF*` challenges and can view their 
     $ git clone git@github.com:duckietown/challenge-aido_LF-template-tensorflow.git
 
 
-### Change in the `submission` dir:
+### Change into the directory:
 
     $ cd challenge-aido_LF-template-tensorflow
     
-### And run the submission:
+### Run the submission:
+
+Either make a submission with:
 
     $ dts challenges submit
+
+
+Or, run local evaluation with:
+
+    $ dts challenges evaluate
 
 ### Verify your submission(s)
 
@@ -43,7 +50,7 @@ where `![SUBMISSION_NUMBER]` should be replaced with the number of the submissio
 The submission consists of all of the basic files that required for a [basic submission](#minimal-template). Below we will highlight the specifics with respect to this template. 
 
 
-### solution.py
+### `solution.py`
 
 The only difference in `solution.py` is that we are calling our model to compute an action with the following code:
 
@@ -60,7 +67,7 @@ The other additional files are the following:
     tf_models/
     model.py
     
-The directory `tf_models/` contains the Tensorflow learned models.
+The directory `tf_models/` contains the Tensorflow learned models (the ones that you have trained).
 
 The `model.py` code is the code that runs the Tensorflow model
 

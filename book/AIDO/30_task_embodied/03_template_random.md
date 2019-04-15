@@ -1,6 +1,6 @@
-# Minimal Agent Template for `aido2_LF` {#minimal-template status=ready}
+# Minimal Agent Template for `aido2_LF*` {#minimal-template status=ready}
 
-This section describes the contents of the simplest baseline: a "random" agent.
+This section describes the contents of the simplest baseline: a "random" agent. It can be used as a starting point for any of the [`LF`](#lf), [`LFV`](#lfv), and [`LFVI`](#lfvi) challenges.
 
 <div class='requirements' markdown='1'>
 
@@ -24,9 +24,16 @@ Result: You make a submission to all of the `LF*` challenges and can view their 
 
     $ cd challenge-aido_LF-template-random
     
-### Submit!
+### Run the submission:
 
-    $ dts challenges submit 
+Either make a submission with:
+
+    $ dts challenges submit
+
+
+Or, run local evaluation with:
+
+    $ dts challenges evaluate
 
 ### Verify your submission(s)
 
