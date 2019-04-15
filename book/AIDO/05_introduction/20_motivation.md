@@ -100,7 +100,7 @@ The AI Driving Olympics competition is structured into the following separate ch
 
   <!-- * [Navigation + vehicles (NAVV)](#nav_v): Navigation challenge of a Duckiebot to drive from point $A$ to point $B$ within Duckietown while following the rules of the road and while other Duckiebots are likewise driving in the road. -->
 
-###[Autonomous Mobility-on-Demand (AMoD)](#amod): Control the movement of a fleet of autonomous vehicles in a simulated city to pick up customers and drive them to their destinations.
+* [Autonomous Mobility-on-Demand (AMoD)](#amod): Control the movement of a fleet of autonomous vehicles in a simulated city to pick up customers and drive them to their destinations.
 
 
 
