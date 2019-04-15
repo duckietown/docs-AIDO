@@ -22,7 +22,7 @@ Result: You make a submission to all of the `LF*` challenges and can view their 
 
 ### Change into the directory:
 
-    $ cd challenge-aido1_LF1-template-random
+    $ cd challenge-aido_LF-template-random
     
 ### Submit!
 
@@ -48,13 +48,13 @@ The submission consists of the following files:
     Dockerfile
 	Makefile
     requirements.txt	
-    random_agent.py	
-
+    solution.py
+    
 ### `submission.yaml`
     
 The file `submission.yaml` contains the configuration for this submission:
 
-```yaml
+```
 challenge: [c1,c2]
 protocol: aido2_db18_agent-z2
 user-label: random_agent
@@ -69,9 +69,9 @@ user-payload: {}
 
 This file contains any python requirements that are need your code.
 
-### `random_agent.py`
+### `solution.py`
 
-The `random_agent.py` solution file illustrates the protocol interace.
+The `solution.py` solution file illustrates the protocol interace.
 
 The import parts are:
 
