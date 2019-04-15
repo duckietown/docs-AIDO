@@ -5,8 +5,8 @@ This challenge is an extension of Challenge `LF` to include map configurations t
 
 
 
-<figure>
-    <figcaption figure-id="fig:lane-following-vehicles-intersections">A Duckiebot doing lane following with other vehicles and intersections</figcaption>
+<figure figure-id="fig:lane-following-vehicles-intersections">
+    <figcaption>A Duckiebot doing lane following with other vehicles and intersections</figcaption>
     <img style='width:15em' src="yield.jpg"/>
 </figure>
 
@@ -20,8 +20,8 @@ Again we ask participants to submit code allowing the Duckiebot to drive on the 
 
 The current versions of the lane following with vehicles in simulation are `aido2-LFVI-sim-testing` and `aido2-LF-sim-validation`. These two challenges are identical except for the output that you are allowed to see. In the case of `testing` you will be able to see performance of your agent ([](#fig:submission-output-lfvi))  and you will be able to download the logs and artifacts. 
 
-<figure>
-    <figcaption figure-id="fig:submission-output-lfvi">Visual output for submission</figcaption>
+<figure figure-id="fig:submission-output-lfvi">
+    <figcaption>Visual output for submission</figcaption>
     <img style='width:30em' src="submission-output-lfvi.png"/>
 </figure>
 
