@@ -1,6 +1,6 @@
 # Classical Duckietown Stack  {#ros-baseline status=ready}
 
-This section describes the basic procedure for making a submission using the [Robot Operating System](http://www.ros.org/) and the  [Duckietown software stack](https://github.com/duckietown/Software). It can be used as a starting point for any of the [`LF`](#lf), [`LFV`](#lfv), and [`LFVI`](#lfvi) challenges.
+This section describes the basic procedure for making a submission using the [Robot Operating System](http://www.ros.org/) and the  [Duckietown software stack](https://github.com/duckietown/Software). It can be used as a starting point for any of the [`LF`](#lf), [`LFV`](#lf_v), and [`LFVI`](#lf_v_i) challenges.
 
 <div class='requirements' markdown='1'>
 
