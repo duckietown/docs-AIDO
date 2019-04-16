@@ -1,4 +1,4 @@
-# Pytorch template for `aido1_LF1` {#pytorch-template status=ready}
+# Pytorch template for `aido_LF*` {#pytorch-template status=ready}
 
 This section describes the basic procedure for making a submission with a model trained in using [PyTorch](https://pytorch.org/). It can be used as a starting point for any of the [`LF`](#lf), [`LFV`](#lf_v), and [`LFVI`](#lf_v_i) challenges.
 
