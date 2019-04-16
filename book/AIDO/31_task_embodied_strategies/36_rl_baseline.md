@@ -21,7 +21,7 @@ To train a policy:
     
 2) Change into the directory:
     
-    $ cd challenge-aido1_LF1-baseline-RL-sim-pytorch
+    $ cd challenge-aido_LF-baseline-RL-sim-pytorch
         
 3) Install this package
 
