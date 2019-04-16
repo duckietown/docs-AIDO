@@ -96,9 +96,9 @@ which is not by any standard a good performance.
 
 Doing great on the simulated challenges, but not on the real evaluation? Or doing great in your training, but not on our simulated, held-out environments? Take a look at `env.py`. You'll notice that we launch the `Simulator` class from `gym-duckietown`. When we [take a look at the constructor](https://github.com/duckietown/gym-duckietown/blob/aido2_lf_r1/gym_duckietown/simulator.py#L145-L180), you'll notice that we aren't using all of the parameters listed. In particular, the three you should focus on are:
     
-    map_name: What map to use; hint, take a look at gym_duckietown/maps for more choices
-    domain_rand: Applies domain randomization, a popular, black-box, sim2real technique
-    randomized_maps_on_reset: Slows training time, but increases training variety.
+- `map_name`: What map to use; hint, take a look at gym_duckietown/maps for more choices
+- `domain_rand`: Applies domain randomization, a popular, black-box, sim2real technique
+- `randomized_maps_on_reset`: Slows training time, but increases training variety.
 
 Mixing and matching different values for these will help you improve your training diversity, and thereby improving your evaluation robustness!
 
