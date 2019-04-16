@@ -65,6 +65,8 @@ We trained the model for a number of `EPOCHS`, using `BATCH_SIZE` samples at eac
 
 ## Evaluate your submission
 
+You will need to copy the relevant files from the `learning/` directory to the `submission/` one. In particular, you will need to overwrite `submission/model.py` to match any update you've made to the model, and place your final model inside of `submission/tf_models/` so you can load it correctly. Then, you are ready to evaluate!
+
 Either locally with 
 
     $ dts challenges evaluate
