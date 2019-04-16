@@ -32,19 +32,19 @@ and install gym-duckietown (Use `sudo` if system-wide)
 
     $ pip3 install -e git://github.com/duckietown/gym-duckietown.git#egg=gym-duckietown
         
-(4) Run the training script
+(4) Change into the `duckietown_rl` directory and run the training script
 
-    $ python3 2-train-ddpg-cnn.py --seed 123
+    $ python3 -m scripts.train_cnn.py --seed 123
         
 (5) When it finishes, check it out (but first edit this following file and set the seed to the one you used above, like `123` in line 10)
 
-    $ python3 3-test-ddpg-cnn.py
+    $ python3 -m scripts.test_cnn.py
         
 ## How to submit the trained policy
 
 Once you're done training, you need to copy your model and the saved weights of the policy network.
 
-Specifically if you use this repo then you need to copy the following artifacts:
+Specifically if you use this repo then you need to copy the following artifacts into the corresponding locations of the root directory:
 
 - `duckietown_rl/ddpg.py` and rename to `model.py`
 - `scripts/pytorch_models/DDPG_2_XXX_actor.pth` and `..._XXX_critic.pth` and rename to `models/model_actor.pth` and `models/model_critic.pth` respectively, where `XXX` is the seed of your best policy
@@ -69,13 +69,3 @@ Here are some ideas for improving your policy:
 - (more sophisticated) Use a different/bigger convnet for your actor/critic. And add better initialization.
 - (super sophistacted) Use the ground truth from the simulator to construct a better reward  
 - (crazy sophisticated) Use an entirely different training algorithm - like PPO, A2C, or DQN. Go nuts. But this might take significant time, even if you're familiar with the matter.
-
-## Optional: track experiment progress with HyperDash
-
-Install Hyperdash (an open source experiment tracker and plotting tool), and create a profile or login (for more info check out [hyperdash.io](https://hyperdash.io)
-
-    pip install hyperdash && hyperdash signup # for conda users
-    # OR for system-wide installation
-    sudo pip install hyperdash && hyperdash signup
-
-Install the HyperDash app for Android/iOS. You can follow the progress of he various experiments there and you'll get a push notification when your experiment finishes or breaks for some reason.
