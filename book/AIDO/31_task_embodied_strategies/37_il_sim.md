@@ -63,6 +63,7 @@ Then, the training procedure is quite clear.
 We trained the model for a number of `EPOCHS`, using `BATCH_SIZE` samples at each step and the model is persisted every 10 episodes of training.
 
 
+
 ## Evaluate your submission
 
 You will need to copy the relevant files from the `learning/` directory to the `submission/` one. In particular, you will need to overwrite `submission/model.py` to match any update you've made to the model, and place your final model inside of `submission/tf_models/` so you can load it correctly. Then, you are ready to evaluate!
@@ -90,3 +91,16 @@ total reward: -5646.22255589, mean reward: -565.0
 ```
 
 which is not by any standard a good performance.
+
+## Sim2Real Transfer (Optional)
+
+Doing great on the simulated challenges, but not on the real evaluation? Or doing great in your training, but not on our simulated, held-out environments? Take a look at `env.py`. You'll notice that we launch the `Simulator` class from `gym-duckietown`. When we [take a look at the constructor](https://github.com/duckietown/gym-duckietown/blob/aido2_lf_r1/gym_duckietown/simulator.py#L145-L180), you'll notice that we aren't using all of the parameters listed. In particular, the three you should focus on are:
+    
+    map_name: What map to use; hint, take a look at gym_duckietown/maps for more choices
+    domain_rand: Applies domain randomization, a popular, black-box, sim2real technique
+    randomized_maps_on_reset: Slows training time, but increases training variety.
+
+Mixing and matching different values for these will help you improve your training diversity, and thereby improving your evaluation robustness!
+
+If you're interested in more advanced techniques, like learning a representation that is a bit easier for your network to work with, or one that transfers better across the simulation-to-reality gap, there are some [alternative, more advanced methods](https://github.com/duckietown/segmentation-transfer) you may be interested in trying out. In addition, don't forget to try using the [logs infrastructure](http://logs.duckietown.org/), which you can also use to do things like [imitation learning](https://github.com/duckietown/challenge-aido_LF-baseline-IL-logs-tensorflow/)!
+
