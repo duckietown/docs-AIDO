@@ -20,7 +20,7 @@ The current implementation (for instance visible in the file src/DispatchingLogi
 
 * Open transporation requests by customers are sorted with respect to the submission time, i.e., the longest waiting customers are first in the list. 
 * Next, for every unassigned customer request, a random robotic taxi is selected and sent to pickup the passenger and drive her or him to the desired destination.
-* Finally, all robotic taxis which are not busy and in the task <I>STAY<I> are sent to a random location in the network (rebalancing step).
+* Finally, all robotic taxis which are not busy and in the task `STAY` are sent to a random location in the network (rebalancing step).
 
 The same logic is also implmented in the JAVA template.
 

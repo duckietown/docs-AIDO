@@ -99,11 +99,19 @@ The AMoD task is evaluated on the performance objectives described in [Performan
 
 The protocol of these challenges is well-documented at [Aido-Client-Protocol](https://github.com/idsc-frazzoli/amod/blob/dh025/doc/aido-client-protocol.md) Read it carefully at this location before getting started.
 
-Once the protocol is understood, in order to participate in the challenge, a dockerized <I>AidoGuest<I> must be written that contains your own operational policy for the system. To facilitate this, we have prepared to template versions, written in JAVA and in Python. They contain working operational policies which make their decisions correctly but with a lot of room for efficiency and service level improvement. The templates can be found at:
+Once the protocol is understood, in order to participate in the challenge, a dockerized `AidoGuest` must be written that contains your own operational policy for the system. To facilitate this, we have prepared to template versions, written in JAVA and in Python. They contain working operational policies which make their decisions correctly but with a lot of room for efficiency and service level improvement. The templates can be found at:
 
 [AMoD-Challenge Template Python](https://github.com/duckietown/challenge-aido_amod-template-python)
 [AMoD-Challenge Template Java](https://github.com/duckietown/challenge-aido_amod-template-java)
 
-### How to create your own submission {status=draft}
+### How to create your own submission {status=beta}
 
-To create your own submission, it is recommended to start from the provided templates. First, update user specific information in the file <I>submission.yaml<I>. Next, you need to write a new dispatching / rebalancing logic. Of course, this process is only limited by the imagination. In the Python template, you can for instance study and modify the currently implemented dispatching logic that is in the file <I> src/DispatchingLogic.py<I>. After you have completed your modifications, enter <I>dts challenges submit<I> and study the results online.
+To create your own submission, it is recommended to start from the provided templates. 
+First, update user specific information in the file `submission.yaml`. 
+Next, you need to write a new dispatching or rebalancing logic. Of course, this process is only limited by the imagination. 
+In the Python template, you can for instance study and modify the currently implemented dispatching logic that is in the file `src/DispatchingLogic.py`. 
+After you have completed your modifications, enter 
+
+    $ dts challenges submit 
+    
+and study the results online.
