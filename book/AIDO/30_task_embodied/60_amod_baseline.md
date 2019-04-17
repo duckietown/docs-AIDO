@@ -13,11 +13,11 @@ Next, you can use one of the baselines that we provided to understand how an Aid
 
 ## Java
 
-The Java baseline is available at [the repository `challenge-aido1_amod1-template-java`][challenge-aido1_amod1-template-java].
+The Java baseline is available at [the repository `challenge-aido_amod-template-java`][challenge-aido1_amod1-template-java].
 
 ## Python
 
-The Python baseline is available at the repository [`challenge-aido1_amod1-template-python`][challenge-aido1_amod1-template-python].
+The Python baseline is available at the repository [`challenge-aido_amod-template-python`][challenge-aido1_amod1-template-python].
 
 [challenge-aido1_amod1-template-python]: https://github.com/duckietown/challenge-aido1_amod1-template-python
 
