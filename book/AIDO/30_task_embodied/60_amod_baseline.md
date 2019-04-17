@@ -11,11 +11,6 @@ Please briefly study the our client-server protocol which is described in our gi
 
 Next, you can use one of the baselines that we provided to understand how an Aido-Guest to manage an AMoD task is actually implemented. We provide one baseline in JAVA and one in Python. Both do not represent well-performing policies but are simply demonstrations of how an Aido-Guest could be implemented, therefore you should rapidly be able to beat their performance. 
 
-
-First thing first, you should run our baselines.
-
-We provide two baselines implementation: Python and Java.
-
 ## Java
 
 The Java baseline is available at [the repository `challenge-aido1_amod1-template-java`][challenge-aido1_amod1-template-java].
