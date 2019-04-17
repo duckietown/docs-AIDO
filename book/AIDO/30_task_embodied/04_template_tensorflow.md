@@ -1,4 +1,4 @@
-# Tensorflow template for `aido2-LF*` {#tensorflow-template status=ready}
+# Tensorflow Template for `aido2-LF*` {#tensorflow-template status=ready}
 
 This section describes the basic procedure for making a submission with a model trained in using [TensorFlow](https://www.tensorflow.org/). It can be used as a starting point for any of the [`LF`](#lf), [`LFV`](#lf_v), and [`LFVI`](#lf_v_i) challenges.
 
