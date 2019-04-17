@@ -1,8 +1,8 @@
 # Challenge `AMOD` {#amod status=ready}
 
-We introduce a challenge that is presently too extensive to conduct in Duckietown. Instead, the task is carried out only in simulation. In the future, this is expected change as Duckietowns across the world experience a tremendous growth in population, mostly due to the significant immigration of Duckies with an engineering background.
+We introduce a challenge that is presently too extensive to conduct in physical Duckietown. Instead, the task is carried out in simulation. In the future, this is expected change as Duckietowns across the world experience a tremendous growth in population, mostly due to the significant immigration of Duckies with an engineering background.
 
-We use the simulation platform AMoDeus [AMoDEUs](https://github.com/idsc-frazzoli/amodeus) \cite{AMoDeus-BASE}. AMoDeus is a virtual mobility-on-demand simulator on which operational policies for large-scale AMoD systems can be developed and tested. You may coordinate thousands of robotic taxis in cities to pick up and deliver customers with your algorithm hosted by the AMoDeus engine in the background.
+We use the simulation platform AMoDeus [AMoDEUs](https://github.com/idsc-frazzoli/amodeus) \cite{AMoDeus-BASE}. AMoDeus is a virtual mobility-on-demand simulator on which operational policies for large-scale AMoD systems can be developed and tested on a high fidelity mesoscopic transportation simulator. You may coordinate thousands of robotic taxis in cities to pick up and deliver customers with your algorithm hosted by the AMoDeus engine in the background.
 
 The design of operational policies for AMoD systems is a challenging task for various reasons:
 
@@ -12,12 +12,12 @@ The design of operational policies for AMoD systems is a challenging task for va
 
 * Running an AMoD system with good service levels is a task that requires to chose the number of employed robotic taxis correctly, to reduce the empty miles driven and maintain good wait and journey times for the customers. These are conflicting goals.
 
-Operating AMoD systems is a challenging task that requires complex decision-making and anticipative action-taking. This makes it an ideal challenge for NIPS!
+Therefore, operating AMoD systems is a task that requires complex decision-making and anticipative action-taking. This makes it an ideal duckietown-challenge!
 
 
 ## Platform
 
-AMoDeus is an open-source software package for the accurate and quantitative analysis of autonomous mobility-on-demand systems. It internally utilizes the agent-based transportation simulator [MATSim](https://www.matsim.org/) \cite{horni2016multi}. In its inner loop, it simulates the traffic in a city on a queuing network which takes into account congestion and network effects inherent to transportation systems. In its outer loop, it enables the agents to change their transportation behavior based on arbitrary utility functions that may include tolerance to delay, travel time, cost etc. In this challenge we will work with the inner loop and a static demand profile. A possible extension to dynamic demand is expected to follow in a next iteration of the challenge.
+AMoDeus is an open-source software package for the accurate and quantitative analysis of autonomous mobility-on-demand systems. It internally utilizes the agent-based transportation simulator [MATSim](https://www.matsim.org/) \cite{horni2016multi}. In its inner loop, it simulates the traffic in a city on a queuing network which takes into account congestion and network effects inherent to transportation systems. In its outer loop, it enables the agents to change their transportation behavior based on arbitrary utility functions that may include tolerance to delay, travel time, cost etc. to determine the dynamic user equilibrium of the transportation system, the equilibrium to which physical cities do converge. In this challenge we will work with the inner loop and a static demand profile, i.e., we focus on the optimization of AMoD fleet operation. A possible extension to dynamic demand is expected to follow in a next iteration of the challenge.
 
 The performance of AMoD systems both in terms of customer satisfaction as well as efficiency highly depends on the operational policies that guide the behavior of the fleet. Notably, there are two types of decisions that have to be made:
 
@@ -26,7 +26,7 @@ The performance of AMoD systems both in terms of customer satisfaction as well a
 2. **Rebalancing:** available, temporarily unused cars can be sent to another location in the network to meet future anticipated demand, a process called rebalancing. The rebalancing commands are determined by the operational policy of the system. Rebalancing is optional: depending on the situation and cost, it may be best to leave an idle robotic taxi at its current location.
 
 To facilitate the comparison of operational policies, AMoDeus contains fleet efficiency and service level analysis methods. The most important metrics are automatically included in a report. Among them is the status of the robotic taxis during the course of one day as shown in Figure \ref{fig:reportFigure}.
-Furthermore, benchmark operational policies are included in AMoDeus which serve as a benchmark for new policies. Finally, AMoDeus has an in-built graphical viewer that allows in-depth insights into the system. A screenshot of the viewer is shown in Figure \ref{fig:viewerScreenshots}.
+Furthermore, benchmark operational policies are included in AMoDeus which help to compare with the state of art. An overview of the currently implemented policies can be found at [AMoDEUs](https://github.com/idsc-frazzoli/amodeus) . Finally, AMoDeus has an in-built graphical viewer that allows in-depth insights into the system. A screenshot of the viewer is shown in Figure \ref{fig:viewerScreenshots}.
  
 <div figure-id="fig:reportFigure">
 <img src="images/statusDistribution.png" style='width: 90%'/>
@@ -45,8 +45,7 @@ A graphic from the AMoDeus report showing the status distribution of robotic tax
 ## Description of Task
 
 
-The goal of the AMoD challenges is to create an operational policy that maximizes the service level of the AMoD system while minimizing its operational cost:
-
+The goal of the AMoD challenges is to create an operational policy that maximizes the service level of the AMoD system while minimizing its operational cost. In one sentence:
 
 **A well-performing autonomous mobility-on-demand system uses as few taxis as possible to pickup and deliver as many customers as possible with minimal waiting and journey times while keeping the fleet mileage to a minimum.**
 
@@ -73,12 +72,12 @@ Furthermore, as a basis for the decisions of the algorithm, the following inform
 * **Information on requests:** for every open request, the submission time is communicated as well as the origin and destination in WGS84 coordinates.
 * **Performance metrics:** the rewards in every performance metric since the last time step.
 
-This challenge offers the opportunity to train and develop operational policies for mobility-on-demand scenarios. It is important to note that the goal of this challenge is to  design an algorithm that solves the general problem and captures general characteristics. As such, the operational policy should be capable of performing well in a new scenario. The final test will be held in a **surprise city**!
+This challenge offers the opportunity to train and develop operational policies for mobility-on-demand scenarios. It is important to note that the final goal is to find policies that solve the general problem, indepdently of the specific city and transportation case. For this reason, it is recommended to work on different scenarios.
 
 
 ## Interface and Protocol
 
-A complete documentation of the interface is provided in  [Aido-Client-Protocol](https://github.com/idsc-frazzoli/amod/blob/dh025/doc/aido-client-protocol.md). We briefly summarize the overall structure here on this page as a quick introduction. Two different main functions are need to be used to participate in the challenge, both are dockerized. One of them is the <I>AidoGuest</I>, one of them is the <I>AidoHost</I>. The <I>AidoGuest</I> contains the code written by the participant of the challenge, the <I>AidoHost</I> runs the simulation and performs all necessary computation.
+A complete documentation of the interface is provided in [Aido-Client-Protocol](https://github.com/idsc-frazzoli/amod/blob/dh025/doc/aido-client-protocol.md). We briefly summarize the overall structure here on this page as a quick introduction. Two different main functions are need to be used to participate in the challenge, both are dockerized. One of them is the <I>AidoGuest</I>, one of them is the <I>AidoHost</I>. The <I>AidoGuest</I> contains the code written by the participant of the challenge, the <I>AidoHost</I> runs the simulation and performs all necessary computation.
 
 
 * **Pre-Execution Steps:** in this part of the challenge execution, the designer can specify if a specific scenario should be used or a random scenario. The <I>AidoHost</I> responds by communicating a bounding box of the network in WGS84 coordinates, the total number of customer requests as well as the standard fleet size $\bar{N}$ for championships 1 and 2. Then, the number of requests to be used in the simulation smaller or equal to the maximal number and the desired fleet size can be specified by <I>AidoGuest</I>. The <I>AidoHost</I> will then start the main loop of the simulation. 
@@ -93,46 +92,18 @@ A complete documentation of the interface is provided in  [Aido-Client-Protocol]
 The AMoD task is evaluated on the performance objectives described in [Performance Metrics](http://docs.duckietown.org/DT18/AIDO/out/performance.html).
 
 
-
 ## Development guide {#amod-devel-guide status=ready}
 
-Assigned: Claudio, Jan
 
 ### Protocol {status=ready}
 
-The protocol of these challenges is well-documented at
+The protocol of these challenges is well-documented at [Aido-Client-Protocol](https://github.com/idsc-frazzoli/amod/blob/dh025/doc/aido-client-protocol.md) Read it carefully at this location before getting started.
 
-https://github.com/idsc-frazzoli/amod/blob/master/doc/aido-client-protocol.md
+Once the protocol is understood, in order to participate in the challenge, a dockerized <I>AidoGuest<I> must be written that contains your own operational policy for the system. To facilitate this, we have prepared to template versions, written in JAVA and in Python. They contain working operational policies which make their decisions correctly but with a lot of room for efficiency and service level improvement. The templates can be found at:
 
-Read it carefully at this location before getting started. A brief qualitative explanation of the contained steps is presented in the following subsections.
-
-Furthermore a JAVA and a Python baseline are available at these locations:
-
-[the repository `challenge-aido1_amod1-template-java`][challenge-aido1_amod1-template-java]
-[`challenge-aido1_amod1-template-python`][challenge-aido1_amod1-template-python]
-
-
-#### Pre-Execution Steps
-
-Before a simualtion scenario is started, the user neeeds to select a scenario, e.g.,  SanFrancisco.20080518, which represents a scenario based on taxi trips recorded in SanFrancisco on 18th of May, 2008. Other scenarios include TelAviv, Santiago, Berlin or other days of San Fancisco taxi demand.
-
-The Server responds with the total number of requests in the scenario, a bouding box in WGS84 coordinates and the nominal fleet size to serve all requests. 
-
-Then, the client, i.e., the Aido-Guest can respond with the desired number of requests and the desired fleet size. 
-
-
-#### Simulation Execution
-
-In the main loop of a simulation, the Aido-Guest client continuously receives information on location of open customer requests and the status of the fleet, e.g., vehicles locations and statuses. 
-
-The client then needs to direct the action of the fleet, i.e., assign avaialble vehicles to pickup requests and relocate empty vehicles to improve performance. 
-
-
-#### Post-Execution Steps
-
-Finally, the client responds with the final score creates detailed overviews of the achieved performance including a detailed fleet performance report in HTML. 
-
+[AMoD-Challenge Template Python](https://github.com/duckietown/challenge-aido_amod-template-python)
+[AMoD-Challenge Template Java](https://github.com/duckietown/challenge-aido_amod-template-java)
 
 ### How to create your own submission {status=draft}
 
-TODO: to write
+To create your own submission, it is recommended to start from the provided templates. First, update user specific information in the file <I>submission.yaml<I>. Next, you need to write a new dispatching / rebalancing logic. Of course, this process is only limited by the imagination. In the Python template, you can for instance study and modify the currently implemented dispatching logic that is in the file <I> src/DispatchingLogic.py<I>. After you have completed your modifications, enter <I>dts challenges submit<I> and study the results online.
