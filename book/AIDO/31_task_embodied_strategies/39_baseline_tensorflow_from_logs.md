@@ -21,13 +21,13 @@ Clone the [baseline Tensorflow imitation learning from logs repository](https://
 
 The code you find is structured into 3 folders.
 
-  1. Extracting data
+  1. Extracting data (folder `extract_data`)
 
-  2. Learning from the data
+  2. Learning from the data (folder `learning`)
 
-  3. Submitting learned model
+  3. Submitting learned model (folder `imitation_agent`)
 
-Steps 1 and 2 can be run either using Docker or without.
+Step 2 can be run either using Docker or without. All other steps require Docker.
 
 ### Extract data {#tensorflow-from-logs-data status=ready}
 
@@ -36,7 +36,7 @@ Go to the `extract_data` folder:
     $ cd extract_data
 
 #### Docker data extraction
-If using Docker (to avoid a ROS installation), type:
+Type:
 
     $ make docker_extract_data
 
@@ -44,21 +44,6 @@ Once extraction is completed, move the extracted data to the learning folder. Ty
 
     $ make docker_copy_for_learning
 
-#### ROS data extraction
-
-If you already have ROS on your system, you may be able to not use Docker. Then type:
-
-    $ make install-dependencies
-
-To install some dependencies in a Python virtual environment.
-
-To extract the data, type:
-
-    $ make regular_extract_data
-
-Once extraction is completed, move the extracted data to the learning folder. Type:
-
-    $ make regular_copy_for_learning
 
 ### Learning {#tensorflow-from-logs-learning status=ready}
 
@@ -82,23 +67,27 @@ Once learning is completed, move the learned model to the submission folder. Typ
 
     $ make copy_for_submission
 
-#### ROS learning
+#### ROS+Python2.7 learning
 
 If you already have your Tensorflow learning pipeline on your system setup and do not use Docker. Then type:
 
     $ make install-dependencies
 
-To install some dependencies in a Python virtual environment.
+To install some dependencies in a Python 2.7 virtual environment.
 
 To train a small convolutional neural network for imitation learning, type:
 
     $ make learn-regular
 
-Once learning is completed, move the learned model to the submission folder. Type:
+Once learning is completed, move the learned model to the imitation agent folder. Type:
 
     $ make regular_copy_for_submission
 
 ### Submission {#tensorflow-from-logs-submission status=ready}
+
+Go to the `imitation_agent` folder
+
+    $ cd ../imitation_agent
 
 If you have completed the previous steps, you will be able to submit this as is, with:
 
@@ -123,8 +112,8 @@ In particular you can adapt the neural network model in `learning/src/cnn_traini
 
 The type of neural network, its architecture and hyperparameters are choices that you are asked to make, but as a baseline a CNN model which takes as inputs images and predicts angular velocities is provided. This model is not only relatively simple but also takes as input low resolution images indicating that extremely complex models may not necessarily be required to solve the task of lane following without dynamic objects. In any case, during training it is necesary to adhere to the following actions:
 
-1. name all your layers in order to be able to tell later which is the output layer of your neural network
-2. prepare model for mobile deployment generating a `graph.pb` file (TensorFlow GraphDef file in binary format)
+1. Name all your layers in order to be able to tell later which is the output layer of your neural network
+2. Prepare model for mobile deployment generating a `graph.pb` file (TensorFlow GraphDef file in binary format)
 
 
 #### Logs selection
@@ -134,9 +123,9 @@ Which logs are downloaded is specified at the bottom of `extract_data/src/downlo
 Such data are saved in `.bag` files which are available in [Duckietown Logs Database](http://logs.duckietown.org).
 The important note here is to feed your agent with *appropriate* data. Appropriate log data are considered those which:
 
-1. are relevant to the lane following task
-2. execute this task well the whole time
-3. and present smooth driving of the duckiebots around the city.
+1. Are relevant to the lane following task
+2. Execute this task well the whole time and
+3. Present smooth driving of the duckiebots around the city.
 
 One hint, is to search for data which were collected using the lane controller. In order to check if the lane controller was enabled, use rqt_bag to see if there is inside the node `/duckiebot_name/lane_controller/`. The *LF_IL_tensorflow* baseline, provides 5 bag files with approximately 10 minutes of appropriate lane following data.
 
@@ -144,8 +133,8 @@ One hint, is to search for data which were collected using the lane controller. 
 
 When working with real log data, this can be splitted into the following two subtasks:
 
-1. extract desired topics from bag files
-2. synchronize pairs of data from different topics
+1. Extract desired topics from bag files
+2. Synchronize pairs of data from different topics
 
 The first part should be clear, so let us focus to the second one. ROS messages from different topics are neither always of the same number nor properly arranged in the bag files. In this implementation the topics of interest are:
 
