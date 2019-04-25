@@ -63,7 +63,7 @@ The nodes which are getting launched are the following:
  - [ground_projection_node](https://github.com/duckietown/Software/tree/master18/catkin_ws/src/10-lane-control/ground_projection): Used to project the lines onto the ground plane using the camera extrinsic calibration.
  - [lane_filter_node](https://github.com/duckietown/Software/tree/master18/catkin_ws/src/10-lane-control/lane_filter): Used to take the ground projected line segments and estimate the Duckiebot's position and orientation in the lane
  - [lane_controller_node](https://github.com/duckietown/Software/tree/master18/catkin_ws/src/10-lane-control/lane_control): Used to take the estimate of the robot and generate a reference linear and angular velocities for the Duckiebot
- - [inverse_kinematics_node](https://github.com/duckietown/Software/blob/master18/catkin_ws/src/05-teleop/dagu_car/src/forward_kinematics_node.py): Take the refernece linear and angular velocities and generate left and right wheel velocities which are published to the `rosagent`.
+ - [inverse_kinematics_node](https://github.com/duckietown/Software/blob/master18/catkin_ws/src/05-teleop/dagu_car/src/forward_kinematics_node.py): Take the reference linear and angular velocities and generate left and right wheel velocities which are published to the `rosagent`.
 
 Note: You don't see the software repo in the baseline but it will be there when your docker container is built since the image inherits from the `rpi-duckiebot-base` image which has the code.
 
