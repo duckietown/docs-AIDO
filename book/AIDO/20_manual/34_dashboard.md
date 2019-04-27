@@ -1,4 +1,4 @@
-# Duckietown Dashboard {#dashboard status=beta}
+# Duckietown Dashboard {#dashboard status=ready}
 
 
 The Duckietown Dashboard is a visual alternative to the command line for monitoring your AIDO submissions.
@@ -8,17 +8,7 @@ You can access the Duckietown Dashboard by visiting the URL [http://dashboard.du
 
 ## Signing up
 
-You can access the Dashboard simply by logging in with a Google account.
-
-Once you have logged in, you will be redirected to the *Setup* page.
-
-On the setup page, you will be asked to insert you personal Duckietown token
-([](#token-setup)).
- 
-<figure id='token-setup'>
-    <figcaption>Duckietown token setup on the Duckietown Dashboard</figcaption>
-    <img style='width:34em' src="images/setup_token.png"/>
-</figure> 
+You can access the Dashboard simply by logging in with a Google account or by entering your Duckietown token.
 
 You can retrieve your Duckietown token by visiting the URL
 [https://www.duckietown.org/site/your-token](https://www.duckietown.org/site/your-token).

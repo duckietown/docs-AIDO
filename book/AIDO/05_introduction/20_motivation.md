@@ -73,7 +73,7 @@ The best possible  outcome is that a larger proportion of the ML community redir
     </figure>
     <figure>
         <figcaption figure-id="subfig:Autolab_map">LFVI</figcaption>
-        <img style='width:8em' src="Autolab_map.png"/>
+        <img style='width:8em' src="yield.jpg"/>
     </figure>
     <figure>
         <figcaption figure-id="subfig:amod_gray3">AMOD</figcaption>

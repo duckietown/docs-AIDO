@@ -1,4 +1,4 @@
-# Minimal Agent Template for `aido2_LF*` {#minimal-template status=ready}
+# Random Template for `aido2-LF*` {#minimal-template status=ready}
 
 This section describes the contents of the simplest baseline: a "random" agent. It can be used as a starting point for any of the [`LF`](#lf), [`LFV`](#lf_v), and [`LFVI`](#lf_v_i) challenges.
 

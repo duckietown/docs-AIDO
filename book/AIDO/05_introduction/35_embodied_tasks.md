@@ -31,7 +31,7 @@ Duckiebots are designed with the objectives of affordability, modularity and eas
 
 *Actuation* is provided through two DC motors that independently drive the front wheels (differential drive configuration), while the rear end of the Duckiebot is equipped with a passive omnidirectional wheel.
 
-All the *computation* is done onboard on a Raspberry Pi 3+ computer, equipped with a quad Core 1.4 GHz, 64 bit CPU and 1 GB of RAM.
+All the *computation* is done onboard on a Raspberry Pi 3B+ computer, equipped with a quad Core 1.4 GHz, 64 bit CPU and 1 GB of RAM.
 
 We will support other configurations for the purposes of deploying neural networks onto the robots.
 More details in section [computational substrate](#computation).

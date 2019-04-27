@@ -64,9 +64,10 @@ The leaderboard for this challenge is available at the URL
     
 [leaderboard]: https://challenges.duckietown.org/v4/humans/challenges/aido2_simple_prediction_r1/leaderboard
 
-In general all of the challenge leader boards can be viewed through [https:challenges.duckietown.org][challenges]
+In general all of the challenge leader boards can be viewed through [the challenges website][challenges].
 
-[https://challenges.duckietown.org/v4/]
+
+[challenges]: https://challenges.duckietown.org/v4/
       
      
 ## Local evaluation {#cm-local}
