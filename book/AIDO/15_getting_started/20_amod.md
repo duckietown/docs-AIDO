@@ -1,4 +1,4 @@
-# AMOD Quickstart {#amod-quickstart status=draft}
+# AMOD Quickstart {#amod-quickstart status=ready}
 
 <div class='requirements' markdown='1'>
 
@@ -8,21 +8,21 @@ Requires: You have [the software requirement](#cm-sw).
 
 Requires: You have [made a submission](#cm-first).
 
-Result: You have made a submission to the AMOD challenge and you know how to try to make it better.
+Result: You have made a submission to the AMoD challenge and you know how to try to make it better.
 
 </div>
 
-The objective of this quickstart guide is to present the template solutions provided for the AMoD - challenge and briefly explain what action they will take. First, please ensure that you have read the general information about the AMoD task [here](http://docs.duckietown.org/DT19/AIDO/out/amod.html). This page also contains instructions on how to obtain the provided template solutions and make a submission that implements these template solutions. 
+The objective of this quick-start guide is to present the template solutions provided for the AMoD challenge and briefly explain what action they will take. First, please ensure that you have read the general information about the AMoD task [here](http://docs.duckietown.org/DT19/AIDO/out/amod.html). This page also contains instructions on how to obtain the provided template solutions and make a submission that implements these template solutions.
 
 ## Implemented Logic in the Template Solutions
 
-The current implementation (for instance visible in the file src/DispatchingLogic.py) does the following: 
+The current implementation (for instance visible in the file src/DispatchingLogic.py) does the following:
 
-* Open transporation requests by customers are sorted with respect to the submission time, i.e., the longest waiting customers are first in the list. 
+* Open transportation requests by customers are sorted with respect to the submission time, i.e., the longest waiting customers are first in the list.
 * Next, for every unassigned customer request, a random robotic taxi is selected and sent to pickup the passenger and drive her or him to the desired destination.
 * Finally, all robotic taxis which are not busy and in the task `STAY` are sent to a random location in the network (rebalancing step).
 
-The same logic is also implmented in the JAVA template.
+The same logic is also implemented in the JAVA template.
 
 
 ## How to make your score go up?
