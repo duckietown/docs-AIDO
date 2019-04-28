@@ -1,9 +1,7 @@
 # Baselines for `aido1_lf1` {#embodied-baselines status=ready}
 
-assigned: Breandan
-
 We have prepared for you several baselines you can try.
- 
+
 
 ### Learning
 
@@ -27,7 +25,7 @@ Wait for the image to build. If everything went well, the last line of the outpu
 This means your submission is ready to be uploaded to the server.
 
 ### Submit
-You are ready to submit the image to the challenges server. 
+You are ready to submit the image to the challenges server.
 Simply remove the `--no-submit` flag from the command above or type:
 
 `dts challenges submit --challenge aido1-dummy_sim-v3`
@@ -57,6 +55,6 @@ At some point, depending on the load of our servers, you will see a message like
 
 ```
 This means your submission has been evaluated.
-You can now check the score of the submission and its position on the leaderboard via the Challenges Dashboard. 
+You can now check the score of the submission and its position on the leaderboard via the Challenges Dashboard.
 
 Are you on the top? Awesome! No? Well, keep trying... we are sure you will be!

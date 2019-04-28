@@ -1,7 +1,5 @@
 # Reinforcement Learning Workflow {#embodied_rl status=draft}
 
-Maintainer: Florian G.
-
 ## Setting up your simulator {#simulator_setup}
 
 
@@ -61,7 +59,7 @@ Change into the directoy of you `gym-duckietown-agent`
 
 and launch both containers (on the LF task) with this command
 
-    docker-compose -f docker-compose-lf.yml pull && \                                                 
+    docker-compose -f docker-compose-lf.yml pull && \
     docker-compose -f docker-compose-lf.yml up
 
 What this will do:
