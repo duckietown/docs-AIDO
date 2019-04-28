@@ -8,11 +8,11 @@ This section is a reference for how to interact with the challenges server with 
 Use this command to see the status of your account:
 
     $ dts challenges info
-    
- 
+
+
 ## Local evaluation {#cli-evaluate}
 
-The `evaluate` command allows you to do a local evaluation of your 
+The `evaluate` command allows you to do a local evaluation of your
 submission:
 
     $ dts challenges evaluate
@@ -20,26 +20,26 @@ submission:
 
 
 ## Submitting a submission {#cli-submit}
- 
+
 The `submit` command allows you to submit the solution in the current directory:
 
     $ dts challenges submit
-    
+
 There are many options for this command, explained in [](#submit-advanced).
-    
-    
+
+
 ## List submissions {#cli-list}
 
 The `list` command allows you to see all of your submissions:
 
     $ dts challenges list
-    
+
 ## Reset a submission {#cli-reset}
 
-*Resetting a submission* means that you discard the evaluations 
+*Resetting a submission* means that you discard the evaluations
 already perfomed and you force them to be done again.
 
-    $ dts challenges reset --submission ![ID] 
+    $ dts challenges reset --submission ![ID]
 
 ## Retire a submission {#cli-retire}
 
@@ -59,7 +59,7 @@ The `follow` command polls the server to see whether there are updates:
 The `define` command allows to *define* a challenge:
 
     $ dts challenges define
-    
+
 This command is not available for regular participants;
-however the mechanics of this is explained in [](#define) as it might be helpful to 
+however the mechanics of this is explained in [](#define-challenge) as it might be helpful to 
 debug problems.

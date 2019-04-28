@@ -27,7 +27,7 @@ The performance of AMoD systems both in terms of customer satisfaction as well a
 
 To facilitate the comparison of operational policies, AMoDeus contains fleet efficiency and service level analysis methods. The most important metrics are automatically included in a report. Among them is the status of the robotic taxis during the course of one day as shown in Figure \ref{fig:reportFigure}.
 Furthermore, benchmark operational policies are included in AMoDeus which help to compare with the state of art. An overview of the currently implemented policies can be found at [AMoDEUs](https://github.com/idsc-frazzoli/amodeus) . Finally, AMoDeus has an in-built graphical viewer that allows in-depth insights into the system. A screenshot of the viewer is shown in Figure \ref{fig:viewerScreenshots}.
- 
+
 <div figure-id="fig:reportFigure">
 <img src="images/statusDistribution.png" style='width: 90%'/>
 <figcaption>
@@ -40,7 +40,7 @@ A graphic from the AMoDeus report showing the status distribution of robotic tax
 <img src="images/viewerScreenshot.png" style='width: 90%'/>
 <figcaption>Screenshots of simulation scenarios for San Francisco. AMoDeus allows users and algorithm designers to dynamically visualize their results to get a better understanding of the system.</figcaption>
 </div>
- 
+
 
 ## Description of Task
 
@@ -55,7 +55,7 @@ We have prepared AMoD scenarios in four different cities on which you can work w
 
 * **San Francisco:**  this scenario represents a static demand extracted from San Francisco taxi data available online. There is a total of 23 datasets, one per day from 18th of May, 2008 to 9th of June, 2008. The linkspeeds are adapted to match the travel times shown in the dataset. The original dataset is available online at [EPFL-Mobility-Dataset](https://crawdad.org/epfl/mobility/20090224/)\cite{epfl-mobility-20090224}.
 * **Berlin:** the existing MATSim Open Berlin Scenario presented by [D. Ziemke and K. Nagel](https://svn.vsp.tu-berlin.de/repos/public-svn/publications/vspwp/2017/17-12/ZiemkeNagel2017BerlinScenario.pdf)\cite{ziemke2017development} and available here was altered such that all car trips now need to be served by autonomous mobility-on-demand in an efficient way. This is a very large scenario with more than 1 million of agents.
-* **Santiago de Chile:** the scenario presented in the publication by [B. Kickhöfer, D. Hosse, K. Turner and A. Tirachini](https://www.researchgate.net/profile/Benjamin_Kickhoefer/publication/306391968_Creating_an_open_MATSim_scenario_from_open_data_The_case_of_Santiago_de_Chile/links/57bc539908ae9fdf82f14fa3/Creating-an-open-MATSim-scenario-from-open-data-The-case-of-Santiago-de-Chile.pdf)\cite{kickhofer2016creating} was altered such that all public transportation and ``colectivo'' trips now have to served efficiently with a fleet of robotic taxis. 
+* **Santiago de Chile:** the scenario presented in the publication by [B. Kickhöfer, D. Hosse, K. Turner and A. Tirachini](https://www.researchgate.net/profile/Benjamin_Kickhoefer/publication/306391968_Creating_an_open_MATSim_scenario_from_open_data_The_case_of_Santiago_de_Chile/links/57bc539908ae9fdf82f14fa3/Creating-an-open-MATSim-scenario-from-open-data-The-case-of-Santiago-de-Chile.pdf)\cite{kickhofer2016creating} was altered such that all public transportation and "colectivo"" trips now have to served efficiently with a fleet of robotic taxis.
 * **Tel Aviv:** The travel demand in this scenario is created based on the Israel National Travel Habits Survey from 1996. It was published by [G. Ben-Dor, B. Dmitrieva, M. Maciejewski, J. Bischoff, E. Ben-Elia, and I Benenson](http://transp-or.epfl.ch/heart/2017/abstracts/hEART2017_paper_110.pdf)\cite{benmatsim}. The entire transportation demand (both public and private transportation) needs to be served with a fleet of autonomous vehicles.
 
 The operational policy has to guide the behavior of the fleet and take the following decisions online while the simulation is running:
@@ -80,7 +80,7 @@ This challenge offers the opportunity to train and develop operational policies 
 A complete documentation of the interface is provided in [Aido-Client-Protocol](https://github.com/idsc-frazzoli/amod/blob/dh025/doc/aido-client-protocol.md). We briefly summarize the overall structure here on this page as a quick introduction. Two different main functions are need to be used to participate in the challenge, both are dockerized. One of them is the <I>AidoGuest</I>, one of them is the <I>AidoHost</I>. The <I>AidoGuest</I> contains the code written by the participant of the challenge, the <I>AidoHost</I> runs the simulation and performs all necessary computation.
 
 
-* **Pre-Execution Steps:** in this part of the challenge execution, the designer can specify if a specific scenario should be used or a random scenario. The <I>AidoHost</I> responds by communicating a bounding box of the network in WGS84 coordinates, the total number of customer requests as well as the standard fleet size $\bar{N}$ for championships 1 and 2. Then, the number of requests to be used in the simulation smaller or equal to the maximal number and the desired fleet size can be specified by <I>AidoGuest</I>. The <I>AidoHost</I> will then start the main loop of the simulation. 
+* **Pre-Execution Steps:** in this part of the challenge execution, the designer can specify if a specific scenario should be used or a random scenario. The <I>AidoHost</I> responds by communicating a bounding box of the network in WGS84 coordinates, the total number of customer requests as well as the standard fleet size $\bar{N}$ for championships 1 and 2. Then, the number of requests to be used in the simulation smaller or equal to the maximal number and the desired fleet size can be specified by <I>AidoGuest</I>. The <I>AidoHost</I> will then start the main loop of the simulation.
 * **Simulation Execution:** during the simulation, the <I>AidoGuest</I> receives the current status of the system and then sends commands as specified in the previous section. After a completed simulation (1 day) the results are passed to the post-execution environment.
 * **Post-Execution Steps:** here, the designer has access to various tools that help to understand and quantify the performance of the algorithm for the AMoD system. Dedicated AMoD performance reports can be accessed that include information about the waiting times throughout the day, distances driven etc. One of the graphs from the report is shown in Figure \ref{fig:reportFigure}. Finally a graphical viewer to visualize simulation results on a map of the city is available to provide more insight into the algorithm’s performance. It is displayed in Figure \ref{fig:viewerScreenshots}. The final scores for all performance metrics will be communicated at the end of the run.
 
@@ -106,12 +106,12 @@ Once the protocol is understood, in order to participate in the challenge, a doc
 
 ### How to create your own submission {status=beta}
 
-To create your own submission, it is recommended to start from the provided templates. 
-First, update user specific information in the file `submission.yaml`. 
-Next, you need to write a new dispatching or rebalancing logic. Of course, this process is only limited by the imagination. 
-In the Python template, you can for instance study and modify the currently implemented dispatching logic that is in the file `src/DispatchingLogic.py`. 
-After you have completed your modifications, enter 
+To create your own submission, it is recommended to start from the provided templates.
+First, update user specific information in the file `submission.yaml`.
+Next, you need to write a new dispatching or rebalancing logic. Of course, this process is only limited by the imagination.
+In the Python template, you can for instance study and modify the currently implemented dispatching logic that is in the file `src/DispatchingLogic.py`.
+After you have completed your modifications, enter
 
-    $ dts challenges submit 
-    
+    $ dts challenges submit
+
 and study the results online.
