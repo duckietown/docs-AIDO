@@ -6,7 +6,7 @@ Requires: You have [built your Duckiebot](+opmanual_duckiebot#assembling-duckieb
 
 Requires: You have [built your Duckietown according to the appearance specification](+opmanual_duckietown#dt-ops-appearance-specifications)
 
-Requires: You can [connect to your robot wirelessly](+opmanual_duckiebot##duckiebot-network)
+Requires: You can [connect to your robot wirelessly](+opmanual_duckiebot#duckiebot-network)
 
 Requires: You have [made a valid submission](#cm-first)
 
@@ -32,9 +32,10 @@ you should see the list of the running containers. Among them should be one for 
     $ docker -H ![DUCKIEBOT_NAME].local run --net host --privileged -v /data:/data --name duckiebot-interface duckietown/duckiebot-interface:master19
     
 
-    $ dts start_gui_tools
+To see what imagery is streaming you can do
 
-TODO: how to see the imagery
+    $ dts start_gui_tools ![DUCKIEBOT_NAME]
+
 
 
 ## Run a local submission on the Duckiebot
