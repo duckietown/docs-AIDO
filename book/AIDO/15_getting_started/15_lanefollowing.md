@@ -37,4 +37,4 @@ Of course you may also choose to use these methods in combination.
 
 ## Try one of the harder challenges 
 
-Like [LFV](#lf_v) or [LFVI](#lf_v_i).
+Like [LFV](#lf_v) or [LFVI](#lf_v_i) or run your submission [on your Duckiebot](#lf_duckiebot).
