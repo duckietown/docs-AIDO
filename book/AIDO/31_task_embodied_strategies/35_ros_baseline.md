@@ -1,6 +1,6 @@
-# Classical Duckietown Stack  {#ros-baseline status=ready}
+# Classical Duckietown Baseline (ROS) {#ros-baseline status=ready}
 
-This section describes the basic procedure for making a submission using the [Robot Operating System](http://www.ros.org/) and the  [Duckietown software stack](https://github.com/duckietown/Software). It can be used as a starting point for any of the [`LF`](#lf), [`LFV`](#lf_v), and [`LFVI`](#lf_v_i) challenges.
+This section describes the basic procedure for making a submission using the [Robot Operating System](http://www.ros.org/) and the  [Duckietown software stack](https://github.com/duckietown/Software) .
 
 <div class='requirements' markdown='1'>
 
@@ -14,15 +14,14 @@ Result: You could win the AI-DO!
 
 ## Quickstart
 
-### Clone this [repo](https://github.com/duckietown/challenge-aido_LF-baseline-duckietown):
+### Clone this [repo](https://github.com/duckietown/challenge-aido_LF-baseline-duckietown)
 
     $ git clone git://github.com/duckietown/challenge-aido_LF-baseline-duckietown.git
 
-### Change into the directory:
+### Change into the `submission` directory
 
-    $ cd challenge-aido_LF-baseline-duckietown
+    $ cd challenge-aido1_LF1-baseline-duckietown/submission
     
-
 ### Evaluate your submission
 
 Either locally with 
@@ -33,7 +32,6 @@ Or make an official submission when you are ready with
 
     $ dts challenges submit
     
-
 
 ## Workflows
 
@@ -47,7 +45,6 @@ One efficient option might be to start with 3 - test your code really fast insid
 
 
 ## How to Improve your Submission {#ros-workflow}
-
 
 You will notice one main difference as compared to the [ROS template](#ros-template) is that the launch file argument in the `solution.py` code now points to `lf_slim.launch`, which launches a slimmed-down version of the [Duckietown Lane Following code](https://github.com/duckietown/Software/). The action and image topics are both adjusted to match the inputs and outputs of the original stack.
 
@@ -78,18 +75,17 @@ You will need to define your own launch file and parameters in your package and 
 
 You can evaluate locally using `dts challenges evaluate`, but you may find this restricting, especially when you want to use ROS debugging tools like the `rostopic` or `roslogging` interfaces. For convenience, we've also provided a standalone version of this code (which will not give any rewards or AIDO task evaluation, but provides a way to easily visualize the output and behavior of your code) which can be found [here](https://github.com/duckietown/sim-duckiebot-lanefollowing-demo). This code will not be able to run on the Duckiebot, since it extends the `ros:kinetic` image, which by default, will not build the ARM version.
 
-Clone the [standalone repo](https://github.com/duckietown/sim-duckiebot-lanefollowing-demo):
+Change into the `local` directory of the `baseline` repo.
 
-    $ git clone git@github.com:duckietown/sim-duckiebot-lanefollowing-demo.git
+    $ cd challenge-aido1_LF1-baseline-duckietown/local
 
 
 The interface is mainly the same, except now, the `rosagent.py` file itself controls the simulation. Again, you will mainly want to focus on `rosagent.py`, and you will again be able to see the `Dockerfile` for how to build and maintain your own `catkin_ws`.
 
-
 To run this, you will need to have `docker-compose` installed on your local machine, as unlike the AIDO submissions, this will emulate both the server and agent all on your local machine. Follow instructions [here](https://docs.docker.com/compose/install/) to install.
 
 
-### Usage
+## Usage
 
 To launch the lane following demo, run the following command:
     
@@ -104,20 +100,20 @@ You will then start to see output from the Lane Following code, which can be fou
 
 You can terminate the run at any time by pressing <kbd>CTRL</kbd>+<kbd>c</kbd>.
 
-### Write your own agent
+## Write your own agent
 
 To write your own ROS agent, first fork this repository. Since we are going to be running a few containers, the best way to run is the `docker-compose` command found above.
 
 Inside of the `docker-compose-lf.yml` file, you'll find that for purposes of this demo, we are using the `HOSTNAME=default`; the `HOSTNAME` can be thought of as the vehicle name. This is to help mitigate the discrepencies between the real robot and simulator when finding things like configuration files when using the old Duckietown stack.
 
-#### Making Edits
+### Making Edits
 
 With `docker-compose`, your Dockerfiles will not rebuilt unless you tell them. There are two ways of going about this:
 
 1. To rebuild everything, run `docker-compose -f docker-compose-lf.yml build [--no-cache]` before running `docker-compose -f docker-compose-lf.yml up`
 2. (Preferred) Rebuild the container you've changed with `docker build -t "{your-containers-tag}" -f {corresponding-Dockerfile}` . and then `docker-compose -f docker-compose-lf.yml up`.
 
-### Using your own ROS Nodes / Custom `catkin_ws`
+## Using your own ROS Nodes / Custom `catkin_ws`
 
 Most likely, you'll want to work off of some of the standalone Duckietown code, but change a node or two. We will look at two examples:
 
@@ -142,16 +138,8 @@ To (B) Cut the pipeline, and insert your node in, you'll want to make use of [`r
 ## Cloning the Software Repo Locally {#ros-software-locally}
 
 You may still find the above a little bit cumbersome because if you just wanted to change a single parameter in the existing code and see the result, you will have to copy the entire node over and modify all the launch files etc. Then you might discover that the parameter you modified wasn't the right one and this was a huge waste of time. Instead, we might like to be able to just modify things locally in the software repo and see the results in the simulator.
-
-To do so clone the same directory as above:
-
-    $ git clone git@github.com:duckietown/sim-duckiebot-lanefollowing-demo.git
-
-Then move into the directory
-
-    $ cd sim-duckiebot-lanefollowing-demo
-    
-Then move into the branch `local-software-repo`
+  
+Checkout the branch `local-software-repo`
 
     $ git checkout local-software-repo
 
@@ -174,8 +162,6 @@ Note: If you have only modified python script files that don't need to even be r
 
     $ docker-compose -f docker-compose-lf-no-build.yml up
     
-    
-
 ## Debugging and Monitoring {#ros-debugging}
 
 With ROS, everything of interest is passed through the ROS Messaging system. There are two ways to monitor your progress:
@@ -202,3 +188,23 @@ Inside of the shell, you will need to `export ROS_MASTER_URI=http://lanefollow:1
 
 To check the available networks, run `docker network ls`. Occasionally Docker will create a second network, `sim-duckiebot-lanefollowing-demo_gym-duckietown-net` if the default one has already been created. If you want to override this behavior run `docker-compose up --force-recreate` to start everything from scratch.
 
+## Transferring your Solution
+
+If you've followed either of our local workflows, you'll notice that the `local` directory you've been working in no longer contains any of the submission files. The easiest way to do take your local submission and submit it to AIDO is to copy the following files over into the `submission/` directory of this repository.
+
+- `lf_slim.launch`
+- Any nodes you created (i.e `dt_dependent_node`, `custom_line_detector/`)
+
+In addition, within `local/Dockerfile`, you will want to copy and paste the code regarding the `CUSTOM CATKIN_WS` and copy it into the corresponding location into `submission/Dockerfile`. 
+
+## Sim2Real Transfer (Optional)
+
+Doing great on the simulated challenges, but not on the real evaluation? Or doing great in your training, but not on our simulated, held-out environments? Take a look at `env.py`. You'll notice that we launch the `Simulator` class from `gym-duckietown`. When we [take a look at the constructor](https://github.com/duckietown/gym-duckietown/blob/aido2_lf_r1/gym_duckietown/simulator.py#L145-L180), you'll notice that we aren't using all of the parameters listed. In particular, the three you should focus on are:
+    
+- `map_name`: What map to use; hint, take a look at gym_duckietown/maps for more choices
+- `domain_rand`: Applies domain randomization, a popular, black-box, sim2real technique
+- `randomized_maps_on_reset`: Slows training time, but increases training variety.
+
+Mixing and matching different values for these will help you improve your training diversity, and thereby improving your evaluation robustness!
+
+If you're interested in more advanced techniques, like learning a representation that is a bit easier for your network to work with, or one that transfers better across the simulation-to-reality gap, there are some [alternative, more advanced methods](https://github.com/duckietown/segmentation-transfer) you may be interested in trying out.

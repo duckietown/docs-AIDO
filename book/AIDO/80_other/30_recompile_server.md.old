@@ -1,6 +1,5 @@
 # Modifying the `gym-duckietown-server` docker image {#modifying-gym-server status=beta}
 
-Maintainer: Florian Golemo
 
 For the tasks `LF`, `LFV`, and `NAVV` we provide a driving simulator (as opposed to the city/traffic simulator for the other challenges) contained in the `duckietown/gym-duckietown-server` image.
 

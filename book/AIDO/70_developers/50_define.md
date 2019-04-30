@@ -1,4 +1,4 @@
-# Defining challenges {#define status=draft}
+# Defining challenges {#define-challenge status=beta}
 
 This section describes how to define challenges.
 
