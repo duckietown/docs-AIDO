@@ -1,4 +1,4 @@
-## Using the Simulator {#aido-simulator status=ready}
+# Using the Simulator {#aido-simulator status=ready}
 
 
 Doing great on the simulated challenges, but not on the real evaluation? 
