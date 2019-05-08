@@ -30,7 +30,7 @@ To train a policy:
 
 and install gym-duckietown (Use `sudo` if system-wide)
 
-    $ pip3 install -e git://github.com/duckietown/gym-duckietown.git#egg=gym-duckietown
+    $ pip3 install -e git://github.com/duckietown/gym-duckietown.git@aido2#egg=gym-duckietown
         
 (4) Change into the `duckietown_rl` directory and run the training script
 
