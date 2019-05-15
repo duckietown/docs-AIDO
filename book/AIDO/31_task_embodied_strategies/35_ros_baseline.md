@@ -107,7 +107,7 @@ Inside of the `docker-compose-lf.yml` file, you'll find that for purposes of thi
 
 With `docker-compose`, your Dockerfiles will not rebuilt unless you tell them. There are two ways of going about this:
 
-1. To rebuild everything, run 
+To rebuild everything, run 
 
     $ docker-compose -f docker-compose-lf.yml build [--no-cache] 
     
@@ -115,7 +115,7 @@ before running
 
     $ docker-compose -f docker-compose-lf.yml up
     
-2. (Preferred) Rebuild the container you've changed with 
+(Preferred) Rebuild the container you've changed with 
 
     $ docker build -t ![your-containers-tag] -f ![Dockerfile] 
     
