@@ -4,7 +4,7 @@ Measuring performance in robotics is less clear cut and more multidimensional th
 
 In the following we summarize the objectives used to quantify how well an embodied task is completed. We will produce scores in three different categories:
 
-## Performance criteria {#performance status=ready}
+## Performance criteria (P) {#performance status=ready}
 
 ### Lane following (LF / LFV) {#performance_lf}
 
@@ -114,11 +114,24 @@ In the **Fleet Size Championship**, the goal is to reduce the fleet size as much
 \end{align*}
 
 
-## Traffic law objective {#traffic_laws status=ready}
+## Traffic law objective (T) {#traffic_laws status=ready}
 
-The following are a list of rule objectives the Duckiebots are supposed to abide by within Duckietown. All individual rule violations will be summarized in one overall traffic law objective $\objective_{T}$. These penalties hold for the embodied tasks (LF, LFV).
+The following shows rule objectives the Duckiebots are supposed to abide by within Duckietown. These penalties hold for the embodied tasks (LF, LFV).
+<!-- All individual rule violations will be summarized in one overall traffic law objective $\objective_{T}$.  -->
 
-### Quantification of "Staying in the lane" {#traffic_laws_lf}
+### Major infractions
+
+This objective means to penalize "illegal" driving behavior. As a cover for many undesired behaviors, we count the median time spent oustide of the drivable zones. This also covers the example of driving in the wrong lane.
+
+Metric: The median of the time spent outside of the drivable zones.
+
+\begin{align*}
+\mathcal{J}_{T-LF/LFV} = \text{median}(\{t_{outside}\}),
+\end{align*}
+
+where $\{t_{outside}\}$ is the list of accumulated time outside of drivable zones per episode. 
+
+<!-- ### Quantification of "Staying in the lane" {#traffic_laws_lf}
 TODO: To be implemented
 
 <div figure-id="fig:crossing_lane">
@@ -143,7 +156,7 @@ The "stay-in-lane" cost function is therefore defined as:
        \end{cases}
  $$
 
-An example situation where a Duckiebot does not stay in the lane is shown in \ref{fig:crossing_lane}.
+An example situation where a Duckiebot does not stay in the lane is shown in \ref{fig:crossing_lane}. -->
 
 
 <!-- ## Intersection navigation {#traffic_intersection}
@@ -155,7 +168,7 @@ Robotic drivers do not have these inherent restrictions. Therefore for the task 
 Participants are then able to change the intersection protocol in the hope of improving driving through intersections, thereby enabling them to achieve better navigation. The following rule penalties around intersections will however stay in place. -->
 
 
-### Quantification of "Stopping at red intersection line" and "Stopping at red traffic light" {#traffic_laws_si}
+<!-- ### Quantification of "Stopping at red intersection line" and "Stopping at red traffic light" {#traffic_laws_si}
 TODO: To be implemented or removed
 
 There are two different possibilities forcing the Duckiebot to a stop at an intersection. Some intersections have red stopping lines whereas others have traffic lights. The stopping behavior in both cases is similar and serves a similar purpose however. We therefore join the two cases into the "stopping at intersection"-rule.
@@ -221,9 +234,9 @@ the center of mass of the Duckiebot and the center of mass of the closest Duckie
 
 $$
 \objective_{T-SD}(t) = \int_0^t \delta \cdot \max(0,b(t)- b_{\text{safe}})^2.
-$$
+$$ -->
 
-### Quantification of "Avoiding collisions" {#traffic_laws_ac}
+<!-- ### Quantification of "Avoiding collisions" {#traffic_laws_ac}
 TODO: To be implemented
 
 The Duckietown traffic laws say:
@@ -236,24 +249,24 @@ The Duckietown traffic laws say:
 </figcaption>
 </div>
 
-Collisions in Duckietown are generally not desired.
+Collisions in Duckietown are generally not desired. -->
 <!-- We distinguish additionally what the controlled Duckiebot collides with. For collisions with people of Duckietown (duckies) a higher penalty $\nu_1$ is incurred as for collisions with other cars $\nu_2)$ (Duckiebots) or objects $\nu_3$. -->
 
-The vehicle is penalized by $\nu$ if within a time a time interval of length $t_k$ $t \in [t, t+t_k)$, the distance $\ell(t)$ between the vehicle and a nearby duckie, object or other vehicle is zero or near zero. $\ell(t)$ denotes the perpendicular distance between any object and the Duckiebot rectangular surface. The collision cost objective therefore is
+<!-- The vehicle is penalized by $\nu$ if within a time a time interval of length $t_k$ $t \in [t, t+t_k)$, the distance $\ell(t)$ between the vehicle and a nearby duckie, object or other vehicle is zero or near zero. $\ell(t)$ denotes the perpendicular distance between any object and the Duckiebot rectangular surface. The collision cost objective therefore is
 
   \begin{align*}
      \objective_{T-AC}(t) = \sum_{t_k} \nu \mathbb{I}_{\exists t \in [ t-t_k, t ) \ell(t) < \epsilon}
   \end{align*}
 
-where $\nu$ is the penalty constant of the collision.
+where $\nu$ is the penalty constant of the collision. -->
 
 <!-- $$ -->
 <!-- \text{Duckie collision } \nu_1 > \text{Duckiebot collision } \nu_2 > \text{Object collision } \nu_3 -->
 <!-- $$ -->
 
-Time intervals are chosen to allow for maneuvering after collisions without incurring further costs.
+<!-- Time intervals are chosen to allow for maneuvering after collisions without incurring further costs.
 
-An illustration of a collision is displayed in Fig. \ref{fig:collision}.
+An illustration of a collision is displayed in Fig. \ref{fig:collision}. -->
 
 <!-- #### Quantification of "Yielding the right of way" {#traffic_laws_yr}
 
@@ -275,10 +288,10 @@ Mathematically we accumulate penalties $\mu$ whenever the Duckiebot moves at an 
 
 The yield situation at an intersection is depicted in Fig.~\ref{fig:yield}. -->
 
-### Hierarchy of rules {#traffic_laws_hierarchy}
-TODO: finalize this section
+<!-- ### Hierarchy of rules {#traffic_laws_hierarchy}
+<!-- TODO: finalize this section -->
 
-To account for the relative importance of rules, the factors $\alpha, \beta, \gamma, \delta, \nu$ of the introduced rules will be weighted relatively to each other.
+<!-- To account for the relative importance of rules, the factors $\alpha, \beta, \gamma, \delta, \nu$ of the introduced rules will be weighted relatively to each other.
 
 Letting $>$ here denote "more important than", we define the following rule hierarchy:
 
@@ -299,33 +312,25 @@ $$
 \objective_{T} = \sum_i \mathbb{I}_{\objective_i \in \task} \objective_{T-i},
 $$
 
-where $\mathbb{I}_{\objective_i \in \task}$ is the indicator function that is $1$ if a rule belongs to the task and $0$ otherwise.
+where $\mathbb{I}_{\objective_i \in \task}$ is the indicator function that is $1$ if a rule belongs to the task and $0$ otherwise. -->
 
 
-## Comfort objective {#comfort status=ready}
+## Comfort objective (C) {#comfort status=ready}
 
 ### Lane following (LF, LFV) {#comfort_embodied}
 
 In the single robot setting, we encourage "comfortable" driving solutions. We therefore penalize large angular deviations from the forward lane direction to achieve smoother driving. This is quantified through changes in Duckiebot angular orientation $\theta_{bot}(t)$ with respect to the lane driving direction.
 <!-- Smoothing is performed by convolving the Duckiebot position $p_{bot}(t)$ with a smoothing filter $k_{smooth}$. -->
 
-#### "Good angle metric"
+#### Lateral deviation
 
-As a comfort objective, we measure the average absolute squared changes in angular orientation of $\theta_{bot}(t)$ over time ("good_angle metric").
-
-$$
-\objective_{C-LF/LFV}(t) = \frac{1}{t} \int_0^t |\theta_{bot}(t)|^2 dt
-$$
-
-#### "Valid direction metric"
-
-As an additional pointer we calculate the fraction of times the Duckiebot has a "good" angular heading or valid direction (VD, "valid_direction metric").
+For better driving behavior we measure the median per episode lateral deviation from the right lane center line.
 
 $$
-\objective_{VD-LF/LFV}(t) = \frac{1}{t} \int_0^t \mathbb{I}_{|\theta_{bot}(t)| < \theta_{good}} dt,
+\objective_{C-LF/LFV}(t) = \text{median}(\{d_{outside}\}),
 $$
 
-where $\theta_{good}$ corresponds to an angle of 20 degrees (converted to radians).
+where $\{d_{outside}\}$ is the sequence of lateral distances from the center line.
 
 <!-- ## Fleet management (FM) {#comfort_fm}
 
@@ -339,4 +344,3 @@ Let $S_{\text{wait}}(t) = \{T_{\text{wait}_1}, \dots \}$ denote the set of waiti
 $$
 \objective_{C-FM}(t) = \max_{T_{\text{wait}}} S_{\text{wait}}
 $$ -->
-
