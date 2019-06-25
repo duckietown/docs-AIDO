@@ -34,11 +34,12 @@ and install gym-duckietown (Use `sudo` if system-wide)
         
 (4) Change into the `duckietown_rl` directory and run the training script
 
+    $ cd duckietown_rl
     $ python3 -m scripts.train_cnn.py --seed 123
         
-(5) When it finishes, check it out (but first edit this following file and set the seed to the one you used above, like `123` in line 10)
+(5) When it finishes, check it out (make sure you pass in the same seed as the one passed to the training script)
 
-    $ python3 -m scripts.test_cnn.py
+    $ python3 -m scripts.test_cnn.py --seed 123
         
 ## How to submit the trained policy
 
