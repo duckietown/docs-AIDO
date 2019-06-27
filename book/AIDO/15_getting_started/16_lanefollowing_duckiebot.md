@@ -36,7 +36,9 @@ To see what imagery is streaming you can do
 
     $ dts start_gui_tools ![DUCKIEBOT_NAME]
 
-
+If this is the first time running the command, you will have to wait a while (up to 10-15 minutes on slow computers) for the docker image to be pulled and see the shell prompt (you might have to press Enter to see the shell prompt). Once you see the shell prompt, type the following to stream the imagery
+    
+    $ rqt_image_view
 
 ## Run a local submission on the Duckiebot
 
