@@ -21,7 +21,7 @@ Result: You could win the AI-DO!
     
 2) Change into the directory:
 
-    $ cd challenge-aido_LF-baseline-IL-sim-tensorflow
+    $ cd challenge-aido_LF-baseline-IL-sim-tensorflow/learning
     
 3) Install this package
 
