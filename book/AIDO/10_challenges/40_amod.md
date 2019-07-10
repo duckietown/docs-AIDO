@@ -97,7 +97,7 @@ The AMoD task is evaluated on the performance objectives described in [Performan
 
 ### Protocol {status=ready}
 
-The protocol of these challenges is well-documented at [Aido-Client-Protocol](https://github.com/idsc-frazzoli/amod/blob/dh025/doc/aido-client-protocol.md) Read it carefully at this location before getting started.
+The protocol of these challenges is well-documented at [Aido-Client-Protocol](https://github.com/idsc-frazzoli/amod/blob/master/doc/aido-client-protocol.md) Read it carefully at this location before getting started.
 
 Once the protocol is understood, in order to participate in the challenge, a dockerized `AidoGuest` must be written that contains your own operational policy for the system. To facilitate this, we have prepared to template versions, written in JAVA and in Python. They contain working operational policies which make their decisions correctly but with a lot of room for efficiency and service level improvement. The templates can be found at:
 
