@@ -25,8 +25,8 @@ Result: You could win the AI-DO!
     
 3) Install this package
 
-    $ pip3 install -e . # if you are in a conda env
-    $ sudo pip3 install -e .  # if you want to install this system-wide
+    $ pip3 install -r requirements.txt # if you are in a conda env
+    $ sudo pip3 install -r requirements.txt  # if you want to install this system-wide
 
 and install gym-duckietown (Use `sudo` if system-wide)
 
