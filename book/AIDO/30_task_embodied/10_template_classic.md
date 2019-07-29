@@ -64,14 +64,6 @@ There are also a few other **new** files in this submission, which we will expla
 
 ### Dockerfile
 
-There is one main additional block in the `Dockerfile`, which is important for setting up ROS-specific things:
-
-```docker
-# Source it to add messages to path
-RUN echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
-RUN echo "source /home/software/catkin_ws/devel/setup.bash" >> ~/.bashrc
-```
-
 If you build your own `catkin_ws` inside this template, you would probably also want to compile with `catkin_make` (this is done for you in [](#ros-baseline))
 
 Also note that in this Dockerfile we are not copying the entire directory over, instead we are copying files individually (this is actually more efficient). So if you add new files that you are using, you will have to add additional `COPY` commands. 
@@ -120,26 +112,8 @@ As a result the `roscore` application will get run and nothing else. In order to
 
 `rosagent.py` sets up a class that can be used to interface with the rest of the ROS stack. It is for all intents and purposes a fully functional ROS node except that it isn't launched through ROS launched it is instantiated in code. 
 
-The three main functions are:
+The two main functions are:
 - `_publish_img(observation)`, which takes the observation from the environment, and publishes it to the topic that you specify in the constructor of the `ROSAgent` (You will want to replace the placeholder with the topic name that your node is expecting the image to come through on)
-- `_action_cb(msg)`, which listens to the action topic you specify and pulls the `Twist2DStamped` message 
-- `_ik_action_cb(msg)`, listens on the inverse kinematic action topic, and assigns it to `self.action`. Because we are using wheel velocities as the action, but the output of many Duckietown nodes is a `Twist2DStamped` message, we need a way to convert this back into the actions we are interested in.
+- `_ik_action_cb(msg)`, listens on the inverse kinematic action topic, and assigns it to `self.action`. Because we are using wheel velocities as the action, but the output of many Duckietown nodes is a `Twist2DStamped` message, we need a way to convert this back into the actions we are interested in. The `self.action` is the action executed in the simulation at a set rate.
 
-
-At present, the function `_TEMPLATE_action_publisher` gets called which chooses a random action:
-
-```python
-    def _TEMPLATE_action_publisher(self):
-        """
-        TODO: You need to change this!
-        Random action publisher - so your submission does something
-        """
-        
-        vl = np.random.random()
-        vr = np.random.random()
-        self.action = np.array([vl, vr])
-```
-
-You will need to change this if you want the submission to get better. 
-
-One option could be to use the [Duckietown software stack](https://github.com/duckietown/Software) as described in [](#ros-baseline).
+To improve this submission, you can look at the [Duckietown software stack](https://github.com/duckietown/Software) as described in [](#ros-baseline).
