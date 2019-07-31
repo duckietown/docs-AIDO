@@ -25,12 +25,13 @@ To train a policy:
         
 3) Install this package
 
-    $ pip3 install -e . # if you are in a conda env
+    $ pip install -e . # if you are in a python 3 conda env
     $ sudo pip3 install -e .  # if you want to install this system-wide
 
-and install gym-duckietown (Use `sudo` if system-wide)
+and install gym-duckietown
 
-    $ pip3 install -e git://github.com/duckietown/gym-duckietown.git@aido2#egg=gym-duckietown
+    $ pip install -e . # if you are in a python 3 conda env
+    $ sudo pip3 install -e git://github.com/duckietown/gym-duckietown.git@aido2#egg=gym-duckietown  # system-wide
         
 (4) Change into the `duckietown_rl` directory and run the training script
 
