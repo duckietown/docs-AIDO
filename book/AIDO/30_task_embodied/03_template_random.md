@@ -78,9 +78,9 @@ This file contains any python requirements that are need your code.
 
 ### `solution.py`
 
-The `solution.py` solution file illustrates the protocol interace.
+The `solution.py` solution file illustrates the protocol interface.
 
-The import parts are:
+The important parts are:
 
 ```python
     def on_received_observations(self,  data: Duckiebot1Observations):
