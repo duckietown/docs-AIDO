@@ -20,7 +20,7 @@ Result: You could win the AI-DO!
 
 ### Change into the `submission` directory
 
-    $ cd challenge-aido1_LF1-baseline-duckietown/submission
+    $ cd challenge-aido_LF-baseline-duckietown/submission
     
 ### Evaluate your submission
 
