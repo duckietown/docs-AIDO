@@ -77,7 +77,7 @@ You can evaluate locally using `dts challenges evaluate`, but you may find this 
 
 Change into the `local` directory of the `baseline` repo.
 
-    $ cd challenge-aido1_LF1-baseline-duckietown/local
+    $ cd challenge-aido_LF-baseline-duckietown/local
 
 
 The interface is mainly the same, except now, the `rosagent.py` file itself controls the simulation. Again, you will mainly want to focus on `rosagent.py`, and you will again be able to see the `Dockerfile` for how to build and maintain your own `catkin_ws`.
