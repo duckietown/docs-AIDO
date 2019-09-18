@@ -192,7 +192,7 @@ Inside of the `docker-compose-lf.yml` file, you will find a node called `rosmoni
 
 If you'd like to monitor the progress of your system realtime via the ROS messaging system, you can also connect to the same network from another Docker container, and monitor or record ROSBags in real time. To do this, you will need to run a command:
 
-    laptop $ dts start_gui_tools lanefollow --network=local_gym-duckietown-net --sim --image duckietown/dt-core:daffy-amd64
+    laptop $ dts start_gui_tools lanefollow --network=local_gym-duckietown-net --sim --base_image duckietown/dt-core:daffy-amd64
 
 now you can run things like `rqt_image_view` and other ROS debugging tools. 
 
