@@ -146,7 +146,9 @@ To add your node to the pipeline, we give some simple example code. The files we
 To cut the pipeline, and insert your node in, you'll want to make use of [`remap` in the launch files](http://wiki.ros.org/Remapping%20Arguments). Simply take the topics you need from the last node from the existing pipeline, and remap them to what you're node takes in (usually, the node name will come first, to help ambiguities between nodes). Then, add your node(s), chaining them together with the remapping, and finally, remap your last nodes output to the topic you're interested in using - whether it be another node in the existing pipeline, or just the WheelCmd message that the rosagent.py is looking for to step in the environment.
 
 
-## Cloning the Software Repo Locally {#ros-software-locally}
+## Cloning the Repos Locally {#ros-software-locally}
+
+TODO: Needs to be updated
 
 You may still find the above a little bit cumbersome because if you just wanted to change a single parameter in the existing code and see the result, you will have to copy the entire node over and modify all the launch files etc. Then you might discover that the parameter you modified wasn't the right one and this was a huge waste of time. Instead, we might like to be able to just modify things locally in the software repo and see the results in the simulator.
   
@@ -190,7 +192,13 @@ Inside of the `docker-compose-lf.yml` file, you will find a node called `rosmoni
 
 If you'd like to monitor the progress of your system realtime via the ROS messaging system, you can also connect to the same network from another Docker container, and monitor or record ROSBags in real time. To do this, you will need to run a command:
 
-    dts start_gui_tools lanefollow --network=gym-duckietown-net --sim
+    laptop $ dts start_gui_tools lanefollow --network=local_gym-duckietown-net --sim --image duckietown/dt-core:daffy-amd64
+
+now you can run things like `rqt_image_view` and other ROS debugging tools. 
+
+To see all the intermediate outputs, you may find it helpful to turn on the `verbose` flag by running: 
+
+    container $ rosparam set /hostname/line_detector_node/verbose true
 
 
 ### Troubleshooting
