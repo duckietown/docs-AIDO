@@ -198,7 +198,7 @@ now you can run things like `rqt_image_view` and other ROS debugging tools.
 
 To see all the intermediate outputs, you may find it helpful to turn on the `verbose` flag by running: 
 
-    container $ rosparam set /hostname/line_detector_node/verbose true
+    container $ rosparam set /default/line_detector_node/verbose true
 
 
 ### Troubleshooting
