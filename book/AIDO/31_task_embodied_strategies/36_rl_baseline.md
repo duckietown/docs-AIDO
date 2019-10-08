@@ -17,8 +17,10 @@ To train a policy:
     
 1) Clone [this repo](https://github.com/duckietown/challenge-aido_LF-baseline-RL-sim-pytorch)
 
-    $ git clone git://github.com/duckietown/challenge-aido_LF-baseline-RL-sim-pytorch.git
-    
+    $ git clone -b daffy git://github.com/duckietown/challenge-aido_LF-baseline-RL-sim-pytorch.git
+
+TODO: make daffy the default branch when tested
+
 2) Change into the directory:
     
     $ cd challenge-aido_LF-baseline-RL-sim-pytorch
@@ -31,7 +33,7 @@ To train a policy:
 and install gym-duckietown
 
     $ pip install -e . # if you are in a python 3 conda env
-    $ sudo pip3 install -e git://github.com/duckietown/gym-duckietown.git@aido2#egg=gym-duckietown  # system-wide
+    $ sudo pip3 install -e git://github.com/duckietown/gym-duckietown.git@daffy#egg=gym-duckietown  # system-wide
         
 (4) Change into the `duckietown_rl` directory and run the training script
 
@@ -74,7 +76,7 @@ Here are some ideas for improving your policy:
 
 ## Sim2Real Transfer (Optional)
 
-Doing great on the simulated challenges, but not on the real evaluation? Or doing great in your training, but not on our simulated, held-out environments? Take a look at `env.py`. You'll notice that we launch the `Simulator` class from `gym-duckietown`. When we [take a look at the constructor](https://github.com/duckietown/gym-duckietown/blob/aido2_lf_r1/gym_duckietown/simulator.py#L145-L180), you'll notice that we aren't using all of the parameters listed. In particular, the three you should focus on are:
+Doing great on the simulated challenges, but not on the real evaluation? Or doing great in your training, but not on our simulated, held-out environments? Take a look at `env.py`. You'll notice that we launch the `Simulator` class from `gym-duckietown`. When we [take a look at the constructor](https://github.com/duckietown/gym-duckietown/blob/daffy/gym_duckietown/simulator.py#L145-L180), you'll notice that we aren't using all of the parameters listed. In particular, the three you should focus on are:
     
 - `map_name`: What map to use; hint, take a look at gym_duckietown/maps for more choices
 - `domain_rand`: Applies domain randomization, a popular, black-box, sim2real technique
