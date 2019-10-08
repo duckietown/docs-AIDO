@@ -20,7 +20,6 @@ There are different challenges, different computational resource regimes and dif
 * [Lane following (LF)](#lf)
 * [Lane following with vehicles (LFV)](#lf_v)
 * [Lane following with vehicles and intersections (LFVI)](#lf_v_i)
-* [Autonomous mobility-on-demand (AMoD)](#amod)
 
 ### Computational resources
 

@@ -5,7 +5,6 @@ Here we precisely define the [general rules](#other-rules) and [performance metr
  - [Lane following](#lf)
  - [Lane following with obstacles and other vehicles](#lf_v)
  - [Lane following with obstacles and other vehicles and intersections](#lf_v_i)
- - [Autonomous mobility on demand](#amod)
  
  The up-to-date status of the challenges and leaderboard can be viewed on the [challenges server][challenges]
  

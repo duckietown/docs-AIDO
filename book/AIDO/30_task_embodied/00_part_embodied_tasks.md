@@ -6,6 +6,5 @@ We provide a set of templates (strawman) for solutions. These templates are full
  - [Tensorflow template](#tensorflow-template) for making a submission with a tensorflow model to the `LF*` challenges,
  - [Pytorch template](#pytorch-template) for making a submission with a Pytorch model to the `LF*` challenges,
  - [ROS template](#ros-template) for making a submission using the robot operating system to the `LF*` challenges, 
- - [Minimal agent template](#amod-baselines) for making a submission to the `AMOD` challenge. 
  
  For the `LF*` challenges, we also provide instructions for [running your submission on a Duckiebot](#embodied-transfer_sim_to_real). 

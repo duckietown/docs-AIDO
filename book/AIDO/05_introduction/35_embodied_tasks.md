@@ -77,7 +77,6 @@ The left panel shows a lightweight simulator with low-level timing control built
 </figure>
 
 
-For the [autonomous mobility-on-demand](#amod) (AMoD) challenge, in which the AI must respond to ride requests and allocate existing cars to each challenge, we will develop a standard neural-networks-friendly data representation.
 
 ### Robotariums
 

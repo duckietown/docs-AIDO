@@ -75,10 +75,6 @@ The best possible  outcome is that a larger proportion of the ML community redir
         <figcaption figure-id="subfig:Autolab_map">LFVI</figcaption>
         <img style='width:8em' src="yield.jpg"/>
     </figure>
-    <figure>
-        <figcaption figure-id="subfig:amod_gray3">AMOD</figcaption>
-        <img style='width:8em' src="amod_gray3.png"/>
-    </figure>
 </figure>
 
 
@@ -99,8 +95,6 @@ The AI Driving Olympics competition is structured into the following separate ch
   * [Lane following with vehicles and intersections (LFVI)](#lf_v_i): Control of a Duckiebot to drive on the right lane **and through intersections** on streets with Duckietown with other moving Duckiebots and static obstacles.
 
   <!-- * [Navigation + vehicles (NAVV)](#nav_v): Navigation challenge of a Duckiebot to drive from point $A$ to point $B$ within Duckietown while following the rules of the road and while other Duckiebots are likewise driving in the road. -->
-
-* [Autonomous Mobility-on-Demand (AMoD)](#amod): Control the movement of a fleet of autonomous vehicles in a simulated city to pick up customers and drive them to their destinations.
 
 
 

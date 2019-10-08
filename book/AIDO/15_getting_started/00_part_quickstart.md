@@ -9,7 +9,7 @@ This part describes the necessary steps to get started competing in the AI-DO. I
  At this point you have a fully functioning setup and you can start to build a solution to [the specific challenge](#part:aido-rules) that you interested in. In this section, we provide two additional quickstart guides as entrypoints:
  
   - The [lane following quickstart](#quickstart-lanefollowing) is a good place to start for all the `LF*` challenges
-  - The [autonomous mobility on demand quickstart](#amod-quickstart) is a good place to start for the `AMOD` challenge
+
 
 
 
