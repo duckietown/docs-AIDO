@@ -16,7 +16,10 @@ Result: You win the AI-DO!
 
 Clone the [baseline Tensorflow imitation learning from logs repository](https://github.com/duckietown/challenge-aido_LF-baseline-IL-logs-tensorflow):
 
-    $ git clone https://github.com/duckietown/challenge-aido_LF-baseline-IL-logs-tensorflow.git
+    $ git clone -b daffy https://github.com/duckietown/challenge-aido_LF-baseline-IL-logs-tensorflow.git
+    
+TODO: make daffy the default branch after testing
+    
     $ cd challenge-aido_LF-baseline-IL-logs-tensorflow
 
 The code you find is structured into 3 folders.
