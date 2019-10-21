@@ -30,9 +30,10 @@ TODO: make daffy the default branch when this is well tested
     $ pip install -r requirements.txt # if you are in a python 3 conda env
     $ sudo pip3 install -r requirements.txt  # if you want to install this system-wide
 
-and install gym-duckietown (Use `sudo` if system-wide)
+and install gym-duckietown
 
-    $ pip3 install -e git://github.com/duckietown/gym-duckietown.git@daffy#egg=gym-duckietown
+    $ pip install -e git://github.com/duckietown/gym-duckietown.git@daffy#egg=gym-duckietown # if you are in a python 3 conda env
+    $ sudo pip3 install -e git://github.com/duckietown/gym-duckietown.git@daffy#egg=gym-duckietown # if you want to install this system-wide
     
 (4) Start training (see below)
     
