@@ -168,10 +168,10 @@ in the notebook terminal.
 
 If you have added a new launch file then you can launch it from the notebook terminal with:
 
-    $ roslaunch <your_package_name> <your_launch_file_name>
+    $ roslaunch ![your_package_name] ![your_launch_file_name]
 
 
-A good way to build your own launch file would be to use the provided launchfile, `lf_slim.launch`, as a template. You may also look at `lane_following.launch` inside the `duckietown_demos` package in `dt-core`. This includes a `master.launch` file and turns nodes on and off using the `args` that correspond to the new nodes that you don't want to run and then add your own `include`s or `<node>` launching code after. You'll want to create a new launchfile, rather than editing the original `lane_following.launch`. 
+A good way to build your own launch file would be to use the provided launchfile, `lf_slim.launch`, as a template. You may also look at `lane_following.launch` inside the `duckietown_demos` package in `dt-core`. This includes a `master.launch` file and turns nodes on and off using the `args` that correspond to the new nodes that you don't want to run and then add your own `include` or `node` tags launching code after. You'll want to create a new launchfile, rather than editing the original `lane_following.launch`. 
 
 
 ## Updating your Submission
