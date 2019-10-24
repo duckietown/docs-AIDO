@@ -16,11 +16,11 @@ Result: You could win the AI-DO!
 
 ### Clone this [repo](https://github.com/duckietown/challenge-aido_LF-baseline-duckietown)
 
-    $ git clone -b daffy git://github.com/duckietown/challenge-aido_LF-baseline-duckietown.git
+    $ git clone -b daffy git://github.com/duckietown/challenge-aido_LF-baseline-duckietown.git --recursive
 
-### Change into the `submission` directory
+### Change into the `3_submit` directory
 
-    $ cd challenge-aido_LF-baseline-duckietown/submission
+    $ cd challenge-aido_LF-baseline-duckietown/3_submit
     
 ### Evaluate your submission
 
@@ -33,26 +33,115 @@ Or make an official submission when you are ready with
     $ dts challenges submit
     
 
-## Workflows
-
-Here we will present 3 distinct workflows for improving your submission:
-
-1. [Using `dts challenges evaluate`](#ros-workflow)
-2. [Running everything, including the simulator, locally and building your own new nodes](#ros-running-locally)
-3. [Running everything locally and directly modifying the software repo locally](#ros-software-locally)
-
-One efficient option might be to start with 3 - test your code really fast inside the software repo, then move to number 2 - pull your new code (packages) out of the software repo and run them independently, then finally move to 1 - move your node over to the baseline and see what score you get. 
+## Local Development Workflow
 
 
-## How to Improve your Submission {#ros-workflow}
+We have provided a local setup where you can qualitatively evaluate the performance of your agent against the simulator. 
 
-You will notice one main difference as compared to the [ROS template](#ros-template) is that the launch file argument in the `solution.py` code now points to `lf_slim.launch`, which launches a slimmed-down version of the [Duckietown Lane Following code](https://github.com/duckietown/Software/). The action and image topics are both adjusted to match the inputs and outputs of the original stack.
+### Updating submodules
 
-Inside of the Dockerfile, you will also see how to build and maintain your own `catkin_ws`. While in this example the workspace is not used, you will surely need it to build your own code.
+First make sure that your submodules are up to date with the `daffy` branch:
 
-### lf_slim.launch
+    $ git submodule init
+    $ git submodule update
+    $ git submodule foreach "(git checkout daffy; git pull)"
 
-Compared to `template.launch` in [](#ros-template), the launch file here actually runs some nodes. These are nodes that are defined in the [Duckietown Software repo](https://github.com/duckietown/Software/). 
+
+### Change into the `1_develop` directory
+
+    $ cd challenge-aido_LF-baseline-duckietown/1_develop
+
+
+### Run locally
+
+    $ docker-compose build
+    $ docker-compose up
+
+Note: To run this, you will need to have `docker-compose` installed on your local machine, as unlike the AIDO submissions, this will emulate both the server and agent all on your local machine. Follow instructions [here](https://docs.docker.com/compose/install/) to install.
+
+
+You should see that three containers are starting:
+
+```
+Starting 1_devlelop_sim_1   ... done
+Starting 1_devlelop_novnc_1        ... done
+Starting 1_devlelop_lanefollow_1 ... done
+```
+
+To start your agent you will need a terminal in the `1_devlelop_lanefollow_1` container. You can do that one of two ways:
+
+#### In a new terminal 
+   
+    $ docker exec -it 1_devlelop_lanefollow_1 /bin/bash
+
+#### In the browser with Jupyter notebook
+
+Open your browser and copy and paste in the url that was produced in the output to the terminal when you ran `docker-compose`. It should look something like:
+
+    http://127.0.0.1:8888/?token={SOME_LONG_TOKEN}
+    
+Then click on the dropdown for "New" in the top right and click "Terminal". 
+
+### Building the software
+
+You can build the software by running in the terminal:
+
+    $ catkin build --workspace catkin_ws
+    
+Note: the build artifacts are preserved outside docker so you can shut down docker and restart it and you would not need to rebuild (unless you made changes to the source code of course). You can also edit the source files with any editor you like on your local machine and then build them inside the container since the files are [mounted](https://docs.docker.com/storage/volumes/).
+
+You will then want to do 
+
+    $ source catkin_ws/devel/setup.bash
+
+Note: this source command is run by default when you open a new terminal so you don't need to worry about it if you didn't just rebuild the workspace
+
+
+### Launch your submission
+
+Now you can go ahead and launch your submission. For example, the default submission provided in the repo is `lf_slim.launch`. Start it with
+
+    $ roslaunch custom/lf_slim.launch
+    
+Note that you can also launch other launch files in the duckietown stack. Check out the `duckietown_demos` folder in the `dt-core` repository for other launch files that might be interesting. 
+
+### Viewing and Debugging with noVNC
+
+Navigate your browser to `http://localhost:6901/vnc.html`. Click `Connect`. The password is `quackquack`. This will open up a fully functional desktop inside your browser. In the top left click `Applications` and choose `Terminal Emulator` from the list. In the terminal run
+
+    $ rqt_image_view
+
+and in the dropdown menu select the topic `default/camera_node/image/compressed`. You should see the agent moving in the simulator.
+
+<figure>
+    <figcaption>The simulator running inside the noVNC browser</figcaption>
+    <img style='width:8em' src="sim_in_novnc.png"/>
+</figure>
+
+Note: there are many other tools in [rqt](http://wiki.ros.org/rqt) that you might find useful. To access them run `rqt` and then choose a plugin. 
+
+Another great visualization tool is:
+
+    $ rviz
+
+Click the "Add" button in the bottom left and then the `By Topic` tab. You might find the `/duckiebot_visualizer/segment_list_markers/` and the filterer version as well as the `/lane_pose_visualizer_node/lane_pose_markers` particularly interesting.
+
+<figure>
+    <figcaption>Rviz running inside the noVNC browser</figcaption>
+    <img style='width:8em' src="rviz_in_novnc.png"/>
+</figure>
+
+Note: You will see more  outputs (e.g., the `image_with_lines`) if you  set the verbose flag to true by typing `rosparam set /default/line_detector_node/verbose true` from any terminal. 
+
+
+### How to Improve your Submission {#ros-workflow}
+
+
+You will notice one main difference as compared to the [ROS template](#ros-template) is that the launch file argument in the `solution.py` code now points to `lf_slim.launch`, which launches a slimmed-down version of the [Duckietown Lane Following code](https://github.com/duckietown/dt-core). The action and image topics are both adjusted to match the inputs and outputs of the original stack.
+
+#### lf_slim.launch
+
+Compared to `template.launch` in [](#ros-template), the launch file here actually runs some nodes. These are nodes that are defined in the [Duckietown Software repo](https://github.com/duckietown/dt-core). The code that is being run is all included as "submodules" in this repository. 
 
 The nodes which are getting launched are the following:
 
@@ -60,157 +149,36 @@ The nodes which are getting launched are the following:
  - [ground_projection_node](https://github.com/duckietown/Software/tree/master18/catkin_ws/src/10-lane-control/ground_projection): Used to project the lines onto the ground plane using the camera extrinsic calibration.
  - [lane_filter_node](https://github.com/duckietown/Software/tree/master18/catkin_ws/src/10-lane-control/lane_filter): Used to take the ground projected line segments and estimate the Duckiebot's position and orientation in the lane
  - [lane_controller_node](https://github.com/duckietown/Software/tree/master18/catkin_ws/src/10-lane-control/lane_control): Used to take the estimate of the robot and generate a reference linear and angular velocities for the Duckiebot
- - [inverse_kinematics_node](https://github.com/duckietown/Software/blob/master18/catkin_ws/src/05-teleop/dagu_car/src/forward_kinematics_node.py): Take the refernece linear and angular velocities and generate left and right wheel velocities which are published to the `rosagent`.
 
-Note: You don't see the software repo in the baseline but it will be there when your docker container is built since the image inherits from the `rpi-duckiebot-base` image which has the code.
+A good way to get started could be modify or make your own version of the nodes that are being launched in `lf_slim.launch`.
 
-A good way to get started could be make your own version of the nodes that are being launched in `tf_slim.launch`.
+For testing purposes you can go ahead and modify the code that's included. However, ultimately you will have to write your own nodes and packages. 
 
-Do this by building your own package (with a different name) in your `src/catkin_ws`. If you like you can copy the source files from the `Software` repo as a starting point. 
+### Create a repo for your packages the template repo
 
-You will need to define your own launch file and parameters in your package and then make sure that they make sure they are being launched and loaded properly in `tf_slim.launch`. 
+Now we are going to discuss how you might build a new node and incorporate it into the structure of an existing launch file. 
 
+Follow the instructions [here](https://github.com/duckietown/template-ros-core) to create a new repo for your packages. Clone this repo inside the folder `challenge-aido_LF-baseline-duckietown/catkin_ws/src`. You can add new packages inside the `packages` folder of that repo. 
 
-## Running the Entire Thing Locally for Debugging {#ros-running-locally status=ready}
+Any packages that you put in there will be built when you run:
 
-You can evaluate locally using `dts challenges evaluate`, but you may find this restricting, especially when you want to use ROS debugging tools like the `rostopic` or `roslogging` interfaces. For convenience, we've also provided a standalone version of this code (which will not give any rewards or AIDO task evaluation, but provides a way to easily visualize the output and behavior of your code).
+    $ catkin build --workspace catkin_ws
 
-Change into the `local` directory of the `baseline` repo.
+in the notebook terminal. 
 
-    $ cd challenge-aido_LF-baseline-duckietown/local
+If you have added a new launch file then you can launch it from the notebook terminal with:
 
-
-The interface is mainly the same, except now, the `rosagent.py` file itself controls the simulation. Again, you will mainly want to focus on `rosagent.py`, and you will again be able to see the `Dockerfile` for how to build and maintain your own `catkin_ws`.
-
-To run this, you will need to have `docker-compose` installed on your local machine, as unlike the AIDO submissions, this will emulate both the server and agent all on your local machine. Follow instructions [here](https://docs.docker.com/compose/install/) to install.
+    $ roslaunch <your_package_name> <your_launch_file_name>
 
 
-### Usage
+A good way to build your own launch file would be to use the provided launchfile, `lf_slim.launch`, as a template. You may also look at `lane_following.launch` inside the `duckietown_demos` package in `dt-core`. This includes a `master.launch` file and turns nodes on and off using the `args` that correspond to the new nodes that you don't want to run and then add your own `include`s or `<node>` launching code after. You'll want to create a new launchfile, rather than editing the original `lane_following.launch`. 
 
-To launch the lane following demo, run the following command:
-    
-    $ docker-compose -f docker-compose-lf.yml pull
-    $ docker-compose -f docker-compose-lf.yml build
-    $ docker-compose -f docker-compose-lf.yml up
-    
-The first two commands don't need to be run every time, so after pulling, you may just want to run the `up` command.
-
-You will then start to see output from the Lane Following code, which can be found [here](https://github.com/duckietown/Software/tree/master18/catkin_ws/src/10-lane-control)
-
-You can terminate the run at any time by pressing <kbd>CTRL</kbd>+<kbd>c</kbd>.
-
-### Write your own agent
-
-Inside of the `docker-compose-lf.yml` file, you'll find that for purposes of this demo, we are using the `HOSTNAME=default`; the `HOSTNAME` can be thought of as the vehicle name. This is to help mitigate the discrepencies between the real robot and simulator when finding things like configuration files when using the old Duckietown stack.
-
-### Making Edits
-
-With `docker-compose`, your Dockerfiles will not rebuilt unless you tell them. There are two ways of going about this:
-
-To rebuild everything, run 
-
-    $ docker-compose -f docker-compose-lf.yml build [--no-cache] 
-    
-before running 
-
-    $ docker-compose -f docker-compose-lf.yml up
-    
-(Preferred) Rebuild the container you've changed with 
-
-    $ docker build -t ![your-containers-tag] -f ![Dockerfile] 
-    
-and then 
-
-    $ docker-compose -f docker-compose-lf.yml up
-
-
-### Using your own ROS Nodes / Custom `catkin_ws`
-
-Most likely, you'll want to work off of some of the standalone Duckietown code, but change a node or two. We will look at two examples:
-
- - Adding to the pipeline
- - "Cutting" the pipeline and inserting your node inside. 
-
-Currently, you'll see that we have a `rosrun` command all the way at the bottom of the `docker-compose` file, which is where you'd put your `roslaunch` or `rosrun` command. We've provided an example node for you, that builds from `DockerfileCatkin`
-
-To add your node to the pipeline, we give some simple example code. The files we're concerned with are:
-
- - `DockerfileCatkin`: To add your nodes to the `custom_ws`, follow the commented out instructions, paying close attention to which lines you should and should not be removing. We use something called [overlayed ROS workspaces](http://wiki.ros.org/catkin/Tutorials/workspace_overlaying), to make sure that your code (which most likely depends on the Duckietown ROS stack in some way) can find all of its dependencies.
-
- - `dt_dependent_node`: A simple, toy example of how to build a node that has a dependency with the current stack. You can use this as a model to build and add your own ROS nodes, making sure to edit the `CMakeLists.txt` (inside of your node, for dependencies + building things like msgs and services) and the Dockerfile to ensure your files and folders get copied into the `cudtom_ws/src` directory before you build with catkin_make.
-
- - `custom_line_detector`: A *copied* node from `10-lane-control` inside of the `Software` repo, we also provide this as an example of how to copy, edit, build, and launch a node. This serves as an example, and is commented out in `lf_slim.launch`. Remember, when copying a node, you either need to make sure that (A) that copied node isn't running with the same name elsewhere (just copy it out in the launch file) and that (B) you remap the topics properly.
-
- - `lf_slim.launch`: A launch file that launches the whole lane following stack, but at the bottom has the code to launch our simple test node. It launches nodes just the way you normally might in ROS, and because our workspaces are overlayed, will be able to find code or nodes in both your new workspace, as well as the old one.
-
-To cut the pipeline, and insert your node in, you'll want to make use of [`remap` in the launch files](http://wiki.ros.org/Remapping%20Arguments). Simply take the topics you need from the last node from the existing pipeline, and remap them to what you're node takes in (usually, the node name will come first, to help ambiguities between nodes). Then, add your node(s), chaining them together with the remapping, and finally, remap your last nodes output to the topic you're interested in using - whether it be another node in the existing pipeline, or just the WheelCmd message that the rosagent.py is looking for to step in the environment.
-
-
-## Cloning the Repos Locally {#ros-software-locally}
-
-TODO: Needs to be updated
-
-You may still find the above a little bit cumbersome because if you just wanted to change a single parameter in the existing code and see the result, you will have to copy the entire node over and modify all the launch files etc. Then you might discover that the parameter you modified wasn't the right one and this was a huge waste of time. Instead, we might like to be able to just modify things locally in the software repo and see the results in the simulator.
-  
-Checkout the branch `local-software-repo`
-
-    $ git checkout local-software-repo
-
-Then clone the software repo here:
-
-    $ git clone git@github.com:duckietown/Software.git
-
-Then follow the same workflow as above:
-
-    $ docker-compose -f docker-compose-lf.yml pull
-    $ docker-compose -f docker-compose-lf.yml build
-    $ docker-compose -f docker-compose-lf.yml up
-    
-The first time, this will take some time because the entore `Software` repo gets build by `catkin_build`, but the build artifacts will persist and this will be much faster on subsequent runs. 
-
-You can go ahead and make changes in the `Software` directory and these changes will propagate into your container. This is done by mounting the `Software` directory as a volume which effectively overwrites the existing software repo in the container. 
-
-Note: If you have local nodes as described in [](#ros-running-locally), they will not be available now since the whole software directory is being overwritten.
-
-Note: If you have only modified python script files that don't need to even be rebuilt, then you can replace `docker-compose -f docker-compose-lf.yml up` with
-
-    $ docker-compose -f docker-compose-lf-no-build.yml up
-    
-## Debugging and Monitoring {#ros-debugging}
-
-With ROS, everything of interest is passed through the ROS Messaging system. There are two ways to monitor your progress:
-
-### ROSBags {status=draft}
-
-Inside of the `docker-compose-lf.yml` file, you will find a node called `rosmonitor`, which listens on a particular topic and records a bagfile to a mounted drive. This is so your container and host machine can read and write to the same disk location. Once you've recorded the bag file, you can play its contents back on your host machine with the following steps:
-
- 1. You can start a `roscore` in one terminal, and in another terminal, you will want to type in `rosbag play {PATH TO BAGFILE}`. Some nice additional command line options are `--loop` or `--rate {#}`.
- 
- 2. Now, your host machine is in the same state as the Docker image when the bag was recorded. This means you can visualize the messages with things like `rqt` or `rqt_image_view`.
-
-### Via Docker in Real Time
-
-If you'd like to monitor the progress of your system realtime via the ROS messaging system, you can also connect to the same network from another Docker container, and monitor or record ROSBags in real time. To do this, you will need to run a command:
-
-    laptop $ dts start_gui_tools lanefollow --network=local_gym-duckietown-net --sim --base_image duckietown/dt-core:daffy-amd64
-
-now you can run things like `rqt_image_view` and other ROS debugging tools. 
-
-To see all the intermediate outputs, you may find it helpful to turn on the `verbose` flag by running: 
-
-    container $ rosparam set /default/line_detector_node/verbose true
-
-
-### Troubleshooting
-
-To check the available networks, run `docker network ls`. Occasionally Docker will create a second network, `sim-duckiebot-lanefollowing-demo_gym-duckietown-net` if the default one has already been created. If you want to override this behavior run `docker-compose up --force-recreate` to start everything from scratch.
 
 ## Updating your Submission
 
-If you've followed either of our local workflows, you'll notice that the `local` directory you've been working in no longer contains any of the submission files. The easiest way to do take your local submission and submit it to AIDO is to copy the following files over into the `submission/` directory of this repository.
+If you've followed either of our local workflows, you'll notice that the `1_develop` directory you've been working in no longer contains any of the submission files. The easiest way to do take your local submission and submit it to AIDO is to copy the following files over into the `3_submit` directory of this repository.
 
 - `lf_slim.launch`
-- Any nodes you created (i.e `dt_dependent_node`, `custom_line_detector/`)
+- Any nodes you created 
 
-In addition, within `local/Dockerfile`, you will want to copy and paste the code regarding the `CUSTOM CATKIN_WS` and copy it into the corresponding location into `submission/Dockerfile`. 
-
+In addition, within `1_develop/Dockerfile`, you will want to copy and paste the code regarding the `CUSTOM CATKIN_WS` and copy it into the corresponding location into `3_submit/Dockerfile`. 
