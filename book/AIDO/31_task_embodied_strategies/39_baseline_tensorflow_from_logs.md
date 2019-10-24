@@ -94,7 +94,7 @@ Go to the `imitation_agent` folder
 
 If you have completed the previous steps, you will be able to submit this as is, with:
 
-    $ dts challenges submit
+    $ dts challenges submit --challenge aido3-LF-sim-validation
 
 
 Or, run local evaluation with:
