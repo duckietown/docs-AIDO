@@ -24,7 +24,6 @@ There are different challenges, different computational resource regimes and dif
 ### Computational resources
 
 * [Purist option - RaspberryPi](#computation)
-* [Non-purist option - Additional Movidius stick](#computation) (still under development)
 * [Remote option](#computation)
 
 
