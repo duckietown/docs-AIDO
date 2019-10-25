@@ -7,4 +7,3 @@ We provide a set of templates (strawman) for solutions. These templates are full
  - [Pytorch template](#pytorch-template) for making a submission with a Pytorch model to the `LF*` challenges,
  - [ROS template](#ros-template) for making a submission using the robot operating system to the `LF*` challenges, 
  
- For the `LF*` challenges, we also provide instructions for [running your submission on a Duckiebot](#embodied-transfer_sim_to_real). 
