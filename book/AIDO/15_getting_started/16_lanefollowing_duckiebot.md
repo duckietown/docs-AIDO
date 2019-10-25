@@ -13,6 +13,8 @@ Requires: You have [made a valid AI-DO submission](#quickstart-lanefollowing)
 </div>
 
 
+Warning: Running your AI-DO submission on your robot is currently only supported on Ubuntu (not Mac OSX)
+
 In this page we will describe how to run your submission on the Duckiebot. If everything's setup right, the procedure is very straightforward. But things can be hard to troubleshoot because they involve networking.
 
 There are two basic modes that you can use to run a submission.
