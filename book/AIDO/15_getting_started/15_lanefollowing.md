@@ -1,4 +1,4 @@
-# Lane Following Quickstart {#quickstart-lanefollowing status=ready}
+# Submit to an AI-DO Challenge {#quickstart-lanefollowing status=ready}
 
 <div class='requirements' markdown='1'>
 

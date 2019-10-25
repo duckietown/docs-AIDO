@@ -1,4 +1,4 @@
-# Lane Following on Duckiebot {#lf_duckiebot status=ready}
+# Run an agent on your Duckiebot {#lf_duckiebot status=ready}
 
 <div class='requirements' markdown='1'>
 
@@ -8,7 +8,7 @@ Requires: You have [built your Duckietown according to the appearance specificat
 
 Requires: You can [connect to your robot wirelessly](+opmanual_duckiebot#duckiebot-network)
 
-Requires: You have [made a valid submission](#cm-first)
+Requires: You have [made a valid AI-DO submission](#quickstart-lanefollowing)
 
 </div>
 
@@ -17,36 +17,24 @@ In this page we will describe how to run your submission on the Duckiebot. If ev
 
 There are two basic modes that you can use to run a submission.
 
- 1. From a local submission folder
- 2. From an existing image (for example one that you submitted to the AI-DO)
+ 1. [From a local submission folder](#aido-run-duckiebot-local)
+ 2. [From an existing image](#aido-run-duckiebot-image) (for example one that you submitted to the AI-DO)
 
 
-## Starting the Duckiebot drivers
+## Verifying that your Duckiebot is operational
 
-The first thing to do is to make sure that your camera is streaming imagery and that your robot is accepting wheel commands. If you run:
+When you boot your robot it starts to produce camera imagery and waits for incoming motor commands. To verify that your Duckiebot is fully operational, you sholud follow [](+opmanual_duckiebot#rc-control) and [](+opmanual_duckiebot#read-camera-data). 
 
-    $ docker -H ![DUCKIEBOT_NAME].local ps
+You should also ensure that your Duckiebot is well calibrated, both [camera](+opmanual_duckiebot#camera-calib) and [wheels](+opmanual_duckiebot#wheel-calibration).
 
-you should see the list of the running containers. Among them should be one for an image called `duckietown/duckiebot-interface:master19`. If you don't see it at all (weird?) then you can start it with
 
-    $ docker -H ![DUCKIEBOT_NAME].local run --net host --privileged -v /data:/data --name duckiebot-interface duckietown/duckiebot-interface:master19
-    
-
-To see what imagery is streaming you can do
-
-    $ dts start_gui_tools ![DUCKIEBOT_NAME]
-
-If this is the first time running the command, you will have to wait a while (up to 10-15 minutes on slow computers) for the docker image to be pulled and see the shell prompt (you might have to press Enter to see the shell prompt). Once you see the shell prompt, type the following to stream the imagery
-    
-    # rqt_image_view
-
-## Run a local submission on the Duckiebot
+## Run a local submission on the Duckiebot {#aido-run-duckiebot-local}
 
 Go into any valid submission folder (i.e. one where you could run `dts submit` and you would make a submission) and run:
 
     $ dts duckiebot evaluate --duckiebot_name ![DUCKIEBOT_NAME]
 
-## Run an image that's already built on the Duckiebot
+## Run an image that's already built on the Duckiebot {#aido-run-duckiebot-image}
 
     $ dts duckiebot evaluate --duckiebot_name !{DUCKIEBOT_NAME] --image ![IMAGE_NAME]
 

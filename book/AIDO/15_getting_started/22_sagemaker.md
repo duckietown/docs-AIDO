@@ -1,0 +1,363 @@
+# Training on AWS SageMaker {#sagemaker status=ready}
+
+
+## Reinforcement Learning 
+
+This is the companion tutorial file for learning how to use Amazon AWS's Sagemaker tool to train your Duckietown AIDO submission... **in the cloud**!
+
+We'll be building off our [Reinforcement Learning](https://goo.gl/YFTjn3) Tutorial, where we take DDPG and use Sagemaker to train with speed!
+
+This tutorial will walk you through, step by step, how to get your Sagemaker account running and using it to train a AIDO Lane Following Submission.
+
+Some prerequisites we expect you to have:
+1. A Git and an AWS Account (You can get one by signing up [here](https://aws.amazon.com/))
+2. A good overview of the code we'll be looking at. We'll be building off [this repository](https://github.com/duckietown/challenge-aido1_LF1-baseline-RL-sim-pytorch), and this code can be found [here](https://github.com/duckietown/aido-on-sagemaker). A good start would be the video tutorial posted above.
+3. The ability to submit with `duckietown-shell` (which means you already have a [Duckietown Account](https://www.duckietown.org/research/ai-driving-olympics/ai-do-register)) as well as `git` on your computer
+4. A **fork** of [this repository](https://github.com/duckietown/aido-on-sagemaker), which contains the two IPython notebooks we'll look at.
+
+We've broken this tutorial down into four parts:
+
+1. [Getting Started with AWS and Sagemaker](#Getting-Started-with-AWS-and-Sagemaker)
+2. [Walking through the code](#Code-Walkthrough)
+3. [Training with Sagemaker](#Sagemaker-Training)
+4. [Submitting your model to the AI-DO](#Submitting-Your-Model)
+
+## Getting Started with AWS and Sagemaker {#Getting-Started-with-AWS-and-Sagemaker}
+
+### Why AWS and the Cloud?
+
+After watching all of our other video tutorials, you may have thought that you had everything you needed to start training a reinforcement learning or imitation learning agent. But, when you attempted to train, you saw that training was too slow, took too much memory, or even froze your computer. Modern day deep learning techniques require a lot of computing power to train, more than what's often available on your laptop.
+
+A common method is to then use a cloud provider - where you essentially rent time on powerful machines with more GPU, RAM, and resources. AWS is the largest provider of such cloud services, and as a result, they have put a lot of effort into building out tools that make it easier to train and deploy models at scale.
+
+### Why Sagemaker?
+
+Sagemaker, a new tool from AWS, abstracts away even more of the building, training, and deploying steps involved in machine learning. While we won't be using the Sagemaker functionality to deploy a model, we will take advantage of its awesome capabilities to deploy instances, train large models, and quickly view and save our results. 
+
+### Creating an AWS Account
+
+You will need to create an [AWS Account](https://portal.aws.amazon.com/billing/signup) for the remainder of the tutorial.
+
+### Creating a Notebook Instance
+
+Navigate to the [Sagemaker homepage](https://console.aws.amazon.com/sagemaker/home) and click on Notebook Instances. Sagemaker's heavily integrated with Jupyter Notebooks, which is already a powerful tool for machine learning researchers and data scientists. Now, with Sagemaker, we can use our same notebook to train models on powerful AWS instances. 
+
+You then want to "Create notebook instance" and give it a name like "duckietown-aido-cloud". We'll skip over the instance type until the next section, and focus on IAM role. 
+
+IAM is an AWS security feature that serves as their identification and access service. IAM helps you control what things in your AWS account get what permissions, which makes sure that you don't need to worry too much about security.
+
+Click "Create New Role" in the IAM dropdown, leave all the other options the same, and proceed to the instance type.
+
+#### What type of Instance do I use?
+
+AWS, like other cloud providers, offer many types of **instances**. An Instance is a machine that you "rent" out, and depending on what type of instance you get, the faster training may go (especially if you get a GPU). The important thing to remember is that all instances are not priced the same, and better instances will cost more per hour.
+
+You can find a description of each instance [here](https://aws.amazon.com/ec2/instance-types/).
+
+#### CPU or GPU?
+
+If you've done a bit of Deep Learning, you'll know that libraries like Tensorflow, Pytorch, and MXNet all come with GPU-acceleration built in. A GPU can be extremely useful, especially when training RL agents, which require tons of samples. While the rest of this tutorial will assume that you've picked the lowest one, `ml.t2.medium`, feel free to pick a more powerufl instance.
+
+For GPU instances, you can find a description of the various GPU-enabled Accelerated Computing instances [here](https://aws.amazon.com/ec2/instance-types/).
+
+#### Paying Close Attention to the Region
+
+The rest of this tutorial will assume that the region (top-right of the screen) is set to `us-east-1`. This describes what region your instance is located in, If it's not `us-east-1`, don't worry - just keep a note of where you are! 
+
+#### I'm a student | competitor | academic instructor - How can I pay for this?
+
+If you notice the prices when clicking through some of the above links, you'll notice AWS instances are not free. But if you're here, that's good news! We'll be posting a link to a form, where you can sign up at the end of this tutorial to get **free AWS credits**!
+
+#### Jupyter Notebook Tips + Resources
+
+New to Jupyter? At any point, click the "Help" section in the toolbar, and click through some of the references. Or, ask a question at anytime in a comment on our Facebook Live video, or on the Duckietown forums!
+
+**All Done - Now, Click <kbd>Create Notebook Instance</kbd>**
+
+### Setting the Correct IAM Permissions {#Permissions}
+
+While your new notebook is getting setup, we can take care of another thing we'll need later on in the tutorial. Navigate to the [IAM Management Console](https://console.aws.amazon.com/iam/home), and click on *Roles*. You'll see your new Sagemaker Role, so click on it. When the page loads, you'll see a big button that says <kbd>Attach Policies</kbd>. There, you'll want to *filter* policies by entering this: `AmazonEC2ContainerRegistryFullAccess`, and attach it to your role. This will allow us to pull and push containers to the EC2 Container Registry later on in the tutorial.
+
+### Cloning our Baseline inside of the Sagemaker Notebook Instances
+
+Navigate back to the [Sagemaker homepage](https://console.aws.amazon.com/sagemaker/home), and you'll see that your notebook is ready! Click `Open Jupyter`, and you'll soon be greeted with the familiar IPython Notebook / Jupyter Navigation page. If you're more comfortable with the newer JupyterLab, click that in the top right corner.
+
+To clone this repository, you'll want to click <kbd>New</kbd> and click on `Terminal`. When the terminal opens, you'll want to type the following commands to clone your forked repository containing this code inside of your Notebook instance.
+
+```
+$ cd Sagemaker
+$ git clone https://github.com/{YOUR-GIT-USERNAME}/aido-on-sagemaker/
+```
+
+And then exit the terminal, click on *Aido-on-Sagemaker* and click on the IPython Notebook!
+
+## Walking through the Code {#Code-Walkthrough}
+
+### The parts of the sample container
+
+The `container` directory has all the components you need to extend the SageMaker PyTorch container to use as an sample algorithm:
+
+    .
+    ├── Dockerfile
+    ├── entrypoint.sh
+    ├── build_and_push.sh
+    └── duckietown-rl
+        ├── train_ddpg.py
+        └── ... More stuff (See next cell)
+
+Let's discuss each of these in turn:
+
+* __`Dockerfile`__ describes how to build your Docker container image. More details are provided below.
+* __`entrypoint.sh`__ a script which launches an `Xvfb` process, which is basically a virtual screen so `gym-duckietown` can render the images your agent will see.
+* __`build_and_push.sh`__ is a script that uses the Dockerfile to build your container images and then pushes it to ECR. We invoke the commands directly later in this notebook, but you can just copy and run the script for your own algorithms.
+* __`duckietown-rl`__ is the directory which contains our user code to be invoked.
+
+
+### Training Code
+
+    duckietown-rl/
+    ├─────── config.py
+    ├─────── ddpg.py
+    ├─────── env.py
+    ├─────── train_ddpg.py
+    ├─────── utils.py
+    └─────── wrappers.py
+
+Look familiar? That's because it is! This is the same code from the Pytorch baseline, only with a few Sagemaker-specific modifications. We'll focus on the files that are different than our Pytorch tutorial, which is only:
+
+* __`train-ddpg.py`__ is the program that implements our training algorithm and handles loading our model for inferences.
+
+### The Dockerfile
+
+The Dockerfile describes the image that we want to build. You can think of it as describing the complete operating system installation of the system that you want to run. A Docker container running is quite a bit lighter than a full operating system, however, because it takes advantage of Linux on the host machine for the basic operations. 
+
+We start from the SageMaker PyTorch image as the base. The base image is an ECR image, so it will have the following pattern.
+* {account}.dkr.ecr.{region}.amazonaws.com/sagemaker-{framework}:{framework_version}-{processor_type}-{python_version}
+
+Here is an explanation of each field.
+1. account - AWS account ID the ECR image belongs to. Our public deep learning framework images are all under the 520713654638 account.
+2. region - The region the ECR image belongs to. [Available regions](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/).
+3. framework - The deep learning framework.
+4. framework_version - The version of the deep learning framework.
+5. processor_type - CPU or GPU. **If you want GPU support, you need to change this!**
+6. python_version - The supported version of Python.
+
+So the SageMaker PyTorch ECR image would be:
+520713654638.dkr.ecr.us-west-2.amazonaws.com/sagemaker-pytorch:0.4.0-cpu-py3
+
+Information on supported frameworks and versions can be found in this [README](https://github.com/aws/sagemaker-python-sdk).
+
+Next, we add the code that implements our specific algorithm to the container and set up the right environment for it to run under.
+
+**DISCLAIMER: As of now, the support for the two environment variables below are only supported for the SageMaker Chainer (4.1.0+) and PyTorch (0.4.0+) containers.**
+
+Finally, we need to specify two environment variables.
+1. SAGEMAKER_SUBMIT_DIRECTORY - the directory within the container containing our Python script for training and inference.
+2. SAGEMAKER_PROGRAM - the Python script that should be invoked for training and inference.
+
+### Building and registering the container
+
+The following shell code shows how to build the container image using docker build and push the container image to ECR using docker push. This code is also available as the shell script container/build-and-push.sh.
+
+This code looks for an ECR repository in the account you're using and the current default region (if you're using a SageMaker notebook instance, this is the region where the notebook instance was created). If the repository doesn't exist, the script will create it. In addition, since we are using the SageMaker PyTorch image as the base, we will need to retrieve ECR credentials to pull this public image.
+
+The main thing you want to note is the algorithm_name.
+
+```bash
+%%sh
+
+# The name of our algorithm
+algorithm_name=duckietown-extending
+
+cd container
+
+account=$(aws sts get-caller-identity --query Account --output text)
+
+# Get the region defined in the current configuration (default to us-west-2 if none defined)
+region=$(aws configure get region)
+# region=${region:-us-east-1}
+
+fullname="${account}.dkr.ecr.${region}.amazonaws.com/${algorithm_name}:latest"
+
+# If the repository doesn't exist in ECR, create it.
+
+aws ecr describe-repositories --repository-names "${algorithm_name}" > /dev/null 
+
+if [ $? -ne 0 ]
+then
+    aws ecr create-repository --repository-name "${algorithm_name}" > /dev/null
+fi
+
+# Get the login command from ECR and execute it directly
+$(aws ecr get-login --region ${region} --no-include-email)
+
+# Get the login command from ECR in order to pull down the SageMaker PyTorch image
+$(aws ecr get-login --registry-ids 520713654638 --region ${region} --no-include-email)
+
+# Build the docker image locally with the image name and then push it to ECR
+# with the full name.
+
+docker build  -t ${algorithm_name} . --build-arg REGION=${region}
+docker tag ${algorithm_name} ${fullname}
+
+docker push ${fullname}
+```
+
+## SageMaker Training {#Sagemaker-Training}
+
+To represent our training, we use the Estimator class, which needs to be configured in five steps. 
+1. IAM role - our AWS execution role
+2. train_instance_count - number of instances to use for training.
+3. train_instance_type - type of instance to use for training. For training locally, we specify `local` or `local_gpu`.
+4. image_name - our custom PyTorch Docker image we created.
+5. hyperparameters - hyperparameters we want to pass.
+
+Let's start with setting up our IAM role. We make use of a helper function within the Python SDK. This function throw an exception if run outside of a SageMaker notebook instance, as it gets metadata from the notebook instance. If running outside, you must provide an IAM role with proper access stated above in [Permissions](#Permissions).
+
+```python
+import os
+import subprocess
+
+from sagemaker import get_execution_role
+
+role = get_execution_role()
+
+instance_type = 'local'
+
+if subprocess.call('nvidia-smi') == 0:
+    ## Set type to GPU if one is present
+    instance_type = 'local_gpu'
+    
+# When you're ready to really train: - Check the diff. instance types!
+# for example...
+# instance_type = 'ml.m4.xlarge'
+
+print("Instance type = " + instance_type)
+```
+
+```python
+from sagemaker.estimator import Estimator
+
+hyperparameters = {'max_timesteps': 75}
+
+estimator = Estimator(role=role,
+                      train_instance_count=1,
+                      train_instance_type=instance_type,
+                      image_name='duckietown-extending:latest',
+                      hyperparameters=hyperparameters)
+
+estimator.fit('file:///tmp')
+print("All done!")
+```
+
+### Changing Hyperparameters - Where are They?
+
+Unlike the Pytorch tutorial, where the hyperparameters were in `args.py`, they are now located inside of `train_ddpg.py`. You can also specify them (as you would on a command line) by adding to the `hyperparameters` dictionary as seen in the cell above.
+
+## Submitting Your Model {#Submitting-Your-Model}
+
+Now you're training succeeded, but unlike the Pytorch or Tensorflow tutorials, you don't see any output or models directory. This is one of the nice things about Sagemaker - they throw everything into S3 for you, so you don't have to worry about losing track of your models. It will be in your S3 bucket, which you can access by [this link](https://console.aws.amazon.com/s3/home). Click on your Sagemaker bucket, and download the `model.tar.gz` (this is what it is saved as by default, but if you'd like you can change it).
+
+Now, you can follow the steps from the other tutorial. Clone this repository locally, navigate to the `duckietown-rl/submission` directory, put your model in the right place, edit the `solution.py` as needed, and write `dts challenges submit`! It's that easy!
+
+## Imitation Learning
+
+### Building and registering the container
+
+The following shell code shows how to build the container image using `docker build` and push the container image to ECR using `docker push`. This code is also available as the shell script `container/build-and-push.sh`.
+
+This code looks for an ECR repository in the account you're using and the current default **region** (if you're using a SageMaker notebook instance, this is the region where the notebook instance was created). If the repository doesn't exist, the script will create it. In addition, since we are using the SageMaker PyTorch image as the base, we will need to retrieve ECR credentials to pull this public image.
+
+The main thing you want to note is the `algorithm_name`.
+
+```bash
+%%sh
+
+# The name of our algorithm
+algorithm_name=duckietown-imitation
+
+cd container
+
+chmod +x duckietown-il/train
+
+account=$(aws sts get-caller-identity --query Account --output text)
+
+# Get the region defined in the current configuration (default to us-west-2 if none defined)
+region=$(aws configure get region)
+region=${region:-us-west-2}
+
+fullname="${account}.dkr.ecr.${region}.amazonaws.com/${algorithm_name}:latest"
+
+# If the repository doesn't exist in ECR, create it.
+
+aws ecr describe-repositories --repository-names "${algorithm_name}" > /dev/null 
+
+if [ $? -ne 0 ]
+then
+    aws ecr create-repository --repository-name "${algorithm_name}" > /dev/null
+fi
+
+# Get the login command from ECR and execute it directly
+$(aws ecr get-login --region ${region} --no-include-email)
+
+# Build the docker image locally with the image name and then push it to ECR
+# with the full name.
+
+docker build  -t ${algorithm_name} .
+docker tag ${algorithm_name} ${fullname}
+
+docker push ${fullname}
+```
+
+### SageMaker Training
+To represent our training, we use the Estimator class, which needs to be configured in five steps. 
+1. IAM role - our AWS execution role
+2. train_instance_count - number of instances to use for training.
+3. train_instance_type - type of instance to use for training. For training locally, we specify `local` or `local_gpu`.
+4. image_name - our custom PyTorch Docker image we created.
+5. hyperparameters - hyperparameters we want to pass.
+
+Our model will run `duckietown-il/train` which is still a Python script, just without the extension. Sagemaker expects an executable file called either `train` or `serve`, so don't be alarmed by the format - we've set up the file for you, so you can just worry about the other files. This `train` executable will call `duckietown-il/train_imitation.py`, which is where our short training code lives.
+
+One thing to note is the `shebang` on top of `duckietown-il/train`. You'll notice this is running Python3, which is because the tensorflow container we pull uses Python3 (and its corresponding pip) as default. Keep this in mind when installing dependencies - especially if you `pip` install them in the Dockerfule and then can't find thme when your code executes.
+
+```python
+import os
+import subprocess
+
+from sagemaker import get_execution_role
+
+role = get_execution_role()
+
+instance_type = 'local'
+
+if subprocess.call('nvidia-smi') == 0:
+    ## Set type to GPU if one is present
+    instance_type = 'local_gpu'
+    
+# When you're ready to really train: - Check the diff. instance types!
+# for example...
+# instance_type = 'ml.m4.xlarge'
+
+print("Instance type = " + instance_type)
+```
+
+```python
+from sagemaker.estimator import Estimator
+
+hyperparameters = {'epochs': 2}
+estimator = Estimator(role=role,
+                      train_instance_count=1,
+                      train_instance_type=instance_type,
+                      image_name='duckietown-imitation:latest',
+                      hyperparameters=hyperparameters
+                      )
+
+estimator.fit('file:///tmp')
+print("All done!")
+```
+
+### Submitting Your Model
+Now you're training succeeded, but unlike the Pytorch or Tensorflow tutorials, you don't see any output or models directory. This is one of the nice things about Sagemaker - they throw everything into S3 for you, so you don't have to worry about losing track of your models. It will be in your S3 bucket, which you can access by this link. Click on your Sagemaker bucket, and download the model.tar.gz (this is what it is saved as by default, but if you'd like you can change it).
+
+Now, you can follow the steps from the other tutorial. Clone this repository locally, navigate to the duckietown-il/submission directory, put your model in the right place, edit the solution.py as needed, and write dts challenges submit! It's that easy!
