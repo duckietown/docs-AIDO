@@ -32,10 +32,25 @@ We believe that these unique elements within robotics make it a unique and timel
 
 This event probes the frontier of the state of the art in ML: the interactive and embodied setting. Deep learning has been an astounding success for pattern recognition / supervised learning, and synthetic domains (Go, Atari, ...). It is an open question whether the same success can be repeated for embodied interactive tasks that happen in the messy real world. Despite many enthusiastic research efforts , the state of the art is way behind what is required in a safety-critical application like self-driving cars.
 
+Many recent works in deep (reinforcement) learning cite robotics as a potential application domain \cite{darpa_grand_challenge}. However, comparatively few actually demonstrate results on  physical agents. This competition is an opportunity to properly benchmark the current state of the art of these methods as applied to a real robotics system.
+
+Our experience thus far indicates that many of the inherent assumptions made in the ML community may not be valid on real-time physically embodied systems. Additionally, considerations related to resource consumption, latency, and system engineering are rarely considered in the ML domain but are crucially important for fielding real robots.
+
+Ultimately, the hope is that we can use this competition to benchmark the state of the art as it pertains to real physical systems and, in the process, hopefully spawn a more meaningful discussion about what is necessary to move the field forward.
+
+The best possible  outcome is that a larger proportion of the ML community redirects its efforts towards real physical agents acting in the real world, and helps to address the unique characteristics of the problem. The guaranteed impact is that we can establish a baseline for where the state of the art really is in this domain.
+
+## nuScenes Advanced Perception Event
+Please visit https://www.nuscenes.org/tracking
+
+## AWS Deep Racer Event
+Please visit https://aws.amazon.com/deepracer/league/
+
+## Duckietown Urban Event
+
 Can "black box", symbol-less AI power safety-critical systems like self-driving cars?
 
-We propose to test this hypothesis using the miniature
-self-driving cars of "Duckietown", a platform for autonomy education and research ([](#fig:duckietown_nice)).
+We propose to test this hypothesis using the miniature self-driving cars of "Duckietown", a platform for autonomy education and research ([](#fig:duckietown_nice)).
 
 To learn more about Duckietown, the reader might start [by watching a few videos](http://vimeo.com/duckietown).
 
@@ -50,16 +65,7 @@ The robots are completely vision based and all computation runs in real time on 
 </figcaption>
 </div>
 
-
-Many recent works in deep (reinforcement) learning cite robotics as a potential application domain \cite{darpa_grand_challenge}. However, comparatively few actually demonstrate results on  physical agents. This competition is an opportunity to properly benchmark the current state of the art of these methods as applied to a real robotics system.
-
-Our experience thus far indicates that many of the inherent assumptions made in the ML community may not be valid on real-time physically embodied systems. Additionally, considerations related to resource consumption, latency, and system engineering are rarely considered in the ML domain but are crucially important for fielding real robots.
-
-Ultimately, the hope is that we can use this competition to benchmark the state of the art as it pertains to real physical systems and, in the process, hopefully spawn a more meaningful discussion about what is necessary to move the field forward.
-
-The best possible  outcome is that a larger proportion of the ML community redirects its efforts towards real physical agents acting in the real world, and helps to address the unique characteristics of the problem. The guaranteed impact is that we can establish a baseline for where the state of the art really is in this domain.
-
-## Overview of challenges {#challenge_overview}
+### Overview of challenges {#challenge_overview}
 
 <figure class="flow-subfigures">  
     <figcaption>The AI-DO challenges</figcaption>
@@ -100,9 +106,9 @@ The AI Driving Olympics competition is structured into the following separate ch
 
 Participants may submit code to each challenge individually. Challenges proposed in the *AI Driving Olympics* are ordered first by type and secondly by increasing difficulty in a way which encourages modular reuse of solutions to previous challenges.
 
-## Submission
+### Submission
 
-A process for making a submission is explained in [](#cm-first).
+A process for getting started and making your first submission is explained in [](#part:quickstart).
 
 ### Evaluation
 
