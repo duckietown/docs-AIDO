@@ -26,12 +26,13 @@ Result: You could win the AI-DO!
 
 Either locally with 
 
-    $ dts challenges evaluate
+    $ dts challenges evaluate --challenge ![CHALLENGE_NAME]
     
 Or make an official submission when you are ready with 
 
     $ dts challenges submit
     
+You can find the list of challenges [here](https://challenges.duckietown.org/v4/humans/challenges). Make sure that it is marked as "Open". 
 
 ## Local Development Workflow
 
