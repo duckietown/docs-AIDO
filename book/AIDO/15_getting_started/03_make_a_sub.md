@@ -6,7 +6,7 @@ This section describes the steps to make your first submission.
 
 Check out the competition template [`challenge-prediction`][template]:
 
-    $ git clone  https://github.com/duckietown/challenge-prediction
+    $ git clone -b daffy https://github.com/duckietown/challenge-prediction
     
 
 [template]: https://github.com/duckietown/challenge-prediction
