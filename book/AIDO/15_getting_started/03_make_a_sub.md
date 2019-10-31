@@ -59,10 +59,10 @@ The second way is to use the `dts challenges follow` command:
 
 The leaderboard for this challenge is available at the URL 
 
-> [`https://challenges.duckietown.org/v4/humans/challenges/aido2_simple_prediction_r1/leaderboard`][leaderboard]
+> [`https://challenges.duckietown.org/v4/humans/challenges/aido2-PRED/leaderboard`][leaderboard]
     
     
-[leaderboard]: https://challenges.duckietown.org/v4/humans/challenges/aido2_simple_prediction_r1/leaderboard
+[leaderboard]: https://challenges.duckietown.org/v4/humans/challenges/aido2-PRED/leaderboard
 
 In general all of the challenge leader boards can be viewed through [the challenges website][challenges].
 
