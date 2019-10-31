@@ -52,7 +52,7 @@ If you are stuck try one of the following things:
 
 ## The challenges server {#book-leaderboard nonumber}
 
-See the leaderboards and many other things at the site [`https://challenges.duckietown.org/`](https://challenges.duckietown.org).
+See the leaderboards and many other things at [the challenges site](https://challenges.duckietown.org).
 
 
 ## How to cite {#how-to-cite nonumber notoc}
