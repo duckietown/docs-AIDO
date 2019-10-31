@@ -17,7 +17,7 @@ Result: You make a submission to all of the `LF*` challenges and can view their 
 
 ### Check out [the repository](https://github.com/duckietown/challenge-aido_LF-template-random):
 
-    $ git clone git@github.com:duckietown/challenge-aido_LF-template-random.git
+    $ git clone -b daffy git@github.com:duckietown/challenge-aido_LF-template-random.git
 
 
 ### Change into the directory:
