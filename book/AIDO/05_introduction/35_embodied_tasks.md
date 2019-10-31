@@ -17,7 +17,7 @@ There are three main parts in our system with which the participants will intera
 
 2. **Remote "robotariums"** in which to try the code in controlled and reproducible conditions.
 
-3. **Physical Duckietown platform** ([](#fig:duckietown_nice)): miniature vision-based vehicles and cities in which the vehicles drive. The robot hardware and environment are rigorously specified, which makes the development extremely repeatable (For an example of this see ["Duckietown specifications"](+opmanual_duckietown#dt-ops-appearance-specifications). If you have a Duckiebot then you will want to refer to the [Duckiebot manual](+opmanual_duckiebot#assembling-duckiebot-db18). If you would like to acquire a Duckiebot please go to [duckietown.org](https://www.duckietown.org/).
+3. **Physical Duckietown platform** ([](#fig:duckietown_nice)): miniature vision-based vehicles and cities in which the vehicles drive. The robot hardware and environment are rigorously specified, which makes the development extremely repeatable (For an example of this see ["Duckietown specifications"](+opmanual_duckietown#dt-ops-appearance-specifications). If you have a Duckiebot then you will want to refer to the [Duckiebot manual](+opmanual_duckiebot#assembling-duckiebot-db18). If you would like to acquire a Duckiebot please go to [get.duckietown.org](https://get.duckietown.org/).
 
 
 
