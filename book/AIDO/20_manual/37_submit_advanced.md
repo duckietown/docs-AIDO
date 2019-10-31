@@ -25,6 +25,15 @@ The names of the challenges can be seen [at this page][list-challenges].
 
 [list-challenges]: https://challenges.duckietown.org/v4/humans/challenges
 
+For example, if you would only like to submit to submit to LF validation system, you can do it as:
+
+    $ dts challenges submit --challenge ![aido3-LF-sim-validation]
+
+If you would like to submit to multiple specific challenges, you can do it in the yaml file:
+
+    protocol: ![aido2_db18_agent-z2] # do not change
+    challenge: ![[challenge1_name,challenge2name,...]]
+    
 ## Metadata {#submit-advanced-metadata}
 
 You can attach two pieces of metadata to your submission.
