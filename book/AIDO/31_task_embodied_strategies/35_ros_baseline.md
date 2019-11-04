@@ -1,6 +1,6 @@
 # Classical Duckietown Baseline (ROS) {#ros-baseline status=ready}
 
-This section describes the basic procedure for making a submission using the [Robot Operating System](http://www.ros.org/) and the  [Duckietown software stack](https://github.com/duckietown/Software) .
+This section describes the basic procedure for making a submission using the [Robot Operating System](http://www.ros.org/) and the  [Duckietown software stack](https://github.com/duckietown/dt-core) .
 
 <div class='requirements' markdown='1'>
 
@@ -142,14 +142,14 @@ You will notice one main difference as compared to the [ROS template](#ros-templ
 
 #### lf_slim.launch
 
-Compared to `template.launch` in [](#ros-template), the launch file here actually runs some nodes. These are nodes that are defined in the [Duckietown Software repo](https://github.com/duckietown/dt-core). The code that is being run is all included as "submodules" in this repository. 
+Compared to `template.launch` in [](#ros-template), the launch file here actually runs some nodes. These are nodes that are defined in the [Duckietown dt-core repo](https://github.com/duckietown/dt-core). The code that is being run is all included as "submodules" in this repository. 
 
 The nodes which are getting launched are the following:
 
- - [line_detector_node](https://github.com/duckietown/Software/tree/master18/catkin_ws/src/10-lane-control/line_detector): Used to detect the lines in the image.
- - [ground_projection_node](https://github.com/duckietown/Software/tree/master18/catkin_ws/src/10-lane-control/ground_projection): Used to project the lines onto the ground plane using the camera extrinsic calibration.
- - [lane_filter_node](https://github.com/duckietown/Software/tree/master18/catkin_ws/src/10-lane-control/lane_filter): Used to take the ground projected line segments and estimate the Duckiebot's position and orientation in the lane
- - [lane_controller_node](https://github.com/duckietown/Software/tree/master18/catkin_ws/src/10-lane-control/lane_control): Used to take the estimate of the robot and generate a reference linear and angular velocities for the Duckiebot
+ - [line_detector_node](https://github.com/duckietown/dt-core/tree/daffy/packages/line_detector): Used to detect the lines in the image.
+ - [ground_projection_node](https://github.com/duckietown/dt-core/tree/daffy/packages/ground_projection): Used to project the lines onto the ground plane using the camera extrinsic calibration.
+ - [lane_filter_node](https://github.com/duckietown/dt-core/tree/daffy/packages/lane_filter): Used to take the ground projected line segments and estimate the Duckiebot's position and orientation in the lane
+ - [lane_controller_node](https://github.com/duckietown/dt-core/tree/daffy/packages/lane_control): Used to take the estimate of the robot and generate a reference linear and angular velocities for the Duckiebot
 
 A good way to get started could be modify or make your own version of the nodes that are being launched in `lf_slim.launch`.
 
