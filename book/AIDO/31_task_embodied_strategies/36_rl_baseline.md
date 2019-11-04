@@ -19,8 +19,6 @@ To train a policy:
 
     $ git clone -b daffy git://github.com/duckietown/challenge-aido_LF-baseline-RL-sim-pytorch.git
 
-TODO: make daffy the default branch when tested
-
 2) Change into the directory:
     
     $ cd challenge-aido_LF-baseline-RL-sim-pytorch
