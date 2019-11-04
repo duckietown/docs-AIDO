@@ -16,7 +16,7 @@ Result: You make a submission to all of the `LF*` challenges and can view their 
 
 ### Clone the [template repo](https://github.com/duckietown/challenge-aido_LF-template-pytorch):
 
-    $ git clone git://github.com/duckietown/challenge-aido_LF-template-pytorch.git
+    $ git clone -b daffy git://github.com/duckietown/challenge-aido_LF-template-pytorch.git
 
 ### Change into the directory:
     
