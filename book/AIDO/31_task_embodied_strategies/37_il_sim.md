@@ -19,7 +19,6 @@ Result: You could win the AI-DO!
 
     $ git clone -b daffy git@github.com:duckietown/challenge-aido_LF-baseline-IL-sim-tensorflow.git
 
-TODO: make daffy the default branch when this is well tested
     
 2) Change into the directory:
 
