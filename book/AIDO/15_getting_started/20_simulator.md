@@ -2,19 +2,6 @@
 
 [Duckietown](http://duckietown.org/) self-driving car simulator environments for OpenAI Gym.
 
-Please use this bibtex if you want to cite this repository in your publications:
-
-```
-@misc{gym_duckietown,
-  author = {Chevalier-Boisvert, Maxime and Golemo, Florian and Cao, Yanjun and Mehta, Bhairav and Paull, Liam},
-  title = {Duckietown Environments for OpenAI Gym},
-  year = {2018},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/duckietown/gym-duckietown}},
-}
-```
-
 This simulator was created as part of work done at [Mila](https://mila.quebec/).
 
 <div figure-id="fig:simplesim_free">
@@ -37,14 +24,14 @@ Gym-Duckietown is fast, open, and incredibly customizable. What started as a lan
 
 There are multiple registered gym environments, each corresponding to a different [map file](https://github.com/duckietown/gym-duckietown/tree/master/gym_duckietown/maps):
 
-    - `Duckietown-straight_road-v0`
-    - `Duckietown-4way-v0`
-    - `Duckietown-udem1-v0`
-    - `Duckietown-small_loop-v0`
-    - `Duckietown-small_loop_cw-v0`
-    - `Duckietown-zigzag_dists-v0`
-    - `Duckietown-loop_obstacles-v0` (static obstacles in the road)
-    - `Duckietown-loop_pedestrians-v0` (moving obstacles in the road)
+* `Duckietown-straight_road-v0`
+* `Duckietown-4way-v0`
+* `Duckietown-udem1-v0`
+* `Duckietown-small_loop-v0`
+* `Duckietown-small_loop_cw-v0`
+* `Duckietown-zigzag_dists-v0`
+* `Duckietown-loop_obstacles-v0` (static obstacles in the road)
+* `Duckietown-loop_pedestrians-v0` (moving obstacles in the road)
 
 The `MultiMap-v0` environment is essentially a [wrapper](https://github.com/duckietown/gym-duckietown/blob/master/gym_duckietown/envs/multimap_env.py) for the simulator which
 will automatically cycle through all available [map files](https://github.com/duckietown/gym-duckietown/tree/master/gym_duckietown/maps). This makes it possible to train on
@@ -76,13 +63,13 @@ To install the `daffy` version of the simulator, you can simple use
 
 This install all of the requirements except PyTorch:
 
-    - Python 3.6+
-    - OpenAI gym
-    - NumPy
-    - Pyglet
-    - PyYAML
-    - cloudpickle
-    - PyTorch
+* Python 3.6+
+* OpenAI gym
+* NumPy
+* Pyglet
+* PyYAML
+* cloudpickle
+* PyTorch
 
 Reinforcement learning code forked from [this repository](https://github.com/ikostrikov/pytorch-a2c-ppo-acktr)
 is included under [/pytorch_rl](/pytorch_rl). If you wish to use this code, you
@@ -150,30 +137,11 @@ There is also a script to run automated tests (`run_tests.py`) and a script to g
 
 ### Reinforcement Learning
 
-To train a reinforcement learning agent, you can use the code provided under [/pytorch_rl](/pytorch_rl). I recommend using the A2C or ACKTR algorithms. A sample command to launch training is:
-
-    $ python3 pytorch_rl/main.py --no-vis --env-name Duckietown-small_loop-v0 --algo a2c --lr 0.0002 --max-grad-norm 0.5 --num-steps 20
-
-Then, to visualize the results of training, you can run the following command. Note that you can do this while the training process is still running. Also note that if you are running this through SSH, you will need to enable X forwarding to get a display:
-
-    $ python3 pytorch_rl/enjoy.py --env-name Duckietown-small_loop-v0 --num-stack 1 --load-dir trained_models/a2c
+To have a quickstart on Reinforcement Learning using the Duckietown simulator, check the [reinforcement learning baseline](#embodied_rl).
 
 ### Imitation Learning
 
-There is a script in the `experiments` directory which automatically generates a dataset of synthetic demonstrations. It uses hillclimbing to optimize the reward obtained, and outputs a JSON file:
-
-    $ experiments/gen_demos.py --map-name loop_obstacles
-
-Then you can start training an imitation learning model (conv net) with:
-
-    $ experiments/train_imitation.py --map-name loop_obstacles
-
-Finally, you can visualize what the trained model is doing with:
-
-    $ experiments/control_imitation.py --map-name loop_obstacles
-
-
-Note that it is possible to have `gen_demos.py` and `train_imitate.py` running simultaneously, so that training takes place while new demonstrations are being generated. You can also run `control_imitate.py` periodically during training to check on learning progress.
+To have a quickstart on Reinforcement Learning using the Duckietown simulator, check either [simulation based](#embodied_il_sim) or the [log based](#embodied_il_logs) baselines.
 
 ## Design
 
@@ -183,29 +151,29 @@ The simulator supports a YAML-based file format which is designed to be easy to 
 
 The available tile types are:
 
-    - empty
-    - straight
-    - curve_left
-    - curve_right
-    - 3way_left (3-way intersection)
-    - 3way_right
-    - 4way (4-way intersection)
-    - asphalt
-    - grass
-    - floor (office floor)
+* empty
+* straight
+* curve_left
+* curve_right
+* 3way_left (3-way intersection)
+* 3way_right
+* 4way (4-way intersection)
+* asphalt
+* grass
+* floor (office floor)
 
 The available object types are:
 
-    - barrier
-    - cone (traffic cone)
-    - duckie
-    - duckiebot (model of a Duckietown robot)
-    - tree
-    - house
-    - truck (delivery-style truck)
-    - bus
-    - building (multi-floor building)
-    - sign_stop, sign_T_intersect, sign_yield, etc. (see [meshes subdirectory](https://github.com/duckietown/gym-duckietown/blob/master/gym_duckietown/meshes) )
+* barrier
+* cone (traffic cone)
+* duckie
+* duckiebot (model of a Duckietown robot)
+* tree
+* house
+* truck (delivery-style truck)
+* bus
+* building (multi-floor building)
+* sign_stop, sign_T_intersect, sign_yield, etc. (see [meshes subdirectory](https://github.com/duckietown/gym-duckietown/blob/master/gym_duckietown/meshes) )
 
 Although the environment is rendered in 3D, the map is essentially two-dimensional. As such, objects coordinates are specified along two axes. The coordinates are rescaled based on the tile size, such that coordinates [0.5, 1.5] would mean middle of the first column of tiles, middle of the second row. Objects can have an `optional` flag set, which means that they randomly may or may not appear during training, as a form of domain randomization.
 
@@ -227,12 +195,12 @@ The default reward function tries to encourage the agent to drive forward along 
 
 The simulator offers you several options to improve your training:
 
-    - `map_name`: What map to use; hint, take a look at gym_duckietown/maps for more choices
-    - `domain_rand` Applies domain randomization, a popular, black-box, sim2real technique
-    - `randomized_maps_on_reset` Slows training time, but increases training variety
-    - `distortion` Simulates Duckiebots' camera distortion
-    - `camera_rand` If `distortion` is active, randomizes the camera calibrations
-    - `dynamics_rand` Simulates miscalibrated Duckiebots by randomizing the dynamics
+* `map_name`: What map to use; hint, take a look at gym_duckietown/maps for more choices
+* `domain_rand` Applies domain randomization, a popular, black-box, sim2real technique
+* `randomized_maps_on_reset` Slows training time, but increases training variety
+* `distortion` Simulates Duckiebots' camera distortion
+* `camera_rand` If `distortion` is active, randomizes the camera calibrations
+* `dynamics_rand` Simulates miscalibrated Duckiebots by randomizing the dynamics
 
 ## Troubleshooting
 
@@ -337,3 +305,17 @@ The libx264 error is due to a problem with the way ffmpeg is installed on some l
 
 
 Alternatively, screencasting programs such as [Kazam](https://launchpad.net/kazam) can be used to record the graphical output of a single window.
+
+## How to cite
+Please use this bibtex if you want to cite this repository in your publications:
+
+```
+@misc{gym_duckietown,
+  author = {Chevalier-Boisvert, Maxime and Golemo, Florian and Cao, Yanjun and Mehta, Bhairav and Paull, Liam},
+  title = {Duckietown Environments for OpenAI Gym},
+  year = {2018},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/duckietown/gym-duckietown}},
+}
+```
