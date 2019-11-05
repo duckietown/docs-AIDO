@@ -19,9 +19,10 @@ Gym-Duckietown is a simulator for the [Duckietown](https://duckietown.org) Unive
 Gym-Duckietown is fast, open, and incredibly customizable. What started as a lane-following simulator has evolved into a fully-functioning autonomous driving simulator that you can use to train and test your Machine Learning, Reinforcement Learning, Imitation Learning, or even classical robotics algorithms. Gym-Duckietown offers a wide range of tasks, from simple lane-following to full city navigation with dynamic obstacles. Gym-Duckietown also ships with features, wrappers, and tools that can help you bring your algorithms to the real robot, including [domain-randomization](https://blog.openai.com/spam-detection-in-the-physical-world/), accurate camera distortion, and differential-drive physics (and most importantly, realistic waddling).
 
 <div figure-id="fig:finalmain-sim">
-<img src="images/finalmain.gif"/>
+<img src="images/finalmain.gif" style="width: 100%"/>
 </div>
 
+## Environments
 There are multiple registered gym environments, each corresponding to a different [map file](https://github.com/duckietown/gym-duckietown/tree/master/gym_duckietown/maps):
 
 * `Duckietown-straight_road-v0`
@@ -56,24 +57,9 @@ repository on your Duckiebot.
 </div>
 
 ## Installation
-The simulator has the
 To install the `daffy` version of the simulator, you can simple use
 
     laptop $ pip3 install duckietown-gym-daffy
-
-This install all of the requirements except PyTorch:
-
-* Python 3.6+
-* OpenAI gym
-* NumPy
-* Pyglet
-* PyYAML
-* cloudpickle
-* PyTorch
-
-Reinforcement learning code forked from [this repository](https://github.com/ikostrikov/pytorch-a2c-ppo-acktr)
-is included under [/pytorch_rl](/pytorch_rl). If you wish to use this code, you
-should install [PyTorch](http://pytorch.org/).
 
 ### Alternative Installation Instructions (Alternative Method)
 
@@ -83,47 +69,7 @@ Alternatively, you can find furter installation instructions [here](https://gith
 
 There is a pre-built Docker image available [on Docker Hub](https://hub.docker.com/r/duckietown/gym-duckietown), which also contains an installation of PyTorch.
 
-*Note that in order to get GPU acceleration, you should install and use [nvidia-docker 2.0](https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0)).*
-
-To get started, pull the `duckietown/gym-duckietown` image from Docker Hub and open a shell in the container:
-
-<pre trim="1">
-<code trim="1">
-    nvidia-docker pull duckietown/gym-duckietown &#38;&#38; \
-    nvidia-docker run -it duckietown/gym-duckietown bash
-</code>
-</pre>
-
-Then create a virtual display:
-
-<pre trim="1">
-<code trim="1">
-Xvfb :0 -screen 0 1024x768x24 -ac +extension GLX +render -noreset &#38;<code>&gt;</code> xvfb.log &#38;
-export DISPLAY=:0
-</code>
-</pre>
-
-Now, you are ready to start training a policy using RL:
-
-```zsh
-python3 pytorch_rl/main.py \
-        --algo a2c \
-        --env-name Duckietown-loop_obstacles-v0 \
-        --lr 0.0002 \
-        --max-grad-norm 0.5 \
-        --no-vis \
-        --num-steps 20
-```
-
-If you need to do so, you can build a Docker image by running the following command from the root directory of this repository:
-
-```zsh
-docker build . \
-       --file ./docker/standalone/Dockerfile \
-       --no-cache=true \
-       --network=host \
-       --tag <code>&lt;</code>YOUR_TAG_GOES_HERE<code>&gt;</code>
-```
+Note: In order to get GPU acceleration, you should install and use [nvidia-docker](https://github.com/NVIDIA/nvidia-docker).*
 
 ## Usage
 
@@ -191,16 +137,9 @@ The simulator uses continuous actions by default. Actions passed to the `step()`
 
 The default reward function tries to encourage the agent to drive forward along the right lane in each tile. Each tile has an associated bezier curve defining the path the agent is expected to follow. The agent is rewarded for being as close to the curve as possible, and also for facing the same direction as the curve's tangent. The episode is terminated if the agent gets too far outside of a drivable tile, or if the `max_steps` parameter is exceeded. See the `step` function in [this source file](https://github.com/duckietown/gym-duckietown/blob/daffy/gym_duckietown/envs/simplesim_env.py).
 
-### Arguments
+## Simulator API
 
-The simulator offers you several options to improve your training:
-
-* `map_name`: What map to use; hint, take a look at gym_duckietown/maps for more choices
-* `domain_rand` Applies domain randomization, a popular, black-box, sim2real technique
-* `randomized_maps_on_reset` Slows training time, but increases training variety
-* `distortion` Simulates Duckiebots' camera distortion
-* `camera_rand` If `distortion` is active, randomizes the camera calibrations
-* `dynamics_rand` Simulates miscalibrated Duckiebots by randomizing the dynamics
+You can find some help on how to use the simulator in your projects in [here](#aido-simulator)
 
 ## Troubleshooting
 
