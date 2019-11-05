@@ -64,16 +64,16 @@ Note: To run this, you will need to have `docker-compose` installed on your loca
 You should see that three containers are starting:
 
 ```
-Starting 1_devlelop_sim_1   ... done
-Starting 1_devlelop_novnc_1        ... done
-Starting 1_devlelop_lanefollow_1 ... done
+Starting 1_develop_sim_1   ... done
+Starting 1_develop_novnc_1        ... done
+Starting 1_develop_lanefollow_1 ... done
 ```
 
-To start your agent you will need a terminal in the `1_devlelop_lanefollow_1` container. You can do that one of two ways:
+To start your agent you will need a terminal in the `1_develop_lanefollow_1` container. You can do that one of two ways:
 
 #### In a new terminal 
    
-    $ docker exec -it 1_devlelop_lanefollow_1 /bin/bash
+    $ docker exec -it 1_develop_lanefollow_1 /bin/bash
 
 #### In the browser with Jupyter notebook
 

@@ -28,6 +28,8 @@ When we [take a look at the constructor](https://github.com/duckietown/gym-ducki
 - `map_name`: What map to use; hint, take a look at gym_duckietown/maps for more choices
 - `domain_rand`: Applies domain randomization, a popular, black-box, sim2real technique
 - `randomized_maps_on_reset`: Slows training time, but increases training variety.
+- `camera_rand`: Randomizes the camera calibration to increase variety.
+- `dynamics_rand`: Simulates a miscalibrated Duckiebot, to better represent reality.
 
 
 Mixing and matching different values for these will help you improve your training diversity, and thereby improving your evaluation robustness!
