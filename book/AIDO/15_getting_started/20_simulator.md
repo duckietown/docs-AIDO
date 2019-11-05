@@ -1,9 +1,5 @@
 # The Duckietown Simulator {#dt-simulator status=ready}
 
-[Duckietown](http://duckietown.org/) self-driving car simulator environments for OpenAI Gym.
-
-This simulator was created as part of work done at [Mila](https://mila.quebec/).
-
 <div figure-id="fig:simplesim_free">
 <img src="images/simplesim_free.png" style="width: 80%"/>
 </div>
@@ -93,7 +89,7 @@ To have a quickstart on Reinforcement Learning using the Duckietown simulator, c
 
 ### Map File Format
 
-The simulator supports a YAML-based file format which is designed to be easy to hand edit. See the [maps subdirectory](https://github.com/duckietown/gym-duckietown/blob/master/gym_duckietown/maps) for examples. Each map file has two main sections: a two-dimensional array of tiles, and a listing of objects to be placed around the map. The tiles are based on the [Duckietown appearance specification](http://docs.duckietown.org/DT18/opmanual_duckietown/out/duckietown_specs.html).
+The simulator supports a YAML-based file format which is designed to be easy to hand edit. See the [maps subdirectory](https://github.com/duckietown/gym-duckietown/blob/master/gym_duckietown/maps) for examples. Each map file has two main sections: a two-dimensional array of tiles, and a listing of objects to be placed around the map. The tiles are based on the [Duckietown appearance specification](http://docs.duckietown.org/daffy/opmanual_duckietown/out/duckietown_specs.html).
 
 The available tile types are:
 
@@ -250,7 +246,7 @@ Please use this bibtex if you want to cite this repository in your publications:
 
 ```
 @misc{gym_duckietown,
-  author = {Chevalier-Boisvert, Maxime and Golemo, Florian and Cao, Yanjun and Mehta, Bhairav and Paull, Liam},
+  author = {Chevalier-Boisvert, Maxime and Golemo, Florian and Cao, Yanjun and Mehta, Bhairav and Censi, Andrea and Paull, Liam},
   title = {Duckietown Environments for OpenAI Gym},
   year = {2018},
   publisher = {GitHub},
