@@ -46,7 +46,7 @@ If you would like to compete in the AI-DO, you will probably want to do somethin
 If you are stuck try one of the following things:
 
  - Look through the contents of this documentation using the links on the left. Note that the "Parts" have many "Chapters" that you can see when you click on the Part title,
- - Join our [slack community](https://join.slack.com/t/duckietown/shared_invite/enQtNTU0Njk4NzU2NTY1LTQ2MDI4MTY1OTE1YjhjMTU4YTdkMDViMzJmNmJkNGQxN2U1ZGJlZjk2NGM0M2FiODY3YmQ2MTQ3MGM2MjY1ZTI),
+ - Join our [slack community](https://join.slack.com/t/duckietown/shared_invite/enQtNTU0Njk4NzU2NTY1LWM2YzdlNmJmOTg4MzAyODc2YTI3YTc5MzE2MThkZGUwYTFkZWQ4M2ZlZGU1YTZhYjg5YTgzNDkyMzI2ZjNhZWE),
  - If you are sure you actually found a bug, file a github issue in the appropriate repo.
 
 
