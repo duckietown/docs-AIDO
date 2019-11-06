@@ -49,7 +49,11 @@ To run and log the _baseline_ expert, you can run:
 
     $ python log.py
     
-within the `learning/` directory. Of course, if you are just interested in the baseline and seeing how this all works together, you can skip to the next section.
+within the `learning/` directory. If you have both python3 and python2 installed, use:
+
+    $ python3 log.py
+    
+Of course, if you are just interested in the baseline and seeing how this all works together, you can skip to the next section.
 
 Most of of the logging procedure is implemented on `learning/log.py` and `learning/_loggers.py`. This logging will run a hard coded expert on a variety of `gym-duckietown` maps, and record the actions it takes. 
 
@@ -83,7 +87,9 @@ To run the baseline training procedure, run:
 
     $ python train.py
     
-in the `learning/` directory. 
+in the `learning/` directory. If you have both python3 and python2 installed, use:
+
+    $ python3 train.py
 
 The training procedure implemented in `learning/train.py` is relatively simple, compared to many of today's state-of-the-art imitation learning systems.
 
