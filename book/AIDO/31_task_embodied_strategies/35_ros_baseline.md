@@ -84,8 +84,11 @@ Open your browser and copy and paste in the url that was produced in the output 
 Then click on the dropdown for "New" in the top right and click "Terminal". 
 
 ### Building the software
+Before being able to use `catkin build`, you need to run:
 
-You can build the software by running in the terminal:
+    $ source /opt/ros/melodic/setup.bash
+    
+Then, you can build the software by running in the terminal:
 
     $ catkin build --workspace catkin_ws
     
