@@ -41,6 +41,9 @@ Install Docker [from these instructions](https://docs.docker.com/install/).
 
 We are sure you already have [set Git up](+software_reference#github-access).
 
+## CUDA, CUDNN and Tensorflow {#cm-sw-tensorflow}
+
+If you would like to use [Tensorflow] (https://www.tensorflow.org/) to train your network and take advantage of your modern GPU, you should follow this short instruction to setup CUDA, CUDNN and Tensorflow
 
 
 ## Duckietown Shell {#cm-sw-dts}
