@@ -6,7 +6,7 @@ This section describes the basic procedure for making a submission with a model 
 
 Requires: That you have setup your [accounts](#cm-accounts).
 
-Requires: That you meet the [software requirement](#cm-sw).
+Requires: That you meet the [software requirement](#cm-sw). Make sure you have [tensorflow](#cm-sw-tensorflow)
 
 Result: You make a submission to all of the `LF*` challenges and can view their status and output.
 
