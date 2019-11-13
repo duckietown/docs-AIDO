@@ -92,8 +92,6 @@ You should reboot your computer after these steps. Note that it is normal if you
 
 At this point, your system should be prepped and all previous Nvidia dependencies has been eliminated. Now we can proceed to installing the necessary packages.
 
-    $ sudo apt-get install g++ freeglut3-dev build-essential libx11-dev libxmu-dev libxi-dev libglu1-mesa libglu1-mesa-dev
-
 ### Install CUDA 10.0
 
 Download cuda deb installer from here:
