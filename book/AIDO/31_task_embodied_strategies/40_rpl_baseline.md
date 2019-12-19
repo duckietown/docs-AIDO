@@ -14,7 +14,13 @@ $$
     \pi_\theta(s) = \pi(s) + f_\theta(s)
 $$
 
+&pi;<sub>&theta;</sub>(s) = &pi;(s) + f<sub>&theta;</sub>(s)
+
 Where $\pi_\theta$ is the resulting residual policy, $\pi$ the initial policy and $f_\theta$ the corrective term using RL. When defined as such, it can be seen that $\nabla_{\theta} \pi_{\theta}(s)=\nabla_{\theta} f_{\theta}(s)$ , which mean we can use the policy gradient method to learn $\pi_{\theta}(s)$.
+
+
+Where &pi;<sub>&theta;</sub> is the resulting residual policy, &pi; the initial policy and f<sub>&theta;</sub> the corrective term using RL. When defined as such, it can be seen that &nabla;<sub>&theta;</sub> &pi;<sub>&theta;</sub>(s)=nabla;<sub>&theta;</sub> f<sub>&theta;</sub>(s) , which mean we can use the policy gradient method to learn &pi;<sub>&theta;</sub>(s).
+
 
 In the context of controlling a duckiebot, another controller that could be used as an initial policy is Pure Pursuit (PP). Originally designed for aerial combat, this can be used in the context of autonomous vehicule by following an imaginary point that is always at a certain distance on the path that needs to be followed. The controller works by constantly tracing a curve that connects the vehicule and the target point. This curve represents the movement the robot should execute.
 
