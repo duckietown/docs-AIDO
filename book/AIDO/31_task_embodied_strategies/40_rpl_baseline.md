@@ -18,7 +18,7 @@ Where $\pi_\theta$ is the resulting residual policy, $\pi$ the initial policy an
 <p align="center">
 <img src="images/RPL_pipeline.png" height="150"/>
 </p>
-
+    
  ## Methodology
 
 In the context of controlling a duckiebot, the basic controller use in this baseline is a [PP controller](https://github.com/tobicarvalho/pp/blob/v1/RPL_project_report.pdf) since it has already demonstrated its capabilities.
