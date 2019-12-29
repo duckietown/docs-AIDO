@@ -159,6 +159,7 @@ We also observed that the actor tend to output commands in the extreme. Using a 
 <img src="images/right_wheel.png" height="250"/>
 </p>
 <center>200 of the correction sent to the right wheel during the last evaluation</center>
+
 ---
 
 
@@ -171,6 +172,7 @@ bla bla
 <img src="images/eval_reward.png" height="250"/>
 </p>
 <center>Mean evalutation reward based on 10 random starting points.</center>
+
 ---
 
 
