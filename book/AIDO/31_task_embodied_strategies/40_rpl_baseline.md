@@ -116,3 +116,63 @@ Locally
 Server
 
     $ dts challenges submit
+
+
+# Results
+
+NOTE : Because of a lack of time and the depletion of our aws credit we couldn't go as deep as we wanted in the optimisation and testing of our project. 
+
+One of the main obstacle we faced was that the critic seem to be really unstable, which in return prevented the critics to learn a good corrections. In the RL baseline a penalty of 1000 is given whenever an episode crash. We found out that this penalty was detrimental to the learning of the critics and seem to make its learning rather unstable. To counteract this we reduced the size of the penalty and we used a burn-in period where only the critic was trained with corrections sets to 0 in order to pre-train it.
+
+The figures below show the critic loss for both before and after these modification. While the before figures was stop really early comperatively to the other, it can be seen that some of it loss was way higher then anything else after these modification.
+
+---
+<p align="center">
+<img src="images/big_loss.png" height="250"/>
+</p>
+
+<center>Critic loss before modification (crashing penalty of 1000)</center>
+
+---
+
+<p align="center">
+<img src="images/critic_loss.png" height="250"/>
+</p>
+<center>Critic loss after modification (crashing penalty of 10 and pre-training)</center>
+
+---
+
+Despite the amelioration seen in the loss of the critic, we believed in could be improved by lowering it even more.
+
+We also observed that the actor tend to output commands in the extreme. Using a tanh as the last activation layer it can only output values between -1 and 1. We can see in the following figures that most of the correction sent correspond to the extremum allowed. 
+
+---
+<p align="center">
+<img src="images/left_wheel.png" height="250"/>
+</p>
+
+<center>200 of the correction sent to the left wheel during the last evaluation</center>
+
+---
+
+<p align="center">
+<img src="images/right_wheel.png" height="250"/>
+</p>
+<center>200 of the correction sent to the right wheel during the last evaluation</center>
+---
+
+
+bla bla
+
+
+---
+
+<p align="center">
+<img src="images/eval_reward.png" height="250"/>
+</p>
+<center>Mean evalutation reward based on 10 random starting points.</center>
+---
+
+
+
+
