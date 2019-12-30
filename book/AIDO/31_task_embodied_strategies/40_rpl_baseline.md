@@ -101,7 +101,7 @@ Using the Pure Pursuit controller as an example of basic controller and starting
 
 3) Copy the launch file.
 
-    $ cp 1_develop/custom/lf_slim_rl.launch 3_submit/
+    $ cp 1_develop/custom/lf_slim_rl.launch 3_submit/lf_slim.launch
 
 4) Change into the submit directory.
 
@@ -124,62 +124,51 @@ NOTE : Due to the length of training the models and the depletion of our AWS cre
 
 One of the main obstacle was the unstability of the critic, which in return prevented the actor from learning a good correction. In the RL baseline a penalty of 1000 is given whenever an episode ends with the robot in an invalid position. We found out that this penalty was detrimental to the learning of the critics and made it rather unstable. To counteract this, we reduced the size of the penalty. We also used a pretraining period where only the critic was trained with the correction set to 0 in order to pre-train it. This last idea is taken from the original paper on [Residual Policy Learning](https://arxiv.org/abs/1812.06298).
 
-The figures below show the critic's loss both before and after these modifications. While the before figures was stop really early comperatively to the other, it should be easy to see that the loss was much higher.
+The figures below show the critic's loss both before and after these modifications. While the before figures was stopped early comperatively to the other, it should be easy to see that the loss was much higher.
 
----
 <p align="center">
 <img src="images/big_loss.png" height="250"/>
 </p>
 
-<center>Critic loss before modification (crashing penalty of 1000)</center>
-
----
+<center><b>Critic loss before modification (crashing penalty of 1000)</b></center>
 
 <p align="center">
 <img src="images/critic_loss.png" height="250"/>
 </p>
-<center>Critic loss after modification (crashing penalty of 10 and pre-training)</center>
+<center><b>Critic loss after modification (crashing penalty of 10 and pre-training)</b></center>
 
----
 
-Despite the amelioration seen in the loss of the critic, we believe it could be improved even more. Modifying the reward function or simply lowering the penalty for crashing even more could make for an easier signal to learn.
-
-We also observed that the actor has a tendancy to send only the maximum or minimum possible correction. By sending a correction of 0, the model simply comes down to the basic controller. However, using a tanh as the last activation layer it can output values between -1 and 1. In turn, the actor seems to have a hard time not saturating this activation layer. The next figures demonstrate that phenomenon. 
+Despite the improvement seen in the loss of the critic, we believe it could be improved even more. Modifying the reward function or simply lowering the penalty for crashing even more could make for an easier signal to learn.
 
 ---
 <p align="center">
 <img src="images/left_wheel.png" height="250"/>
 </p>
 
-<center>200 of the correction sent to the left wheel during the last evaluation</center>
+<center><b>200 of the correction sent to the left wheel during the last evaluation</b></center>
 
 ---
 
 <p align="center">
 <img src="images/right_wheel.png" height="250"/>
 </p>
-<center>200 of the correction sent to the right wheel during the last evaluation</center>
-
----
+<center><b>200 of the correction sent to the right wheel during the last evaluation</b></center>
 
 
-bla bla
-
+We also observed that the actor has a tendancy to send only the maximum or minimum possible correction. By sending a correction of 0, the model simply comes down to the basic controller. However, using a tanh as the last activation layer it can output values between -1 and 1. In turn, the actor seems to have a hard time not saturating this activation layer. Both figures above demonstrate that phenomenon for the correction on each wheel.
 
 ---
 
 <p align="center">
 <img src="images/eval_reward.png" height="250"/>
 </p>
-<center>Mean evalutation reward based on 10 random starting points.</center>
+<center><b>Mean evalutation reward based on 10 random starting points.</b></center>
 
----
-
-Four evaluations of the model were done during the training at each 50k timesteps starting at 0. Since we initialize the actor's output layer to 0, the basic controller is getting evaluated the first time. After 100k timesteps, the model is actually at its worst. However, it starts to go back up and probably could have gone even higher up if we had trained it for longer. We hypothesize that most of training is actually for tuning the CNN so that it can correctly identify the landmarks (yellow and white lanes) in an image.
+Four evaluations of the model were done during the training at an interval of 50k timesteps starting from 0 to 200k. Since we initialize the actor's output layer to 0, the basic controller is getting evaluated the first time. After 100k timesteps, the model is actually at its worst. However, it starts to go back up and probably could have gone even higher up if we had trained it for longer. We hypothesize that most of training is actually for tuning the CNN so that it can correctly identify the landmarks (yellow and white lanes) in an image.
 
 To help the actor, scaling down the range of corrections as well as forcing the corrections to be positive could help the learning.
 
-### [Video example](https://youtu.be/aZBlKU-1c-o)
+## [Video example](https://youtu.be/aZBlKU-1c-o)
 
 [![](https://j.gifs.com/vlwvnX.gif)](https://youtu.be/aZBlKU-1c-o)
 
