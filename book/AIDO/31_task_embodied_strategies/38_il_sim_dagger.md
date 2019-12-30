@@ -28,11 +28,11 @@ Result: You could win the AI-DO!
     
 4) Start training:
     
-    $ python -m learning.imitation.pytorch-v2.train
+    $ python -m learning.imitation.iil-dagger.train
 
 5) Test the trained agent specifying the saved model:
     
-    $ python -m learning.imitation.pytorch-v2.test --model-path ![path]
+    $ python -m learning.imitation.iil-dagger.test --model-path ![path]
 
 ##  Training
 For a better result than behavior cloning this second version of imitation learning does not train only on a single trajectory given by the expert. We follow the Dataset Aggreagation algorithm [(Dagger)](https://www.cs.cmu.edu/~sross1/publications/Ross-AIStats11-NoRegret.pdf) where we also let the agent interact with the environment. The actions between the expert and the learner are chosen randomly with a varying probability with the hope that the expert _corrects_ the learner if it starts deviating from the optimal trajectory.
@@ -41,7 +41,7 @@ During training the loss curve for each episode is available (by default on a fo
 
 To run the baseline training procedure, run:
 
-    $ python -m learning.imitation.pytorch-v2.train
+    $ python -m learning.imitation.iil-dagger.train
     
 in the root directory. There are several optional flags that may be used to modify hyperparameters of the algorithm:
     
@@ -53,18 +53,18 @@ in the root directory. There are several optional flags that may be used to modi
 * `--map-name` or `-m` string  specifying which map to use for training, defaults to loop_empty.
 * `--num-outputs` integer specifying the number of outputs the model will have, can be modified to train only angular speed, defaults to 2 for both linear and angular speed.
 
-The training procedure implemented in `learning/imitation/pytorch-v2/train.py`.
+The training procedure implemented in `learning/imitation/iil-dagger/train.py`.
 
 The baseline model is based on the pretrained SqueezeNet model available on the `torchvision` package. The feature extractor of the model is frozen while the classifier is modified for the regression task.
 
-All the PyTorch boilerplate code is encapsulated in `NeuralNetworkPolicy` class implemented on `learning/imitation/pytorch-v2/learner/neural_network_policy.py`and is based on previous work done by Manfred Díaz on Tensorflow.
+All the PyTorch boilerplate code is encapsulated in `NeuralNetworkPolicy` class implemented on `learning/imitation/iil-dagger/learner/neural_network_policy.py`and is based on previous work done by Manfred Díaz on Tensorflow.
 
 ##  Local Evaluation
 
 A simple testing script `test.py` is provided with this implementation.
 It loads the latest model from the the provided directory and runs it on the simulator. To test the model:
     
-    $ python -m learning.imitation.pytorch-v2.test --model-path ![path]
+    $ python -m learning.imitation.iil-dagger.test --model-path ![path]
     
 The model path flag has to be provided for the script to load the model:
 
