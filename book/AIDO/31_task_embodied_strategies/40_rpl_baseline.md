@@ -118,13 +118,13 @@ Server
     $ dts challenges submit
 
 
-# Results
+## Results
 
-NOTE : Because of a lack of time and the depletion of our aws credit we couldn't go as deep as we wanted in the optimisation and testing of our project. 
+NOTE : Due to the length of training the models and the depletion of our AWS credits, we couldn't go as deep as we wanted in the optimization and testing of our project. 
 
-One of the main obstacle we faced was that the critic seem to be really unstable, which in return prevented the critics to learn a good corrections. In the RL baseline a penalty of 1000 is given whenever an episode crash. We found out that this penalty was detrimental to the learning of the critics and seem to make its learning rather unstable. To counteract this we reduced the size of the penalty and we used a burn-in period where only the critic was trained with corrections sets to 0 in order to pre-train it.
+One of the main obstacle was the unstability of the critic, which in return prevented the actor from learning a good correction. In the RL baseline a penalty of 1000 is given whenever an episode ends with the robot in an invalid position. We found out that this penalty was detrimental to the learning of the critics and made it rather unstable. To counteract this, we reduced the size of the penalty. We also used a pretraining period where only the critic was trained with the correction set to 0 in order to pre-train it. This last idea is taken from the original paper on [Residual Policy Learning](https://arxiv.org/abs/1812.06298).
 
-The figures below show the critic loss for both before and after these modification. While the before figures was stop really early comperatively to the other, it can be seen that some of it loss was way higher then anything else after these modification.
+The figures below show the critic's loss both before and after these modifications. While the before figures was stop really early comperatively to the other, it should be easy to see that the loss was much higher.
 
 ---
 <p align="center">
@@ -142,9 +142,9 @@ The figures below show the critic loss for both before and after these modificat
 
 ---
 
-Despite the amelioration seen in the loss of the critic, we believed in could be improved by lowering it even more.
+Despite the amelioration seen in the loss of the critic, we believe it could be improved even more. Modifying the reward function or simply lowering the penalty for crashing even more could make for an easier signal to learn.
 
-We also observed that the actor tend to output commands in the extreme. Using a tanh as the last activation layer it can only output values between -1 and 1. We can see in the following figures that most of the correction sent correspond to the extremum allowed. 
+We also observed that the actor has a tendancy to send only the maximum or minimum possible correction. By sending a correction of 0, the model simply comes down to the basic controller. However, using a tanh as the last activation layer it can output values between -1 and 1. In turn, the actor seems to have a hard time not saturating this activation layer. The next figures demonstrate that phenomenon. 
 
 ---
 <p align="center">
@@ -175,6 +175,14 @@ bla bla
 
 ---
 
+Four evaluations of the model were done during the training at each 50k timesteps starting at 0. Since we initialize the actor's output layer to 0, the basic controller is getting evaluated the first time. After 100k timesteps, the model is actually at its worst. However, it starts to go back up and probably could have gone even higher up if we had trained it for longer. We hypothesize that most of training is actually for tuning the CNN so that it can correctly identify the landmarks (yellow and white lanes) in an image.
 
+To help the actor, scaling down the range of corrections as well as forcing the corrections to be positive could help the learning.
+
+### [Video example](https://youtu.be/aZBlKU-1c-o)
+
+[![](https://j.gifs.com/vlwvnX.gif)](https://youtu.be/aZBlKU-1c-o)
+
+From the model oscillation, we can see its tendancy to output saturated values for the correction. However, it seems quite good at making sure to not go over the white line.
 
 
