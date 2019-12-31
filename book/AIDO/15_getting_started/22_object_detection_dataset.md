@@ -1,4 +1,4 @@
-# Object Detection Dataset {#object-detection-dataset status=ready}
+# Object Detection Dataset {#object-detection-dataset status=beta}
 
 ## Download {#object-detection-dataset-download}
 The dataset can be downloaded from [here](https://drive.google.com/drive/folders/1cTBoKrXJb0kajBGxhuBxJpbKaotHPX7O). We provide annotations and [sample scripts](https://github.com/saryazdi/Duckietown-Object-Detection-LFV/tree/master/OD_scripts) for loading the annotations.
