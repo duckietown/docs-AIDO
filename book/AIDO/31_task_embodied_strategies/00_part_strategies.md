@@ -7,4 +7,5 @@ To help competitors get started, we have implemented some baseline algorithms. T
  - [Imitation learning from simulation](#embodied_il_sim) (with tensorflow),
  - [Dataset aggregation from simulation](#embodied_il_sim_dagger) (with PyTorch),
  - [Imitation learning from real logs](#embodied_il_logs) (with tensorflow).
+ - [Residual policy learning](#embodied_rpl) (with PyTorch)
 
