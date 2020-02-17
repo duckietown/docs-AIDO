@@ -1,4 +1,4 @@
-# Introduction {#part:aido-introduction}
+# Introduction {#part:aido-introduction status=ready}
 
 
 For a detailed description of the scientific objectives and outcomes please see [our recent paper about the AI-DO 1 at NeurIPS](https://arxiv.org/pdf/1903.02503.pdf).
