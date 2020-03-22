@@ -1,4 +1,5 @@
 # Behavior Cloning {#embodied_bc status=ready}
+
 In this part, you can find all the required steps in order to make a submission based on Behavior Cloning with Tensorflow for the lane following task using data varying from real data or simulator data. It can be used as a strong starting point for any of the [`LF`](#lf), [`LFV`](#lf_v), and [`LFVI`](#lf_v_i) challenges.
 
 <div class='requirements' markdown='1'>
@@ -13,47 +14,86 @@ Result: You win the AI-DO!
 
 This baseline refers to Nvidia's approach for behvaior cloning for autonomous vehicles. You can find the original paper here: [End to End Learning for Self-Driving Cars](https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf) It is created by [Frank (Chude Qian)](mailto:frank.qian@case.edu) for his submission to AIDO3 in NeurIPS 2019. The submission was very successful on simulator challenge, however, it was not the best for realworld challenges. I have decided to opensource this submission as a baseline to inspire better results. A detailed description on the specific implementation for this baseline can be find on the summary poster here: [Teaching Cars to Drive Themselves](https://doi.org/10.5281/zenodo.3660134) Additional reference can also be found on the summary poster.
 
-
-
-
-
 ## Quickstart {#bc-quickstart status=ready}
 
 Clone the [baseline Behavior Cloning repository](https://github.com/duckietown/challenge-aido_LF-baseline-behavior-cloning):
 
     $ git clone -b master https://github.com/duckietown/challenge-aido_LF-baseline-behavior-cloning.git
-        
+
     $ cd challenge-aido_LF-baseline-behavior-cloning
 
 The code you find is structured into 5 folders.
 
-  1. Teach your duckiebot to drive itself in `duckieSchool`.
+1. Teach your duckiebot to drive itself in `duckieSchool`.
 
-  2. Sift through all the logs that can be used for training using `duckieLog`.
+2. Sift through all the logs that can be used for training using `duckieLog`.
 
-  3. Train your model using tf.keras based model in `duickieTrainer`.
+3. Train your model using tf.keras based model in `duickieTrainer`.
 
-  4. *(Optional)* Hold all previous models you generated in `duckieModels` in case you need it.
+4. _(Optional)_ Hold all previous models you generated in `duckieModels` in case you need it.
 
-  5. Submit your submission via `duckieChallenger` folder.
-
+5. Submit your submission via `duckieChallenger` folder.
 
 ## The duckieSchool {#bc-duckieSchool status=ready}
 
+In side this folder you will find two types of duckieSchool: simulator based duckieGym and real robot based duckieRoad.
+
+### Installing duckietown Gym {bc-duckieschool-gyminstall status=ready}
+
+To install duckietown Gym, please refer to the instructions [here](https://https://github.com/duckietown/gym-duckietown/tree/daffy)
+
+    $ git clone https://github.com/duckietown/gym-duckietown.git -b daffy
+    $ cd gym-duckietown
+    $ pip3 install -e .
+
+### Use joystick to drive
+Before you use the script, make sure you have the joystick connected to your computer.
+
+To run the script, use the following command:
+
+    $ python3 human.py
+
+The system utilizes an Xbox 360 joystick to drive around. Left up and down controls the speed and right stick left and right controls the velocity. Right trigger enables the ["DRS" mode](https://en.wikipedia.org/wiki/Drag_reduction_system) allows vehicle to drive full speed forward. (Note there are no angular acceleration when this mode is enabled).
+
+In addition, every 1500 steps in simulator, the recording will pause and playback. You will have the chance to review the result and decide whether to keep the log or not. The log are recorded into two formats: `raw_log` saves all the raw information for future re-processing, and `traning_data` saves the directly feedable log.
+
+### Options for joystick script
+
+For driving duckiebot with a joystick in a simulator, you have the following options:
+
+1. `--env-name`: currently the default is `None`.
+
+2. `--map-name`: This sets the map you choose to run. Currently it is set as `small_loop_cw`.
+
+3. `--draw-curve`: This draw the lane following curve. Defaultly it is set as `False`. However, if you are new to the system, you should familiarize yourself with enabling this option as `True`.
+
+4. `--draw-bbox`: This helps draw out the collision detection bounding boxes. Defaultly it is set as `False`.
+
+5. `--domain-rand`: This enables domain randomization. Defaultly it is set as `True`.
+
+6. `--playback`: This enables playback after each record section for you to inspect the log you just took. Defaultly it is set as `True`.
+
+7. `--distortion`: This enables distortion to let the view as fisheye lens. Defaultly it is set as `True`.
+
+8. `--raw_log`: This enables recording also a high resolution version of the log instead of the downsampled version. Defaultly it is set as `True`. **Note: if you disable this option, playback will be disabled too.**
+
+9. `--steps`: This sets how many steps to record once. Defaultly it is set as `1500`
+
+Additionally, some other features has been hard coded:
+
+1. Currently the logger only logs driving better than last state. It uses reward feedback on the duckietown gym for tracking the reward status.
+
+2. Currently the training image are stored as YUV color space, you can fix it in line 258.
+
+3. Currently the frame is sized as 150x200 per Nvidia's recommendation. This could be not the most effective resolution.
+
+4. Currently the logger resets if it detects you drive out of the bound.
+
 ## The duckieLog {#bc-duckieLog status=ready}
-
-
-
-
-
-
-
-
-
 
 ## The duckieTrainer {#bc-duckieTrainer status=ready}
 
-This section describes everything you need to know using the duckieChallenger. 
+This section describes everything you need to know using the duckieChallenger.
 
 ### Folder structure {#bc-duckieTrainer-folder status=ready}
 
@@ -61,23 +101,24 @@ In this folder you can find the following fils:
 
 ```
 .
-├── __pycache__                     # Python Compile stuff. 
+├── __pycache__                     # Python Compile stuff.
 |
 ├── logs                            # Training logs for tfboard.
 │   ├── Date 1                      # Your training on Date 1.
 │   ├── Date 2                      # Your training on Date 2.
-│   └── ...                 
+│   └── ...
 |
 ├── trainedModel                    # Your trained model is here.
 │   ├── FrankNetBest_Loss.h5        # Lowest training loss model.
 │   ├── FrankNetBest_Validation.h5  # Lowest validation loss model.
 │   └── FrankNet.h5                 # The last model of the training.
 |
-├── frankModel.py                   # The deep learning model. 
+├── frankModel.py                   # The deep learning model.
 ├── logReader.py                    # Helper file for reading the log
 ├── train.py                        # The training setup.
 └── train.log                       # Your training data.
 ```
+
 ### Environment Setup {#bc-duckieTrainer-setup status=ready}
 
 To setup your environment, I strongly urge you to train the model using a system with GPU. Tensorflow and GPU sometimes can be confusing, and I recommend you to refer to tensorflow documentation for detailed information.
@@ -96,10 +137,9 @@ To change your training parameters, you can find EPOCHS, LEARNING RATE, and BATC
 
 ### Before Training {#bc-duckieTrainer-beforeStart status=ready}
 
-Before you start training, make sure your log is stored at the root of the `duckieTrainer` folder. It should be named as `train.log`. 
+Before you start training, make sure your log is stored at the root of the `duckieTrainer` folder. It should be named as `train.log`.
 
 Make sure you have saved all the desired trained models into duckieModels. Trust me you do not want your overnight training overwritten by accident. Yes I have been through losing my overnight training result.
-
 
 ### Train it {#bc-duckieTrainer-trainnow status=ready}
 
@@ -121,7 +161,7 @@ There are a lot of things could be improved as this is an overnight hack for me.
 
     Symptom: tensorflow.python.framework.errors_impl.InternalError: CUDA runtime implicit initialization on GPU:0 failed. Status: out of memory
 
-    Resolution: Currently there is no known fix other than cross your fingers and run again and reducing your batch size. 
+    Resolution: Currently there is no known fix other than cross your fingers and run again and reducing your batch size.
 
 ## The duckieModels {#bc-duckieModels status=ready}
 
