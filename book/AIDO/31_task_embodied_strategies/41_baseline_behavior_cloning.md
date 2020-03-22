@@ -47,6 +47,7 @@ To install duckietown Gym, please refer to the instructions [here](https://https
     $ pip3 install -e .
 
 ### Use joystick to drive
+
 Before you use the script, make sure you have the joystick connected to your computer.
 
 To run the script, use the following command:
@@ -89,7 +90,63 @@ Additionally, some other features has been hard coded:
 
 4. Currently the logger resets if it detects you drive out of the bound.
 
+### Log using an actual duckiebot
+
+To log using an actual duckiebot, refer to [this](https://docs.duckietown.org/daffy/opmanual_duckiebot/out/take_a_log.html) tutorial on how to get a rosbag on a duckiebot.
+
+Once you have obtianed the ROS bag, you can use the folder `duckieRoad` to process that log.
+
+### Process a log from an actual duckiebot
+
+You will find the following files in the `duckieRoad` directory.
+
+```
+.
+├── Dockerfile                      # File that sets up the docker image
+|
+├── bag_files                       # Put your ROS bags here.
+│   ├── ROSBAG1                     # Your ROS bag.
+│   ├── ROSBAG2                     # Your training on Date 2.
+│   └── ...
+|
+├── src                             # Scripts to convert ROS bag to pickle log
+│   ├── _loggers.py                 # Logger used to log the pickle log
+│   ├── extract_data_functions.py   # Helper function for the script
+│   └── extract_data.py             # Convertion script. You set your duckiebot
+|                                     name, and topic to convert here.
+|
+├── MakeFile                        # Make file.
+├── requirements.txt                # Used for docker to setup dependency
+└── pickle23.py                     # Convert the pickle2 style log produced to                                    pickle 3
+```
+
+**You should change `extract_data.py` line 83 to the correct `duckiebot_name`.**
+
+First put your ROS bags in the bag_files folder. Then:
+
+    $ make docker_extract_data
+
+This should automatically create the logs desired. Once you see the container loops `Get Log!!!`, that means all convertions are done. Then first find your running docker:
+
+    $ docker container ls
+
+Once found, then:
+
+    $ docker cp YOUR_CONTAINER_NAME:/workspace/data ../bag2log
+
+Rename the log file as `training_data.log` and put it same level as `pickle23.py` and convert the Pickle 2 style log to usable pickle 3 style:
+
+    $ python3 pickle23.py
+
+You should be able to get usable real robot log named `converted_from_pickle2.log`.
+
 ## The duckieLog {#bc-duckieLog status=ready}
+
+This folder is set for your to put all of your duckie logs. Some helper functions are provided. However, they might not be the most efficient ones to run. It is here for your reference.
+
+`combiner.py` helps you combine different logs together.
+
+`pickle23.py` helps you convert pickle 2 log into pickle 3 log.
 
 ## The duckieTrainer {#bc-duckieTrainer status=ready}
 
@@ -168,3 +225,24 @@ There are a lot of things could be improved as this is an overnight hack for me.
 This is a folder created just for you to keep track of all your potential models. There is nothing functional in it.
 
 ## The duckieChallenger {#bc-duckieChallenger status=ready}
+
+This is the folder where you submit to challenge. The folder is structured as follows: 
+
+```
+.
+├── Dockerfile                      # Docker file used for compiling a container.
+|                                     Modify this file if you added file, etc.
+|
+├── helperFncs.py                   # Helper file for all helper functions.
+├── requirements.txt                # All required pip3 install.
+├── solution.py                     # Your actual solution
+└── submission.yaml                 # Submission configuration.
+```
+
+After you put your trained model `FrankNet.h5` in this folder, you can proceed as normal submission:
+
+    $ dts challenges submit
+
+Or run locally:
+
+    $ dts challenges evaluate
