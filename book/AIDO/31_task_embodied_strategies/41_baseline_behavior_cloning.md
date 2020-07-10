@@ -173,6 +173,7 @@ In this folder you can find the following fils:
 ├── frankModel.py                   # The deep learning model.
 ├── logReader.py                    # Helper file for reading the log
 ├── train.py                        # The training setup.
+├── requirements.txt                # Required pip3 packges for training
 └── train.log                       # Your training data.
 ```
 
@@ -180,9 +181,11 @@ In this folder you can find the following fils:
 
 To setup your environment, I strongly urge you to train the model using a system with GPU. Tensorflow and GPU sometimes can be confusing, and I recommend you to refer to tensorflow documentation for detailed information.
 
-Currently, the system requires `TensorFlow` 2.1.0. To setup TensorFlow, you can refer to the official TensorFlow install guide [here](https://www.tensorflow.org/install/gpu#ubuntu_1804_cuda_101).
+Currently, the system requires `TensorFlow` 2.2.0. To setup TensorFlow, you can refer to the official TensorFlow install guide [here](https://www.tensorflow.org/install/gpu#ubuntu_1804_cuda_101).
 
-Additionally, this training sytem utilizes `sklearn` and `numpy`.
+Additionally, this training sytem utilizes `scikit-learn` and `numpy`. You can find a provided requirements.txt file that helps you install all the necessary packages.
+
+    $ pip3 install -r requirements.txt
 
 ### Model Adjustment {#bc-changeModel status=ready}
 
@@ -191,6 +194,8 @@ To change the model, you can modify the `frankModel.py` file as it includes the 
 To change your training parameters, you can find EPOCHS, LEARNING RATE, and BATCH size at the beginning of `train.py`. You should tweak around these values with respect to your own provided training data.
 
     Note: For multi-gpu systems, you can enable multi-gpu training at training configuration section
+
+    Note: Multi-gpu training is an experimental feature. If you encounter any bug, please report it.
 
 ### Before Training {#bc-duckieTrainer-beforeStart status=ready}
 
@@ -232,9 +237,12 @@ This is the folder where you submit to challenge. The folder is structured as fo
 .
 ├── Dockerfile                      # Docker file used for compiling a container.
 |                                     Modify this file if you added file, etc.
+├── Dockerfile_LEGACY               # Legacy docker setting for models generated 
+|                                     prior to Tensorflow 2.0 
 |
 ├── helperFncs.py                   # Helper file for all helper functions.
 ├── requirements.txt                # All required pip3 install.
+├── requirements.txt_LEGACY         # All required pip3 install for using with TF 1.x.
 ├── solution.py                     # Your actual solution
 └── submission.yaml                 # Submission configuration.
 ```
@@ -246,3 +254,5 @@ After you put your trained model `FrankNet.h5` in this folder, you can proceed a
 Or run locally:
 
     $ dts challenges evaluate
+
+If you are attempting a Tensorflow model that is trained and generated using Tensorflow<=2.0 you should switch the `Dockerfile` and `requirements.txt` with the two files that is ended with `_LEGACY` to prevent version issue. By switching to legacy version, you will use Tensorflow 1.15 and Keras 2.3.1. 
