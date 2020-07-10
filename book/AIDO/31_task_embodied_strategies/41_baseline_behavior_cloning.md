@@ -255,4 +255,4 @@ Or run locally:
 
     $ dts challenges evaluate
 
-If you are attempting a Tensorflow model that is trained and generated using Tensorflow<=2.0 you should switch the `Dockerfile` and `requirements.txt` with the two files that is ended with `_LEGACY` to prevent version issue. By switching to legacy version, you will use Tensorflow 1.15 and Keras 2.3.1. 
+If you are attempting a Tensorflow model that is trained and generated using Tensorflow≤2.0 you should switch the `Dockerfile` and `requirements.txt` with the two files that is ended with `_LEGACY` to prevent version issue. By switching to legacy version, you will use Tensorflow 1.15 and Keras 2.3.1. 
