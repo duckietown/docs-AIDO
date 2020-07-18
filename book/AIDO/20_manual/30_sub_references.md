@@ -58,8 +58,4 @@ The `follow` command polls the server to see whether there are updates:
 
 The `define` command allows to *define* a challenge:
 
-    $ dts challenges define
-
-This command is not available for regular participants;
-however the mechanics of this is explained in [](#define-challenge) as it might be helpful to 
-debug problems.
+    $ dts challenges define 

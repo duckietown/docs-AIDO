@@ -8,7 +8,7 @@ Requires: That you have setup your [accounts](#cm-accounts).
 
 Requires: That you meet the [software requirement](#cm-sw).
 
-Result: You make a submission to all of the `LF*` challenges and can view their status and output. 
+Result: You make a submission to all of the `LF*` challenges and can view their status and output.
 
 </div>
 
@@ -23,7 +23,7 @@ Result: You make a submission to all of the `LF*` challenges and can view their 
 ### Change into the directory:
 
     $ cd challenge-aido_LF-template-random
-    
+
 ### Run the submission:
 
 Either make a submission with:
@@ -43,7 +43,7 @@ This will make a number of submissions (as described below). You can track the s
 
 or through your browser by navigating the webpage: `https://challenges.duckietown.org/v4/humans/submissions/![SUBMISSION_NUMBER]`
 
-where `![SUBMISSION_NUMBER]` should be replaced with the number of the submission which is reported in the terminal output. 
+where `![SUBMISSION_NUMBER]` should be replaced with the number of the submission which is reported in the terminal output.
 
 
 
@@ -53,12 +53,12 @@ The submission consists of the following files:
 
     submission.yaml
     Dockerfile
-	Makefile
-    requirements.txt	
+    Makefile
+    requirements.txt
     solution.py
-    
+
 ### `submission.yaml`
-    
+
 The file `submission.yaml` contains the configuration for this submission:
 
 ```
@@ -68,9 +68,9 @@ user-label: random_agent
 user-payload: {}
 ```
 
- - With `challenge` you can list [the challenges](#part:aido-rules) that you want your submission to be run on. 
+ - With `challenge` you can list [the challenges](#part:aido-rules) that you want your submission to be run on.
  - The `user-label` can be changed to your liking
- - The `protocol` and `user-payload` should probably be left as they are. 
+ - The `protocol` and `user-payload` should probably be left as they are.
 
 ### `requirements.txt`
 
@@ -88,7 +88,7 @@ The important parts are:
         _rgb = jpg2rgb(camera.jpg_data)
 ```
 
-which reads an image whenever one becomes available, and 
+which reads an image whenever one becomes available, and
 
 ```python
     def on_received_get_commands(self, context: Context):
