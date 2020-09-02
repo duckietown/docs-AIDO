@@ -1,4 +1,4 @@
-# The AI Driving Olympics {#book:AIDO status=ready}
+# The AI Driving Olympics {#book:book status=ready}
  
 
 <p style='text-align: center'>
