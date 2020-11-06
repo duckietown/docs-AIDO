@@ -83,6 +83,8 @@ There have been many cool new improvements for the 5 edition of the AI-DO Urban 
 - In the `LFV_multi` challenge you control **all** of the robots in a multi-vehicle setting, instead of just one. 
 - The agents can now control the **LEDs** in the simulator.
 
+TODO: link challenges.
+
 Furthermore, there were many improvements to the back-end and baseline workflows to help you get started.
 
 
