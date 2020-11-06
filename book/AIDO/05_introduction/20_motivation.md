@@ -40,13 +40,11 @@ Ultimately, the hope is that we can use this competition to benchmark the state 
 
 The best possible  outcome is that a larger proportion of the ML community redirects its efforts towards real physical agents acting in the real world, and helps to address the unique characteristics of the problem. The guaranteed impact is that we can establish a baseline for where the state of the art really is in this domain.
 
-## nuScenes Advanced Perception Event
-Please visit https://www.nuscenes.org/tracking
+## nuScenes Advanced Perception League
+Please visit https://www.nuscenes.org/
 
-## AWS Deep Racer Event
-Please visit https://aws.amazon.com/deepracer/league/
 
-## Duckietown Urban Event
+## Duckietown Urban League
 
 Can "black box", symbol-less AI power safety-critical systems like self-driving cars?
 
@@ -65,7 +63,7 @@ The robots are completely vision based and all computation runs in real time on 
 </figcaption>
 </div>
 
-### Overview of challenges {#challenge_overview}
+### The Challenges {#challenge_overview}
 
 <figure class="flow-subfigures">  
     <figcaption>The AI-DO challenges</figcaption>
@@ -74,37 +72,29 @@ The robots are completely vision based and all computation runs in real time on 
         <img style='width:8em' src="in_lane.jpg"/>
     </figure>
     <figure>
-        <figcaption figure-id="subfig:lane_following_v2">LFV</figcaption>
+        <figcaption figure-id="subfig:lane_following_v2">LFV_multi</figcaption>
         <img style='width:8em' src="lane_following_v.jpg"/>
     </figure>
     <figure>
-        <figcaption figure-id="subfig:Autolab_map">LFVI</figcaption>
+        <figcaption figure-id="subfig:Autolab_map">LFP</figcaption>
         <img style='width:8em' src="yield.jpg"/>
     </figure>
 </figure>
 
-
-<!-- LF  |  LFV  |  NAVV  |  FM       |  AMoD
-:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-<img src="images/in_lane.jpg" width="90" height="80"/>  |  <img src="images/lane_following_v.jpg" width="90" height="80"/> |  <img src="images/Autolab_map.png" width="90" height="80"/> |  <img src="images/fleet_management.jpg" width="100" height="80"/> |  <img src="images/amod_gray3.png" width="90" height="80"/> -->
+TODO: update LFVI picture
 
 
-The AI Driving Olympics competition is structured into the following separate challenges:
+AI-DO 5 is structured into the following challenges:
 
 
   * [Lane following (LF)](#lf): Control of a Duckiebot to drive on the right lane on streets within Duckietown without other moving Duckiebots present.
 
 
-  * [Lane following + vehicles (LFV)](#lf_v): Control of a Duckiebot to drive on the right lane on streets within Duckietown **with other moving Duckiebots and static obstacles present**.
+  * [Lane following + vehicles (LFV_multi)](#lf_v): Control of a **multiple Duckiebots** to drive on the right lane on streets within Duckietown.
 
 
-  * [Lane following with vehicles and intersections (LFVI)](#lf_v_i): Control of a Duckiebot to drive on the right lane **and through intersections** on streets with Duckietown with other moving Duckiebots and static obstacles.
+  * [Lane following with pedestrians (LFP)](#lf_v_i): Control of a Duckiebot to drive on the right lane **and avoid pedstrians**.
 
-  <!-- * [Navigation + vehicles (NAVV)](#nav_v): Navigation challenge of a Duckiebot to drive from point $A$ to point $B$ within Duckietown while following the rules of the road and while other Duckiebots are likewise driving in the road. -->
-
-
-
-Participants may submit code to each challenge individually. Challenges proposed in the *AI Driving Olympics* are ordered first by type and secondly by increasing difficulty in a way which encourages modular reuse of solutions to previous challenges.
 
 ### Submission
 
@@ -115,64 +105,6 @@ A process for getting started and making your first submission is explained in [
 There is a two-fold evaluation for submitted code.
 
 * **Evaluation in simulation:** The learned agent is tested in simulation to make sure that it is safe.
-* **Evaluation in robotarium:** The learned agent is evaluated in robotariums to provide the final scores.
+* **Evaluation in Duckietown Autolab:** The learned agent is evaluated in the [Duckietown Autolab](+opmanual_autolab#book-autolab) to provide the final scores.
 
-After the evaluation in robotarium, the sensorimotor logs as well as violation metric annotations are made available to the submitter.
-
-<!-- ### Modules type
-
-Another mode of submission is that people can also compete in simpler challenges by creating modules for some well-defined challenges such as:
-
-* Lane localization: given image localize the robot in the lane
-* Vehicle detection: given image localize the other robot
-
-We compute metrics (e.g. memory usage, latency, etc.) but you are not scored on metrics. Other participants in the end-to-end type may use your module. You win if somebody else uses your module in the end-to-end type.
-
-
-**Learning protocol for module entries**
-
-This metric is formalized uses supervised learning from logged data and unsupervised learning from logged data.
-
-
-* **Supervised learning from logged data:** You are given as input the input data, and the output data, produced either using a baseline solution, or by a ground truth system.
-* **Unsupervised learning from logged data:** You have access to other unlabeled logs. -->
-
-<!-- **Evaluation:**
-
-We compute a set of metrics (using e.g. ground truth data) but these are not used for winning.
-The module wins if it is used in an end-to-end entry that wins.  -->
-
-
-
-
-<!-- For a mathematical introduction to solving challenges in the context in robotics, please refer to [](#general_problem). -->
-
-
-<!-- <cite id="bib:Singh">TODO: find paper Singh</cite> -->
-
-<!-- <cite id="bib:darpa_grand_challenge">TODO: find paper DARLA</cite> -->
-
-<!-- <cite id="bib:cmu_self_driving_original">TODO: find paper autonomous_cmu</cite> -->
-
-<!-- <cite id="bib:autonomous_germany">TODO: find paper autonomous_germany</cite> -->
-
-<!-- <cite id="bib:robotarium">TODO: find paper Robotarium</cite> -->
-
-<!-- <cite id="bib:AprilTags">TODO: find paper AprilTags</cite> -->
-
-<!-- <cite id="bib:amodeus">TODO: find paper amodeus</cite> -->
-
-
-<!-- <cite id="bib:DARLA">TODO: find paper DARLA</cite> -->
-
-<!-- <cite id="bib:overview_autonomous_vision">TODO: find paper overview_autonomous_vision</cite> -->
-
-<!-- <cite id="bib:japan_self_driving">TODO: find paper japan_self_driving</cite> -->
-
-<!-- <cite id="bib:autonomous_nvidia">TODO: find paper autonomous_nvidia</cite> -->
-
-<!-- <cite id="bib:paull2017duckietown">TODO: find paper paull2017duckietown</cite> -->
-
-<!-- <cite id="bib:schwarting2018planning">TODO: find paper schwarting2018planning</cite> -->
-
-<!-- <cite id="bib:Pfeiffer2017FromRobots">TODO: find paper Pfeiffer2017FromRobots</cite> -->
+After the evaluation in Autolab, the sensorimotor logs as well as evaluation metrics are made available to the submitter.

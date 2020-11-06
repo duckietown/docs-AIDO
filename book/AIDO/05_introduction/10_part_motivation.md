@@ -15,17 +15,24 @@ For a detailed description of the scientific objectives and outcomes please see 
 
 There are different challenges, different computational resource regimes and different performance categories in this competition.
 
-### Challenges
+### AI-DO Urban League Challenges
 
 * [Lane following (LF)](#lf)
+* [Lane following with vehicles (LFVM)](#lf_vm)
+* [Lane following with pedestrians](#lf_p)
+
+### Other Challenges
+
 * [Lane following with vehicles (LFV)](#lf_v)
 * [Lane following with vehicles and intersections (LFVI)](#lf_v_i)
+
 
 ### Computational resources
 
 * [Purist option - RaspberryPi](#computation)
 * [Remote option](#computation)
 
+Note that during the AI-DO 5 finals, the submissions will be run remotely. 
 
 ### Evaluation metrics
 

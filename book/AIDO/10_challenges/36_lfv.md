@@ -1,4 +1,4 @@
-# Challenge `LFV` {#lf_v status=ready}
+# Challenge `LFV` {#lf_v status=draft}
 
 The second challenge of the *AI Driving Olympics* is "lane following with dynamic vehicles" (`LFV`).
 This challenge is an extension of Challenge `LF` to include additional rules of the road and other moving vehicles and static obstacles.

@@ -1,6 +1,6 @@
-# Random Template for `aido3-LF*` {#minimal-template status=ready}
+# Random Template for `aido5-LF*` {#minimal-template status=ready}
 
-This section describes the contents of the simplest baseline: a "random" agent. It can be used as a starting point for any of the [`LF`](#lf), [`LFV`](#lf_v), and [`LFVI`](#lf_v_i) challenges.
+This section describes the contents of the simplest baseline: a "random" agent. It can be used as a starting point for any of the [`LF`](#lf), [`LFV_multi`](#lf_vm), and [`LFP`](#lf_p) challenges.
 
 <div class='requirements' markdown='1'>
 
@@ -17,7 +17,7 @@ Result: You make a submission to all of the `LF*` challenges and can view their 
 
 ### Check out [the repository](https://github.com/duckietown/challenge-aido_LF-template-random):
 
-    $ git clone -b daffy git@github.com:duckietown/challenge-aido_LF-template-random.git
+    $ git clone git@github.com:duckietown/challenge-aido_LF-template-random.git
 
 
 ### Change into the directory:
@@ -28,12 +28,14 @@ Result: You make a submission to all of the `LF*` challenges and can view their 
 
 Either make a submission with:
 
-    $ dts challenges submit
+    $ dts challenges submit --challenge ![CHALLENGE_NAME]
+
+where you can find a list of the open challenges [here](https://challenges.duckietown.org/v4/humans/challenges).
 
 
 Or, run local evaluation with:
 
-    $ dts challenges evaluate
+    $ dts challenges evaluate --challenge ![CHALLENGE_NAME]
 
 ### Verify your submission(s)
 
@@ -83,7 +85,7 @@ The `solution.py` solution file illustrates the protocol interface.
 The important parts are:
 
 ```python
-    def on_received_observations(self,  data: Duckiebot1Observations):
+    def on_received_observations(self,  data: DB20Observations):
         camera: JPGImage = data.camera
         _rgb = jpg2rgb(camera.jpg_data)
 ```
@@ -105,7 +107,7 @@ which reads an image whenever one becomes available, and
         grey = RGB(0.0, 0.0, 0.0)
         led_commands = LEDSCommands(grey, grey, grey, grey, grey)
         pwm_commands = PWMCommands(motor_left=pwm_left, motor_right=pwm_right)
-        commands = Duckiebot1Commands(pwm_commands, led_commands)
+        commands = DB20Commands(pwm_commands, led_commands)
         context.write('commands', commands)
 ```
 
