@@ -4,15 +4,18 @@ This challenge is an extension of Challenge `LF` to include additional rules of 
 
 
 
-<figure figure-id="fig:lane-following-vehicles">
+<figure figure-id="fig:lane-following-vehicles-LFV_multi">
     <figcaption>A Duckiebot doing lane following with other vehicles</figcaption>
-    <img style='width:15em' src="lane_following_v.jpg"/>
+    <img style='width:15em' src="LFV_multi.jpg"/>
 </figure>
 
 
 Again we ask participants to submit code allowing the Duckiebot to drive on the right-hand side of the street within Duckietown. 
 
-* This challenge uses the Duckietown challenge infrastructure. The precise definition of the challenge is in the [challenge definition on the challenge server](https://challenges.duckietown.org/v4/humans/challenges/aido5-LFV_multi-sim-validation)
+* This challenge uses the Duckietown challenge infrastructure. The precise definition of the challenge is in the [challenge definition on the challenge server][LFV_multi].
+
+
+[LFV_multi]: https://challenges.duckietown.org/v4/humans/challenges/aido5-LFV_multi-sim-validation
 
 
 ## `LFV_multi` in Simulation {#challenge-aido_lfv_multi status=ready}

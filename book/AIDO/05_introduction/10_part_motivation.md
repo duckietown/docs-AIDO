@@ -1,5 +1,8 @@
 # Introduction {#part:aido-introduction status=ready}
 
+<minitoc />
+
+<!-- 
 
 For a detailed description of the scientific objectives and outcomes please see [our recent paper about the AI-DO 1 at NeurIPS](https://arxiv.org/pdf/1903.02503.pdf).
 
@@ -38,4 +41,4 @@ Note that during the AI-DO 5 finals, the submissions will be run remotely.
 
 For details about the evaluation metrics please refer to the [performance metrics](#measuring-performance)
 
-
+ -->

@@ -1,7 +1,10 @@
 # The Challenges {#part:aido-rules}
 
-Here we precisely define the [general rules](#other-rules) and [performance metrics](#measuring-performance) and then detail each of the challenges:
+This section precisely defines the [general rules](#other-rules) and [performance metrics](#measuring-performance) and explain each of the 3 challenges.
 
+<minitoc />
+
+<!-- 
  - [Lane following](#lf)
  - [Lane following with obstacles and other vehicles](#lf_v)
  - [Lane following with obstacles and other vehicles and intersections](#lf_v_i)
@@ -10,4 +13,4 @@ Here we precisely define the [general rules](#other-rules) and [performance metr
  
  [challenges]:https://challenges.duckietown.org/
 
-
+ -->

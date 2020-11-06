@@ -41,6 +41,30 @@ Note: [Mac users] Unfortunately Docker Desktop 2.4 and 2.5
 have known issues that prevent it to work with AI-DO.
 We suggest that you install Docker Desktop 2.3.x.
 
+If you want to use a GPU for evaluating your submission,
+make sure to edit your `/etc/docker/daemon.json` to include
+the following options.
+
+```json
+{
+    "default-runtime": "nvidia",
+
+    "runtimes": {
+        "nvidia": {
+            "path": "nvidia-container-runtime",
+            "runtimeArgs": []
+        }
+    },
+
+    "node-generic-resources": [ "NVIDIA-GPU=0" ]
+}
+```
+
+Note: you likely know about the first two options `default-runtime`
+and `runtimes`. Be sure to include also the "unusual"
+option `node-generic-resources`: this is needed because the evaluation
+uses Docker Compose.
+
 ## Git {#cm-sw-git}
 
 We need Git and Git LFS.
