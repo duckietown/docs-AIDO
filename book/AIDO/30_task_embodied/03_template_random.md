@@ -1,6 +1,7 @@
 # Random Template for `aido5-LF*` {#minimal-template status=ready}
 
-This section describes the contents of the simplest baseline: a "random" agent. It can be used as a starting point for any of the [`LF`](#lf), [`LFV_multi`](#lf_vm), and [`LFP`](#lf_p) challenges.
+
+This section describes the contents of the simplest template: a "random" agent. It can be used as a starting point for any of the [`LF`](#lf), [`LFV_multi`](#lf_vm), and [`LFP`](#lf_p) challenges.
 
 <div class='requirements' markdown='1'>
 
@@ -76,7 +77,8 @@ user-payload: {}
 
 ### `requirements.txt`
 
-This file contains any python requirements that are need your code.
+This file contains any python requirements that are needed by your code.
+
 
 ### `solution.py`
 
@@ -87,6 +89,7 @@ The important parts are:
 ```python
     def on_received_observations(self,  data: DB20Observations):
         camera: JPGImage = data.camera
+        odometry = data.odometry
         _rgb = jpg2rgb(camera.jpg_data)
 ```
 

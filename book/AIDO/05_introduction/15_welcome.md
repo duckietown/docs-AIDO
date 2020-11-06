@@ -38,7 +38,7 @@ There are currently two leagues in the AI Driving Olympics.
 The **Urban League** is based on the [Duckietown platform][duckietown], and  includes a series of tasks of increasing complexity. For each task, we provide tools for competitors to use in the form of simulators, logs, code templates, baseline implementations and low-cost access to robotic hardware. We evaluate submissions in simulation online, on standardized hardware environments, and finally at the competition event.
 
 Participants will not need to be physically present at any stage of the competition --- they will just need to send their source code.  
-There will be qualifying rounds in simulation, similar to [recent DARPA Robotics Challenges](https://www.subtchallenge.com/), and, for evaluation, we  make available the use of "[Duckietown Autolabs](+opmanual_autolab#book-autolab)" which are facilities that allow remote experimentation in a reproducible setting. 
+There will be qualifying rounds in simulation, similar to [recent DARPA Robotics Challenges](https://www.subtchallenge.com/), and, for evaluation, we  make available the use of "[Duckietown Autolabs](+opmanual_autolab#book)" which are facilities that allow remote experimentation in a reproducible setting. 
 
 See the leaderboards and many other things at [the challenges site](https://challenges.duckietown.org).
 

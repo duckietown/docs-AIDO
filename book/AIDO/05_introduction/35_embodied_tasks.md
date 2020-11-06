@@ -2,7 +2,8 @@
 
 
 
-This section focuses on the infrastructure and background of the embodied individual robotic challenges as outlined in the [challenge overview](#challenge_overview).
+This section focuses on the physical platform used for the embodied individual robotic challenges.
+<!--as outlined in the [challenge overview](#challenge_overview).-->
 
 For examples of Duckiebot driving see [a set of demo videos of Duckiebots driving in Duckietown](+opmanual_duckiebot#demos).
 
@@ -18,7 +19,7 @@ There are three main parts in our system with which the participants will intera
 
 2. **Duckietown Autolabs** in which to try the code in controlled and reproducible conditions.
 
-3. **Physical Duckietown platform** ([](#fig:duckietown_nice)): miniature vision-based vehicles and cities in which the vehicles drive. The robot hardware and environment are rigorously specified, which makes the development extremely repeatable (For an example of this see ["Duckietown specifications"](+opmanual_duckietown#dt-ops-appearance-specifications). If you have a Duckiebot then you will want to refer to the [Duckiebot manual](+opmanual_duckiebot#assembling-duckiebot-db18). If you would like to acquire a Duckiebot please go to [get.duckietown.org](https://get.duckietown.org/).
+3. **Physical Duckietown platform**: miniature vision-based vehicles and cities in which the vehicles drive. The robot hardware and environment are rigorously specified, which makes the development extremely repeatable (For an example of this see ["Duckietown specifications"](+opmanual_duckietown#dt-ops-appearance-specifications). If you have a Duckiebot then you will want to refer to the [Duckiebot manual](+opmanual_duckiebot#assembling-duckiebot-db18). If you would like to acquire a Duckiebot please go to [get.duckietown.org](https://get.duckietown.org/).
 
 
 
@@ -75,16 +76,13 @@ The left panel shows a lightweight simulator with low-level timing control built
 
 
 
-### Robotariums
+### Duckieton Autolabs
 
 <figure>
     <figcaption figure-id="fig:robotarium">The robotarium at ETH Zürich</figcaption>
     <img style='width:15em' src="ethz-autolab.jpg"/>
 </figure>
 
-
-
-TODO: update figure
 
 
 The idea of a robotarium (contraction of *robot* and *aquarium*) was conceived at Georgia Tech \cite{robotarium}. Currently the Georgia Tech robotarium has about 300 users. The users are able to submit programs that guide the movements of a swarm of robots. The system queues the requests, runs the programs, then sends the results, before resetting the robots to the initial state for the next user. Because there is no human intervention required, and the robot self-charge, the robotarium can run continuously.
@@ -108,11 +106,9 @@ Want to add your university to the list? [Contact us](mailto:info@duckietown.org
 
 For the competition we will several options for computational power.
 
-1. The first option is the "purist" computational substrate option: the only computation available is the Raspberry PI 3 processor on board.
+1. The "purist" computational substrate option: the only computation available is the Raspberry PI 3B+ processor on board.
 
-2. The second option is the "non-purist" option, where additionally a Movidius computation stick may be used to run more computation intensive algorithms. The baseline solutions we provide using conventional methods run in real time using the Raspberry PI processor only.
-
-3. The third option is that images are streamed to a basestation with a powerful GPU. This will increase computational power but also increase the latency in the control loop.
+2. The images are streamed to a basestation with a powerful GPU. This will increase computational power but also increase the latency in the control loop.
 
 ## Interface
 
@@ -120,7 +116,7 @@ Each *Duckiebot* has the following interface to the physical or simulated *Ducki
 
 **Inputs:**
 
-A Duckiebot has a *single*  front-facing sensor, a camera as described [here](#robot).
+A Duckiebot has a front-facing camera and encoders on each motor as described [here](#robot).
 
 - Thus the Duckiebot receives images (both in simulation and physical reality) of resolution $640\times480$ reliably at a rate of $30$ fps.
 
@@ -140,4 +136,4 @@ A Duckiebot has a *single*  front-facing sensor, a camera as described [here](#r
 The Duckiebot interacts with the world through its actuators, its wheel motors.
 
 
-- The output of the Duckiebot both in simulation and reality are its motor command signals.
+- The output of the Duckiebot both in simulation and reality are its two motor command signals.
