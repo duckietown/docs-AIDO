@@ -1,6 +1,6 @@
-# ROS Template for `aido3-LF*` {#ros-template status=ready}
+# ROS Template for `aido5-LF*` {#ros-template status=ready}
 
-This section describes the basic procedure for making a submission with a model trained in using the [Robot Operating System](http://www.ros.org/). It can be used as a starting point for any of the [`LF`](#lf), [`LFV`](#lf_v), and [`LFVI`](#lf_v_i) challenges.
+This section describes the basic procedure for making a submission with a model trained in using the [Robot Operating System](http://www.ros.org/). It can be used as a starting point for any of the [`LF`](#lf), [`LFV_multi`](#lf_vm), and [`LFP`](#lf_p) challenges.
 
 <div class='requirements' markdown='1'>
 
@@ -30,12 +30,16 @@ Result:  You make a submission to all of the `LF*` challenges and can view their
 
 Either make a submission with:
 
-    $ dts challenges submit
+    $ dts challenges submit --challenge ![CHALLENGE_NAME]
+    
+where you can find a list of the open challenges [here](https://challenges.duckietown.org/v4/humans/challenges).
+
 
 
 Or, run local evaluation with:
 
-    $ dts challenges evaluate
+    $ dts challenges evaluate --challenge ![CHALLENGE_NAME]
+    
     
 
 ### Verify the submission:
@@ -63,6 +67,8 @@ There are also a few other **new** files in this submission, which we will expla
     
 
 ### Dockerfile
+
+TODO: Update
 
 If you build your own `catkin_ws` inside this template, you would probably also want to compile with `catkin_make` (this is done for you in [](#ros-baseline))
 

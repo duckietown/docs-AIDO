@@ -1,6 +1,6 @@
-# Pytorch Template for `aido3-LF*` {#pytorch-template status=ready}
+# Pytorch Template for `aido5-LF*` {#pytorch-template status=ready}
 
-This section describes the basic procedure for making a submission with a model trained in using [PyTorch](https://pytorch.org/). It can be used as a starting point for any of the [`LF`](#lf), [`LFV`](#lf_v), and [`LFVI`](#lf_v_i) challenges.
+This section describes the basic procedure for making a submission with a model trained in using [PyTorch](https://pytorch.org/). It can be used as a starting point for any of the [`LF`](#lf), [`LFV_multi`](#lf_v), and [`LFP`](#lf_p) challenges.
 
 <div class='requirements' markdown='1'>
 
@@ -16,22 +16,24 @@ Result: You make a submission to all of the `LF*` challenges and can view their 
 
 ### Clone the [template repo](https://github.com/duckietown/challenge-aido_LF-template-pytorch):
 
-    $ git clone -b daffy git://github.com/duckietown/challenge-aido_LF-template-pytorch.git
+    $ git clone git://github.com/duckietown/challenge-aido_LF-template-pytorch.git
 
 ### Change into the directory:
     
-    $ cd challenge-aido_LF-template-pytorch
+    $ cd challenge-aido_LF-template-pytorch 
         
 ### Run the submission:
 
 Either make a submission with:
 
-    $ dts challenges submit
+    $ dts challenges submit --challenge ![CHALLENGE_NAME]
+    
+where you can find a list of the open challenges [here](https://challenges.duckietown.org/v4/humans/challenges).
 
 
 Or, run local evaluation with:
 
-    $ dts challenges evaluate
+    $ dts challenges evaluate --challenge ![CHALLENGE_NAME]
 
 ### Verify the submission(s)
 
@@ -44,6 +46,8 @@ or through your browser by navigating the webpage: `https://challenges.duckietow
 where `![SUBMISSION_NUMBER]` should be replaced with the number of the submission which is reported in the terminal output. 
 
 ## Anatomy of the submission
+
+TODO: Verify the correctness of this
 
 The submission consists of all of the basic files that required for a [basic submission](#minimal-template). Below we will highlight the specifics with respect to this template.
 
@@ -68,6 +72,4 @@ The other addition files are the following:
     models
 
 `wrappers.py` contains a simple wrapper for resizing the input image. `model.py` is used for training the model, and the models are stored in `models`.
-
-For an example of how the template can be used see [](#embodied_rl).
 

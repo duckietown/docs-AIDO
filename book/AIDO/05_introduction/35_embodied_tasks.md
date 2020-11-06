@@ -6,8 +6,9 @@ This section focuses on the infrastructure and background of the embodied indivi
 
 For examples of Duckiebot driving see [a set of demo videos of Duckiebots driving in Duckietown](+opmanual_duckiebot#demos).
 
-The actual embodied challenges will be described in more detail in [LF](#lf), [LF](#lf_v), [LFVI](#lf_v_i). <!--, [NAVV](#nav_v).-->
+The actual embodied challenges will be described in more detail in [LF](#lf), [LFV_multi](#lf_vm), [LFP](#lf_p). <!--, [NAVV](#nav_v).-->
 Note that the sequence challenges was chosen to gradually increase the difficulty of challenges by extending previous challenge solutions to more general situations.
+
 
 ## The Duckietown Platform {#aido-duckietown status=ready}
 
@@ -15,7 +16,7 @@ There are three main parts in our system with which the participants will intera
 
 1. **Simulation and training** environment, which allows to test in simulation before trying on the real robots.
 
-2. **Remote "robotariums"** in which to try the code in controlled and reproducible conditions.
+2. **Duckietown Autolabs** in which to try the code in controlled and reproducible conditions.
 
 3. **Physical Duckietown platform** ([](#fig:duckietown_nice)): miniature vision-based vehicles and cities in which the vehicles drive. The robot hardware and environment are rigorously specified, which makes the development extremely repeatable (For an example of this see ["Duckietown specifications"](+opmanual_duckietown#dt-ops-appearance-specifications). If you have a Duckiebot then you will want to refer to the [Duckiebot manual](+opmanual_duckiebot#assembling-duckiebot-db18). If you would like to acquire a Duckiebot please go to [get.duckietown.org](https://get.duckietown.org/).
 
@@ -27,7 +28,7 @@ We briefly describe the physical Duckietown platform, which comprises  autonomou
 
 ### The Duckiebot {#robot}
 
-Duckiebots are designed with the objectives of affordability, modularity and ease of construction. They are equipped with only one *sensor*: a front viewing camera with $160$ deg fish-eye lens capable of streaming $640\times480$ resolution images reliably at $30$ fps.
+Duckiebots are designed with the objectives of affordability, modularity and ease of construction. They are equipped with: a front viewing camera with $160$ deg fish-eye lens capable of streaming $640\times480$ resolution images reliably at $30$ fps, and wheel encoders on the motors.
 
 *Actuation* is provided through two DC motors that independently drive the front wheels (differential drive configuration), while the rear end of the Duckiebot is equipped with a passive omnidirectional wheel.
 
@@ -47,10 +48,6 @@ There are six well defined *road segments*: straight, left and right $90$ deg tu
 
 The signal layer comprises of street signs and traffic lights. *Street signs* enable global localization (knowing where they are within a predefined map) of Duckiebots in the city and interpretation of intersection topologies. They are defined as the union of an AprilTag \cite{AprilTags} in addition to the typical road sign symbol. Their size, height and relative positioning with respect to the road are specified. Many signs are supported, including intersection type (3- or 4-way), stop signs, road names, and pedestrian crossings.
 
-Intersections are always separated by at least 2 tiles to avoid traffic jams of Duckiebots reaching into an intersection.
-
-*Traffic lights*  provide a centralized solution for intersection coordination, encoding signals in different LED blinking frequencies. They are equipped with an overhead camera, with field of view of one tile in every direction from the intersection.
-
 
 <figure>
     <figcaption figure-id="fig:duckietown-environment">The Duckietown environment is rigorously defined at road and signal level. When the appearance specifications are met, Duckiebots are guaranteed to navigate cities of any topology.</figcaption>
@@ -64,7 +61,7 @@ We will provide a cloud simulation environment for training.
 
 In a way similar to the last DARPA Robotics Challenge, we will use the simulation
 as a first screening of the participants. It will be necessary for the code to run in simulation
-to gain access to the robotariums. In particular we emphasize that Duckiebots should not crash in simulation since a similar behavior may be disruptive to the physical Duckietown.
+to gain access to the Autolabs. In particular we emphasize that Duckiebots should not crash in simulation since a similar behavior may be disruptive to the physical Duckietown.
 
 Simulation environments for each of the individual challenges will be provided as Docker containers with clearly specified APIs. The baseline solutions for each challenge will be provided as separate containers. When both containers (the simulation and corresponding solution) are loaded and configured correctly, the simulation will effectively replace the real robot(s). A proposed solution can be uploaded to our cloud servers, at which point it will be automatically run against our pristine version of the simulation environment (on a cluster) and a score will be assigned and returned to the uploader.
 

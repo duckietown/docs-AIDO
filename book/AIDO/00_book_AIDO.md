@@ -1,35 +1,54 @@
-# The AI Driving Olympics {#book:book status=ready}
+# The AI Driving Olympics Urban League {#book:book status=ready}
  
 
 <p style='text-align: center'>
   <img src="AIDO_no_text.png" width="60%"/>
 </p>
 
-## Welcome to AI Driving Olympics! {#aido-welcome nonumber notoc}
+## Welcome to Urban League of the AI Driving Olympics! {#aido-welcome nonumber notoc}
 
 Despite recent breakthroughs, the ability of deep learning and reinforcement learning to outperform traditional approaches to control physically embodied robotic agents remains largely unproven. 
-The “AI Driving Olympics” (AI-DO) is a competition with the objective of evaluating the state of the art in machine learning and artificial intelligence for mobile robotics. 
-Based on the Duckietown platform, AI-DO includes a series of tasks of increasing complexity – from simple lane-following to fleet management. 
+The [AI Driving Olympics][aido] (AI-DO) is a set of competitions with the objective of evaluating the state of the art in machine learning and artificial intelligence for mobile robotics. 
+The ``Urban League'' of the AI-DO is based on the [Duckietown platform][duckietown], and  includes a series of tasks of increasing complexity. 
 For each task, we provide tools for competitors to use in the form of simulators, logs, code templates, baseline implementations and low-cost access to robotic hardware. We evaluate submissions in simulation online, on standardized hardware environments, and finally at the competition event.
 
-Participants will not need to be physically present at any stage of the competition --- they will just need to send their source code packaged as a Docker image.  There will be qualifying rounds in simulation, similar to the recent DARPA Robotics Challenge, and we will make available the use of "robotariums," which are facilities that allow remote experimentation in a reproducible setting. New to the AI-DO 2 edition is onsite testing on the competition grounds in the days leading up to the final.
+Participants will not need to be physically present at any stage of the competition --- they will just need to send their source code.  
+There will be qualifying rounds in simulation, similar to [recent DARPA Robotics Challenges](https://www.subtchallenge.com/), and, for evaluation, we  make available the use of "[Duckietown Autolabs](+opmanual_autolab#book-autolab)" which are facilities that allow remote experimentation in a reproducible setting. 
 
- - **AIDO 1** is in conjunction with NeurIPS Dec. 2018. 
+ - **AIDO 1** is in conjunction with NeurIPS in Dec. 2018. 
 
- - **AIDO 2** is in conjunction with ICRA May 2019.
+ - **AIDO 2** is in conjunction with ICRA in May 2019.
 
- - **AIDO 3** is in conjunction with NeurIPS Dec 2019.
+ - **AIDO 3** is in conjunction with NeurIPS in Dec 2019.
+ 
+ - **AIDO 4** was supposed to be in conjunction with ICRA in May 2020, but was canceled due to COVID-19. 
+ 
+ - **AIDO 5** is in conjunction with NeurIPS 2020. 
 
+<br/>
 
 <figure>
-    <figcaption>The AIDO 1 at NeurIPS in Montreal</figcaption>
+    <figcaption>Where it all started at AIDO 1 at NeurIPS 2018 in Montreal</figcaption>
     <img style='width:30em' src="AIDO1.jpg"/>
 </figure>
 
 
+
+## What's new in AI-DO 5 {#whats-new nonumber}
+
+There have been many cool new improvements for the 5 edition of the AI-DO Urban League:
+
+ - In the `LFVM` challenge, you control **all** of the agents in a multi-vehicle setting, instead of just one. 
+ - The robots are equipped with **encoders**, both the real `DB19` Duckiebots and the agents in the simulator. 
+ - The robots are equipped with controllable **LEDs** in the simulator
+ - The new `LFP` challenge that involves duckie-pedestrians
+ - Many improvements to the back-end and baseline workflows to help you get started 
+
+
+
 ## How to use this documentation {#how-to-use nonumber}
 
-If you would like to compete in the AI-DO, you will probably want to do something like:
+If you would like to compete in the AI-DO Urban League, you will probably want to do something like:
 
  - Read [the brief introduction to the competition](#part:aido-introduction) (~5 mins)
  - Find [the challenge that you would like to try](#part:aido-rules) (~5 mins)
@@ -67,3 +86,6 @@ If you use the AI-DO platform in your work and want to cite it please use:
   year={2019}
 }
 ```
+
+[aido]: https://driving-olympics.ai/
+[duckietown]: https://duckietown.org/

@@ -1,6 +1,6 @@
-# Tensorflow Template for `aido3-LF*` {#tensorflow-template status=ready}
+# Tensorflow Template for `aido5-LF*` {#tensorflow-template status=ready}
 
-This section describes the basic procedure for making a submission with a model trained in using [TensorFlow](https://www.tensorflow.org/). It can be used as a starting point for any of the [`LF`](#lf), [`LFV`](#lf_v), and [`LFVI`](#lf_v_i) challenges.
+This section describes the basic procedure for making a submission with a model trained in using [TensorFlow](https://www.tensorflow.org/). It can be used as a starting point for any of the [`LF`](#lf), [`LFV_multi`](#lf_vm), and [`LFP`](#lf_p) challenges.
 
 <div class='requirements' markdown='1'>
 
@@ -17,7 +17,7 @@ Result: You make a submission to all of the `LF*` challenges and can view their 
 
 ### Clone the [template repo](https://github.com/duckietown/challenge-aido_LF-template-tensorflow):
 
-    $ git clone -b daffy git@github.com:duckietown/challenge-aido_LF-template-tensorflow.git
+    $ git clone git@github.com:duckietown/challenge-aido_LF-template-tensorflow.git
 
 
 ### Change into the directory:
@@ -28,12 +28,14 @@ Result: You make a submission to all of the `LF*` challenges and can view their 
 
 Either make a submission with:
 
-    $ dts challenges submit
+    $ dts challenges submit --challenge ![CHALLENGE_NAME]
+    
+where you can find a list of the open challenges [here](https://challenges.duckietown.org/v4/humans/challenges).
 
 
 Or, run local evaluation with:
 
-    $ dts challenges evaluate
+    $ dts challenges evaluate --challenge ![CHALLENGE_NAME]
 
 ### Verify your submission(s)
 
@@ -46,6 +48,8 @@ or through your browser by navigating the webpage: `https://challenges.duckietow
 where `![SUBMISSION_NUMBER]` should be replaced with the number of the submission which is reported in the terminal output. 
 
 ## Anatomy of the submission
+
+TODO: verify the correctness of this
 
 The submission consists of all of the basic files that required for a [basic submission](#minimal-template). Below we will highlight the specifics with respect to this template. 
 
@@ -69,6 +73,5 @@ The other additional files are the following:
     
 The directory `tf_models/` contains the Tensorflow learned models (the ones that you have trained).
 
-The `model.py` code is the code that runs the Tensorflow model
+The `model.py` code is the code that runs the Tensorflow model.
 
-For some options for how to train these models you can check out [](#embodied_il_sim) or [](#embodied_il_logs).

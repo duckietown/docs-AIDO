@@ -1,4 +1,4 @@
-# Challenge `LFVI` {#lf_v_i status=ready}
+# Challenge `LFVI` {#lf_v_i status=draft}
 
 The third challenge of the *AI Driving Olympics* is "lane following with dynamic vehicles and intersections" (`LFVI`).
 This challenge is an extension of Challenge `LF` to include map configurations that are not just loops but now contain intersections which must be negotiated. 
