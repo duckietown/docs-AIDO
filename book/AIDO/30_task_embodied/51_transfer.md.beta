@@ -5,9 +5,9 @@ This section describes how to get your submission running on your Duckiebot.
 
 <div class='requirements' markdown='1'>
 
-Requires: That you have [built your Duckiebot and set it up](http://docs.duckietown.org/DT18/opmanual_duckiebot/out/building_duckiebot_c0.html) 
+Requires: That you have [built your Duckiebot and set it up](https://docs.duckietown.org/DT18/opmanual_duckiebot/out/building_duckiebot_c0.html)
 
-Requires: You are connected to your robot through a 5GHz wifi link (if running "remotely"). 
+Requires: You are connected to your robot through a 5GHz wifi link (if running "remotely").
 
 Result: You can see your submission run on your Duckiebot
 
@@ -23,15 +23,15 @@ There are basically two simple steps: 1) Find the name of your docker image, 2) 
 
 ### Find the Image Associated with your Submission
 
- - Navigate to https://challenges.duckietown.org/v4/humans/submissions/`![submission_number]` where `![submision_number]` is the number of the submission that you would like to test on your robot. 
+ - Navigate to https://challenges.duckietown.org/v4/humans/submissions/`![submission_number]` where `![submision_number]` is the number of the submission that you would like to test on your robot.
 
  - Scroll down and click on the triangle next to `29 artifacts` in the row for `step1-simulation`.
 
  - Scroll down and click on `docker-compose.yaml`. You should see some text that looks like:
- 
+
 ```
 
-networks: 
+networks:
   evaluation: {}
 services:
   evaluator:
@@ -86,8 +86,8 @@ On your laptop run:
 
     laptop $ dts duckiebot evaluate ![robot-name] --image ![image-name]
 
-Where `![robot-name]` is the name of your robot that you are on the same network as (i.e. you can `ssh` into it and `ping` it) and `![image-name]` is the name of the image that you would like to run (the one you found in the previous section). 
+Where `![robot-name]` is the name of your robot that you are on the same network as (i.e. you can `ssh` into it and `ping` it) and `![image-name]` is the name of the image that you would like to run (the one you found in the previous section).
 
-## Running a New Submission Directly on the Duckiebot 
+## Running a New Submission Directly on the Duckiebot
 
 TODO: Liam

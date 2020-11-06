@@ -89,7 +89,7 @@ A complete documentation of the interface is provided in [Aido-Client-Protocol](
 ## Evaluation
 
 
-The AMoD task is evaluated on the performance objectives described in [Performance Metrics](http://docs.duckietown.org/DT18/AIDO/out/performance.html).
+The AMoD task is evaluated on the performance objectives described in [Performance Metrics](https://docs.duckietown.org/DT18/AIDO/out/performance.html).
 
 
 ## Development guide {#amod-devel-guide status=ready}
