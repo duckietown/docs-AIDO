@@ -2,15 +2,15 @@
 
 This section describes the accounts that you need before competing.
 
-## Docker Hub account
+## Docker Hub account {#cm-accounts-dockerhub}
 
 A [Docker Hub](https://hub.docker.com/) account is necessary to submit container images.
-Take note of your `USERNAME`.
-
-Create an account [here](https://hub.docker.com/).
 
 
-## Duckietown account
+Create an account [here](https://hub.docker.com/). Take note of your `USERNAME`.
+
+
+## Duckietown account  {#cm-accounts-duckietown}
 
 A Duckietown account is necessary to interact with the challenges server.
 

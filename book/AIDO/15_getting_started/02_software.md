@@ -1,59 +1,58 @@
 # Software requirements {#cm-sw status=ready}
 
-
 This section describes the required software to participate in the competition.
-
+<!-- 
 ## Python {#cm-sw-python}
 
-We require Python 3.6 or higher. For instructions for how to install Python 3.6 or higher, see [here](https://github.com/duckietown/duckietown-shell).
+We require Python 3.8 or higher.  -->
 
+<!-- For instructions for how to install Python 3.8 or higher, see [here](https://github.com/duckietown/duckietown-shell). -->
 
 ## Supported Operating Systems {#cm-sw-supported}
 
+### Ubuntu 20.04
 
-### Ubuntu 18
+Ubuntu 20.04 is the best supported environment.
+Earlier version might work. Note that we require an environment with Python 3.8 or higher.
 
-Ubuntu 18 is the best supported environment.
+### Other GNU/Linux versions
 
-
-Note: In AI-DO 1, the best supported platform was Ubuntu 16.
-
+Any other GNU/Linux OS with Python of at least version 3.8 should work. However,
+we only support officially Ubuntu.
 
 ### Mac OS X
 
 OS X is well supported; however we don't have full instructions for certain steps.
 (There is so much divergence in how OS X environments are configured.)
 
+We suggest to use `pyenv` to install Python 3.8.
 
+### Windows
 
+Windows is not supported.
 
-### Other operating systems
-
-Any other OS with Python of at least version 3.6 should work. However,
-we only support officially Ubuntu.
 
 
 ## Docker  {#cm-sw-docker}
 
 Install Docker [from these instructions](https://docs.docker.com/install/).
 
+Note: [Mac users] Unfortunately Docker Desktop 2.4 and 2.5
+have known issues that prevent it to work with AI-DO.
+We suggest that you install Docker Desktop 2.3.x.
+
 ## Git {#cm-sw-git}
 
-We are sure you already have [set Git up](+software_reference#github-access).
-
-
+We need Git and Git LFS.
 
 ## Duckietown Shell {#cm-sw-dts}
-
 
 Install the Duckietown Shell by following the *Installation* instructions
 in the [README](https://github.com/duckietown/duckietown-shell).
 
-
 Make sure it is installed by using:
 
     $ dts version
-
 
 ### Authentication token {#cm-sw-dts-token}
 
@@ -61,18 +60,42 @@ Set the Duckietown authentication token using this command:
 
     $ dts tok set
 
-This command checks that you have a good authentication token:
-
-    $ dts challenges info
-
-
 ### Docker Hub information
 
+Set your Docker Hub username and password using:
 
-Set your Docker Hub username using:
+    $ dts challenges config --docker-username <USERNAME> --docker-username <PASSWORD>
 
-    $ dts challenges config --docker-username <USERNAME>
+You can use an access token instead of a password.
 
 Login to Docker Hub:
 
     $ docker login
+
+
+Note: Since November 2, 2020 Docker Hub has implemented tight
+rate limits for anonymous accounts. If you experience
+timeouts in Docker or similar problems, it is likely 
+because you have not logged in recently. Note that `docker login`
+needs to be repeated every 12 hours.
+
+### Check `dts` configuration
+
+This command checks that you have a good authentication token:
+
+    $ dts challenges info
+
+You should expect an output like:
+
+```
+~        You are succesfully authenticated:
+~
+~                     ID: ![your numeric ID]
+~                   name: ![your name]
+~                  login: ![your account name on Duckietown]
+~                profile: ![your website]
+~
+~            You can find the list of your submissions at the page:
+~
+~                https://challenges.duckietown.org/v4/humans/users/1639
+```
