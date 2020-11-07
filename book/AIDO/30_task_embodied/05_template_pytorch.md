@@ -50,18 +50,31 @@ where `![SUBMISSION_NUMBER]` should be replaced with the number of the submissio
 
 ## Anatomy of the submission
 
-TODO: Verify the correctness of this
-
 The submission consists of all of the basic files that required for a [basic submission](#minimal-template). Below we will highlight the specifics with respect to this template.
 
 ### `solution.py`
 
-The only difference in `solution.py` is that we are calling our model to compute an action with the following code:
+The only differences in `solution.py` (the python script that is run by our submission) are:
+
+ - We conditionally load the model in the initializaiton procedure:
+ 
+```python
+self.model = DDPG(state_dim=self.preprocessor.shape, action_dim=2, max_action=1, net_type="cnn")
+self.current_image = np.zeros((640, 480, 3))
+
+if load_model:
+    logger.info('PytorchRLTemplateAgent loading models')
+    fp = model_path if model_path else "model"
+    self.model.load(fp, "models", for_inference=True)
+```
+ 
+ -  We abort if no GPU is detected and the environment variable `AIDO_REQUIRE_GPU`.
+ 
+ 
+ - We are calling our model to compute an action with the following code:
 
 ```python
     def compute_action(self, observation):
-        if observation.shape != self.preprocessor.transposed_shape:
-            observation = self.preprocessor.preprocessor(observation)
         action = self.model.predict(observation)
         return action.astype(float)
 ```
