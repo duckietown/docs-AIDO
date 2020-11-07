@@ -15,7 +15,7 @@ An important addition to this task is the possibility to change the [intersectio
 As performance objective on the task, we denote the expected time to go from point A to point B. To reliably evaluate the metric, multiple pairs of points A, B will be sampled.
 
 
-The robot used in this task is a Duckiebot as described in [](#robot). The environment of the task is Duckietown as described in [](#environment). Different to task [LF](#lf) and [LFV](#lf_v), the input to the Duckiebot now also includes a map of Duckietown.
+The robot used in this task is a Duckiebot as described in [](#robot). The environment of the task is Duckietown as described in [](#environment). Different to task [LF](#challenge-LF) and [LFV](#challenge-LF_v), the input to the Duckiebot now also includes a map of Duckietown.
 
 ## Evaluation
 

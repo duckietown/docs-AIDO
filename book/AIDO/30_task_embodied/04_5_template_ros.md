@@ -1,6 +1,6 @@
-# ROS Template for `aido5-LF*` {#ros-template status=ready}
+# ROS Template {#ros-template status=ready}
 
-This section describes the basic procedure for making a submission with a model trained in using the [Robot Operating System](http://www.ros.org/). It can be used as a starting point for any of the [`LF`](#lf), [`LFV_multi`](#lf_vm), and [`LFP`](#lf_p) challenges.
+This section describes the basic procedure for making a submission with a model trained in using the [Robot Operating System](http://www.ros.org/). It can be used as a starting point for any of the [`LF`](#challenge-LF), [`LFV_multi`](#challenge-LFV_multi), and [`LFP`](#challenge-LFP) challenges.
 
 <div class='requirements' markdown='1'>
 
@@ -17,16 +17,14 @@ Result:  You make a submission to all of the `LF*` challenges and can view their
 
 ## Quickstart 
 
-
-### Clone the [template repo](https://github.com/duckietown/challenge-aido_LF-template-ros):
+Clone the [template repo](https://github.com/duckietown/challenge-aido_LF-template-ros):
 
     $ git daffy git@github.com:duckietown/challenge-aido_LF-template-ros.git
 
-### Change into the directory:
+Change into the directory:
 
     $ cd challenge-aido-LF-template-ros
 
-### Test the submission:
 
 Either make a submission with:
 

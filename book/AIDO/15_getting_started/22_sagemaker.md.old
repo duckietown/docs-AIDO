@@ -3,11 +3,11 @@
 
 ## Reinforcement Learning 
 
-This is the companion tutorial file for learning how to use Amazon AWS's Sagemaker tool to train your Duckietown AIDO submission... **in the cloud**!
+This is the companion tutorial file for learning how to use Amazon AWS's Sagemaker tool to train your Duckietown AI-DO submission... **in the cloud**!
 
 We'll be building off our [Reinforcement Learning](https://goo.gl/YFTjn3) Tutorial, where we take DDPG and use Sagemaker to train with speed!
 
-This tutorial will walk you through, step by step, how to get your Sagemaker account running and using it to train a AIDO Lane Following Submission.
+This tutorial will walk you through, step by step, how to get your Sagemaker account running and using it to train a AI-DO Lane Following Submission.
 
 Some prerequisites we expect you to have:
 1. A Git and an AWS Account (You can get one by signing up [here](https://aws.amazon.com/))

@@ -27,7 +27,7 @@ For a detailed description of the scientific objectives and outcomes please see 
 
 
 <figure nonumber="1">
-    <figcaption>Where it all started: AIDO 1 at NeurIPS 2018 in Montreal.</figcaption>
+    <figcaption>Where it all started: AI-DO 1 at NeurIPS 2018 in Montreal.</figcaption>
     <img style='width:20em' src="AIDO1.jpg"/>
 </figure>
 
@@ -57,11 +57,10 @@ League is at [nuScenes.org](https://nuscenes.org).
 There have been many cool new improvements for the 5 edition of the AI-DO Urban League:
 
 - The robots in the simulators and the new DB19 Duckiebots are equipped with **encoders**.
-- In the new `LFP` challenge there are now duckie-pedestrians to avoid.
-- In the `LFV_multi` challenge you control **all** of the robots in a multi-vehicle setting, instead of just one. 
+- In [the new `LFP` challenge](#challenge-LFP) there are now duckie-pedestrians to avoid.
+- In [the `LFV_multi` challenge](#challenge-LFV_multi) you control **all** of the robots in a multi-vehicle setting, instead of just one. 
 - The agents can now control the **LEDs** in the simulator.
 
-TODO: link challenges.
 
 Furthermore, there were many improvements to the back-end and baseline workflows to help you get started.
 
@@ -69,6 +68,9 @@ Furthermore, there were many improvements to the back-end and baseline workflows
 
 
 <style>
+  #variations { 
+    font-size: smaller;
+  }
   #variations th, #variations td {
     text-align: center;
   }

@@ -1,7 +1,8 @@
-# Duckietown Dashboard {#dashboard status=ready}
+# Duckietown Dashboard {#dashboard status=beta}
 
 
-The Duckietown Dashboard is a visual alternative to the command line for monitoring your AIDO submissions.
+The Duckietown Dashboard is a visual alternative to the command line for monitoring your 
+AI-DO submissions.
 
 You can access the Duckietown Dashboard by visiting the URL [http://dashboard.duckietown.org](http://dashboard.duckietown.org).
 

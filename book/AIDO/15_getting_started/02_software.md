@@ -71,12 +71,42 @@ We need Git and Git LFS.
 
 ## Duckietown Shell {#cm-sw-dts}
 
-Install the Duckietown Shell by following the *Installation* instructions
-in the [README](https://github.com/duckietown/duckietown-shell).
+Install the [Duckietown Shell][shell] using:
+
+    $ pip install -U duckietown-shell
+
+If you encounter problems look at *Installation* instructions
+in the [README][shell].
+
+[shell]: https://github.com/duckietown/duckietown-shell
 
 Make sure it is installed by using:
 
     $ dts version
+
+
+<img class="screencast" src="rec-dts-version.gif" width="100%"/>
+
+Set the `daffy` command branch:
+
+    $ dts --set-version daffy exit
+
+<img class="screencast" src="rec-dts-command-version.gif" width="100%"/>
+
+Update the commands using:
+
+    $ dts update
+
+<style>
+@media print {
+  .screencast {
+    display: none;
+  }
+}
+
+</style>
+
+<!-- <img src="rec-dts-update.gif" width="70%"/> -->
 
 ### Authentication token {#cm-sw-dts-token}
 
@@ -109,6 +139,8 @@ This command checks that you have a good authentication token:
 
     $ dts challenges info
 
+<img src="rec-challenges-info.gif" style='width: 80%'/>
+
 You should expect an output like:
 
 ```
@@ -123,3 +155,4 @@ You should expect an output like:
 ~
 ~                https://challenges.duckietown.org/v4/humans/users/1639
 ```
+

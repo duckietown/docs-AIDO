@@ -20,14 +20,14 @@ There are different challenges, different computational resource regimes and dif
 
 ### AI-DO Urban League Challenges
 
-* [Lane following (LF)](#lf)
-* [Lane following with vehicles (LFVM)](#lf_vm)
-* [Lane following with pedestrians](#lf_p)
+* [Lane following (LF)](#challenge-LF)
+* [Lane following with vehicles (LFVM)](#challenge-LFV_multi)
+* [Lane following with pedestrians](#challenge-LFP)
 
 ### Other Challenges
 
-* [Lane following with vehicles (LFV)](#lf_v)
-* [Lane following with vehicles and intersections (LFVI)](#lf_v_i)
+* [Lane following with vehicles (LFV)](#challenge-LF_v)
+* [Lane following with vehicles and intersections (LFVI)](#challenge-LFVI)
 
 
 ### Computational resources

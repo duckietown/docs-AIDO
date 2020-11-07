@@ -1,6 +1,9 @@
-# Pytorch Template for `aido5-LF*` {#pytorch-template status=ready}
+# PyTorch Template {#pytorch-template status=ready}
 
-This section describes the basic procedure for making a submission with a model trained in using [PyTorch](https://pytorch.org/). It can be used as a starting point for any of the [`LF`](#lf), [`LFV_multi`](#lf_v), and [`LFP`](#lf_p) challenges.
+This section describes the basic procedure for making a submission with a model trained in using [PyTorch](https://pytorch.org/). 
+
+It can be used as a starting point for any of the [`LF`](#challenge-LF), 
+[`LFV_multi`](#challenge-LFV_multi), and [`LFP`](#challenge-LFP) challenges.
 
 <div class='requirements' markdown='1'>
 
@@ -14,15 +17,15 @@ Result: You make a submission to all of the `LF*` challenges and can view their 
 
 ## Quickstart
 
-### Clone the [template repo](https://github.com/duckietown/challenge-aido_LF-template-pytorch):
+Clone the [template repo](https://github.com/duckietown/challenge-aido_LF-template-pytorch):
 
     $ git clone git://github.com/duckietown/challenge-aido_LF-template-pytorch.git
 
-### Change into the directory:
+Change into the directory:
     
     $ cd challenge-aido_LF-template-pytorch 
         
-### Run the submission:
+Run the submission:
 
 Either make a submission with:
 

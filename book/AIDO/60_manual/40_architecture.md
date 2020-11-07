@@ -1,4 +1,4 @@
-# Evaluation architecture {#arch status=ready}
+# Evaluation architecture {#arch status=beta}
 
 This section explains exactly what is going on behind the scenes when you create a submission.
 

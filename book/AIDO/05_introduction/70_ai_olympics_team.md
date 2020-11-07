@@ -1,4 +1,4 @@
-# Organizing team {#aido-team status=beta}
+# Organizing team TO REVRITE {#aido-team status=beta}
 
 The organizing team comprises 5 universities (ETH Zürich, University of Montréal, Georgia Tech, National Chiao Tung University, Taiwan, Tsinghua University, China) and 3 companies: a self-driving car company (nuTonomy), a cloud company (Amazon AWS), and a startup (Rerobots) working on remote access to robotic platforms.
 

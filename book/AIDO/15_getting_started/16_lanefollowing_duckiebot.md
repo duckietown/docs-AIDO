@@ -1,4 +1,4 @@
-# Run an agent on your Duckiebot {#lf_duckiebot status=ready}
+# Run an agent on your Duckiebot {#challenge-LF_duckiebot status=ready}
 
 In this page we will describe how to run your submission on your Duckiebot.
 

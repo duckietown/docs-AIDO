@@ -18,3 +18,12 @@ A Duckietown account is necessary to interact with the challenges server.
 Create an account [here](https://www.duckietown.org/research/ai-driving-olympics/ai-do-register).
 
 
+
+## Stack Overflow account  {#cm-accounts-stack-overflow}
+
+We have a [Stack Overflow for Duckietown][SO]. We will send you an invite 
+when you register. Otherwise, please ask us.
+
+[SO]: https://stackoverflow.com/c/duckietown/
+
+

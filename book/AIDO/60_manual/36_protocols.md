@@ -1,4 +1,4 @@
-# Agent protocols {#agent-protocols status=ready}
+# Agent protocols {#agent-protocols status=draft}
 
 The section describes the different protocols that should be followed by agents that are submitted. 
 

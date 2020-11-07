@@ -7,9 +7,10 @@ This section focuses on the physical platform used for the embodied individual r
 
 For examples of Duckiebot driving see [a set of demo videos of Duckiebots driving in Duckietown](+opmanual_duckiebot#demos).
 
-The actual embodied challenges will be described in more detail in [LF](#lf), [LFV_multi](#lf_vm), [LFP](#lf_p). <!--, [NAVV](#nav_v).-->
+The actual embodied challenges will be described in more detail in [LF](#challenge-LF), [LFV_multi](#challenge-LFV_multi), [LFP](#challenge-LFP). <!--, [NAVV](#nav_v).-->
 Note that the sequence challenges was chosen to gradually increase the difficulty of challenges by extending previous challenge solutions to more general situations.
 
+<minitoc />
 
 ## The Duckietown Platform {#aido-duckietown status=ready}
 
@@ -36,7 +37,8 @@ Duckiebots are designed with the objectives of affordability, modularity and eas
 All the *computation* is done onboard on a Raspberry Pi 3B+ computer, equipped with a quad Core 1.4 GHz, 64 bit CPU and 1 GB of RAM.
 
 We will support other configurations for the purposes of deploying neural networks onto the robots.
-More details in section [computational substrate](#computation).
+
+<!-- More details in section [computational substrate](#computation). -->
 
 *Power* is provided by a $10000$ mAh battery which provides several hours ($>5$) of operation.
 
@@ -58,9 +60,9 @@ The signal layer comprises of street signs and traffic lights. *Street signs* en
 
 ### Simulation
 
-We will provide a cloud simulation environment for training.
+We  provide a cloud simulation environment for training.
 
-In a way similar to the last DARPA Robotics Challenge, we will use the simulation
+In a way similar to the last DARPA Robotics Challenge, we  use the simulation
 as a first screening of the participants. It will be necessary for the code to run in simulation
 to gain access to the Autolabs. In particular we emphasize that Duckiebots should not crash in simulation since a similar behavior may be disruptive to the physical Duckietown.
 
@@ -84,10 +86,10 @@ The left panel shows a lightweight simulator with low-level timing control built
 </figure>
 
 
+<!-- Currently the Georgia Tech robotarium has about 300 users. The users are able to submit programs that guide the movements of a swarm of robots. The system queues the requests, runs the programs, then sends the results, before resetting the robots to the initial state for the next user. Because there is no human intervention required, and the robot self-charge, the robotarium can run continuously. -->
 
-The idea of a robotarium (contraction of *robot* and *aquarium*) was conceived at Georgia Tech \cite{robotarium}. Currently the Georgia Tech robotarium has about 300 users. The users are able to submit programs that guide the movements of a swarm of robots. The system queues the requests, runs the programs, then sends the results, before resetting the robots to the initial state for the next user. Because there is no human intervention required, and the robot self-charge, the robotarium can run continuously.
-
-The use of a robotarium has two advantages:
+The idea of a robotarium (contraction of *robot* and *aquarium*) was conceived at Georgia Tech \cite{robotarium}. 
+The use of a robotarium has two main advantages:
 
 1. Convenience: It allows convenient access to a complete robot setup.
 2. Reproducibility: It allows for multiple people to run the experiments in repeatable controlled conditions.
@@ -95,14 +97,12 @@ The use of a robotarium has two advantages:
 
 The Duckietown robotariums will be built in the following  institutions:
 
-1. ETH Zürich
-2. National Chiao Tung University, Taiwan
-3. University of Montréal
+1. ETH Zürich;
+3. University of Montréal;
 4. TTI Chicago.
 
-Want to add your university to the list? [Contact us](mailto:info@duckietown.org).
 
-### Computational substrate available {#computation}
+### Computational substrate available {#computation status=draft}
 
 For the competition we will several options for computational power.
 
@@ -110,7 +110,7 @@ For the competition we will several options for computational power.
 
 2. The images are streamed to a basestation with a powerful GPU. This will increase computational power but also increase the latency in the control loop.
 
-## Interface
+## Interface {status=draft}
 
 Each *Duckiebot* has the following interface to the physical or simulated *Duckietown*.
 

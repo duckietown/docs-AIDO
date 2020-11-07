@@ -1,4 +1,4 @@
-# The Duckietown Simulator {#dt-simulator status=ready}
+# The Duckietown Simulator {#dt-simulator status=beta}
 
 <div figure-id="fig:simplesim_free">
 <img src="images/simplesim_free.png" style="width: 80%"/>
@@ -15,7 +15,7 @@ Gym-Duckietown is a simulator for the [Duckietown](https://duckietown.org) Unive
 Gym-Duckietown is fast, open, and incredibly customizable. What started as a lane-following simulator has evolved into a fully-functioning autonomous driving simulator that you can use to train and test your Machine Learning, Reinforcement Learning, Imitation Learning, or even classical robotics algorithms. Gym-Duckietown offers a wide range of tasks, from simple lane-following to full city navigation with dynamic obstacles. Gym-Duckietown also ships with features, wrappers, and tools that can help you bring your algorithms to the real robot, including [domain-randomization](https://blog.openai.com/spam-detection-in-the-physical-world/), accurate camera distortion, and differential-drive physics (and most importantly, realistic waddling).
 
 <div figure-id="fig:finalmain-sim">
-<img src="images/finalmain.gif" style="width: 100%"/>
+    <img src="images/finalmain.gif" style="width: 100%"/>
 </div>
 
 ## Environments

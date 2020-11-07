@@ -1,5 +1,6 @@
 # General rules {#other-rules status=ready}  
 
+<minitoc />
 
 ## Protocol
 

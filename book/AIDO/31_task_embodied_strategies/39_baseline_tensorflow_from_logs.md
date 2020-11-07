@@ -1,6 +1,6 @@
 # Imitation Learning from Logs {#embodied_il_logs status=beta}
 
-In this part, you can find all the required steps in order to make a submission based on Imitation Learning with Tensorflow for the lane following task using real log data. It can be used as a starting point for any of the [`LF`](#lf), [`LFV`](#lf_v), and [`LFVI`](#lf_v_i) challenges.
+In this part, you can find all the required steps in order to make a submission based on Imitation Learning with Tensorflow for the lane following task using real log data. It can be used as a starting point for any of the [`LF`](#challenge-LF), [`LFV`](#challenge-LF_v), and [`LFVI`](#challenge-LFVI) challenges.
 
 <div class='requirements' markdown='1'>
 
@@ -9,8 +9,6 @@ Requires: That you have made a submission with the [tensorflow template](#tensor
 Result: You win the AI-DO!
 
 </div>
-
-
 
 ## Quickstart {#tensorflow-from-logs-workflow status=ready}
 
@@ -37,6 +35,7 @@ Go to the `extract_data` folder:
     $ cd extract_data
 
 #### Docker data extraction
+
 Type:
 
     $ make docker_extract_data
@@ -53,6 +52,7 @@ Go to the `learning` folder
     $ cd ../learning
 
 #### Docker learning
+
 Before being able to conduct the learning experiments in docker, you will need the Nvidia-runtime environment. To get this dependency type:
 
     $ make prepare-docker

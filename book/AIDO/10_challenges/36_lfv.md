@@ -1,4 +1,4 @@
-# Challenge `LFV` {#lf_v status=draft}
+# Challenge `LFV` {#challenge-LF_v status=draft}
 
 The second challenge of the *AI Driving Olympics* is "lane following with dynamic vehicles" (`LFV`).
 This challenge is an extension of Challenge `LF` to include additional rules of the road and other moving vehicles and static obstacles.
@@ -13,7 +13,7 @@ This challenge is an extension of Challenge `LF` to include additional rules of 
 
 Again we ask participants to submit code allowing the Duckiebot to drive on the right-hand side of the street within Duckietown. Due to interactions with other Duckiebots, a successful solution will likely not be completely \emph{reactive}. 
 
-* This challenge uses the Duckietown challenge infrastructure. The precise definition of the challenge is in the [challenge definition repository](https://github.com/duckietown/challenge-aido_LF)
+<!-- * This challenge uses the Duckietown challenge infrastructure. The precise definition of the challenge is in the [challenge definition repository](https://github.com/duckietown/challenge-aido_LF) -->
 
 
 ## `LFV` in Simulation {#challenge-aido2_lfv status=ready}
@@ -25,11 +25,13 @@ The current versions of the lane following with vehicles in simulation are `aido
     <img style='width:30em' src="submission-output-lfv.png"/>
 </figure>
 
-To get started, try on of the existing templates:
+## Templates {status=draft}
+
+To get started, try one of the existing templates:
 
 * The [random template](#minimal-template) is the most flexible
-* The [Tensorflow template](#tensorflow-template) is the place to submit a [tensorflow](https://www.tensorflow.org/) submission
-* The [Pytorch template](#pytorch-template) is the place to submit a [pytorch](https://pytorch.org/) submission
+* The [TensorFlow template](#tensorflow-template) is the place to submit a [TensorFlow](https://www.tensorflow.org/) submission
+* The [PyTorch template](#pytorch-template) is the place to submit a [PyTorch](https://pytorch.org/) submission
 * The [ROS template](#ros-template) is the place to submit a submission using the [Robot Operating System](http://www.ros.org/). 
 
 or baseline algorithms:
@@ -47,7 +49,7 @@ or baseline algorithms:
  - [All submissions](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFV-sim-testing/submissions)
 
 
-Interaction protocol: [`aido2_db18_agent-z2`](#aido2_db18_agent-z2)
+<!-- Interaction protocol: [`aido2_db18_agent-z2`](#aido2_db18_agent-z2) -->
 
 The details for "experiment manager", "simulator", and "scenario maker" parameters may be of interest and are [available here](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFV-sim-testing) (Under "Details").
 
@@ -58,10 +60,10 @@ The details for "experiment manager", "simulator", and "scenario maker" paramete
  - [All submissions](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFV-sim-validation/submissions)
 
 
-Interaction protocol: [`aido2_db18_agent-z2`](#aido2_db18_agent-z2)
+<!-- Interaction protocol: [`aido2_db18_agent-z2`](#aido2_db18_agent-z2) -->
 
 
-## `LFV` in the Robotarium {#challenge-aido2_lfv_robotarium status=ready}
+## `LFV` in the Robotarium {#challenge-aido2_lfv_robotarium status=draft}
 
 Details coming soon...
 

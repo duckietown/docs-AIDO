@@ -9,7 +9,7 @@ This section provides a brief introduction to the fleet-level social task "Auton
 
 ----------------------------
 
-The fleet-level tasks aim to work at a higher level of abstraction than the previous embodied robotic tasks [LF](#lf) and [LFV](#lf_v)<!-- [NAVV](#nav_v)-->. Crucially instead of focusing on single robots, now a fleet of robots should be controlled.
+The fleet-level tasks aim to work at a higher level of abstraction than the previous embodied robotic tasks [LF](#challenge-LF) and [LFV](#challenge-LF_v)<!-- [NAVV](#nav_v)-->. Crucially instead of focusing on single robots, now a fleet of robots should be controlled.
 
 Picture a city with several already autonomous vehicles. The question now posed at the fleet-level is how to best control vehicles to serve customers.  
 

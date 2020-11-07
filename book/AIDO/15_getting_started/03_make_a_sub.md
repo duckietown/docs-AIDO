@@ -30,6 +30,18 @@ Submit using:
 
     $ dts challenges submit --challenge aido5-LF-sim-validation
 
+<img class="screencast" src="rec-submit.gif" width="100%"/>
+
+
+
+<style>
+@media print {
+  .screencast {
+    display: none;
+  }
+}
+</style>
+
 What this does is:
 
 1. Build a Docker container.
@@ -92,11 +104,12 @@ If any of the commands above don't work, it is likely that something related to 
 
 <!-- TODO: where to file an issue? -->
 
-## Next Steps
+
+<!-- 
 
 ###  Look at the other strawman solutions
 
-* [Tensorflow template](#tensorflow-template) 
+* [TensorFlow template](#tensorflow-template) 
 * [PyTorch template](#pytorch-template) 
 * [ROS template](#ros-template) 
 
@@ -112,4 +125,6 @@ Of course you may also choose to use these methods in combination.
 
 ### Try one of the harder challenges 
 
-Like [LFP](#lf_p) or [LFV_multi](#lf_vm) or run your submission [on your Duckiebot](#lf_duckiebot).
+Like [LFP](#challenge-LFP) or [LFV_multi](#challenge-LFV_multi) or run your submission [on your Duckiebot](#challenge-LF_duckiebot).
+
+-->

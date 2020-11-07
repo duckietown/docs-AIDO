@@ -5,7 +5,7 @@
 
 This is a tutorial on how to make a submission for the **LF**
 (lane following on a closed course), **LFV** (lane following
-with dynamic obstacles), and the **NAVV** (Navigation with dynamic vehicles) AIDO challenges. These challenges all use
+with dynamic obstacles), and the **NAVV** (Navigation with dynamic vehicles) AI-DO challenges. These challenges all use
 the `gym-duckietown` environment from https://github.com/duckietown/gym-duckietown
 but pack it up into a docker container.
 

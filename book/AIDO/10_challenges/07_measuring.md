@@ -2,11 +2,13 @@
 
 Measuring performance in robotics is less clear cut and more multidimensional than traditionally encountered in machine learning settings. Nonetheless, to achieve reliable performance estimates we assess submitted code on several *episodes* with different initial settings and compute statistics on the outcomes. We denote $\objective$ to be an objective or cost function to optimize, which we evaluate for every experiment. In the following formalization, objectives are assumed to be minimized.
 
-In the following we summarize the objectives used to quantify how well an embodied task is completed. We will produce scores in three different categories:
+In the following we summarize the objectives used to quantify how well an embodied task is completed. We will produce scores in three different categories.
+
+<minitoc/>
 
 ## Performance criteria (P) {#performance status=ready}
 
-### Lane following (LF / LFV) {#performance_lf}
+<!-- ### Lane following (LF / LFV) {#performance_lf} -->
 
 As a performance indicator for both the "lane following task" and the "lane following task with other dynamic vehicles", we choose the integrated speed $v(t)$ along the road (not perpendicular to it) over time of the Duckiebot. This measures the moved distance along the road per episode, where we fix the time length of an episode. This encourages both faster driving as well as algorithms with lower latency. An *episode* is used to mean running the code from a particular initial configuration.
 
@@ -251,7 +253,7 @@ where $\mathbb{I}_{\objective_i \in \task}$ is the indicator function that is $1
 
 ## Comfort objective (C) {#comfort status=ready}
 
-### Lane following (LF, LFV) {#comfort_embodied}
+<!-- ### Lane following (LF, LFV) {#comfort_embodied} -->
 
 In the single robot setting, we encourage "comfortable" driving solutions. We therefore penalize large angular deviations from the forward lane direction to achieve smoother driving. This is quantified through changes in Duckiebot angular orientation $\theta_{bot}(t)$ with respect to the lane driving direction.
 <!-- Smoothing is performed by convolving the Duckiebot position $p_{bot}(t)$ with a smoothing filter $k_{smooth}$. -->
