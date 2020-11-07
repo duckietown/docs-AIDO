@@ -77,6 +77,10 @@ Furthermore, there were many improvements to the back-end and baseline workflows
   #variations th {
     font-size: 120%;
   }
+  #variations td {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
   #variations  td.explain {
     padding-left: 1em;
     text-align: left;
@@ -84,29 +88,34 @@ Furthermore, there were many improvements to the back-end and baseline workflows
   } 
 </style>
 
-<table id="variations">
-  <thead >
-    <th><code>LF</code></th>
-    <th><code>LFP</code></th>
-    <th><code>LFV_multi</code></th>
-  </thead>
-  <tr>
-    <td>Follow the lane</td>
-    <td>Avoid the duckies pedestrians</td>
-    <td>Control multiple Duckiebots</td>
-  </tr>
-  <tr>
-    <td>
-      <img src="LF.jpg" style='width: 10em'/>
-    </td>
-    <td>
-      <img src="LFP.jpg" style='width: 10em'/>
-    </td>
-    <td>
-      <img src="LFV_multi.jpg" style='width: 10em'/>
-    </td>
-  </tr>
-</table>
+<figure>
+  <figcaption>
+  The three challenges of AI-DO 5.
+  </figcaption>
+  <table id="variations">
+    <thead >
+      <th><code>LF</code></th>
+      <th><code>LFP</code></th>
+      <th><code>LFV_multi</code></th>
+    </thead>
+    <tr>
+      <td>Follow the lane</td>
+      <td>Avoid the duckies pedestrians</td>
+      <td>Control multiple Duckiebots</td>
+    </tr>
+    <tr>
+      <td>
+        <img src="LF.jpg" style='width: 10em'/>
+      </td>
+      <td>
+        <img src="LFP.jpg" style='width: 10em'/>
+      </td>
+      <td>
+        <img src="LFV_multi.jpg" style='width: 10em'/>
+      </td>
+    </tr>
+  </table>
+</figure>
 
 ## How to use this documentation {#how-to-use}
 

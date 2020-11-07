@@ -35,7 +35,7 @@ Participants are required to open source their solutions source code. If auxilia
 Submitted code will be evaluated in simulation and if sufficient on physical Autolabs. Scores and logs generated with submitted code will be made available.
 
 
-### Simulators
+### Simulators {status=beta}
 
 [Simulation code](https://github.com/duckietown/gym-duckietown/) is available as open source for everybody to use on computers that they control. The simulatored baselines interact with the simulator through a standardized interfaces that mimics the interface with the real robot. 
 
@@ -56,8 +56,11 @@ After each run in an Autolab, the participants can see the metrics statistics on
 
 Employees and affiliates of Motional/SwissRe are ineligible from participation in the competition. Employees and affiliates of Motional/SwissRe may submit baseline solutions that will be reported in a special leaderboard.
 
-Students of ETH Zürich, Montreal,  and TTIC, are eligible to participate in the competition as part of coursework, if they do not work in the organization of the competition.
+Students of ETH Zürich, Montreal, and TTIC, are eligible to participate in the competition as part of coursework, if they do not work in the organization of the competition.
 
 ## Intellectual property
 
-After the competition in the beginning of 2019, we can ask you to contribute a paper to a forthcoming book detailing the lessons learned and successful approaches in the AI Driving Olympics.
+Participants of AI-DO are required to provide the source code / data / learning models of their submission to the organizers before the finals (so that we can check for their regularity.)
+
+Winners of AI-DO are required to make their submission open source so that
+it can be reused later in the next challenges.
