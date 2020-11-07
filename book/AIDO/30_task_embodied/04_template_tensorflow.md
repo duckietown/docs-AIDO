@@ -48,20 +48,33 @@ where `![SUBMISSION_NUMBER]` should be replaced with the number of the submissio
 
 ## Anatomy of the submission
 
-TODO: verify the correctness of this
 
 The submission consists of all of the basic files that required for a [basic submission](#minimal-template). Below we will highlight the specifics with respect to this template. 
 
 
 ### `solution.py`
 
-The only difference in `solution.py` is that we are calling our model to compute an action with the following code:
+The only difference in `solution.py` is that we are initializing our model:
+
+```python
+    from model import TfInference
+    # define observation and output shapes
+    self.model = TfInference(observation_shape=(1,) + expect_shape,
+                                 # this is the shape of the image we get.
+                                 action_shape=(1, 2),  # we need to output v, omega.
+                                 graph_location='tf_models/')  # this is the folder where our models are stored.
+    self.current_image = np.zeros(expect_shape)
+```
+
+and then we call our model to compute an action with the following code:
 
 ```python
     def compute_action(self, observation):
         action = self.model.predict(observation)
         return action.astype(float)
 ```
+
+Note that we also can require the presence of a GPU with the environment variable `AIDO_REQUIRE_GPU` and then the solution will fail if a GPU is not found. 
 
 ### Model files
 

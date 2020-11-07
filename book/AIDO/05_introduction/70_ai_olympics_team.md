@@ -21,8 +21,7 @@ At nuTonomy and ETH Zürich:
 
 At nuTonomy:
 
-* Dr. **Eryk Nice** is Vice President of Autonomous Systems at nuTonomy. He has  a long extremely relevant experience at Amazon Robotics (ex Kiva Systems) in developing
-	automated warehouses with hundreds of robots working simultaneously.
+* Dr. **Eryk Nice** is Vice President of Autonomous Systems at nuTonomy. He has  a long extremely relevant experience at Amazon Robotics (ex Kiva Systems) in developing automated warehouses with hundreds of robots working simultaneously.
 *  Dr. **Oscar Beijbom** is the Machine Learning Lead at nuTonomy. He will help supervising the definition of the metrics in a way that is realistic for a self-driving car applications.
 * **Ruslan Hristov** is Principal Software Engineer at nuTonomy. He will lead the design of the container-based software infrastructure for device$\rightarrow$cloud$\rightarrow$device software deployment.
 
@@ -42,9 +41,9 @@ At ETH Zürich:
 At the University of Montréal:
 
 * Prof. **Yoshua Bengio**
-	 is an expert in deep learning.
-	 He is Professor at the Department of Computer Science and Operations Research
-	 at the University of Montréal and head of the Montreal Institute for Learning Algorithms (MILA).
+is an expert in deep learning.
+He is Professor at the Department of Computer Science and Operations Research
+at the University of Montréal and head of the Montreal Institute for Learning Algorithms (MILA).
 
 * Prof. **Liam Paull** is the local roboticist in Montréal, and co-founder of Duckietown. He will be overseeing the development of the robotarium in Montréal. He also has 2 Master's students and 2 undergraduate interns committed to contribute to the project. He will be the local coordinator in the leadup to the live event.
 
@@ -60,8 +59,7 @@ At Georgia Tech:
 
 At Amazon AWS and UCLA:
 
-* Prof. **Stefano Soatto** is Director of Applied Science at Amazon AWS
-	and Professor at UCLA. He is an expert in deep learning and control.
+* Prof. **Stefano Soatto** is Director of Applied Science at Amazon AWS and Professor at UCLA. He is an expert in deep learning and control.
 * **Sunil Mallya** is a Deep Learning Solutions Architect at Amazon AWS. He organizes the Robocar Rally competition at re:invent.
 * **Justin De Castri** is a Senior Solutions Architect at Amazon AWS. He is co-organizer of the Robocar Rally competition.
 
