@@ -7,7 +7,7 @@ The [AI Driving Olympics][aido] (AI-DO) is a set of competitions with the object
 
 For a detailed description of the scientific objectives and outcomes please see [our recent paper about the AI-DO 1 at NeurIPS](https://arxiv.org/pdf/1903.02503.pdf).
 
-<dtvideo src="vimeo:471713754"/>
+<dtvideo src="vimeo:362452613"/>
 
 <minitoc/>
 
