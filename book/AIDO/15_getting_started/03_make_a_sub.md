@@ -84,7 +84,7 @@ The leaderboard for this challenge is available at the URL
 
 [leaderboard]: https://challenges-stage.duckietown.org/humans/challenges/aido5-LF-sim-validation/leaderboard
 
-In general all of the challenge leader boards can be viewed at the front page [the challenges website][challenges].
+In general all of the challenge leaderboards can be viewed at the front page [the challenges website][challenges].
 
 [challenges]: https://challenges.duckietown.org/v4/
 

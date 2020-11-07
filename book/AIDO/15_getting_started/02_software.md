@@ -29,7 +29,8 @@ We suggest to use `pyenv` to install Python 3.8.
 
 ### Windows
 
-Windows is not supported.
+Windows is currently not supported. We are working on it!
+Please let us know if can help.
 
 
 
@@ -42,7 +43,7 @@ have known issues that prevent it to work with AI-DO.
 We suggest that you install Docker Desktop 2.3.x.
 
 If you want to use a GPU for evaluating your submission,
-make sure to edit your `/etc/docker/daemon.json` to include
+edit your `/etc/docker/daemon.json` to include
 the following options.
 
 ```json
@@ -67,13 +68,19 @@ uses Docker Compose.
 
 ## Git {#cm-sw-git}
 
-We need Git and Git LFS.
+We need Git and [Git LFS][git-lfs].
+
+[git-lfs]: https://git-lfs.github.com/
+
+On Ubuntu you can install both using
+
+    $ apt-get install 
 
 ## Duckietown Shell {#cm-sw-dts}
 
 Install the [Duckietown Shell][shell] using:
 
-    $ pip install -U duckietown-shell
+    $ pip3 install --user -U duckietown-shell
 
 If you encounter problems look at *Installation* instructions
 in the [README][shell].
@@ -118,14 +125,13 @@ Set the Duckietown authentication token using this command:
 
 Set your Docker Hub username and password using:
 
-    $ dts challenges config --docker-username <USERNAME> --docker-username <PASSWORD>
+    $ dts challenges config --docker-username ![your username] --docker-password ![your password]
 
 You can use an access token instead of a password.
 
 Login to Docker Hub:
 
     $ docker login
-
 
 Note: Since November 2, 2020 Docker Hub has implemented tight
 rate limits for anonymous accounts. If you experience
