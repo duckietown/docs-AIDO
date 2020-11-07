@@ -1,4 +1,4 @@
-# Behavior Cloning {#embodied_bc status=ready}
+# Behavior Cloning {#embodied_bc status=beta}
 
 In this part, you can find all the required steps in order to make a submission based on Behavior Cloning with Tensorflow for the lane following task using data varying from real data or simulator data. It can be used as a strong starting point for any of the [`LF`](#lf), [`LFV`](#lf_v), and [`LFVI`](#lf_v_i) challenges.
 

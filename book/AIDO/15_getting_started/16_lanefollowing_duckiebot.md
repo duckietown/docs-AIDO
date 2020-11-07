@@ -10,7 +10,7 @@ for how to acquire a Duckiebot.
 
 Requires: You have [built your Duckiebot](+opmanual_duckiebot#assembling-duckiebot-db18).
 
-Requires: You have [built your Duckiebot](+opmanual_duckiebot#assembling-duckiebot-db18).
+Requires: You have [built your [DB18](+opmanual_duckiebot#assembling-duckiebot-db18) or [DB19](+opmanual_duckiebot#assembling-duckiebot-db19) Duckiebot.
 
 Requires: You have [built your Duckietown according to the appearance specification](+opmanual_duckietown#dt-ops-appearance-specifications).
 
@@ -32,7 +32,7 @@ There are two basic modes that you can use to run a submission.
 
 ## Verifying that your Duckiebot is operational
 
-When you boot your robot it starts to produce camera imagery and waits for incoming motor commands. To verify that your Duckiebot is fully operational, you sholud follow [](+opmanual_duckiebot#rc-control) and [](+opmanual_duckiebot#read-camera-data). 
+When you boot your robot it starts to produce camera imagery and wheel encoder data (if it's moving) and waits for incoming motor commands. To verify that your Duckiebot is fully operational, you should follow [](+opmanual_duckiebot#rc-control) and [](+opmanual_duckiebot#read-camera-data). 
 
 You should also ensure that your Duckiebot is well calibrated, both [camera](+opmanual_duckiebot#camera-calib) and [wheels](+opmanual_duckiebot#wheel-calibration).
 
