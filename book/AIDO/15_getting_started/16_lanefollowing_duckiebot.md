@@ -16,7 +16,7 @@ Requires: You have [built your Duckietown according to the appearance specificat
 
 Requires: You can [connect to your robot wirelessly](+opmanual_duckiebot#duckiebot-network).
 
-Requires: You have [made a valid AI-DO submission](#quickstart-lanefollowing).
+Requires: You have [made a valid AI-DO submission](#cm-first).
 
 </div>
 
