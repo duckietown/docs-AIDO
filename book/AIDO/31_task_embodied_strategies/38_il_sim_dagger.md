@@ -2,7 +2,7 @@
 
 This section describes the procedure for training and testing an agent with the [gym-duckietown](https://github.com/duckietown/gym-duckietown) simulator using the [Dagger](https://www.cs.cmu.edu/~sross1/publications/Ross-AIStats11-NoRegret.pdf) algorithm.
 
-It can be used as a starting point for any of the [`LF`](#challenge-lf), [`LFP`](#challenge-LFP), and [`LFV_multi`](#challenge-LFV_multi) challenges.
+It can be used as a starting point for any of the [`LF`](#challenge-LF), [`LFP`](#challenge-LFP), and [`LFV_multi`](#challenge-LFV_multi) challenges.
 
 
 <div class='requirements' markdown='1'>
