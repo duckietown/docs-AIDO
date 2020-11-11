@@ -3,7 +3,7 @@
 This section describes the accounts that you need before competing.
 
 
-## Slack  account  {#cm-accounts-stack-overflow}
+## Slack  account  {#cm-accounts-slack}
 
 We have a Slack for Duckietown where you can ask for help.
 

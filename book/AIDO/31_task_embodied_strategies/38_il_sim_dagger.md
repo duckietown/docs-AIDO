@@ -1,45 +1,91 @@
 # Dataset Aggregation {#embodied_il_sim_dagger status=ready}
 
-This section describes the procedure for training and testing an agent on [gym-duckietown](https://github.com/duckietown/gym-duckietown) using the [Dagger](https://www.cs.cmu.edu/~sross1/publications/Ross-AIStats11-NoRegret.pdf) algorithm.
-It can be used as a starting point for any of the [`LF`](#lf), [`LFV`](#lf_v), and [`LFVI`](#lf_v_i) challenges.
+This section describes the procedure for training and testing an agent with the [gym-duckietown](https://github.com/duckietown/gym-duckietown) simulator using the [Dagger](https://www.cs.cmu.edu/~sross1/publications/Ross-AIStats11-NoRegret.pdf) algorithm.
+
+It can be used as a starting point for any of the [`LF`](#challenge-LF), [`LFP`](#challenge-LFP), and [`LFV_multi`](#challenge-LFV_multi) challenges.
 
 
 <div class='requirements' markdown='1'>
 
-Requires: You already know something about PyTorch.
+Requires: You are somewhat familiar with PyTorch and the [Pytorch template](#pytorch-template).
 
 Result: You could win the AI-DO!
 
 </div>
 
+## Introduction
+
+We saw a first implementation of immitation learning in the behaviour cloning baseline. That baseline models the driving task as an end-to-end supervised learning problem where data can be collected offline from an expert. One of the central issues with this approach is that of **distributional shift**. Since this is a sequential decision making problem, the training data are not "identically and independently distributed". The result is that if your agent deviates from the *optimal* trajectory that was demonstrated by the expert, it will not have any data in its dataset that shows it how to *recover back* to the optimal trajectory. As a result, it is unlikely that the behiaviour cloning approach will be robust.  
+
+For a better result than behaviour cloning this second version of imitation learning does not train only on a single trajectory given by the expert. We follow the Dataset Aggreagation algorithm [(Dagger)](https://www.cs.cmu.edu/~sross1/publications/Ross-AIStats11-NoRegret.pdf) where we also let the agent interact with the environment and allow the expert to *recover*.  The actions between the expert and the learner are chosen randomly with a varying probability with the hope that the expert _corrects_ the learner if it starts deviating from the optimal trajectory.
+
 ## Quickstart 
 
-1) Clone this [repo](https://github.com/duckietown/gym-duckietown):
+Clone this [repo](https://github.com/duckietown/challenge-aido_LF-baseline-dagger-pytorch):
 
-    $ git clone https://github.com/duckietown/gym-duckietown.git
+    $ git clone https://github.com/duckietown/challenge-aido_LF-baseline-dagger-pytorch.git
     
-2) Change into the directory:
+Change into the directory:
 
-    $ cd gym-duckietown
+    $ cd challenge-aido_LF-baseline-dagger-pytorch
     
-3) Install the package:
+In here you will see two directories `submission` and `learning`. To make a submission, enter the `submission` folder:
 
-    $ pip3 install -e .
+    $ cd submission
 
-4) Clone this [repo](https://github.com/duckietown/challenge-aido_LF-baseline-dagger-pytorch):
-    $ git clone https://github.com/duckietown/challenge-aido_LF-baseline-dagger-pytorc.git
+Then test the submission, either locally with:
 
-4) Open [notebook.ipynb](https://colab.research.google.com/github/duckietown/challenge-aido_LF-baseline-dagger-pytorch/blob/main/notebook.ipynb) from the previous repository to quick start training and testing on Google Colab.
+    $ dts challenges evaluate --challenge ![CHALLENGE_NAME]
 
-##  Training
-For a better result than behavior cloning this second version of imitation learning does not train only on a single trajectory given by the expert. We follow the Dataset Aggreagation algorithm [(Dagger)](https://www.cs.cmu.edu/~sross1/publications/Ross-AIStats11-NoRegret.pdf) where we also let the agent interact with the environment. The actions between the expert and the learner are chosen randomly with a varying probability with the hope that the expert _corrects_ the learner if it starts deviating from the optimal trajectory.
+or make an official submission when you are ready with 
+
+    $ dts challenges submit ![CHALLENGE_NAME]
+
+You can find the list of challenges [here][list-challenges]. Make sure that it is marked as "Open". 
+
+
+[list-challenges]: https://challenges.duckietown.org/v4/humans/challenges
+
+
+## Local Development Workflow
+
+The previous submission used a model which is included in the repo, but you should try to improve upon it. 
+
+### Option 1: Training with Collab
+
+We provide a [Collab notebook that you can used to get started](https://colab.research.google.com/github/duckietown/challenge-aido_LF-baseline-dagger-pytorch/blob/main/notebook.ipynb) 
+
 
 During training the loss curve for each episode is available (by default on a folder created on root called `iil_baseline`) and may be checked using `tensorboard` and specifying the `--logidr`. On the same folder you will have `data.dat` and `target.dat` which are the memory maps used by the dataset.
 
+
+### Option 2: Training Locally
+
+
+Start by cloning  [the gym-duckietown simulator repo](https://github.com/duckietown/gym-duckietown):
+
+    $ git clone https://github.com/duckietown/gym-duckietown.git
+    
+Change into the directory:
+
+    $ cd gym-duckietown
+    
+Install the package:
+
+    $ pip3 install -e .
+
+
 To run the baseline training procedure, run:
+
     $ python -m learning.train
 
-in the root directory. There are several optional flags that may be used to modify hyperparameters of the algorithm:
+in the root directory. 
+
+
+### Parameters that can affect training
+
+
+There are several optional flags that may be used to modify hyperparameters of the algorithm:
 
 * `--episode` or `-i` an integer specifying the number of episodes to train the agent, defaults to 10.
 * `--horizon` or `-r` an integer specifying the length of the horizon in each episode, defaults to 64.
@@ -54,9 +100,10 @@ in the root directory. There are several optional flags that may be used to modi
 
 The baseline model is based on the Dronet model. The feature extractor of the model is frozen while the classifier is modified for the regression task.
 
-All the PyTorch boilerplate code is encapsulated in `NeuralNetworkPolicy` class implemented on `learning/imitation/iil-dagger/learner/neural_network_policy.py`and is based on previous work done by Manfred Díaz on Tensorflow.
+All the PyTorch boilerplate code is encapsulated in the `NeuralNetworkPolicy` class implemented on `learning/imitation/iil-dagger/learner/neural_network_policy.py`and is based on previous work done by Manfred Díaz on Tensorflow.
 
-##  Local Evaluation
+
+###  Local Evaluation
 
 A simple testing script `test.py` is provided with this implementation.
 It loads the latest model from the the provided directory and runs it on the simulator. To test the model:
@@ -75,7 +122,8 @@ Other optional flags that may be used are:
 * `--num-outputs` integer specifying the number of outputs the model has, defaults to 2.
 * `--map-name` or `-m` string  specifying which map to use for training, defaults to loop_empty.
    
-## Results
+### Expected Results
+
 The following video shows the results for training the agent during 130 episodes and keeping the rest of the configuration to its default:
 
 <div figure-id="fig:dagger_result">
@@ -84,18 +132,8 @@ The following video shows the results for training the agent during 130 episodes
 </a>
 </div>
 
-## Evaluate your submission
-* Copy trained model files into submission/models directory and then use [duckietown shell](https://github.com/duckietown/duckietown-shell) to submit. 
-* Run the following command to evaluate
-    $ dts challenges evaluate
-    
-* Or make an official submission
 
-    $ dts challengs submit
-
-* For more information on submitting check [duckietown shell documentation](https://docs.duckietown.org/DT19/AIDO/out/cli.html).
-
-## How to Improve your model
+### Tips to Improve your model
 
 Some ideas on how to improve on the provided baseline:
 
