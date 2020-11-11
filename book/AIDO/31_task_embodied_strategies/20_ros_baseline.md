@@ -157,12 +157,12 @@ In both cases you should still be able to look at things through novnc by pointi
 ### How to Improve your Submission {#duckietown-baseline-improve}
 
 
-As alluded to above, a good way to get started could be to copy one of the packages defined in the [Duckietown dt-core repo](https://github.com/duckietown/dt-core) or the [Duckietown dt-car-interface repo]](https://github.com/duckietown/dt-car-interface) into the `submission_ws` folder and modify it. Note that your modified package will automatically get run because of the order of the sourcing of the catkin workspaces in the `run_and_start.sh` launch file.
+As alluded to above, a good way to get started could be to copy one of the packages defined in the [Duckietown dt-core repo](https://github.com/duckietown/dt-core) or the [Duckietown dt-car-interface repo](https://github.com/duckietown/dt-car-interface) into the `submission_ws` folder and modify it. Note that your modified package will automatically get run because of the order of the sourcing of the catkin workspaces in the `run_and_start.sh` launch file.
 
 If you would like to add a new package and node that includes a functionality not already run by `lane_following.launch` or you would like to change the connectivity of interfaces of these nodes, then you will also need:
 
  - to write your own launch file that launches your node and also all of the other nodes from the base images that you would still like to use. 
- - modify the launch file `run_and_start.sh` so that it launches your newly created launchfile. You could equally define a new launchfile, but then make sure that it gets executed in the last line of your `Dockerfile`. 
+ - to modify the launch file `run_and_start.sh` so that it launches your newly created launchfile. You could equally define a new launchfile, but then make sure that it gets executed in the last line of your `Dockerfile`. 
  
 
 ### Other Possibly Useful Utilities
