@@ -110,7 +110,7 @@ Note: Importantly, your `submissions_ws` is sourced **after** the existing `catk
 
 For rapid local development, you can make use of the `dts exercises` API, developed to build and test exercises and assignments in class settings. 
 
-### Building your Code
+### Building your Code {#duckietown-baseline-building-code}
 
 You can start by building your code with:
 
@@ -120,13 +120,13 @@ If you go inside the `exercises_ws` folder you will notice that there are more f
 
 Note: every time you run a `dts exercises` command you have to be inside an exercise folder or you will see an error. 
     
-### Running in Simulation
+### Running in Simulation {#duckietown-baseline-running-simulation}
 
 You can run your current solution in the gym simulator with:
  
      $ dts exercises test --sim
      
-Then you can look at what's happening by looking through the browser at http://localhost:8087 .
+Then you can look at what's happening by looking through the browser at [http://localhost:8087](http://localhost:8087) .
 Open up the `rqt_image_view`, resize it, and choose `/agent/camera_node/image/compressed` in the dropdown. You should see the image from the robot in the simulator. 
  
  You might want to launch a virtual joystick by opening a terminal and doing:
@@ -137,7 +137,7 @@ By default the duckiebot is in joystick control mode, so you can freely drive it
 
 
 
-### Testing Your Algorithm on the Robot
+### Testing Your Algorithm on the Robot {#duckietown-baseline-testing-robot}
 
 If you are using a Linux laptop, you have two options, local (i.e., on your laptop) and remote (i.e., on the Duckiebot). If you are Mac user unfortunately I would stick to the remote option. To run "locally"
 
@@ -148,10 +148,22 @@ To run on the Duckiebot:
     $ dts exercises test --duckiebot_name ![ROBOT_NAME]
     
     
-In both cases you should still be able to look at things through novnc by pointing your browser to  http://localhost:8087 . If you are running on Linux, you can load up the virtual joystick and start lane following as above. 
+In both cases you should still be able to look at things through novnc by pointing your browser to  [http://localhost:8087](http://localhost:8087) . If you are running on Linux, you can load up the virtual joystick and start lane following as above. 
 
 
+#### Starting Lane Following on Mac
 
+Since we can't publish from Mac and have it be received by ROS, we have to do something slightly different. In a new terminal on your Mac do:
+
+    $ docker -H ![ROBOT_NAME].local exec agent launchers/start_lane_following.sh
+    
+This will run the `start_lane_following.sh` bash script inside the agent container which initiates `LANE_FOLLOWING` mode. 
+
+Similarly, you can stop your Duckiebot from lane following by doing:
+
+    $ docker -H ![ROBOT_NAME].local exec agent launchers/stop_lane_following.sh
+
+You could also do an equivalent thing through the Portainer interface in the dashboard by opening a new terminal in your agent container and running the corresponding launcher. 
 
 
 ### How to Improve your Submission {#duckietown-baseline-improve}
@@ -165,7 +177,7 @@ If you would like to add a new package and node that includes a functionality no
  - to modify the launch file `run_and_start.sh` so that it launches your newly created launchfile. You could equally define a new launchfile, but then make sure that it gets executed in the last line of your `Dockerfile`. 
  
 
-### Other Possibly Useful Utilities
+### Other Possibly Useful Utilities {#duckietown-baseline-other-utilities}
   
 All of the normal ROS debugging utilities are available to you through the `novnc` desktop. For example, 
 You might also explore the other outputs that you can look at in `rqt_image_view`. 
