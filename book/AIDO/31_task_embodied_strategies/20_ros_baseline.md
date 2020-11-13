@@ -107,18 +107,15 @@ Note: Importantly, your `submissions_ws` is sourced **after** the existing `catk
 
 ## Local Development Workflow {#duckietown-baseline-local-workflow}
 
-
 For rapid local development, you can make use of the `dts exercises` API, developed to build and test exercises and assignments in class settings. 
 
 ### Building your Code {#duckietown-baseline-building-code}
 
-You can start by building your code with:
+From inside the `challenge-aido_LF-baseline-duckietown` folder, you can start by building your code with:
 
     $ dts exercises build
 
-If you go inside the `exercises_ws` folder you will notice that there are more folders that weren't there before. These are build artifacts that persist from the building procedure because of mounting. 
-
-Note: every time you run a `dts exercises` command you have to be inside an exercise folder or you will see an error. 
+This performs `catkin build` inside a docker container. If you go inside the `submission_ws` folder you will notice that there are more folders that weren't there before. These are build artifacts that persist from the building procedure because of mounting. 
     
 ### Running in Simulation {#duckietown-baseline-running-simulation}
 
@@ -139,16 +136,17 @@ By default the duckiebot is in joystick control mode, so you can freely drive it
 
 ### Testing Your Algorithm on the Robot {#duckietown-baseline-testing-robot}
 
-If you are using a Linux laptop, you have two options, local (i.e., on your laptop) and remote (i.e., on the Duckiebot). If you are Mac user unfortunately I would stick to the remote option. To run "locally"
+If you are using a Linux laptop, you have two options, local (i.e., on your laptop) and remote (i.e., on the Duckiebot). To run "locally"
 
      $ dts exercises test --duckiebot_name ![ROBOT_NAME] --local
 
 To run on the Duckiebot:
 
     $ dts exercises test --duckiebot_name ![ROBOT_NAME]
-    
-    
+
 In both cases you should still be able to look at things through novnc by pointing your browser to  [http://localhost:8087](http://localhost:8087) . If you are running on Linux, you can load up the virtual joystick and start lane following as above. 
+
+Warning: If you are Mac user unfortunately you should not use the `--local` flag
 
 
 #### Starting Lane Following on Mac
@@ -169,7 +167,7 @@ You could also do an equivalent thing through the Portainer interface in the das
 ### How to Improve your Submission {#duckietown-baseline-improve}
 
 
-As alluded to above, a good way to get started could be to copy one of the packages defined in the [Duckietown dt-core repo](https://github.com/duckietown/dt-core) or the [Duckietown dt-car-interface repo](https://github.com/duckietown/dt-car-interface) into the `submission_ws` folder and modify it. Note that your modified package will automatically get run because of the order of the sourcing of the catkin workspaces in the `run_and_start.sh` launch file.
+A good way to get started could be to copy one of the packages defined in the [Duckietown dt-core repo](https://github.com/duckietown/dt-core) or the [Duckietown dt-car-interface repo](https://github.com/duckietown/dt-car-interface) into the `submission_ws` folder and modify it. Note that your modified package will automatically get run because of the order of the sourcing of the catkin workspaces in the `run_and_start.sh` launch file.
 
 If you would like to add a new package and node that includes a functionality not already run by `lane_following.launch` or you would like to change the connectivity of interfaces of these nodes, then you will also need:
 
