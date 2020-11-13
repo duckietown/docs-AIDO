@@ -86,6 +86,12 @@ First, you should probably improve the base ROS policy. By default, this baselin
 (the same one that is launched when you launch automatic control in `keyboard_control`).
 
 You could build a Pure Pursuit controller, change the lane filter, etc. See the [classical Duckietown baseline](#ros-baseline) for more ideas.
+To do this, you would add your new ROS packages inside of `submission_ws`.
+
+You could also limit RL's influence over the final policy. Perhaps the current approach of giving it full control in [-1,1] action values isn't restrictive enough. Perhaps it could be better if it could only change the base policy by smaller action values.
+
+Or perhaps it's the opposite: maybe the base policy needs to be changed by more than `1`: since the min/max value that 
+the base policy can output is `1`/`-1`, the RL policy would need to be able to output from `-2` to `2` to fully correct it.
 
 Here are some ideas for improving your policy:
 
