@@ -28,7 +28,7 @@ Test the submission, either locally with:
 
 or make an official submission when you are ready with 
 
-    $ dts challenges submit ![CHALLENGE_NAME]
+    $ dts challenges submit --challenge ![CHALLENGE_NAME]
 
 You can find the list of challenges [here][list-challenges]. Make sure that it is marked as "Open". 
 
