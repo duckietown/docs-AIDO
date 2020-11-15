@@ -16,7 +16,7 @@ Result: You have a competitive submission.
 
 Clone this [repo](https://github.com/duckietown/challenge-aido_LF-baseline-duckietown)
 
-    $ git clone git://github.com/duckietown/challenge-aido_LF-baseline-duckietown.git 
+    $ git clone git@github.com/duckietown/challenge-aido_LF-baseline-duckietown.git 
 
 Change into the  directory:
 

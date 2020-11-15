@@ -25,7 +25,7 @@ You should also make sure you have access to good hardware. A recent graphics ca
 
 Clone this [repo](https://github.com/duckietown/challenge-aido_LF-baseline-RL-sim-pytorch)
 
-    $ git clone git://github.com/duckietown/challenge-aido_LF-baseline-sim-pytorch.git 
+    $ git clone git@github.com/duckietown/challenge-aido_LF-baseline-sim-pytorch.git 
 
 Change into the  directory:
 
