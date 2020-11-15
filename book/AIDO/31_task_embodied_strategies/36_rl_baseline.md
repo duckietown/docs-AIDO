@@ -53,29 +53,29 @@ The previous uses the model that is included in the baseline repository. You are
 To do so:
     
 
- 1. Change into the directory:
+Change into the directory:
     
-        $ cd challenge-aido_LF-baseline-RL-sim-pytorch
+    $ cd challenge-aido_LF-baseline-RL-sim-pytorch
         
- 2. Install this package:
+Install this package:
 
-        $ pip3 install -e . 
+    $ pip3 install -e . 
 
 and the `gym-duckietown` package:
 
-        $ pip3 install -e git://github.com/duckietown/gym-duckietown.git@daffy#egg=gym-duckietown
+    $ pip3 install -e git://github.com/duckietown/gym-duckietown.git@daffy#egg=gym-duckietown
         
 Note: Depending on your configuration, you might need to use pip instead of pip3
 
         
- 3.  Change into the `duckietown_rl` directory and run the training script
+ Change into the `duckietown_rl` directory and run the training script
 
-        $ cd duckietown_rl
-        $ python3 -m scripts.train_cnn.py --seed 123
+    $ cd duckietown_rl
+    $ python3 -m scripts.train_cnn.py --seed 123
         
- 4.  When it finishes, try it out (make sure you pass in the same seed as the one passed to the training script)
+ When it finishes, try it out (make sure you pass in the same seed as the one passed to the training script)
 
-        $ python3 -m scripts.test_cnn.py --seed 123
+    $ python3 -m scripts.test_cnn.py --seed 123
         
 
 

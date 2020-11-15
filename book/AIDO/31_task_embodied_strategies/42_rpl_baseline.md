@@ -32,11 +32,11 @@ Here's a few pointers:
 
 Clone [this repo](https://github.com/duckietown/challenge-aido_LF-baseline-RPL-ros):
     
-        $ git clone  https://github.com/duckietown/challenge-aido_LF-baseline-RPL-ros.git
+    $ git clone  https://github.com/duckietown/challenge-aido_LF-baseline-RPL-ros.git
 
 Change into the directory:
     
-        $ cd challenge-aido_LF-baseline-RPL-ros
+    $ cd challenge-aido_LF-baseline-RPL-ros
         
 Test the submission, either locally with:
 
@@ -75,18 +75,18 @@ The final docker container then runs the simulator and the agent in parallel, al
 
 From the ` challenge-aido_LF-baseline-RPL-ros` directory, change into the `local_dev` directory:
         
-        $ cd local_dev
+    $ cd local_dev
         
 and open the `args.py` file.
 This is how you will control the training and testing in this repo. For now, just change the `--test` argument to `default=False`. Then, we can train with:
 
-        $ make run
+    $ make run
         
 As mentioned [](#rlp-baseline-overview), this will first build two subsequent docker images. This might take a while. Then, it will train an RL policy over the ROS stack inside Docker.
         
 When it finishes, see how it works. Simply change the `--test` flag back to `default=True` in `args.py` and test with:
 
-        $ make run
+    $ make run
         
 This will launch a simulator window on your host machine for you to view how your agent performs. You should see something like this: 
 
