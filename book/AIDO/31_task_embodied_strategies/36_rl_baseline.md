@@ -53,29 +53,29 @@ The previous uses the model that is included in the baseline repository. You are
 To do so:
     
 
- 1. Change into the directory:
+Change into the directory:
     
-        $ cd challenge-aido_LF-baseline-RL-sim-pytorch
+    $ cd challenge-aido_LF-baseline-RL-sim-pytorch
         
- 2. Install this package:
+Install this package:
 
-        $ pip3 install -e . 
+    $ pip3 install -e . 
 
 and the `gym-duckietown` package:
 
-        $ pip3 install -e git://github.com/duckietown/gym-duckietown.git@daffy#egg=gym-duckietown
+    $ pip3 install -e git://github.com/duckietown/gym-duckietown.git@daffy#egg=gym-duckietown
         
 Note: Depending on your configuration, you might need to use pip instead of pip3
 
         
- 3.  Change into the `duckietown_rl` directory and run the training script
+ Change into the `duckietown_rl` directory and run the training script
 
-        $ cd duckietown_rl
-        $ python3 -m scripts.train_cnn.py --seed 123
+    $ cd duckietown_rl
+    $ python3 -m scripts.train_cnn.py --seed 123
         
- 4.  When it finishes, try it out (make sure you pass in the same seed as the one passed to the training script)
+ When it finishes, try it out (make sure you pass in the same seed as the one passed to the training script)
 
-        $ python3 -m scripts.test_cnn.py --seed 123
+    $ python3 -m scripts.test_cnn.py --seed 123
         
 
 
@@ -132,7 +132,7 @@ You'll notice that we launch the `Simulator` class from `gym-duckietown`. When w
 
 Mixing and matching different values for these will help you improve your training diversity, and thereby improving your evaluation robustness.
 
-If you're interested in more advanced techniques, like learning a representation that is a bit easier for your network to work with, or one that transfers better across the simulation-to-reality gap, there are some [alternative, more advanced methods](https://github.com/duckietown/segmentation-transfer) you may be interested in trying out. In addition, don't forget to try using the [logs infrastructure](http://logs.duckietown.org/), which you can also use to do things like [imitation learning](https://github.com/duckietown/challenge-aido_LF-baseline-IL-logs-tensorflow/)!
+If you're interested in more advanced techniques, like learning a representation that is a bit easier for your network to work with, or one that transfers better across the simulation-to-reality gap, there are some [alternative, more advanced methods](https://github.com/duckietown/segmentation-transfer) you may be interested in trying out.
 
 
 ## Training headless
