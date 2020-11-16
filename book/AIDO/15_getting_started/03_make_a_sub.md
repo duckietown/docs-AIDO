@@ -65,6 +65,9 @@ The expected output is something along the lines of:
 
 where `![SUBMISSION_NUMBER]` is your submission id.
 
+To understand more about the details of what's happening here see [](#minimal-template). 
+
+
 ## Monitor the submission {#cm-first-monitor}
 
 There are 2 ways to monitor the submission:

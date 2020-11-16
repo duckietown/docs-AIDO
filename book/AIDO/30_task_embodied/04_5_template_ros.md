@@ -19,7 +19,7 @@ Result:  You make a submission to all of the `LF*` challenges and can view their
 
 Clone the [template repo](https://github.com/duckietown/challenge-aido_LF-template-ros):
 
-    $ git daffy git@github.com:duckietown/challenge-aido_LF-template-ros.git
+    $ git clone git@github.com:duckietown/challenge-aido_LF-template-ros.git
 
 Change into the directory:
 
@@ -89,7 +89,7 @@ Also note that in this Dockerfile we are not copying the entire directory over, 
 
 
 
-### solution.py
+### `solution.py` {#ros-template-solution-py}
 
 **You probably don't need to change this file.**
 
@@ -130,7 +130,7 @@ The main functions are:
 
 
 
-### launchers/ {#ros-template-launchers}
+### `launchers/` {#ros-template-launchers}
 
 The bash scripts in the `launchers` directory are there to help you get everything started when you run your container. In this template there is only `run_and_start.sh`:
 
@@ -156,7 +156,7 @@ You are free to modify this as you see fit, but a few things are important to co
  3. The `--wait` flag in the `roslaunch` command is recommended so that `roslaunch` will wait until the `roscore` has finished initializing. 
 
 
-### submission_ws {#ros-template-submission_ws}
+### `submission_ws/` {#ros-template-submission_ws}
 
 This is a standard ROS catkin workspace. You can populate it with [ROS packages](http://wiki.ros.org/ROS/Tutorials/CreatingPackage). You will notice that the `random_action` package is already in the workspace. This can be used as a template for creating more packages. The main elements are launch files in the `launch` folder (you will see the `random_action_node.launch` which is launched by the `run_and_start.sh` launcher), the `src` folder which contains the ROS nodes, and the `include` folder which contains your python includes (you can also write nodes in C++ or other languages if you prefer). 
 

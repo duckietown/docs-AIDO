@@ -61,6 +61,10 @@ the following options.
 }
 ```
 
+Note: Don't forget, after you install your docker, you need to add user to "docker" group:
+
+    $ sudo adduser `whoami` docker
+
 Note: you likely know about the first two options `default-runtime`
 and `runtimes`. Be sure to include also the "unusual"
 option `node-generic-resources`: this is needed because the evaluation
