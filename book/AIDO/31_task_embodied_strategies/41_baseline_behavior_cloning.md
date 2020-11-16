@@ -80,7 +80,7 @@ For driving duckiebot with a joystick in a simulator, you have the following opt
 
 10. `--nb-episodes`: This controls how many episodes (aka sessions) you drive. This value typically don't matter as you will probably get tired before this value reaches.
 
-11. `--logfile`: This specifies where you can store your log file. Defaultly it will just save the log file at the current folder. 
+11. `--logfile`: This specifies where you can store your log file. Defaultly it will just save the log file at the current folder.
 
 12. `--downscale`: This option currently is disabled.
 
@@ -98,7 +98,7 @@ Additionally, some other features has been hard coded:
 
 In this year, we also provide you with an option to automatically generate training sample using the concept of pure pursuit method. For more information, you can check out [this video](https://www.coursera.org/lecture/intro-self-driving-cars/lesson-2-geometric-lateral-control-pure-pursuit-44N7x)
 
-The configurables are pretty much the same as the  human driver agent.
+The configurables are pretty much the same as the human driver agent.
 
 If you would like to mass generate training samples on a headless server, under util folder you can find the tools for that.
 
@@ -162,9 +162,9 @@ To view the logs, under duckieLog folder:
 
 ### The log combiner
 
-`combiner.py` helps you combine different logs together.
+To combine the logs, under duckieLog folder:
 
-
+    $ python3 util/log_combiner.py --log1 dataset1.log --log2 dataset2.log --output newdataset.log
 
 ## The duckieTrainer {#bc-duckieTrainer status=ready}
 
@@ -178,7 +178,7 @@ In this folder you can find the following fils:
 .
 ├── __pycache__                     # Python Compile stuff.
 |
-├── logs                            # Training logs for tfboard.
+├── trainlogs                            # Training logs for tfboard.
 │   ├── Date 1                      # Your training on Date 1.
 │   ├── Date 2                      # Your training on Date 2.
 │   └── ...
@@ -210,10 +210,6 @@ Additionally, this training sytem utilizes `scikit-learn` and `numpy`. You can f
 To change the model, you can modify the `frankModel.py` file as it includes the model architecture. Currently it uses a parallel architecture to seperately generate a linear and angular velocity. It might perform better if they are not setup seperately.
 
 To change your training parameters, you can find EPOCHS, LEARNING RATE, and BATCH size at the beginning of `train.py`. You should tweak around these values with respect to your own provided training data.
-
-    Note: For multi-gpu systems, you can enable multi-gpu training at training configuration section
-
-    Note: Multi-gpu training is an experimental feature. If you encounter any bug, please report it.
 
 ### Before Training {#bc-duckieTrainer-beforeStart status=ready}
 
@@ -257,7 +253,6 @@ This is the folder where you submit to challenge. The folder is structured as fo
 |                                     Modify this file if you added file, etc.
 ├── helperFncs.py                   # Helper file for all helper functions.
 ├── requirements.txt                # All required pip3 install.
-├── requirements.txt_LEGACY         # All required pip3 install for using with TF 1.x.
 ├── solution.py                     # Your actual solution
 └── submission.yaml                 # Submission configuration.
 ```
@@ -269,8 +264,6 @@ After you put your trained model `FrankNet.h5` in this folder, you can proceed a
 Or run locally:
 
     $ dts challenges evaluate
-
-If you are attempting a Tensorflow model that is trained and generated using Tensorflow≤2.0 you should switch the `Dockerfile` and `requirements.txt` with the two files that is ended with `_LEGACY` to prevent version issue. By switching to legacy version, you will use Tensorflow 1.15 and Keras 2.3.1.
 
 An example submission looks like [this](https://challenges.duckietown.org/v4/humans/submissions/11410)
 
