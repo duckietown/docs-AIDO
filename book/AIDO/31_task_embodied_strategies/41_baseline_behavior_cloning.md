@@ -1,4 +1,4 @@
-# Behavior Cloning {#embodied_bc status=beta}
+# Behavior Cloning {#embodied_bc status=ready}
 
 In this part, you can find all the required steps in order to make a submission based on Behavior Cloning with Tensorflow for the lane following task using data varying from real data or simulator data. It can be used as a strong starting point for any of the [`LF`](#challenge-LF), [`LFV`](#challenge-LF_v), and [`LFVI`](#challenge-LFVI) challenges.
 
@@ -26,9 +26,9 @@ The code you find is structured into 5 folders.
 
 1. Teach your duckiebot to drive itself in `duckieSchool`.
 
-2. Sift through all the logs that can be used for training using `duckieLog`.
+2. _(Optional)_ Store all the logs that can be used for training using `duckieLog`.
 
-3. Train your model using tf.keras based model in `duickieTrainer`.
+3. Train your model using tensorflow in `duickieTrainer`.
 
 4. _(Optional)_ Hold all previous models you generated in `duckieModels` in case you need it.
 
@@ -40,11 +40,9 @@ In side this folder you will find two types of duckieSchool: simulator based duc
 
 ### Installing duckietown Gym {bc-duckieschool-gyminstall status=ready}
 
-To install duckietown Gym, please refer to the instructions [here](https://https://github.com/duckietown/gym-duckietown/tree/daffy)
+To install duckietown Gym and all the necessary dependencies:
 
-    $ git clone https://github.com/duckietown/gym-duckietown.git -b daffy
-    $ cd gym-duckietown
-    $ pip3 install -e .
+    pip3 install --use-feature=2020-resolver -r requirements.txt
 
 ### Use joystick to drive
 
@@ -54,7 +52,7 @@ To run the script, use the following command:
 
     $ python3 human.py
 
-The system utilizes an Xbox 360 joystick to drive around. Left up and down controls the speed and right stick left and right controls the velocity. Right trigger enables the ["DRS" mode](https://en.wikipedia.org/wiki/Drag_reduction_system) allows vehicle to drive full speed forward. (Note there are no angular acceleration when this mode is enabled).
+The system utilizes an Xbox One S joystick to drive around. Left up and down controls the speed and right stick left and right controls the velocity. Right trigger enables the ["DRS" mode](https://en.wikipedia.org/wiki/Drag_reduction_system) allows vehicle to drive full speed forward. (Note there are no angular acceleration when this mode is enabled).
 
 In addition, every 1500 steps in simulator, the recording will pause and playback. You will have the chance to review the result and decide whether to keep the log or not. The log are recorded into two formats: `raw_log` saves all the raw information for future re-processing, and `traning_data` saves the directly feedable log.
 
@@ -80,15 +78,29 @@ For driving duckiebot with a joystick in a simulator, you have the following opt
 
 9. `--steps`: This sets how many steps to record once. Defaultly it is set as `1500`
 
+10. `--nb-episodes`: This controls how many episodes (aka sessions) you drive. This value typically don't matter as you will probably get tired before this value reaches.
+
+11. `--logfile`: This specifies where you can store your log file. Defaultly it will just save the log file at the current folder. 
+
+12. `--downscale`: This option currently is disabled.
+
+13. `--filter-bad-data`: This option allows you to only logs driving better than last state. It uses reward feedback on the duckietown gym for tracking the reward status.
+
 Additionally, some other features has been hard coded:
 
-1. Currently the logger only logs driving better than last state. It uses reward feedback on the duckietown gym for tracking the reward status.
+1. Currently the training image are stored as YUV color space, you can change it in line 258.
 
-2. Currently the training image are stored as YUV color space, you can fix it in line 258.
+2. Currently the frame is sized as 150x200 per Nvidia's recommendation. This could be not the most effective resolution.
 
-3. Currently the frame is sized as 150x200 per Nvidia's recommendation. This could be not the most effective resolution.
+3. Currently the logger resets if it detects you drive out of the bound.
 
-4. Currently the logger resets if it detects you drive out of the bound.
+### Automated log generation using pure pursuit
+
+In this year, we also provide you with an option to automatically generate training sample using the concept of pure pursuit method. For more information, you can check out [this video](https://www.coursera.org/lecture/intro-self-driving-cars/lesson-2-geometric-lateral-control-pure-pursuit-44N7x)
+
+The configurables are pretty much the same as the  human driver agent.
+
+If you would like to mass generate training samples on a headless server, under util folder you can find the tools for that.
 
 ### Log using an actual duckiebot
 
@@ -109,6 +121,8 @@ You will find the following files in the `duckieRoad` directory.
 │   ├── ROSBAG2                     # Your training on Date 2.
 │   └── ...
 |
+├── converted                       # Stores the converted log for you to train the duckiebot
+|
 ├── src                             # Scripts to convert ROS bag to pickle log
 │   ├── _loggers.py                 # Logger used to log the pickle log
 │   ├── extract_data_functions.py   # Helper function for the script
@@ -120,33 +134,37 @@ You will find the following files in the `duckieRoad` directory.
 └── pickle23.py                     # Convert the pickle2 style log produced to                                    pickle 3
 ```
 
-**You should change `extract_data.py` line 83 to the correct `duckiebot_name`.**
+https://docs.duckietown.org/daffy/duckietown-robotics-development/out/ros_logs.html
+
+**You should change `extract_data.py` line 83 to the correct `VEHICLE_NAME`.**
 
 First put your ROS bags in the bag_files folder. Then:
 
-    $ make docker_extract_data
+    $ make make_extract_container
 
-This should automatically create the logs desired. Once you see the container loops `Get Log!!!`, that means all convertions are done. Then first find your running docker:
+Next start the conversion docker:
 
-    $ docker container ls
+    $ make start_extract_data
 
-Once found, then:
+It will automatically mount the bags folder as well as the converted folder.
 
-    $ docker cp YOUR_CONTAINER_NAME:/workspace/data ../bag2log
-
-Rename the log file as `training_data.log` and put it same level as `pickle23.py` and convert the Pickle 2 style log to usable pickle 3 style:
-
-    $ python3 pickle23.py
-
-You should be able to get usable real robot log named `converted_from_pickle2.log`.
+**NOTE: When you run the make file, make sure you are in duckieRoad not in the src folder!**
 
 ## The duckieLog {#bc-duckieLog status=ready}
 
 This folder is set for your to put all of your duckie logs. Some helper functions are provided. However, they might not be the most efficient ones to run. It is here for your reference.
 
+### The log viewer
+
+To view the logs, under duckieLog folder:
+
+    $ python3 util/log_viewer.py --log_name YOUR_LOG_FILE_NAME.log
+
+### The log combiner
+
 `combiner.py` helps you combine different logs together.
 
-`pickle23.py` helps you convert pickle 2 log into pickle 3 log.
+
 
 ## The duckieTrainer {#bc-duckieTrainer status=ready}
 
@@ -181,7 +199,7 @@ In this folder you can find the following fils:
 
 To setup your environment, I strongly urge you to train the model using a system with GPU. Tensorflow and GPU sometimes can be confusing, and I recommend you to refer to tensorflow documentation for detailed information.
 
-Currently, the system requires `TensorFlow` 2.2.0. To setup TensorFlow, you can refer to the official TensorFlow install guide [here](https://www.tensorflow.org/install/gpu#ubuntu_1804_cuda_101).
+Currently, the system requires `TensorFlow` 2.2.1. To setup TensorFlow, you can refer to the official TensorFlow install guide [here](https://www.tensorflow.org/install/gpu#ubuntu_1804_cuda_101).
 
 Additionally, this training sytem utilizes `scikit-learn` and `numpy`. You can find a provided requirements.txt file that helps you install all the necessary packages.
 
@@ -231,15 +249,12 @@ This is a folder created just for you to keep track of all your potential models
 
 ## The duckieChallenger {#bc-duckieChallenger status=ready}
 
-This is the folder where you submit to challenge. The folder is structured as follows: 
+This is the folder where you submit to challenge. The folder is structured as follows:
 
 ```
 .
 ├── Dockerfile                      # Docker file used for compiling a container.
 |                                     Modify this file if you added file, etc.
-├── Dockerfile_LEGACY               # Legacy docker setting for models generated 
-|                                     prior to Tensorflow 2.0 
-|
 ├── helperFncs.py                   # Helper file for all helper functions.
 ├── requirements.txt                # All required pip3 install.
 ├── requirements.txt_LEGACY         # All required pip3 install for using with TF 1.x.
@@ -255,4 +270,15 @@ Or run locally:
 
     $ dts challenges evaluate
 
-If you are attempting a Tensorflow model that is trained and generated using Tensorflow≤2.0 you should switch the `Dockerfile` and `requirements.txt` with the two files that is ended with `_LEGACY` to prevent version issue. By switching to legacy version, you will use Tensorflow 1.15 and Keras 2.3.1. 
+If you are attempting a Tensorflow model that is trained and generated using Tensorflow≤2.0 you should switch the `Dockerfile` and `requirements.txt` with the two files that is ended with `_LEGACY` to prevent version issue. By switching to legacy version, you will use Tensorflow 1.15 and Keras 2.3.1.
+
+An example submission looks like [this](https://challenges.duckietown.org/v4/humans/submissions/11410)
+
+## Acknowledgement {#bc-acknowledge status=ready}
+
+We would like to thank:
+
+    [Anthony Courchesne](https://www.linkedin.com/in/courchesnea/)
+    [Kay (Kaiyi) Chen](mailto:kxc581@case.edu)
+
+For their help and support during the development of this baseline.
