@@ -60,6 +60,7 @@ the following options.
     "node-generic-resources": [ "NVIDIA-GPU=0" ]
 }
 ```
+
 Note: Don't forget, after you install your docker, you need to add user to "docker" group:
 
     $ sudo adduser `whoami` docker
