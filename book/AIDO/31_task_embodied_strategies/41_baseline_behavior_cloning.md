@@ -269,9 +269,4 @@ An example submission looks like [this](https://challenges.duckietown.org/v4/hum
 
 ## Acknowledgement {#bc-acknowledge status=ready}
 
-We would like to thank:
-
-    [Anthony Courchesne](https://www.linkedin.com/in/courchesnea/)
-    [Kay (Kaiyi) Chen](mailto:kxc581@case.edu)
-
-For their help and support during the development of this baseline.
+We would like to thank: [Anthony Courchesne](https://www.linkedin.com/in/courchesnea/) and [Kay (Kaiyi) Chen](mailto:kxc581@case.edu) for their help and support during the development of this baseline.
