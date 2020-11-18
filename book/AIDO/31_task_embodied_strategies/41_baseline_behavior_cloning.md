@@ -102,6 +102,10 @@ The configurables are pretty much the same as the human driver agent.
 
 If you would like to mass generate training samples on a headless server, under util folder you can find the tools for that.
 
+To start pure pursuit data generation:
+
+    $ python3 automatic.py
+
 ### Log using an actual duckiebot
 
 To log using an actual duckiebot, refer to [this](https://docs.duckietown.org/daffy/opmanual_duckiebot/out/take_a_log.html) tutorial on how to get a rosbag on a duckiebot.
