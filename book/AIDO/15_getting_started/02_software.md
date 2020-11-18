@@ -78,7 +78,7 @@ We need Git and [Git LFS][git-lfs].
 
 On Ubuntu you can install both using
 
-    $ apt-get install 
+    $ apt-get install git git-lfs
 
 ## Duckietown Shell {#cm-sw-dts}
 
