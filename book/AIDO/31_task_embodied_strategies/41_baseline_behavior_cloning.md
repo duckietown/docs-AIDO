@@ -18,7 +18,7 @@ This baseline refers to Nvidia's approach for behvaior cloning for autonomous ve
 
 Clone the [baseline Behavior Cloning repository](https://github.com/duckietown/challenge-aido_LF-baseline-behavior-cloning):
 
-    $ git clone -b master https://github.com/duckietown/challenge-aido_LF-baseline-behavior-cloning.git
+    $ git clone -b daffy https://github.com/duckietown/challenge-aido_LF-baseline-behavior-cloning.git
 
     $ cd challenge-aido_LF-baseline-behavior-cloning
 
