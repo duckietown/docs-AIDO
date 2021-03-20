@@ -37,10 +37,7 @@ Please let us know if can help.
 ## Docker  {#cm-sw-docker}
 
 Install Docker [from these instructions](https://docs.docker.com/install/).
-
-Note: [Mac users] Unfortunately Docker Desktop 2.4 and 2.5
-have known issues that prevent it to work with AI-DO.
-We suggest that you install Docker Desktop 2.3.x.
+ 
 
 If you want to use a GPU for evaluating your submission,
 edit your `/etc/docker/daemon.json` to include
