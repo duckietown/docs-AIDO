@@ -2,6 +2,7 @@
 
 This section describes the accounts that you need before competing.
 
+<!--
 
 ## Slack  account  {#cm-accounts-slack}
 
@@ -13,6 +14,8 @@ You can sign up at [this link][slack-signup].
 
 If you have problems in accessing Slack,
 please let us know at  the email [`help-accounts@duckietown.org`](mailto:help-accounts@duckietown.org).
+
+-->
 
 ## Docker Hub account {#cm-accounts-dockerhub}
 
