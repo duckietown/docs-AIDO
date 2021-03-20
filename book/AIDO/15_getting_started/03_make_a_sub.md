@@ -28,7 +28,7 @@ Jump into the directory:
 
 Submit using:
 
-    $ dts challenges submit --challenge aido5-LF-sim-validation
+    $ dts challenges submit --challenge aido-LF-sim-validation
 
 <img class="screencast" src="rec-submit.gif" width="100%"/>
 
@@ -82,10 +82,10 @@ The second way is to use the `dts challenges follow` command:
 
 The leaderboard for this challenge is available at the URL
 
-> [`https://challenges-stage.duckietown.org/humans/challenges/aido5-LF-sim-validation/leaderboard`][leaderboard]
+> [`https://challenges-stage.duckietown.org/humans/challenges/aido-LF-sim-validation/leaderboard`][leaderboard]
 
 
-[leaderboard]: https://challenges-stage.duckietown.org/humans/challenges/aido5-LF-sim-validation/leaderboard
+[leaderboard]: https://challenges-stage.duckietown.org/humans/challenges/aido-LF-sim-validation/leaderboard
 
 In general all of the challenge leaderboards can be viewed at the front page [the challenges website][challenges].
 
@@ -99,7 +99,7 @@ You can also evaluate the submission *locally*.  This is useful for debugging an
 
 Use this command:
 
-    $ dts challenges evaluate  --challenge aido5-LF-sim-validation
+    $ dts challenges evaluate  --challenge aido-LF-sim-validation
 
 ## Troubleshooting
 
