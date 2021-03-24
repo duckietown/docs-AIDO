@@ -28,7 +28,7 @@ Jump into the directory:
 
 Submit using:
 
-    $ dts challenges submit --challenge aido-LF-sim-validation
+    $ dts challenges submit --challenge aido-hello-sim-validation
 
 <img class="screencast" src="rec-submit.gif" width="100%"/>
 
