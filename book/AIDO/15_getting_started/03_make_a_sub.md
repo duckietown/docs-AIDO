@@ -82,10 +82,9 @@ The second way is to use the `dts challenges follow` command:
 
 The leaderboard for this challenge is available at the URL
 
-> [`https://challenges-stage.duckietown.org/humans/challenges/aido-LF-sim-validation/leaderboard`][leaderboard]
+> [`https://challenges.duckietown.org/v4/humans/challenges/aido-hello-sim-validation/leaderboard`][leaderboard]
 
-
-[leaderboard]: https://challenges-stage.duckietown.org/humans/challenges/aido-LF-sim-validation/leaderboard
+[leaderboard]: https://challenges.duckietown.org/v4/humans/challenges/aido-hello-sim-validation/leaderboard
 
 In general all of the challenge leaderboards can be viewed at the front page [the challenges website][challenges].
 
