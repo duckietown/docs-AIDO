@@ -42,7 +42,7 @@ In side this folder you will find two types of duckieSchool: simulator based duc
 
 To install duckietown Gym and all the necessary dependencies:
 
-    pip3 install --use-feature=2020-resolver -r requirements.txt
+    pip3 install  -r requirements.txt
 
 ### Use joystick to drive
 

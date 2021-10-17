@@ -45,11 +45,11 @@ The "Duckietown" baseline is based on the [ROS template](#ros-template).
 One important facet of the Dockerfile is that we use a "multi-stage build":
 
 ```
-FROM ${AIDO_REGISTRY}/duckietown/dt-car-interface:${BASE_TAG} AS dt-car-interface
+FROM ${DOCKER_REGISTRY}/duckietown/dt-car-interface:${BASE_TAG} AS dt-car-interface
 
-FROM ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-template-ros:${BASE_TAG} AS template
+FROM ${DOCKER_REGISTRY}/duckietown/challenge-aido_lf-template-ros:${BASE_TAG} AS template
 
-FROM ${AIDO_REGISTRY}/duckietown/dt-core:${BASE_TAG} AS base
+FROM ${DOCKER_REGISTRY}/duckietown/dt-core:${BASE_TAG} AS base
 ```
 
 This allows us to take come elements from each of the first two base images, and copy them into the `dt-core` image:

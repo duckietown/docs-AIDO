@@ -1,6 +1,5 @@
 options=env -u DTSERVER -u DTSHELL_COMMANDS -u TWINE_USERNAME -u TWINE_PASSWORD  -u TWINE_REPOSITORY_URL -u PIP_INDEX_URL
 
-# -u AIDO_REGISTRY
 all: \
 	rec-challenges-info.gif \
 	rec-submit.gif \
@@ -18,4 +17,4 @@ clean:
 %.gif: %.cast
 	docker run --rm -v $(PWD):/data asciinema/asciicast2gif -s 1 $< $@
 
-# -w 120 -h 30 
+# -w 120 -h 30
