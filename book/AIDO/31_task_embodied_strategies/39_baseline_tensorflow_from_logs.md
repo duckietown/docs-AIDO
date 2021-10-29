@@ -1,6 +1,6 @@
 # Imitation Learning from Logs {#embodied_il_logs status=beta}
 
-In this part, you can find all the required steps in order to make a submission based on Imitation Learning with Tensorflow for the lane following task using real log data. It can be used as a starting point for any of the [`LF`](#challenge-LF), [`LFV`](#challenge-LF_v), and [`LFVI`](#challenge-LFVI) challenges.
+In this part, you can find all the required steps in order to make a submission based on Imitation Learning with Tensorflow for the lane following task using real log data. It can be used as a starting point for any of the [`LF`](#challenge-LF), [`LFV`](#challenge-LFV, and [`LFI`](#challenge-LFI) challenges.
 
 <div class='requirements' markdown='1'>
 

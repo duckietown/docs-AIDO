@@ -7,8 +7,12 @@ The [AI Driving Olympics][aido] (AI-DO) is a set of competitions with the object
 
 For a detailed description of the scientific objectives and outcomes please see [our recent paper about the AI-DO 1 at NeurIPS](https://arxiv.org/pdf/1903.02503.pdf).
 
-<dtvideo src="vimeo:362452613"/>
-
+<figure id="aido-4-video">
+<figcaption>
+The AI Driving Olympics at ICRA 2020
+</figcaption>
+<dtvideo src="vimeo:629305710"/>
+</figure>
 <minitoc/>
 
 ## History {#aido-welcome-history}
@@ -22,8 +26,9 @@ For a detailed description of the scientific objectives and outcomes please see 
 
 - **AI-DO 4** was supposed to be in conjunction with **ICRA 2020**, but was canceled due to COVID-19. 
 
-- **AI-DO 5** is in conjunction with **NeurIPS 2020**.
+- **AI-DO 5** was in conjunction with **NeurIPS 2020**.
 
+- **AI-DO 6** is in conjunction with **NeurIPS 2021**.
 
 
 <figure nonumber="1">
@@ -33,7 +38,7 @@ For a detailed description of the scientific objectives and outcomes please see 
 
 ## Leagues
 
-There are currently two leagues in the AI Driving Olympics.
+There are currently three leagues in the AI Driving Olympics.
 
 The **Urban League** is based on the [Duckietown platform][duckietown], and  includes a series of tasks of increasing complexity. For each task, we provide tools for competitors to use in the form of simulators, logs, code templates, baseline implementations and low-cost access to robotic hardware. We evaluate submissions in simulation online, on standardized hardware environments, and finally at the competition event.
 
@@ -47,23 +52,18 @@ The **Advanced Perception League** is organized by Motional (ex nuTonomy, Aptiv 
 This book describes the urban league. All information about the Advanced Perception
 League is at [nuScenes.org](https://nuscenes.org).
 
+The **Racing League** is organized by the AWS Deepracer team. All information about the racing league is available
+on [aicrowd.com](https://www.aicrowd.com/challenges/neurips-2021-aws-deepracer-ai-driving-olympics-challenge)
+
+
+## What's new in the Urban League in AI-DO 6 {#whats-new}
 
 
 
-## What's new in the Urban League in AI-DO 5 {#whats-new}
+There have been many cool new improvements for the 6th edition of the AI-DO Urban League:
 
-
-
-There have been many cool new improvements for the 5 edition of the AI-DO Urban League:
-
-- The robots in the simulators and the new DB19 Duckiebots are equipped with **encoders**.
-- In [the new `LFP` challenge](#challenge-LFP) there are now duckie-pedestrians to avoid.
-- In [the `LFV_multi` challenge](#challenge-LFV_multi) you control **all** of the robots in a multi-vehicle setting, instead of just one. 
-- The agents can now control the **LEDs** in the simulator.
-
-
-Furthermore, there were many improvements to the back-end and baseline workflows to help you get started.
-
+- The challenges are now compatible the new [DB21 Duckiebots](https://get.duckietown.com/products/duckiebot-db21-m) that 
+have Jetson Nanos with GPUs and were used for the [Self-Driving Cars with Duckietown MOOC on EdX](https://www.edx.org/course/self-driving-cars-with-duckietown).
 
 
 
@@ -137,6 +137,7 @@ If you are stuck try one of the following things:
 
 - Look through the contents of this documentation using the links on the left. Note that the "Parts" have many "Chapters" that you can see when you click on the Part title,
 - Join our [slack community](https://join.slack.com/t/duckietown/shared_invite/enQtNTU0Njk4NzU2NTY1LWM2YzdlNmJmOTg4MzAyODc2YTI3YTc5MzE2MThkZGUwYTFkZWQ4M2ZlZGU1YTZhYjg5YTgzNDkyMzI2ZjNhZWE),
+- Look on the [Duckietown Stack Overflow](https://stackoverflow.com/c/duckietown/) to see if someone already answered your question
 - If you are sure you actually found a bug, file a github issue in the appropriate repo.
 
 
@@ -154,6 +155,17 @@ If you use the AI-DO platform in your work and want to cite it please use:
   journal={arXiv preprint arXiv:1903.02503},
   year={2019}
 }
+```
+
+If you use the Duckietown platform in your work and want to cite it please use:
+```
+@INPROCEEDINGS{PaullICRA2017,
+    author={Paull, Liam and Tani, Jacopo and Ahn, Heejin and Alonso-Mora, Javier and Carlone, Luca and Cap, Michal and Chen, Yu Fan and Choi, Changhyun and Dusek, Jeff and Fang, Yajun and Hoehener, Daniel and Liu, Shih-Yuan and Novitzky, Michael and Okuyama, Igor Franzoni and Pazis, Jason and Rosman, Guy and Varricchio, Valerio and Wang, Hsueh-Cheng and Yershov, Dmitry and Zhao, Hang and Benjamin, Michael and Carr, Christopher and Zuber, Maria and Karaman, Sertac and Frazzoli, Emilio and Del Vecchio, Domitilla and Rus, Daniela and How, Jonathan and Leonard, John and Censi, Andrea},
+    booktitle={2017 IEEE International Conference on Robotics and Automation (ICRA)}, title={Duckietown: An open, inexpensive and flexible platform for autonomy education and research},
+    year={2017},
+    volume={},
+    number={},
+    pages={1497-1504},
 ```
 
 [aido]: https://driving-olympics.ai/

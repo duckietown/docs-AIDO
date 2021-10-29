@@ -1,4 +1,4 @@
-# Challenge `LFVI` {#challenge-LFVI status=draft}
+# Challenge `LFVI-full-multi`  {#challenge-LFVI-multi-stateful status=ready}
 
 The third challenge of the *AI Driving Olympics* is "lane following with dynamic vehicles and intersections" (`LFVI`).
 This challenge is an extension of Challenge `LF` to include map configurations that are not just loops but now contain intersections which must be negotiated. 
@@ -25,7 +25,7 @@ The current versions of the lane following with vehicles in simulation are `aido
     <img style='width:30em' src="submission-output-lfvi.png"/>
 </figure>
 
-## Templates {status=draft}
+## Templates {status=ready}
 
 To get started, try one of the existing templates:
 
@@ -42,7 +42,7 @@ or baseline algorithms:
  - [Imitation learning from real logs](#embodied_il_logs) (with tensorflow).
 
 
-### `aido2-LFVI-sim-testing` Details {#aido2-LFVI-sim-testing status=ready}
+### `aido6-LFVI-sim-testing` Details {#aido2-LFVI-sim-testing status=ready}
 
  - [Challenge overview](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFVI-sim-testing)
  - [Leaderboard](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFVI-sim-testing/leaderboard)
@@ -53,7 +53,7 @@ or baseline algorithms:
 
 The details for "experiment manager", "simulator", and "scenario maker" parameters may be of interest and are [available here](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFVI-sim-testing) (Under "Details").
 
-### `aido2-LFVI-sim-validation` Details {#aido2-LFVI-sim-validation status=ready}
+### `aido6-LFVI-sim-validation` Details {#aido2-LFVI-sim-validation status=ready}
 
  - [Challenge overview](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFVI-sim-validation)
  - [Leaderboard](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFVI-sim-validation/leaderboard)

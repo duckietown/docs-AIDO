@@ -1,4 +1,4 @@
-# Challenge `LFV_multi` {#challenge-LFV_multi status=ready}
+# Challenge `LFV_multi` {#challenge-LFV_multi status=draft}
 
 This challenge is an extension of Challenge `LF` to include additional rules of the road and other moving vehicles. In this challenge your agent embodies **all* of the vehicles on the road. 
 
