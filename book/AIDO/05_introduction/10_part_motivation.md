@@ -20,7 +20,7 @@ There are different challenges, different computational resource regimes and dif
 * [Lane following (LF)](#challenge-LF)
 * [Lane following with vehicles (LFV)](#challenge-LFV)
 * [Lane following with intersections (LFVI)](#challenge-LFI)
-* [Lane following with multiple vehicles and intersections where state information is given (LFVI-stateful)](#challenge-LFVI-multi-stateful)
+* [Lane following with multiple vehicles and intersections where state information is given (LFVI--multi-stateful)](#challenge-LFVI-multi-stateful)
 
 ### Computational resources
 

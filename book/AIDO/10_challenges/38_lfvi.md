@@ -1,8 +1,11 @@
 # Challenge `LFVI-full-multi`  {#challenge-LFVI-multi-stateful status=ready}
 
-The third challenge of the *AI Driving Olympics* is "lane following with dynamic vehicles and intersections" (`LFVI`).
-This challenge is an extension of Challenge `LF` to include map configurations that are not just loops but now contain intersections which must be negotiated. 
-
+The fourth challenge of the *AI Driving Olympics* is "lane following with dynamic vehicles and intersections" (`LFVI`).
+This challenge is an extension of Challenge `LF` to include map configurations that are not just 
+loops but now contain intersections which must be negotiated. 
+Your agent will control all of the Duckiebots in the map. We make things somewhat simpler by providing
+directly the state information of the Duckiebots. As a result, this challenge will only be evaluated
+in simulation
 
 
 <figure figure-id="fig:lane-following-vehicles-intersections-LFVI">
@@ -16,9 +19,12 @@ Again we ask participants to submit code allowing the Duckiebot to drive on the 
 <!-- * This challenge uses the Duckietown challenge infrastructure. The precise definition of the challenge is in the [challenge definition repository](https://github.com/duckietown/challenge-aido_LF) -->
 
 
-## `LFVI` in Simulation {#challenge-aido2_lfvi status=ready}
+## `LFVI_multi_full` in Simulation {#challenge-aido_lfvi status=ready}
 
-The current versions of the lane following with vehicles in simulation are `aido2-LFVI-sim-testing` and `aido2-LF-sim-validation`. These two challenges are identical except for the output that you are allowed to see. In the case of `testing` you will be able to see performance of your agent ([](#fig:submission-output-lfvi))  and you will be able to download the logs and artifacts. 
+The current versions of the lane following with vehicles in simulation are `aido-LFVI_multi-sim-testing` 
+and `aido-LFVI_multi-sim-validation`. These two challenges are identical except for the output that you are 
+allowed to see. In the case of `testing` you will be able to see performance of your agent 
+([](#fig:submission-output-lfvi))  and you will be able to download the logs and artifacts. 
 
 <figure figure-id="fig:submission-output-lfvi">
     <figcaption>Visual output for submission</figcaption>
@@ -27,43 +33,39 @@ The current versions of the lane following with vehicles in simulation are `aido
 
 ## Templates {status=ready}
 
-To get started, try one of the existing templates:
+## Templates and Baselines {status=ready}
 
-* The [random template](#minimal-template) is the most flexible
-* The [TensorFlow template](#tensorflow-template) is the place to submit a [TensorFlow](https://www.tensorflow.org/) submission
-* The [PyTorch template](#pytorch-template) is the place to submit a [PyTorch](https://pytorch.org/) submission
-* The [ROS template](#ros-template) is the place to submit a submission using the [Robot Operating System](http://www.ros.org/). 
+To get started, try one of the existing [templates](#part:embodied), which are
+minimal setups that do random things but are functions, or the [baselines](#part:embodied-strategies)
+which are instantiations of the templates that implement some algorithms, but probably not in an optimal 
+way. Many of the past AI-DO winners are in the baseline solutions.
 
-or baseline algorithms:
+Note that in the case of this challenge you will need to update the protocol that is used. 
 
- - [Classical Duckietown stack](#ros-baseline),
- - [Reinforcement learning](#embodied_rl) (with PyTorch),
- - [Imitation learning from simulation](#embodied_il_sim) (with tensorflow),
- - [Imitation learning from real logs](#embodied_il_logs) (with tensorflow).
+TODO: provide more details. 
+
+You may also look at the [minimal agent with full state information](https://github.com/duckietown/challenge-aido_LF-minimal-agent-full)
+for an example of how to do this.
 
 
-### `aido6-LFVI-sim-testing` Details {#aido2-LFVI-sim-testing status=ready}
+### `aido-LFVI_multi-sim-testing` Details {#aido-LFVI_multi-sim-testing status=ready}
 
- - [Challenge overview](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFVI-sim-testing)
- - [Leaderboard](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFVI-sim-testing/leaderboard)
- - [All submissions](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFVI-sim-testing/submissions)
+ - [Challenge overview](https://challenges.duckietown.org/v4/humans/challenges/aido-LFVI_multi-sim-testing)
+ - [Leaderboard](https://challenges.duckietown.org/v4/humans/challenges/aido-LFVI_multi-sim-testing/leaderboard)
+ - [All submissions](https://challenges.duckietown.org/v4/humans/challenges/aido-LFVI_multi-sim-testing/submissions)
 
 
 <!-- Interaction protocol: [`aido2_db18_agent-z2`](#aido2_db18_agent-z2) -->
 
 The details for "experiment manager", "simulator", and "scenario maker" parameters may be of interest and are [available here](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFVI-sim-testing) (Under "Details").
 
-### `aido6-LFVI-sim-validation` Details {#aido2-LFVI-sim-validation status=ready}
+### `aido-LFVI_multi-sim-validation` Details {#aido-LFVI_multi-sim-validation status=ready}
 
- - [Challenge overview](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFVI-sim-validation)
- - [Leaderboard](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFVI-sim-validation/leaderboard)
- - [All submissions](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFVI-sim-validation/submissions)
+ - [Challenge overview](https://challenges.duckietown.org/v4/humans/challenges/aido-LFVI_multi-sim-validation)
+ - [Leaderboard](https://challenges.duckietown.org/v4/humans/challenges/aido-LFVI_multi-sim-validation/leaderboard)
+ - [All submissions](https://challenges.duckietown.org/v4/humans/challenges/aido-LFVI_multi-sim-validation/submissions)
 
 
 <!-- Interaction protocol: [`aido2_db18_agent-z2`](#aido2_db18_agent-z2) -->
 
-
-## `LFVI` in the Robotarium {#challenge-aido2_lfvi_robotarium status=draft}
-
-Details coming soon...
 

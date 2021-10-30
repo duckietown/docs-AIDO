@@ -13,7 +13,6 @@ This challenge is an extension of Challenge `LF` to include additional rules of 
 
 Again we ask participants to submit code allowing the Duckiebot to drive on the right-hand side of the street within Duckietown. Due to interactions with other Duckiebots, a successful solution will likely not be completely \emph{reactive}. 
 
-<!-- * This challenge uses the Duckietown challenge infrastructure. The precise definition of the challenge is in the [challenge definition repository](https://github.com/duckietown/challenge-aido_LF) -->
 
 
 ## `LFV` in Simulation {#challenge-aido2_lfv status=ready}
@@ -25,47 +24,52 @@ The current versions of the lane following with vehicles in simulation are `aido
     <img style='width:30em' src="submission-output-lfv.png"/>
 </figure>
 
-## Templates {status=draft}
+## Templates and Baselines {status=ready}
 
-To get started, try one of the existing templates:
-
-* The [random template](#minimal-template) is the most flexible
-* The [TensorFlow template](#tensorflow-template) is the place to submit a [TensorFlow](https://www.tensorflow.org/) submission
-* The [PyTorch template](#pytorch-template) is the place to submit a [PyTorch](https://pytorch.org/) submission
-* The [ROS template](#ros-template) is the place to submit a submission using the [Robot Operating System](http://www.ros.org/). 
-
-or baseline algorithms:
-
- - [Classical Duckietown stack](#ros-baseline),
- - [Reinforcement learning](#embodied_rl) (with PyTorch),
- - [Imitation learning from simulation](#embodied_il_sim) (with tensorflow),
- - [Imitation learning from real logs](#embodied_il_logs) (with tensorflow).
+To get started, try one of the existing [templates](#part:embodied), which are
+minimal setups that do random things but are functions, or the [baselines](#part:embodied-strategies)
+which are instantiations of the templates that implement some algorithms, but probably not in an optimal 
+way. Many of the past AI-DO winners are in the baseline solutions.
 
 
-### `aido2-LFV-sim-testing` Details {#aido2-LFV-sim-testing status=ready}
+### `aido-LFV-sim-testing` Details {#aido-LFV-sim-testing status=ready}
 
- - [Challenge overview](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFV-sim-testing)
- - [Leaderboard](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFV-sim-testing/leaderboard)
- - [All submissions](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFV-sim-testing/submissions)
+ - [Challenge overview](https://challenges.duckietown.org/v4/humans/challenges/aido-LFV-sim-testing)
+ - [Leaderboard](https://challenges.duckietown.org/v4/humans/challenges/aido-LFV-sim-testing/leaderboard)
+ - [All submissions](https://challenges.duckietown.org/v4/humans/challenges/aido-LFV-sim-testing/submissions)
 
 
 <!-- Interaction protocol: [`aido2_db18_agent-z2`](#aido2_db18_agent-z2) -->
 
 The details for "experiment manager", "simulator", and "scenario maker" parameters may be of interest and are [available here](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFV-sim-testing) (Under "Details").
 
-### `aido2-LFV-sim-validation` Details {#aido2-LFV-sim-validation status=ready}
+### `aido-LFV-sim-validation` Details {#aido-LFV-sim-validation status=ready}
 
- - [Challenge overview](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFV-sim-validation)
- - [Leaderboard](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFV-sim-validation/leaderboard)
- - [All submissions](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFV-sim-validation/submissions)
+ - [Challenge overview](https://challenges.duckietown.org/v4/humans/challenges/aido-LFV-sim-validation)
+ - [Leaderboard](https://challenges.duckietown.org/v4/humans/challenges/aido-LFV-sim-validation/leaderboard)
+ - [All submissions](https://challenges.duckietown.org/v4/humans/challenges/aido-LFV-sim-validation/submissions)
 
 
 <!-- Interaction protocol: [`aido2_db18_agent-z2`](#aido2_db18_agent-z2) -->
 
 
-## `LFV` in the Robotarium {#challenge-aido2_lfv_robotarium status=draft}
+## `LFV` in the Duckietown Autolab {#challenge-aido_lfv-real status=ready}
 
-Details coming soon...
+The current version of the lane following real robot challenge is  `aido-LFV-real-validation`. 
+
+Note that to test the performance of your agent on the real robot yourself, you can follow
+[the instructions to run your agent on your Duckiebot](#challenge-LF_duckiebot)
+
+
+### `aido-LFV-real-validation` Details {#aido-LFV-real-validation status=ready}
+
+- [Challenge overview](https://challenges.duckietown.org/v4/humans/challenges/aido-LFV-real-validation)
+- [Leaderboard](https://challenges.duckietown.org/v4/humans/challenges/aido-LFV-real-validation/leaderboard)
+- [All submissions](https://challenges.duckietown.org/v4/humans/challenges/aido-LFV-real-validation/submissions)
+
+
+<!-- Interaction protocol: [`aido2_db18_agent-z2`](#aido2_db18_agent-z2) -->
+
 
 
 

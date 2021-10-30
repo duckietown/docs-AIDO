@@ -87,7 +87,7 @@ have Jetson Nanos with GPUs and were used for the [Self-Driving Cars with Duckie
     vertical-align: top;
   } 
 </style>
-
+<!--
 <figure>
   <figcaption>
   The three challenges of AI-DO 5.
@@ -116,7 +116,7 @@ have Jetson Nanos with GPUs and were used for the [Self-Driving Cars with Duckie
     </tr>
   </table>
 </figure>
-
+-->
 ## How to use this documentation {#how-to-use}
 
 If you would like to compete in the AI-DO Urban League, you will probably want to do something like:
