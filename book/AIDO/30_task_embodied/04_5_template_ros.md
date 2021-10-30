@@ -1,6 +1,9 @@
 # ROS Template {#ros-template status=ready}
 
-This section describes the basic procedure for making a submission with a model trained in using the [Robot Operating System](http://www.ros.org/). It can be used as a starting point for any of the [`LF`](#challenge-LF), [`LFV_multi`](#challenge-LFV_multi), and [`LFP`](#challenge-LFP) challenges.
+This section describes the basic procedure for making a submission with an agent
+using the [Robot Operating System](http://www.ros.org/). 
+It can be used as a starting point for any of the [`LF`](#challenge-LF), [`LFV`](#challenge-LFV), 
+and [`LFI`](#challenge-LFI) challenges.
 
 <div class='requirements' markdown='1'>
 
@@ -14,6 +17,10 @@ Result:  You make a submission to all of the `LF*` challenges and can view their
 
 </div>
 
+<figure id="aido5-webinar-2-ros">
+    <figcaption>ROS template</figcaption>
+    <dtvideo src="vimeo:478452025"/>
+</figure>
 
 ## Quickstart 
 
@@ -54,16 +61,18 @@ where `![SUBMISSION_NUMBER]` should be replaced with the number of the submissio
 
 ## Anatomy of the submission
 
-The submission consists of all of the basic files that required for a [basic submission](#minimal-template). Below we will highlight the specifics with respect to this template. 
+The submission consists of all of the basic files that required 
+for a [basic submission](#minimal-template). 
+Below we will highlight the specifics with respect to this template. 
 
 
 There are also a few other **new** files and folders in this submission:
 
     launchers/
-    rosagent.py
     submission_ws/
 
-and additionally the `solution.py` and `Dockerfile` have changed. We will describe each of these in detail. 
+and additionally the `solution.py` is inside the `submission_ws` folder and `Dockerfile` have changed.
+We will describe each of these in detail. 
 
 Note: If you don't care about the details, or just want to get started, you can start by adding new ROS packages into the `submission_ws`.
 
@@ -81,11 +90,16 @@ RUN . /opt/ros/&#36;{ROS_DISTRO}/setup.sh &#38;&#38; \
 </code>
 </pre>
 
-Also note that instead of just running `solution.py` when we enter the container, we now run a "launcher" (in the `launchers` folder) called `run_and_start.sh`. For details see [](#ros-template-launchers)
+Also note that instead of just running `solution.py` when we enter the container, 
+we now run a "launcher" (in the `launchers` folder) called `run_and_start.sh`. 
+For details see [](#ros-template-launchers).
 
 
 
-Also note that in this Dockerfile we are not copying the entire directory over, instead we are copying files individually (this is actually more efficient). So if you add new files that you are using that are outside of the `submission_ws` and `launchers` folders, you will have to add additional `COPY` commands. 
+Also note that in this Dockerfile we are not copying the entire directory over, 
+instead we are copying files individually (this is actually more efficient). 
+So if you add new files that you are using that are outside of the `submission_ws` and `launchers` 
+folders, you will have to add additional `COPY` commands. 
 
 
 
@@ -93,27 +107,29 @@ Also note that in this Dockerfile we are not copying the entire directory over, 
 
 **You probably don't need to change this file.**
 
-We instantiate a `ROSAgent()` (see [](#ros-template-rosagent-py))  and this becomes the object that handles interfacing with the ROS interface. This includes the publishing of imagery and encoder data to ROS:
+We instantiate a `ROSAgent()` (see [](#ros-template-rosagent-py))  and this becomes the object that handles interfacing with the ROS interface. 
+This includes the publishing of imagery and encoder data to ROS:
 
 ```python
-    self.agent._publish_img(obs)
-    self.agent._publish_info()
-    self.agent.publish_odometry(
-        odometry.resolution_rad,
-        odometry.axis_left_rad,
-        odometry.axis_right_rad
-    )
+    def on_received_observations(self, data: DB20ObservationsWithTimestamp, context: Context):
+        camera = data.camera
+        odometry = data.odometry
+        # context.info(f'received obs camera {camera.timestamp} odometry {odometry.timestamp}')
+
+        if camera.timestamp != self.last_camera_timestamp or True:
+            self.agent.publish_img(camera.jpg_data, camera.timestamp)
+            self.agent.publish_info(camera.timestamp)
+            self.last_camera_timestamp = camera.timestamp
+
+        if odometry.timestamp != self.last_odometry_timestamp or True:
+            self.agent.publish_odometry(
+                odometry.resolution_rad, odometry.axis_left_rad, odometry.axis_right_rad, odometry.timestamp
+            )
+            self.last_odometry_timestamp = odometry.timestamp
 ```
 
-and the setting of actions and LEDs:
-
-```python
-    pwm_left, pwm_right = self.agent.action
-    pwm_commands = PWMCommands(motor_left=pwm_left, motor_right=pwm_right)
-    led_commands = LEDSCommands(grey, grey, grey, grey, grey)
-    commands = DB20Commands(pwm_commands, led_commands)
-```
-
+Notice now that the protocol includes timestamps which are used to tag the data,  
+and that a new camera image is not published if the timestamp does not change. 
 
 
 ### `rosagent.py` {#ros-template-rosagent-py}
@@ -124,9 +140,9 @@ and the setting of actions and LEDs:
 
 The main functions are:
 
- - `_publish_img(self, obs)`, which takes the camera observation from the environment, and publishes it to the topic that you specify in the constructor of the `ROSAgent` 
- - `_publish_odometry(self, resolution_rad, left_rad, right_rad)`, which take the encoder data from the robot, and publishes it to the topic specified in the constructor of the `ROSAgent`. 
- - `_ik_action_cb(msg)`, listens on the inverse kinematics action topic, and assigns it to `self.action`. 
+ - `def publish_img(self, obs: bytes, timestamp: float):`, which takes the camera observation from the environment, and publishes it to the topic that you specify in the constructor of the `ROSAgent` 
+ - `def publish_odometry(self, resolution_rad: float, left_rad: float, right_rad: float, timestamp: float):`, which take the encoder data from the robot, and publishes it to the topic specified in the constructor of the `ROSAgent`. 
+ - `def _ik_action_cb(self, msg):`, listens on the inverse kinematics action topic, and assigns it to `self.action`. 
 
 
 
@@ -138,13 +154,20 @@ The bash scripts in the `launchers` directory are there to help you get everythi
 <code trim="1" class="html">
 #!/bin/bash
 
-roscore &#38;
 source /environment.sh
+
 source /opt/ros/noetic/setup.bash
-source /code/catkin_ws/devel/setup.bash
-source /code/submission_ws/devel/setup.bash
-python3 solution.py &#38;
-roslaunch --wait random_action random_action_node.launch
+source /code/catkin_ws/devel/setup.bash --extend
+source /code/submission_ws/devel/setup.bash --extend
+
+set -eux
+
+dt-exec-BG roscore
+
+dt-exec-BG roslaunch --wait random_action random_action_node.launch
+dt-exec-FG roslaunch --wait agent agent_node.launch || true
+
+copy-ros-logs
 
 </code>
 </pre>
@@ -152,11 +175,14 @@ roslaunch --wait random_action random_action_node.launch
 You are free to modify this as you see fit, but a few things are important to consider. 
 
  1. The order that we `source` things matters. If we have a package with the same name in two workspaces, ROS will run whichever one got **sourced last**. 
- 2. If you don't put things in the background (with &#38;) then if those commands don't end, subsequent commands will not get run.
+ 2. If you don't put things in the background (with `dt-exec-BG`) then if those commands don't end, subsequent commands will not get run.
  3. The `--wait` flag in the `roslaunch` command is recommended so that `roslaunch` will wait until the `roscore` has finished initializing. 
 
 
 ### `submission_ws/` {#ros-template-submission_ws}
 
-This is a standard ROS catkin workspace. You can populate it with [ROS packages](http://wiki.ros.org/ROS/Tutorials/CreatingPackage). You will notice that the `random_action` package is already in the workspace. This can be used as a template for creating more packages. The main elements are launch files in the `launch` folder (you will see the `random_action_node.launch` which is launched by the `run_and_start.sh` launcher), the `src` folder which contains the ROS nodes, and the `include` folder which contains your python includes (you can also write nodes in C++ or other languages if you prefer). 
+This is a standard ROS catkin workspace. You can populate it with [ROS packages](http://wiki.ros.org/ROS/Tutorials/CreatingPackage). 
+You will notice that the `random_action` package is already in the workspace. This can be used as a template for creating more packages. 
+The main elements are launch files in the `launch` folder (you will see the `random_action_node.launch` which is launched by the `run_and_start.sh` launcher), 
+the `src` folder which contains the ROS nodes, and the `include` folder which contains your python includes (you can also write nodes in C++ or other languages if you prefer). 
 

@@ -4,13 +4,19 @@ This section describes the basic procedure for making a submission using the [Ro
 
 <div class='requirements' markdown='1'>
 
-Requires: That you have made a submission with the [ROS template](#ros-template) and you understand how it works.
+Requires: That you have made a submission with the [ROS template](#ros-template) and you 
+understand how it works.
 
 Requires: You already know something about ROS.
 
 Result: You have a competitive submission.
 
 </div>
+
+<figure id="aido5-webinar-2-baseline">
+    <figcaption>ROS template</figcaption>
+    <dtvideo src="vimeo:478452025"/>
+</figure>
 
 ## Quickstart
 
@@ -68,27 +74,39 @@ The remainder of the Dockerfile is very similar to the Dockerfile in the [ROS te
 
 ### `solution.py` {#duckietown-baseline-solution-py}
 
-The `solution.py` has no changes compared to the [ROS template](#ros-template). It is duplicated here for clarity, in the event that you wanted to, for example change the launcher that was run in the final `CMD` line. 
+There is not `solution.py` because it is inhereted from the [ROS template](#ros-template). 
+In the event that you wanted to, for example change the launcher that was run in the final `CMD` line. 
 
 ### `launchers/` {#duckietown-baseline-launchers}
 
 There is only one "launcher", and it deviates slightly from the one in the [ROS template](#ros-template):
 
-<pre trim="1" class="html">
-<code trim="1" class="html">
+```bash
 #!/bin/bash
-roscore &#38;
+
 source /environment.sh
+
 source /opt/ros/noetic/setup.bash
-source /code/catkin_ws/devel/setup.bash
-source /code/submission_ws/devel/setup.bash
-python3 solution.py &#38;
-roslaunch --wait car_interface all.launch veh:=&#36;VEHICLE_NAME &#38;
-roslaunch --wait duckietown_demos lane_following.launch &#38;
-sleep 5
-rostopic pub /&#36;VEHICLE_NAME/fsm_node/mode duckietown_msgs/FSMState '{header: {}, state: "LANE_FOLLOWING"}'
-</code>
-</pre>
+source /code/catkin_ws/devel/setup.bash --extend
+source /code/solution/devel/setup.bash --extend
+source /code/submission_ws/devel/setup.bash --extend
+
+set -eux
+
+dt-exec-BG roscore
+
+dt-exec-BG roslaunch --wait car_interface all.launch veh:="${VEHICLE_NAME}"
+dt-exec-BG roslaunch --wait duckietown_demos lane_following.launch
+
+sleep 5 # for some reason we still need this so that nodes can startup
+dt-exec-BG roslaunch --wait duckietown_demos set_state.launch veh:="${VEHICLE_NAME}" state:="LANE_FOLLOWING"
+
+rostopic list
+# foreground
+dt-exec-FG roslaunch --wait agent agent_node.launch || true
+rostopic list
+copy-ros-logs
+```
 
 Here we launch the [`lane_following.launch` launch file from the `duckietown_demos` package](https://github.com/duckietown/dt-core/blob/daffy/packages/duckietown_demos/launch/lane_following.launch). We don't go into the intricate details of everything that is run in this launch file here, but some of the more consequential nodes which are getting launched are the following:
 
@@ -96,6 +114,8 @@ Here we launch the [`lane_following.launch` launch file from the `duckietown_dem
 - [ground_projection_node](https://github.com/duckietown/dt-core/tree/daffy/packages/ground_projection): Used to project the lines onto the ground plane using the camera extrinsic calibration.
 - [lane_filter_node](https://github.com/duckietown/dt-core/tree/daffy/packages/lane_filter): Used to take the ground projected line segments and estimate the Duckiebot's position and orientation in the lane.
 - [lane_controller_node](https://github.com/duckietown/dt-core/tree/daffy/packages/lane_control): Used to take the estimate of the robot and generate a reference linear and angular velocities for the Duckiebot.
+
+In the event that you wanted to, for example change the launcher that was run in the final `CMD` line. 
 
 
 ### `submission_ws/`
@@ -107,7 +127,8 @@ Note: Importantly, your `submissions_ws` is sourced **after** the existing `catk
 
 ## Local Development Workflow {#duckietown-baseline-local-workflow}
 
-For rapid local development, you can make use of the `dts exercises` API, developed to build and test exercises and assignments in class settings. 
+For rapid local development, you can make use of the [`dts exercises` API](+opmanual_duckietown#running_exercises), 
+developed to build and test exercises and assignments in class settings. 
 
 ### Building your Code {#duckietown-baseline-building-code}
 
@@ -150,6 +171,7 @@ Warning: If you are Mac user unfortunately you should not use the `--local` flag
 
 
 #### Starting Lane Following on Mac
+TODO: should be retested
 
 Since we can't publish from Mac and have it be received by ROS, we have to do something slightly different. In a new terminal on your Mac do:
 

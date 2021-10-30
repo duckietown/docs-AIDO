@@ -1,6 +1,7 @@
 # Behavior Cloning {#embodied_bc status=ready}
 
-In this part, you can find all the required steps in order to make a submission based on Behavior Cloning with Tensorflow for the lane following task using data varying from real data or simulator data. It can be used as a strong starting point for any of the challenges.
+In this part, you can find all the required steps in order to make a submission based on Behavior Cloning with Tensorflow for the lane following task using data varying from real data or simulator data. 
+It can be used as a strong starting point for any of the challenges.
 
 <div class='requirements' markdown='1'>
 
@@ -9,6 +10,12 @@ Requires: That you have made a submission with the [tensorflow template](#tensor
 Result: You win the AI-DO!
 
 </div>
+
+<figure id="aido-webinar-bc">
+    <figcaption>Behavior Cloning</figcaption>
+    <dtvideo src="vimeo:481632757"/>
+</figure>
+
 
 ## Introduction {#bc-whoami status=ready}
 

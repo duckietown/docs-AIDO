@@ -2,7 +2,7 @@
 
 This section describes the procedure for training and testing an agent with the [gym-duckietown](https://github.com/duckietown/gym-duckietown) simulator using the [Dagger](https://www.cs.cmu.edu/~sross1/publications/Ross-AIStats11-NoRegret.pdf) algorithm.
 
-It can be used as a starting point for any of the [`LF`](#challenge-LF), [`LFP`](#challenge-LFP), and [`LFV_multi`](#challenge-LFV_multi) challenges.
+It can be used as a starting point for any of the [`LF`](#challenge-LF), [`LFV`](#challenge-LFV), and [`LFI`](#challenge-LFI) challenges.
 
 
 <div class='requirements' markdown='1'>
@@ -13,9 +13,15 @@ Result: You could win the AI-DO!
 
 </div>
 
+<figure id="aido-webinar-dagger">
+    <figcaption>Dataset Aggregation (skip to end)</figcaption>
+    <dtvideo src="vimeo:481632757"/>
+</figure>
+
 ## Introduction
 
-We saw a first implementation of immitation learning in the behaviour cloning baseline. That baseline models the driving task as an end-to-end supervised learning problem where data can be collected offline from an expert. One of the central issues with this approach is that of **distributional shift**. Since this is a sequential decision making problem, the training data are not "identically and independently distributed". The result is that if your agent deviates from the *optimal* trajectory that was demonstrated by the expert, it will not have any data in its dataset that shows it how to *recover back* to the optimal trajectory. As a result, it is unlikely that the behiaviour cloning approach will be robust.  
+We saw a first implementation of imitation learning in the behaviour cloning baseline. 
+That baseline models the driving task as an end-to-end supervised learning problem where data can be collected offline from an expert. One of the central issues with this approach is that of **distributional shift**. Since this is a sequential decision making problem, the training data are not "identically and independently distributed". The result is that if your agent deviates from the *optimal* trajectory that was demonstrated by the expert, it will not have any data in its dataset that shows it how to *recover back* to the optimal trajectory. As a result, it is unlikely that the behiaviour cloning approach will be robust.  
 
 For a better result than behaviour cloning this second version of imitation learning does not train only on a single trajectory given by the expert. We follow the Dataset Aggreagation algorithm [(Dagger)](https://www.cs.cmu.edu/~sross1/publications/Ross-AIStats11-NoRegret.pdf) where we also let the agent interact with the environment and allow the expert to *recover*.  The actions between the expert and the learner are chosen randomly with a varying probability with the hope that the expert _corrects_ the learner if it starts deviating from the optimal trajectory.
 

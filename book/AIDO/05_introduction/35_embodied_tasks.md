@@ -7,7 +7,7 @@ This section focuses on the physical platform used for the embodied individual r
 
 For examples of Duckiebot driving see [a set of demo videos of Duckiebots driving in Duckietown](+opmanual_duckiebot#demos).
 
-The actual embodied challenges will be described in more detail in [LF](#challenge-LF), [LFV_multi](#challenge-LFV_multi), [LFP](#challenge-LFP). <!--, [NAVV](#nav_v).-->
+The actual embodied challenges will be described in more detail in [LF](#challenge-LF), [LFV](#challenge-LFV), [LFI](#challenge-LFI). <!--, [NAVV](#nav_v).-->
 Note that the sequence challenges was chosen to gradually increase the difficulty of challenges by extending previous challenge solutions to more general situations.
 
 <minitoc />
