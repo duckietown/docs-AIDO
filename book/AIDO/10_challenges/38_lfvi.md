@@ -1,18 +1,13 @@
 # Challenge `LFVI-full-multi`  {#challenge-LFVI-multi-stateful status=ready}
 
 The fourth challenge of the *AI Driving Olympics* is "lane following with dynamic vehicles and intersections" (`LFVI`).
-This challenge is an extension of Challenge `LF` to include map configurations that are not just 
-loops but now contain intersections which must be negotiated. 
-Your agent will control all of the Duckiebots in the map. We make things somewhat simpler by providing
-directly the state information of the Duckiebots. As a result, this challenge will only be evaluated
+This challenge is an extension of Challenge `LF` to include map configurations that are not just loops but now contain intersections which must be negotiated. 
+Your agent will control all the Duckiebots in the map. We make things somewhat simpler by providing directly the state information of the Duckiebots. As a result, this challenge will only be evaluated
 in simulation
 
-
-<figure figure-id="fig:lane-following-vehicles-intersections-LFVI">
-    <figcaption>A Duckiebot doing lane following with other vehicles and intersections</figcaption>
-    <img style='width:15em' src="yield.jpg"/>
-</figure>
-
+<div figure-id="fig:lane-following-vehicles-intersections-LFVI" figure-caption="A Duckiebot following a lane following in the presence of other vehicles, in a Duckietown with intersections.">
+  <img src="lfvi-no-tls.jpg" style='width:100%;height:auto'/>
+</div>
 
 Again we ask participants to submit code allowing the Duckiebot to drive on the right-hand side of the street within Duckietown, but now it must also successfully navigate intersections. Due to interactions with other Duckiebots, a successful solution almost certainly not be completely \emph{reactive}. 
 
@@ -26,10 +21,9 @@ and `aido-LFVI_multi-sim-validation`. These two challenges are identical except 
 allowed to see. In the case of `testing` you will be able to see performance of your agent 
 ([](#fig:submission-output-lfvi))  and you will be able to download the logs and artifacts. 
 
-<figure figure-id="fig:submission-output-lfvi">
-    <figcaption>Visual output for submission</figcaption>
-    <img style='width:30em' src="submission-output-lfvi.png"/>
-</figure>
+<div figure-id="fig:submission-output-lfvi" figure-caption="Visual output for a LFVI submission.">
+  <img src="lfvi-output.png" style='width:100%;height:auto'/>
+</div>
 
 ## Templates {status=ready}
 

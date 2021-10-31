@@ -3,13 +3,9 @@
 The second challenge of the *AI Driving Olympics* is "lane following with dynamic vehicles" (`LFV`).
 This challenge is an extension of Challenge `LF` to include additional rules of the road and other moving vehicles and static obstacles.
 
-
-
-<figure figure-id="fig:lane-following-vehicles">
-    <figcaption>A Duckiebot doing lane following with other vehicles</figcaption>
-    <img style='width:15em' src="lane_following_v.jpg"/>
-</figure>
-
+<div figure-id="fig:lane-following-vehicles" figure-caption="A Duckiebot doing lane following with other vehicles.">
+  <img src="lfv-mixed-dbs.jpg" style='width:100%;height:auto'/>
+</div>
 
 Again we ask participants to submit code allowing the Duckiebot to drive on the right-hand side of the street within Duckietown. Due to interactions with other Duckiebots, a successful solution will likely not be completely \emph{reactive}. 
 
@@ -19,10 +15,9 @@ Again we ask participants to submit code allowing the Duckiebot to drive on the 
 
 The current versions of the lane following with vehicles in simulation are `aido2-LFV-sim-testing` and `aido2-LF-sim-validation`. These two challenges are identical except for the output that you are allowed to see. In the case of `testing` you will be able to see performance of your agent ([](#fig:submission-output-lfv))  and you will be able to download the logs and artifacts. 
 
-<figure figure-id="fig:submission-output-lfv">
-    <figcaption>Visual output for submission</figcaption>
-    <img style='width:30em' src="submission-output-lfv.png"/>
-</figure>
+<div figure-id="fig:submission-output-lfv" figure-caption="Visual output for a LFV submission.">
+  <img src="lfv-output.png" style='width:100%;height:auto'/>
+</div>
 
 ## Templates and Baselines {status=ready}
 
