@@ -2,13 +2,9 @@
 
 This challenge is an extension of Challenge `LF` to include additional rules of the road and other moving vehicles. In this challenge your agent embodies **all* of the vehicles on the road. 
 
-
-
-<figure figure-id="fig:lane-following-vehicles-LFV_multi">
-    <figcaption>A Duckiebot doing lane following with other vehicles</figcaption>
-    <img style='width:15em' src="LFV_multi.jpg"/>
-</figure>
-
+<div figure-id="fig:lane-following-vehicles-LFV_multi" figure-caption="A Duckiebot doing lane following with other vehicles. In this _multi_ variant, the submitted agent runs on all Duckiebots.">
+  <img src="lfv-db19.jpg" style='width:100%;height:auto'/>
+</div>
 
 Again we ask participants to submit code allowing the Duckiebot to drive on the right-hand side of the street within Duckietown. 
 
@@ -22,10 +18,9 @@ Again we ask participants to submit code allowing the Duckiebot to drive on the 
 
 The current versions of the lane following with vehicles in simulation are `aido5-LFV_multi-sim-testing` and `aido5-LF-sim-validation`. These two challenges are identical except for the output that you are allowed to see. In the case of `testing` you will be able to see performance of your agent ([](#fig:submission-output-lfv_multi))  and you will be able to download the logs and artifacts. 
 
-<figure figure-id="fig:submission-output-lfv_multi">
-    <figcaption>Visual output for submission</figcaption>
-    <img style='width:30em' src="submission-output-lfv.png"/>
-</figure>
+<div figure-id="fig:submission-output-lfv_multi" figure-caption="Visual output for a LFV-multi submission.">
+  <img src="lfv-multi-output.png" style='width:100%;height:auto'/>
+</div>
 
 ## Templates {status=draft}
 

@@ -120,14 +120,14 @@ In the event that you wanted to, for example change the launcher that was run in
 
 ### `submission_ws/`
 
-The `submission_ws` folder contains all of the new ROS packages that you would like to include in your submission. It is currently empty, but there is a  reference package included in the [ROS template](#ros-template). 
+The `submission_ws` folder contains all the new ROS packages that you would like to include in your submission. It is currently empty, but there is a  reference package included in the [ROS template](#ros-template). 
 
 Note: Importantly, your `submissions_ws` is sourced **after** the existing `catkin_ws` that is included in `dt-core`. As a result, if you include a node and paackage in your `submission_ws` *with the same name* as one in `dt-core`, the one in `submission_ws` will get executed. This is convenient because it means that, as long as you adhere to the same subscriptions and publications, you don't need to define any new launch file, `lane_following.launch` will automatically launch your newly written node. 
 
 
 ## Local Development Workflow {#duckietown-baseline-local-workflow}
 
-For rapid local development, you can make use of the [`dts exercises` API](+opmanual_duckietown#running_exercises), 
+For rapid local development, you can make use of the [`dts exercises` API](+opmanual_duckiebot#running-exercises), 
 developed to build and test exercises and assignments in class settings. 
 
 ### Building your Code {#duckietown-baseline-building-code}

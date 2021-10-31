@@ -42,7 +42,7 @@ Submit using:
 }
 </style>
 
-What this does is:
+This does the following:
 
 1. Build a Docker container.
 2. Push the Docker container.
@@ -72,7 +72,7 @@ To understand more about the details of what's happening here see [](#minimal-te
 
 There are 2 ways to monitor the submission:
 
-The first way is to use the web interface, at the URL indicated.
+The first way is to use the web interface, at the URL indicated in the terminal.
 
 The second way is to use the `dts challenges follow` command:
 
@@ -86,11 +86,13 @@ The leaderboard for this challenge is available at the URL
 
 [leaderboard]: https://challenges.duckietown.org/v4/humans/challenges/aido-hello-sim-validation/leaderboard
 
-In general all of the challenge leaderboards can be viewed at the front page [the challenges website][challenges].
+In general all the challenge leaderboards can be viewed at the front page [the challenges website][challenges].
 
 [challenges]: https://challenges.duckietown.org/v4/
 
+All available challenges can be viewed in the [comprehensive challenges page][all-challenges].
 
+[all-challenges]: https://challenges.duckietown.org/v4/humans/challenges
 
 ## Local evaluation {#cm-local}
 
@@ -102,14 +104,14 @@ Use this command:
 
 ## Troubleshooting
 
-If any of the commands above don't work, it is likely that something related to Docker permissions is to blame - please file an issue, as we are trying to fix that problem.
+If any of the commands above don't work, it is likely that something related to Docker permissions is to blame - please ask us on Slack in the [#help-accounts](https://duckietown.slack.com/archives/C70CR8TAS) channel.
 
 <!-- TODO: where to file an issue? -->
 
 
 <!-- 
 
-###  Look at the other strawman solutions
+###  Look at the other strawman solutions:
 
 * [TensorFlow template](#tensorflow-template) 
 * [PyTorch template](#pytorch-template) 

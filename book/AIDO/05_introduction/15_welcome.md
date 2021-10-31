@@ -5,7 +5,7 @@
 
 The [AI Driving Olympics][aido] (AI-DO) is a set of competitions with the objective of evaluating the state of the art in machine learning and artificial intelligence for mobile robotics. 
 
-For a detailed description of the scientific objectives and outcomes please see [our recent paper about the AI-DO 1 at NeurIPS](https://arxiv.org/pdf/1903.02503.pdf).
+For a detailed description of the scientific objectives and outcomes please see [our  paper about the AI-DO at NeurIPS](https://arxiv.org/pdf/1903.02503.pdf).
 
 <figure id="aido-4-video">
 <figcaption>
@@ -43,29 +43,25 @@ There are currently three leagues in the AI Driving Olympics.
 The **Urban League** is based on the [Duckietown platform][duckietown], and  includes a series of tasks of increasing complexity. For each task, we provide tools for competitors to use in the form of simulators, logs, code templates, baseline implementations and low-cost access to robotic hardware. We evaluate submissions in simulation online, on standardized hardware environments, and finally at the competition event.
 
 Participants will not need to be physically present at any stage of the competition --- they will just need to send their source code.  
-There will be qualifying rounds in simulation, similar to [recent DARPA Robotics Challenges](https://www.subtchallenge.com/), and, for evaluation, we  make available the use of "[Duckietown Autolabs](+opmanual_autolab#book)" which are facilities that allow remote experimentation in a reproducible setting. 
+There will be qualifying rounds in simulation, similar to [recent DARPA Robotics Challenges](https://www.subtchallenge.com/), and, for evaluation, we make available the use of "[Duckietown Autolabs](+opmanual_autolab#book)" which are facilities that allow remote experimentation in a reproducible setting. 
 
 See the leaderboards and many other things at [the challenges site](https://challenges.duckietown.org).
 
+The **Advanced Perception League** is organized by [Motional](https://motional.com/) (ex nuTonomy, Aptiv Mobility).
 
-The **Advanced Perception League** is organized by Motional (ex nuTonomy, Aptiv Mobility).
-This book describes the urban league. All information about the Advanced Perception
-League is at [nuScenes.org](https://nuscenes.org).
+All information about the Advanced Perception League is at [nuScenes.org](https://nuscenes.org).
 
-The **Racing League** is organized by the AWS Deepracer team. All information about the racing league is available
-on [aicrowd.com](https://www.aicrowd.com/challenges/neurips-2021-aws-deepracer-ai-driving-olympics-challenge)
+The **Racing League** is organized by the AWS Deepracer team. All information about the racing league is available on [aicrowd.com](https://www.aicrowd.com/challenges/neurips-2021-aws-deepracer-ai-driving-olympics-challenge).
 
 
 ## What's new in the Urban League in AI-DO 6 {#whats-new}
 
-
-
-There have been many cool new improvements for the 6th edition of the AI-DO Urban League:
+There have been cool new improvements for the 6th edition of the AI-DO Urban League:
 
 - The challenges are now compatible the new [DB21 Duckiebots](https://get.duckietown.com/products/duckiebot-db21-m) that 
 have Jetson Nanos with GPUs and were used for the [Self-Driving Cars with Duckietown MOOC on EdX](https://www.edx.org/course/self-driving-cars-with-duckietown).
 
-
+<!--
 
 <style>
   #variations { 
@@ -87,7 +83,8 @@ have Jetson Nanos with GPUs and were used for the [Self-Driving Cars with Duckie
     vertical-align: top;
   } 
 </style>
-<!--
+
+
 <figure>
   <figcaption>
   The three challenges of AI-DO 5.
@@ -119,17 +116,18 @@ have Jetson Nanos with GPUs and were used for the [Self-Driving Cars with Duckie
 -->
 ## How to use this documentation {#how-to-use}
 
-If you would like to compete in the AI-DO Urban League, you will probably want to do something like:
+If you would like to compete in the AI-DO Urban League, you will want to:
 
-- Read [the brief introduction to the competition](#part:aido-introduction) (~5 mins).
-- Find [the challenge that you would like to try](#part:aido-rules) (~5 mins).
-- [Get started and make a submission](#part:quickstart) (~5-20 mins depending on your setup).
+- Read [the brief introduction to the competition](#part:aido-introduction).
+- Find [the challenge that you would like to try](#part:aido-rules).
+- Get started and [make a submission](#part:quickstart).
  
-At this point you are all setup, can make a submission, and you should want to make your submission better. To do this the following tools might prove useful:
+At this point you are all set up: your environment is operational, and you can make a submission. But you should want to make your submission perform better than the provided baselines. 
 
-- The [AIDO API](#part:manual) so that your workflow is efficient using our tools.
-- The [reference algorithms](#part:embodied-strategies) where we have implemented some different approaches to solve the challenges.
+To do this the following tools might prove useful:
 
+- The [AIDO API](#part:manual) so that your workflow is efficient using the available tools.
+- The [reference algorithms](#part:embodied-strategies) where we have implemented some different approaches to approach the challenges.
 
 ## How to get help {#book-help nonumber}
 
@@ -137,8 +135,10 @@ If you are stuck try one of the following things:
 
 - Look through the contents of this documentation using the links on the left. Note that the "Parts" have many "Chapters" that you can see when you click on the Part title,
 - Join our [slack community](https://join.slack.com/t/duckietown/shared_invite/enQtNTU0Njk4NzU2NTY1LWM2YzdlNmJmOTg4MzAyODc2YTI3YTc5MzE2MThkZGUwYTFkZWQ4M2ZlZGU1YTZhYjg5YTgzNDkyMzI2ZjNhZWE),
-- Look on the [Duckietown Stack Overflow](https://stackoverflow.com/c/duckietown/) to see if someone already answered your question
-- If you are sure you actually found a bug, file a github issue in the appropriate repo.
+
+- Look on the [Duckietown Stack Overflow](https://stackoverflow.com/c/duckietown/) to see if someone already answered your question (you can ask to be invited in the Slack channel [#help-accounts](https://duckietown.slack.com/archives/C70CR8TAS))
+
+- If you are sure you actually found a bug, file a Github issue in the appropriate repo.
 
 
 <!-- ## The challenges server {#book-leaderboard} -->
