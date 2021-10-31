@@ -57,7 +57,7 @@ Go into any valid submission folder (i.e. one where you could run `dts submit` a
 
 ## Local workflow using the Exercises API {#aido-exercises-api}
 
-We have also developed a [workflow for submitting exercises](+opmanual_duckiebot#running_exercises) 
+We have also developed a [workflow for submitting exercises](+opmanual_duckiebot#running-exercises) 
 in the [Duckietown MOOC on EdX](https://www.edx.org/course/self-driving-cars-with-duckietown)
 that may be useful for your development workflow. Several of the AI-DO templates and baselines are also
 valid "exercises" and can therefore follow this workflow. 

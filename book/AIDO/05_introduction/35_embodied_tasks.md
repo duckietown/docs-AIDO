@@ -48,7 +48,7 @@ All the *computation* is done onboard on a:
 
 <!-- More details in section [computational substrate](#computation). -->
 
-*Power* is provided by a $10000$ mAh [Duckiebattery](+opmanual_duckiebot##db-opmanual-preliminaries-electronics) which provides several hours of operation.
+*Power* is provided by a $10000$ mAh [Duckiebattery](+opmanual_duckiebot#db-opmanual-preliminaries-electronics) which provides several hours of operation.
 
 ### The Duckietown {#environment}
 
@@ -115,7 +115,7 @@ Duckietown Autolabs are operational in the following institutions:
 3. TTI Chicago.
 -->
 
-You can find detailed information on Duckietown Autolabs in our paper: [Integrated Benchmarking and Design for Reproducible and Accessible Evaluation of Robotic Agents](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9341677&casa_token=BrfRTcJC5BEAAAAA:r0v4pMqg6q-vyxUW7rQHjw-d2Az4wli6aFBNciRfC8tB1pkDayRySGUsSs9OQv4cGs5rQbmY8lM&tag=1).  
+You can find detailed information on Duckietown Autolabs in our paper: [Integrated Benchmarking and Design for Reproducible and Accessible Evaluation of Robotic Agents](https://tinyurl.com/duckienet).  
 
 
 If you would like to cite Duckietown Autolabs, please use: 
