@@ -11,7 +11,7 @@ for how to acquire a Duckiebot.
 Requires: You have [built your Duckiebot](+opmanual_duckiebot#assembling-duckiebot-db18).
 
 Requires: You have built your [DB18](+opmanual_duckiebot#assembling-duckiebot-db18) or [DB19](+opmanual_duckiebot#assembling-duckiebot-db19) 
-or [DB21](+opmanual_duckiebot#assembling_duckiebot_db21) Duckiebot.
+or [DB21](+opmanual_duckiebot#assembling-duckiebot-db21) Duckiebot.
 
 Requires: You have [built your Duckietown according to the appearance specification](+opmanual_duckietown#dt-ops-appearance-specifications).
 
