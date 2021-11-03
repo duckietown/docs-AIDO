@@ -35,8 +35,8 @@ Create an account [here](https://www.duckietown.org/research/ai-driving-olympics
 
 ## Stack Overflow account  {#cm-accounts-stack-overflow}
 
-We have a [Stack Overflow for Duckietown][SO]. We will send you an invitation when you register. Otherwise, please ask us on Slack in the [#help-accounts](https://duckietown.slack.com/archives/C70CR8TAS) channel.
+We have a [Stack Overflow for Duckietown][SO]. We will send you an invitation when you register. Otherwise, please ask us on [Slack][Duckietown Slack invitation] in the [#help-accounts](https://duckietown.slack.com/archives/C70CR8TAS) channel.
 
 [SO]: https://stackoverflow.com/c/duckietown/
-
+[Duckietown Slack invitation]: https://join.slack.com/t/duckietown/shared_invite/zt-72tpbfth-xsfmv5iDAodqJ6eTFhjd4A
 

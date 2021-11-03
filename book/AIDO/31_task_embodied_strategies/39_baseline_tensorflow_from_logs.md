@@ -1,12 +1,12 @@
 # Imitation Learning from Logs {#embodied_il_logs status=beta}
 
-In this part, you can find all the required steps in order to make a submission based on Imitation Learning with Tensorflow for the lane following task using real log data. It can be used as a starting point for any of the [`LF`](#challenge-LF), [`LFV`](#challenge-LFV, and [`LFI`](#challenge-LFI) challenges.
+In this part, you can find the required steps to make a submission based on Imitation Learning with Tensorflow for the lane following task, using real log data. It can be used as a starting point for any of the [`LF`](#challenge-LF), [`LFV`](#challenge-LFV, and [`LFI`](#challenge-LFI) challenges.
 
 <div class='requirements' markdown='1'>
 
 Requires: That you have made a submission with the [tensorflow template](#tensorflow-template).
 
-Result: You win the AI-DO!
+Result: You run a submission that won a previous edition of the AI-DO.
 
 </div>
 
@@ -126,7 +126,7 @@ The important note here is to feed your agent with *appropriate* data. Appropria
 
 1. Are relevant to the lane following task
 2. Execute this task well the whole time and
-3. Present smooth driving of the duckiebots around the city.
+3. Present smooth driving of the Duckiebots around the city.
 
 One hint, is to search for data which were collected using the lane controller. In order to check if the lane controller was enabled, use rqt_bag to see if there is inside the node `/duckiebot_name/lane_controller/`. The *LF_IL_tensorflow* baseline, provides 5 bag files with approximately 10 minutes of appropriate lane following data.
 

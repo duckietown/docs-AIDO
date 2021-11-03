@@ -48,7 +48,7 @@ You might want to read [](#part:aido-rules), which describes in detail how your 
 
 ## Try one of the harder challenges
 
-In addition to [the simple LF challenge](#challenge-LF)
-you can try the [the LFV challenge](#challenge-LFV)
+In addition to the simple [LF challenge](#challenge-LF)
+you can try the the [LFV challenge](#challenge-LFV)
 the [LFI challenge](#challenge-LFI)
-or the [LFVI-multi challenge where you have access to the state information](challenge-LFVI-multi-stateful).
+or the [LFVI-multi challenge](#challenge-LFVI-multi-stateful) where you have access to the state information.
