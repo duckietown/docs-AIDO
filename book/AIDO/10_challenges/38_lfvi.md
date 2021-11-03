@@ -1,4 +1,4 @@
-# Challenge `LFVI-full-multi`  {#challenge-LFVI-multi-stateful status=ready}
+# Challenge `LFVI-multi-full`  {#challenge-LFVI-multi-stateful status=ready}
 
 The fourth challenge of the *AI Driving Olympics* is "lane following with dynamic vehicles and intersections" (`LFVI`).
 This challenge is an extension of Challenge `LF` to include map configurations that are not just loops but now contain intersections which must be negotiated. 
@@ -17,8 +17,7 @@ Again we ask participants to submit code allowing the Duckiebot to drive on the 
 ## `LFVI_multi_full` in Simulation {#challenge-aido_lfvi status=ready}
 
 The current versions of the lane following with vehicles in simulation are `aido-LFVI_multi-sim-testing` 
-and `aido-LFVI_multi-sim-validation`. These two challenges are identical except for the output that you are 
-allowed to see. In the case of `testing` you will be able to see performance of your agent 
+and `aido-LFVI_multi-sim-validation`. These two challenges are identical except for the output that you are allowed to see. In the case of `testing` you will be able to see performance of your agent 
 ([](#fig:submission-output-lfvi))  and you will be able to download the logs and artifacts. 
 
 <div figure-id="fig:submission-output-lfvi" figure-caption="Visual output for a LFVI submission.">

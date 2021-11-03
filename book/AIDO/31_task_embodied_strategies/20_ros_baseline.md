@@ -22,9 +22,9 @@ Result: You have a competitive submission.
 
 Clone this [repo](https://github.com/duckietown/challenge-aido_LF-baseline-duckietown)
 
-    $ git clone git@github.com/duckietown/challenge-aido_LF-baseline-duckietown.git 
+    $ git clone git@github.com:duckietown/challenge-aido_LF-baseline-duckietown.git 
 
-Change into the  directory:
+Change into the directory:
 
     $ cd challenge-aido_LF-baseline-duckietown
 
@@ -48,7 +48,7 @@ The "Duckietown" baseline is based on the [ROS template](#ros-template).
 
 ### Dockerfile {#duckietown-baseline-dockerfile}
 
-One important facet of the Dockerfile is that we use a "multi-stage build":
+One important fact of the Dockerfile is that we use a "multi-stage build":
 
 ```
 FROM ${AIDO_REGISTRY}/duckietown/dt-car-interface:${BASE_TAG} AS dt-car-interface
@@ -58,7 +58,7 @@ FROM ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-template-ros:${BASE_TAG} AS t
 FROM ${AIDO_REGISTRY}/duckietown/dt-core:${BASE_TAG} AS base
 ```
 
-This allows us to take come elements from each of the first two base images, and copy them into the `dt-core` image:
+This allows us to take some elements from each of the first two base images, and copy them into the `dt-core` image:
 
 ```
 COPY --from=dt-car-interface ${CATKIN_WS_DIR}/src/dt-car-interface ${CATKIN_WS_DIR}/src/dt-car-interface
@@ -66,7 +66,7 @@ COPY --from=template /data/config /data/config
 COPY --from=template /code/rosagent.py .
 ```
 
-As a result, we have the calibration files (from `/data/config`) as well as the `rosagent.py` from the `challenge-aido_lf-template-ros` and all of the source files from the [`dt-car-interface`](https://github.com/duckietown/dt-car-interface) image.
+As a result, we have the calibration files (from `/data/config`) as well as the `rosagent.py` from the `challenge-aido_lf-template-ros` and all the source files from the [`dt-car-interface`](https://github.com/duckietown/dt-car-interface) image.
 
 We also get everything that is in the [`dt-core`](https://github.com/duckietown/dt-core) image. 
 
@@ -74,8 +74,8 @@ The remainder of the Dockerfile is very similar to the Dockerfile in the [ROS te
 
 ### `solution.py` {#duckietown-baseline-solution-py}
 
-There is not `solution.py` because it is inhereted from the [ROS template](#ros-template). 
-In the event that you wanted to, for example change the launcher that was run in the final `CMD` line. 
+There is no `solution.py` because it is inherited from the [ROS template](#ros-template). 
+In the event that you wanted to, for example, change the launcher that was run in the final `CMD` line. 
 
 ### `launchers/` {#duckietown-baseline-launchers}
 
@@ -122,7 +122,7 @@ In the event that you wanted to, for example change the launcher that was run in
 
 The `submission_ws` folder contains all the new ROS packages that you would like to include in your submission. It is currently empty, but there is a  reference package included in the [ROS template](#ros-template). 
 
-Note: Importantly, your `submissions_ws` is sourced **after** the existing `catkin_ws` that is included in `dt-core`. As a result, if you include a node and paackage in your `submission_ws` *with the same name* as one in `dt-core`, the one in `submission_ws` will get executed. This is convenient because it means that, as long as you adhere to the same subscriptions and publications, you don't need to define any new launch file, `lane_following.launch` will automatically launch your newly written node. 
+Note: Importantly, your `submissions_ws` is sourced **after** the existing `catkin_ws` that is included in `dt-core`. As a result, if you include a node and package in your `submission_ws` *with the same name* as one in `dt-core`, the one in `submission_ws` will get executed. This is convenient because it means that, as long as you adhere to the same subscriptions and publications, you don't need to define any new launch file, `lane_following.launch` will automatically launch your newly written node. 
 
 
 ## Local Development Workflow {#duckietown-baseline-local-workflow}
@@ -144,16 +144,16 @@ You can run your current solution in the gym simulator with:
  
      $ dts exercises test --sim
      
-Then you can look at what's happening by looking through the browser at [http://localhost:8087](http://localhost:8087) .
-Open up the `rqt_image_view`, resize it, and choose `/agent/camera_node/image/compressed` in the dropdown. You should see the image from the robot in the simulator. 
+Then you can look at what's happening by looking through the browser at [http://localhost:8087](http://localhost:8087). This will open a noVNC desktop. In it,
+open up the `rqt_image_view`, resize it, and choose `/agent/camera_node/image/compressed` in the dropdown. You should see the image from the robot in the simulator. 
  
  You might want to launch a virtual joystick by opening a terminal and doing:
  
     $ dt-launcher-joystick
      
-By default the duckiebot is in joystick control mode, so you can freely drive it around. You can also set it to `LANE FOLLOWING` mode by pushing the `a` button when you have the virtual joystick active. If you do so you will see the robot move forward slowly and never turn. 
+By default the Duckiebot is in joystick control mode, so you can freely drive it around. You can also set it to `LANE FOLLOWING` mode by pushing the `a` button when you have the virtual joystick active. If you do so you will see the robot move forward slowly and never turn. 
 
-
+At the same time, you can see a birds eye overview of the Duckiebot on the track though the browser at [http://localhost:8090](http://localhost:8090).
 
 ### Testing Your Algorithm on the Robot {#duckietown-baseline-testing-robot}
 
@@ -165,7 +165,7 @@ To run on the Duckiebot:
 
     $ dts exercises test --duckiebot_name ![ROBOT_NAME]
 
-In both cases you should still be able to look at things through novnc by pointing your browser to  [http://localhost:8087](http://localhost:8087) . If you are running on Linux, you can load up the virtual joystick and start lane following as above. 
+In both cases you should still be able to look at things through noVNC by pointing your browser to  [http://localhost:8087](http://localhost:8087) . If you are running on Linux, you can load up the virtual joystick and start lane following as above. 
 
 Warning: If you are Mac user unfortunately you should not use the `--local` flag
 
@@ -199,17 +199,17 @@ If you would like to add a new package and node that includes a functionality no
 
 ### Other Possibly Useful Utilities {#duckietown-baseline-other-utilities}
   
-All of the normal ROS debugging utilities are available to you through the `novnc` desktop. For example, 
+All of the normal ROS debugging utilities are available to you through the noVNC desktop. For example, 
 You might also explore the other outputs that you can look at in `rqt_image_view`. 
 
 Also useful are some debugging outputs that are published and visualized in `RViz`. 
-You can open `RViz` through the terminal in the `novnc` desktop by typing:
+You can open `RViz` through the terminal in the noVNC desktop by typing:
 
     $ rviz
     
 In the window that opens click "Add" the switch to the topic tab, then find the `segment_markers`, and you should see the projected segments appear. Do the same for the `pose_markers`. 
 
-Another tool that may be useful is `rqt_plot` which also can be opened through the terminal in novnc. This opens a window where you can add "Topics" in the text box at the top left and then you will see the data get plotted live. 
+Another tool that may be useful is `rqt_plot` which also can be opened through the terminal in noVNC. This opens a window where you can add "Topics" in the text box at the top left and then you will see the data get plotted live. 
 
 All of this data can be viewed as data through the command line also. Take a look at all of the `rostopic` command line utilities. 
 

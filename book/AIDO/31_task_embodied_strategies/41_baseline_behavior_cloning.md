@@ -1,13 +1,13 @@
 # Behavior Cloning {#embodied_bc status=ready}
 
-In this part, you can find all the required steps in order to make a submission based on Behavior Cloning with Tensorflow for the lane following task using data varying from real data or simulator data. 
+In this part, you can find the required steps to make a submission based on Behavior Cloning with Tensorflow for the lane following task, using data from real world or simulator data. 
 It can be used as a strong starting point for any of the challenges.
 
 <div class='requirements' markdown='1'>
 
 Requires: That you have made a submission with the [tensorflow template](#tensorflow-template).
 
-Result: You win the AI-DO!
+Result: You could win the AI-DO!
 
 </div>
 
@@ -19,7 +19,9 @@ Result: You win the AI-DO!
 
 ## Introduction {#bc-whoami status=ready}
 
-This baseline refers to Nvidia's approach for behvaior cloning for autonomous vehicles. You can find the original paper here: [End to End Learning for Self-Driving Cars](https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf) It is created by [Frank (Chude Qian)](mailto:frank.qian@case.edu) for his submission to AIDO3 in NeurIPS 2019. The submission was very successful on simulator challenge, however, it was not the best for realworld challenges. I have decided to opensource this submission as a baseline to inspire better results. A detailed description on the specific implementation for this baseline can be find on the summary poster here: [Teaching Cars to Drive Themselves](https://doi.org/10.5281/zenodo.3660134) Additional reference can also be found on the summary poster.
+This baseline refers to the approach for behavior cloning for autonomous vehicles described in this paper: [End to End Learning for Self-Driving Cars](https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf). It is created by [Frank (Chude Qian)](mailto:frank.qian@case.edu) for his submission to AI-DO 3 at NeurIPS 2019. The submission was very successful on simulator challenge, however, it was not the best for real world challenges.
+
+A detailed description on the specific implementation for this baseline can be found on the summary poster here: [Teaching Cars to Drive Themselves](https://doi.org/10.5281/zenodo.3660134).
 
 ## Quickstart {#bc-quickstart status=ready}
 
@@ -29,21 +31,21 @@ Clone the [baseline Behavior Cloning repository](https://github.com/duckietown/c
 
     $ cd challenge-aido_LF-baseline-behavior-cloning
 
-The code you find is structured into 5 folders.
+The code is structured into 5 folders:
 
-1. Teach your duckiebot to drive itself in `duckieSchool`.
+1. Teach your Duckiebot to drive itself in `duckieSchool`.
 
 2. _(Optional)_ Store all the logs that can be used for training using `duckieLog`.
 
 3. Train your model using tensorflow in `duickieTrainer`.
 
-4. _(Optional)_ Hold all previous models you generated in `duckieModels` in case you need it.
+4. _(Optional)_ Hold all previous models you generated in `duckieModels`.
 
 5. Submit your submission via `duckieChallenger` folder.
 
 ## The duckieSchool {#bc-duckieSchool status=ready}
 
-In side this folder you will find two types of duckieSchool: simulator based duckieGym and real robot based duckieRoad.
+In side this folder you find two types of `duckieSchool`: simulator based `duckieGym` and real robot based `duckieRoad`.
 
 ### Installing duckietown Gym {bc-duckieschool-gyminstall status=ready}
 
@@ -59,67 +61,67 @@ To run the script, use the following command:
 
     $ python3 human.py
 
-The system utilizes an Xbox One S joystick to drive around. Left up and down controls the speed and right stick left and right controls the velocity. Right trigger enables the ["DRS" mode](https://en.wikipedia.org/wiki/Drag_reduction_system) allows vehicle to drive full speed forward. (Note there are no angular acceleration when this mode is enabled).
+The system utilizes an Xbox One S joystick to drive around. Left up and down controls the speed and right stick left and right controls the velocity. Right trigger enables the ["DRS" mode](https://en.wikipedia.org/wiki/Drag_reduction_system) and allows the vehicle to drive full speed forward. (Note there are no angular acceleration when this mode is enabled).
 
-In addition, every 1500 steps in simulator, the recording will pause and playback. You will have the chance to review the result and decide whether to keep the log or not. The log are recorded into two formats: `raw_log` saves all the raw information for future re-processing, and `traning_data` saves the directly feedable log.
+In addition, every 1500 steps in simulator, the recording will pause and playback. You will have the chance to review the result and decide whether to keep the log or not. The logs are recorded in two formats: `raw_log` saves all the raw information for future re-processing, and `traning_data` saves the directly feedable log.
 
 ### Options for joystick script
 
-For driving duckiebot with a joystick in a simulator, you have the following options:
+For driving a Duckiebot with a joystick in a simulator, you have the following options:
 
 1. `--env-name`: currently the default is `None`.
 
-2. `--map-name`: This sets the map you choose to run. Currently it is set as `small_loop_cw`.
+2. `--map-name`: This sets the map you choose to run. Currently, it is set as `small_loop_cw`.
 
-3. `--draw-curve`: This draw the lane following curve. Defaultly it is set as `False`. However, if you are new to the system, you should familiarize yourself with enabling this option as `True`.
+3. `--draw-curve`: This draw the lane following curve. Default is set as `False`. However, if you are new to the system, you should familiarize yourself with enabling this option as `True`.
 
-4. `--draw-bbox`: This helps draw out the collision detection bounding boxes. Defaultly it is set as `False`.
+4. `--draw-bbox`: This helps draw out the collision detection bounding boxes. Default is set as `False`.
 
-5. `--domain-rand`: This enables domain randomization. Defaultly it is set as `True`.
+5. `--domain-rand`: This enables domain randomization. Default is set as `True`.
 
-6. `--playback`: This enables playback after each record section for you to inspect the log you just took. Defaultly it is set as `True`.
+6. `--playback`: This enables playback after each record section for you to inspect the log you just took. Default is set as `True`.
 
-7. `--distortion`: This enables distortion to let the view as fisheye lens. Defaultly it is set as `True`.
+7. `--distortion`: This enables distortion to let the view as fisheye lens. Default is set as `True`.
 
-8. `--raw_log`: This enables recording also a high resolution version of the log instead of the downsampled version. Defaultly it is set as `True`. **Note: if you disable this option, playback will be disabled too.**
+8. `--raw_log`: This enables recording also a high resolution version of the log instead of the down-sampled version. Default is set as `True`. **Note: if you disable this option, playback will be disabled too.**
 
-9. `--steps`: This sets how many steps to record once. Defaultly it is set as `1500`
+9. `--steps`: This sets how many steps to record once. Default is set as `1500`.
 
-10. `--nb-episodes`: This controls how many episodes (aka sessions) you drive. This value typically don't matter as you will probably get tired before this value reaches.
+10. `--nb-episodes`: This controls how many episodes (a.k.a. sessions) you drive.
 
-11. `--logfile`: This specifies where you can store your log file. Defaultly it will just save the log file at the current folder.
+11. `--logfile`: This specifies where you can store your log file. Default will just save the log file in the current folder.
 
 12. `--downscale`: This option currently is disabled.
 
-13. `--filter-bad-data`: This option allows you to only logs driving better than last state. It uses reward feedback on the duckietown gym for tracking the reward status.
+13. `--filter-bad-data`: This option allows you to only log driving that is better than the last state. It uses reward feedback on the duckietown gym for tracking the reward status.
 
 Additionally, some other features has been hard coded:
 
-1. Currently the training image are stored as YUV color space, you can change it in line 258.
+1. The training images are stored as YUV color space, you can change it in line 258.
 
-2. Currently the frame is sized as 150x200 per Nvidia's recommendation. This could be not the most effective resolution.
+2. The frames are sized as 150x200, per original paper recommendation. This could be not the most effective resolution.
 
-3. Currently the logger resets if it detects you drive out of the bound.
+3. The logger resets if it detects driving out of bounds.
 
 ### Automated log generation using pure pursuit
 
-In this year, we also provide you with an option to automatically generate training sample using the concept of pure pursuit method. For more information, you can check out [this video](https://www.coursera.org/lecture/intro-self-driving-cars/lesson-2-geometric-lateral-control-pure-pursuit-44N7x)
+This baseline also provides an option to automatically generate training samples using the pure [pursuit control](https://www.coursera.org/lecture/intro-self-driving-cars/lesson-2-geometric-lateral-control-pure-pursuit-44N7x) algorithm. 
 
-The configurables are pretty much the same as the human driver agent.
+The configurable parameters are similar to the human driver agent case described above.
 
-If you would like to mass generate training samples on a headless server, under util folder you can find the tools for that.
+If you would like to mass generate training samples on a headless server, under the `util` folder you will find the necessary tools.
 
 To start pure pursuit data generation:
 
     $ python3 automatic.py
 
-### Log using an actual duckiebot
+### Log using an actual Duckiebot
 
-To log using an actual duckiebot, refer to [this](https://docs.duckietown.org/daffy/opmanual_duckiebot/out/take_a_log.html) tutorial on how to get a rosbag on a duckiebot.
+To log using an actual Duckiebot, refer to [this](https://docs.duckietown.org/daffy/opmanual_duckiebot/out/take_a_log.html) tutorial on how to get a rosbag on a duckiebot.
 
-Once you have obtianed the ROS bag, you can use the folder `duckieRoad` to process that log.
+Once you have obtained the ROS bag, you can use the folder `duckieRoad` to process that log.
 
-### Process a log from an actual duckiebot
+### Process a log from an actual Duckiebot
 
 You will find the following files in the `duckieRoad` directory.
 
@@ -132,12 +134,12 @@ You will find the following files in the `duckieRoad` directory.
 │   ├── ROSBAG2                     # Your training on Date 2.
 │   └── ...
 |
-├── converted                       # Stores the converted log for you to train the duckiebot
+├── converted                       # Stores the converted log for you to train the Duckiebot
 |
 ├── src                             # Scripts to convert ROS bag to pickle log
 │   ├── _loggers.py                 # Logger used to log the pickle log
 │   ├── extract_data_functions.py   # Helper function for the script
-│   └── extract_data.py             # Convertion script. You set your duckiebot
+│   └── extract_data.py             # Convertion script. You set your Duckiebot
 |                                     name, and topic to convert here.
 |
 ├── MakeFile                        # Make file.

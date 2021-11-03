@@ -95,7 +95,7 @@ Make sure it is installed by using:
 
 Set the `daffy` command branch:
 
-    $ dts --set-version daffy exit
+    $ dts --set-version daffy
 
 <img class="screencast" src="rec-dts-command-version.gif" width="100%"/>
 

@@ -10,6 +10,8 @@ Requires: That you have setup your [accounts](#cm-accounts).
 
 Requires: That you meet the [software requirement](#cm-sw).
 
+Requires: 9 GB free space.
+
 Result: You make a submission to all of the `LF*` challenges and can 
 view their status and output.
 
