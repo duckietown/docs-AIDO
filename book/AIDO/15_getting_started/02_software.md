@@ -124,7 +124,11 @@ Set the Duckietown authentication token using this command:
 
 Set your Docker Hub username and password using:
 
-    $ dts challenges config --docker-username ![your username] --docker-password ![your password]
+```bash
+read -p "docker username: " docker_username
+read -p "docker password: " docker_password
+dts challenges config --docker-username $docker_username --docker-password $docker_password
+```
 
 You can use an access token instead of a password.
 
