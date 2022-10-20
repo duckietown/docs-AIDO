@@ -3,7 +3,7 @@
 This section describes the basic procedure for making a submission with a model trained in using [PyTorch](https://pytorch.org/). 
 
 It can be used as a starting point for any of the [`LF`](#challenge-LF), 
-[`LFV_multi`](#challenge-LFV_multi), and [`LFP`](#challenge-LFP) challenges.
+[`LFV_multi`](#challenge-LFV), and [`LFI`](#challenge-LFI) challenges.
 
 <div class='requirements' markdown='1'>
 
@@ -14,6 +14,13 @@ Requires: That you meet the [software requirement](#cm-sw).
 Result: You make a submission to all of the `LF*` challenges and can view their status and output.
 
 </div>
+
+<figure id="aido-webinar-pytorch">
+    <figcaption>PyTorch Template</figcaption>
+    <dtvideo src="vimeo:480202594"/>
+</figure>
+
+
 
 ## Quickstart
 

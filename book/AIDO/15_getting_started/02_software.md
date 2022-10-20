@@ -17,12 +17,11 @@ Earlier version might work. Note that we require an environment with Python 3.8 
 
 ### Other GNU/Linux versions
 
-Any other GNU/Linux OS with Python of at least version 3.8 should work. However,
-we only support officially Ubuntu.
+Any other GNU/Linux OS with Python of at least version 3.8 should work. However, to streamline assistance, we only support officially Ubuntu.
 
 ### Mac OS X
 
-OS X is well supported; however we don't have full instructions for certain steps.
+OS X is well-supported; however we don't have full instructions for certain steps.
 (There is so much divergence in how OS X environments are configured.)
 
 We suggest to use `pyenv` to install Python 3.8.
@@ -30,7 +29,7 @@ We suggest to use `pyenv` to install Python 3.8.
 ### Windows
 
 Windows is currently not supported. We are working on it!
-Please let us know if can help.
+Please let us know on Slack if you can help, in the [#devel-wsl](https://duckietown.slack.com/archives/C015DQZ4BDE) channel.
 
 
 
@@ -58,7 +57,7 @@ the following options.
 }
 ```
 
-Note: Don't forget, after you install your docker, you need to add user to "docker" group:
+Note: Don't forget that after you install Docker you need to add user to "docker" group:
 
     $ sudo adduser `whoami` docker
 
@@ -83,8 +82,7 @@ Install the [Duckietown Shell][shell] using:
 
     $ pip3 install --user -U duckietown-shell
 
-If you encounter problems look at *Installation* instructions
-in the [README][shell].
+If you encounter problems look at the Duckietown Shell instructions in the [README][shell].
 
 [shell]: https://github.com/duckietown/duckietown-shell
 
@@ -97,7 +95,7 @@ Make sure it is installed by using:
 
 Set the `daffy` command branch:
 
-    $ dts --set-version daffy exit
+    $ dts --set-version daffy
 
 <img class="screencast" src="rec-dts-command-version.gif" width="100%"/>
 
@@ -126,7 +124,11 @@ Set the Duckietown authentication token using this command:
 
 Set your Docker Hub username and password using:
 
-    $ dts challenges config --docker-username ![your username] --docker-password ![your password]
+```bash
+read -p "docker username: " docker_username
+read -p "docker password: " docker_password
+dts challenges config --docker-username $docker_username --docker-password $docker_password
+```
 
 You can use an access token instead of a password.
 

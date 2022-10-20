@@ -1,6 +1,10 @@
 # Imitation Learning from Simulation {#embodied_il_sim status=beta}
 
-This section describes the procedure for generating logs from the [gym-duckietown](https://github.com/duckietown/gym-duckietown), and then using them to train a model with imitation learning using [TensorFlow](https://www.tensorflow.org/). It can be used as a starting point for any of the [`LF`](#challenge-LF), [`LFV`](#challenge-LF_v), and [`LFVI`](#challenge-LFVI) challenges.
+This section describes the procedure for generating logs from the 
+[gym-duckietown](https://github.com/duckietown/gym-duckietown), 
+and then using them to train a model with imitation learning using 
+[TensorFlow](https://www.tensorflow.org/). 
+It can be used as a starting point for any of the [`LF`](#challenge-LF), [`LFV`](#challenge-LFV), and [`LFI`](#challenge-LFI) challenges.
 
 
 <div class='requirements' markdown='1'>

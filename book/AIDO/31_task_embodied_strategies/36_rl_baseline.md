@@ -9,7 +9,7 @@ Requires: That you have made a submission with the [PyTorch template](#pytorch-t
 Requires: You should install CUDA10.2+ locally. This baseline works with [CUDA 11](https://developer.nvidia.com/cuda-downloads), and it
 should also work with CUDA 10.2.
 
-Requires: Patience, training RL agents is not easy
+Requires: Patience, training RL agents is not easy.
 
 Result: You have a functional agent trained with RL. Your expectations in regards to end-to-end RL's capabilities should be realistic. 
 
@@ -90,7 +90,7 @@ Specifically if you use this repo then you need to copy the following artifacts 
 
 Also, make sure that the root-level `wrappers.py` contains all the wrappers you used in `duckietown_rl/wrappers.py`.
 
-Then edit the `solution.py` file over to make sure everything is loaded correctly (i.e. all of the imports point to the right place).
+Then edit the `solution.py` file over to make sure everything is loaded correctly (i.e., all the imports point to the right place).
 
 
 Finally, you `evaluate` or `submit` your agent using the process described above in the [Quickstart](#rl-baseline-quickstart).

@@ -2,7 +2,8 @@
 
 ## How to get the logs
 
-In this part, you can find all the required steps in order to implement Imitation Learning for the lane following task using real log data. Such data are saved in `.bag` files which are available in **Duckietown Logs Database** on http://logs.duckietown.org.
+In this part, you can find all the required steps in order to implement Imitation Learning for the lane following task using real log data.
+Such data are saved in `.bag` files which are available in **Duckietown Logs Database** on http://logs.duckietown.org.
 The important note here is to feed your agent with *appropriate* data. Appropriate log data are considered those which:
 1) are relevant to the lane following task
 2) execute this task well the whole time

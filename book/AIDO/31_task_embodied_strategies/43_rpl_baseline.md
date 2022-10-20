@@ -10,6 +10,11 @@ Result: You have a submission that leverages both our ROS stack and reinforcemen
 
 </div>
 
+<figure id="aido-webinar-RPL">
+    <figcaption>Residual Policy Learning</figcaption>
+    <dtvideo src="vimeo:480202594"/>
+</figure>
+
 Before getting started, you should be aware that this baseline is a combination of the RL baseline and of the ROS template. 
 It is recommended that you are familar for each of those templates and baselines, as the workflow of this one is similar to those. Here are some links:
 

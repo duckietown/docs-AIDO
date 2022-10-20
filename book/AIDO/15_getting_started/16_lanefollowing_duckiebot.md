@@ -8,9 +8,8 @@ In this page we will describe how to run your submission on your Duckiebot.
 Requires: You have a Duckiebot. See [here](https://www.duckietown.org/about/hardware)
 for how to acquire a Duckiebot.
 
-Requires: You have [built your Duckiebot](+opmanual_duckiebot#assembling-duckiebot-db18).
-
-Requires: You have [built your [DB18](+opmanual_duckiebot#assembling-duckiebot-db18) or [DB19](+opmanual_duckiebot#assembling-duckiebot-db19) Duckiebot.
+Requires: You have built your [DB19](+opmanual_duckiebot#assembling-duckiebot-db19) 
+or (recommended) [DB21](+opmanual_duckiebot#assembling-duckiebot-db21) Duckiebot. Evaluations will be performed using `DB21` Duckiebots.
 
 Requires: You have [built your Duckietown according to the appearance specification](+opmanual_duckietown#dt-ops-appearance-specifications).
 
@@ -18,8 +17,15 @@ Requires: You can [connect to your robot wirelessly](+opmanual_duckiebot#duckieb
 
 Requires: You have [made a valid AI-DO submission](#cm-first).
 
+Result: You have run a submission on your physical Duckiebot.
+
 </div>
 
+
+
+<div figure-id="fig:aido-webinar-duckiebot" figure-caption="Running your agent on your Duckiebot tutorial.">
+    <dtvideo src="vimeo:479462039" style='width:100%;height:auto'/>
+</div>
 
 Warning: Running your AI-DO submission on your robot is currently only supported on Ubuntu (not Mac OSX).
 
@@ -39,10 +45,18 @@ You should also ensure that your Duckiebot is well calibrated, both [camera](+op
 
 ## Run a local submission on the Duckiebot {#aido-run-duckiebot-local}
 
-Go into any valid submission folder (i.e. one where you could run `dts submit` and you would make a submission) and run:
+Go into any valid submission folder (i.e., one where you could run `dts submit` and you would make a submission) and run:
 
     $ dts duckiebot evaluate --duckiebot_name ![DUCKIEBOT_NAME]
 
-## Run an image that's already built on the Duckiebot {#aido-run-duckiebot-image}
+## Run an image that is already built on the Duckiebot {#aido-run-duckiebot-image}
 
     $ dts duckiebot evaluate --duckiebot_name !{DUCKIEBOT_NAME] --image ![IMAGE_NAME]
+
+
+## Local workflow using the Exercises API {#aido-exercises-api}
+
+We have also developed a [workflow for submitting exercises](+opmanual_duckiebot#running-exercises) 
+in the [Duckietown MOOC on EdX](https://www.edx.org/course/self-driving-cars-with-duckietown)
+that may be useful for your development workflow. Several of the AI-DO templates and baselines are also
+valid "exercises" and can therefore follow this workflow. 
