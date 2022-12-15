@@ -100,11 +100,19 @@ You can also evaluate the submission *locally*.  This is useful for debugging an
 
 Use this command:
 
-    $ dts challenges evaluate  --challenge aido-LF-sim-validation
+    $ dts challenges evaluate  --challenge aido-hello-sim-validation
 
 ## Troubleshooting
 
-If any of the commands above don't work, it is likely that something related to Docker permissions is to blame - please ask us on Slack in the [#help-accounts](https://duckietown.slack.com/archives/C70CR8TAS) channel.
+If any of the commands above don't work, it is likely that something related to Docker permissions is to blame.
+
+If you are using Docker Desktop for Mac OS X you might need to try the following:
+
+Symptom: `dts challenges submit` fails with a permission error on Mac OS X using Docker Desktop.
+
+Resolution: Disable `gRPC FUSE` in Docker Desktop by going to "Preferences" and unchecking the option "Use gRPC Fuse for file sharing". Select "Apply and Restart" to save the changes.
+
+For other issues please ask us on Slack in the [#help-accounts](https://duckietown.slack.com/archives/C70CR8TAS) channel.
 
 <!-- TODO: where to file an issue? -->
 
