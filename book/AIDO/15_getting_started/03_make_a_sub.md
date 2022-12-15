@@ -100,7 +100,7 @@ You can also evaluate the submission *locally*.  This is useful for debugging an
 
 Use this command:
 
-    $ dts challenges evaluate  --challenge aido-LF-sim-validation
+    $ dts challenges evaluate  --challenge aido-hello-sim-validation
 
 ## Troubleshooting
 
