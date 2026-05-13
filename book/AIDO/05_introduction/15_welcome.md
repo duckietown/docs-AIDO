@@ -43,9 +43,11 @@ There are currently three leagues in the AI Driving Olympics.
 The **Urban League** is based on the [Duckietown platform][duckietown], and  includes a series of tasks of increasing complexity. For each task, we provide tools for competitors to use in the form of simulators, logs, code templates, baseline implementations and low-cost access to robotic hardware. We evaluate submissions in simulation online, on standardized hardware environments, and finally at the competition event.
 
 Participants will not need to be physically present at any stage of the competition --- they will just need to send their source code.  
-There will be qualifying rounds in simulation, similar to [recent DARPA Robotics Challenges](https://www.subtchallenge.com/), and, for evaluation, we make available the use of "[Duckietown Autolabs](+opmanual_autolab#book)" which are facilities that allow remote experimentation in a reproducible setting. 
+There will be qualifying rounds in simulation, similar to [recent DARPA Robotics Challenges](https://www.subtchallenge.com/), and, for evaluation, we make available the use of [Duckietown Autolabs](#duckietown-autolabs), which are facilities that allow remote experimentation in a reproducible setting.
 
-See the leaderboards and many other things at [the challenges site](https://challenges.duckietown.org).
+In the current `ente` repo set documented by this book, the maintained public workflow focuses on Duckiematrix-based `LF` simulation submissions and their associated templates and baselines.
+
+See the leaderboards and current submission UI at [the staging challenges site](https://staging-challenges.duckietown.com).
 
 The **Advanced Perception League** is organized by [Motional](https://motional.com/) (ex nuTonomy, Aptiv Mobility).
 

@@ -1,64 +1,35 @@
 # Challenge `LFVI-multi-full`  {#challenge-LFVI-multi-stateful status=ready}
 
-The fourth challenge of the *AI Driving Olympics* is "lane following with dynamic vehicles and intersections" (`LFVI`).
-This challenge is an extension of Challenge `LF` to include map configurations that are not just loops but now contain intersections which must be negotiated. 
-Your agent will control all the Duckiebots in the map. We make things somewhat simpler by providing directly the state information of the Duckiebots. As a result, this challenge will only be evaluated
-in simulation
+This page documents the historical multi-agent, full-state `LFVI` challenge from earlier AI-DO releases.
 
 <div figure-id="fig:lane-following-vehicles-intersections-LFVI" figure-caption="A Duckiebot following a lane following in the presence of other vehicles, in a Duckietown with intersections.">
   <img src="lfvi-no-tls.jpg" style='width:100%;height:auto'/>
 </div>
 
-Again we ask participants to submit code allowing the Duckiebot to drive on the right-hand side of the street within Duckietown, but now it must also successfully navigate intersections. Due to interactions with other Duckiebots, a successful solution almost certainly not be completely \emph{reactive}. 
-
-<!-- * This challenge uses the Duckietown challenge infrastructure. The precise definition of the challenge is in the [challenge definition repository](https://github.com/duckietown/challenge-aido_LF) -->
-
+This variant combined intersections, dynamic vehicles, and a multi-agent setup in which the submitted policy controlled all Duckiebots with additional state information. The current `ente` workspace does not publish a maintained public queue or maintained template for this protocol.
 
 ## `LFVI_multi_full` in Simulation {#challenge-aido_lfvi status=ready}
 
-The current versions of the lane following with vehicles in simulation are `aido-LFVI_multi-sim-testing` 
-and `aido-LFVI_multi-sim-validation`. These two challenges are identical except for the output that you are allowed to see. In the case of `testing` you will be able to see performance of your agent 
-([](#fig:submission-output-lfvi))  and you will be able to download the logs and artifacts. 
+There is no maintained public `ente` simulation queue for this `LFVI` variant in this workspace.
 
-<div figure-id="fig:submission-output-lfvi" figure-caption="Visual output for a LFVI submission.">
+<div figure-id="fig:submission-output-lfvi" figure-caption="Historical visual output for a LFVI submission.">
   <img src="lfvi-output.png" style='width:100%;height:auto'/>
 </div>
+
+If you are working today on the maintained stack, start from [Challenge `LF`](#challenge-LF) and a current runtime such as the [PyTorch template](#pytorch-template) or [ROS template](#ros-template). Private research extensions can build on those repos, but the historical full-state multi-agent public flow is not active here.
 
 ## Templates {status=ready}
 
 ## Templates and Baselines {status=ready}
 
-To get started, try one of the existing [templates](#part:embodied), which are
-minimal setups that do random things but are functions, or the [baselines](#part:embodied-strategies)
-which are instantiations of the templates that implement some algorithms, but probably not in an optimal 
-way. Many of the past AI-DO winners are in the baseline solutions.
-
-Note that in the case of this challenge you will need to update the protocol that is used. 
-
-TODO: provide more details. 
-
-You may also look at the [minimal agent with full state information](https://github.com/duckietown/challenge-aido_LF-minimal-agent-full)
-for an example of how to do this.
-
+The maintained repo set in this workspace does not include a dedicated `LFVI` full-state template. Use the current LF templates or baselines as the runtime surface if you want to prototype related ideas privately.
 
 ### `aido-LFVI_multi-sim-testing` Details {#aido-LFVI_multi-sim-testing status=ready}
 
- - [Challenge overview](https://challenges.duckietown.org/v4/humans/challenges/aido-LFVI_multi-sim-testing)
- - [Leaderboard](https://challenges.duckietown.org/v4/humans/challenges/aido-LFVI_multi-sim-testing/leaderboard)
- - [All submissions](https://challenges.duckietown.org/v4/humans/challenges/aido-LFVI_multi-sim-testing/submissions)
-
-
-<!-- Interaction protocol: [`aido2_db18_agent-z2`](#aido2_db18_agent-z2) -->
-
-The details for "experiment manager", "simulator", and "scenario maker" parameters may be of interest and are [available here](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFVI-sim-testing) (Under "Details").
+Historical note: the old `LFVI` testing queue belonged to the legacy v4 challenge server and is not part of the maintained `ente` public flow.
 
 ### `aido-LFVI_multi-sim-validation` Details {#aido-LFVI_multi-sim-validation status=ready}
 
- - [Challenge overview](https://challenges.duckietown.org/v4/humans/challenges/aido-LFVI_multi-sim-validation)
- - [Leaderboard](https://challenges.duckietown.org/v4/humans/challenges/aido-LFVI_multi-sim-validation/leaderboard)
- - [All submissions](https://challenges.duckietown.org/v4/humans/challenges/aido-LFVI_multi-sim-validation/submissions)
-
-
-<!-- Interaction protocol: [`aido2_db18_agent-z2`](#aido2_db18_agent-z2) -->
+Historical note: the old `LFVI` validation queue is retained here for context only. There is no active staging equivalent in this workspace.
 
 

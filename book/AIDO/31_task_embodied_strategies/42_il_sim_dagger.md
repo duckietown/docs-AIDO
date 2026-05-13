@@ -1,29 +1,24 @@
 # Dataset Aggregation {#embodied_il_sim_dagger status=ready}
 
-This section describes the procedure for training and testing an agent with the [gym-duckietown](https://github.com/duckietown/gym-duckietown) simulator using the [Dagger](https://www.cs.cmu.edu/~sross1/publications/Ross-AIStats11-NoRegret.pdf) algorithm.
+This section describes the current `ente` DAgger baseline for the lane-following challenge.
 
-It can be used as a starting point for any of the [`LF`](#challenge-LF), [`LFV`](#challenge-LFV), and [`LFI`](#challenge-LFI) challenges.
+The baseline now trains and evaluates against Duckiematrix rather than the older Gym Duckietown simulator, while still following the same high-level DAgger idea of iteratively mixing expert actions and learner actions.
 
 
 <div class='requirements' markdown='1'>
 
 Requires: You are somewhat familiar with PyTorch and the [Pytorch template](#pytorch-template).
 
-Result: You could win the AI-DO!
+Result: You can train, test, and submit the current DAgger baseline for `aido-LF-sim-validation`.
 
 </div>
-
-<figure id="aido-webinar-dagger">
-    <figcaption>Dataset Aggregation (skip to end)</figcaption>
-    <dtvideo src="vimeo:481632757"/>
-</figure>
 
 ## Introduction
 
 We saw a first implementation of imitation learning in the behaviour cloning baseline. 
 That baseline models the driving task as an end-to-end supervised learning problem where data can be collected offline from an expert. One of the central issues with this approach is that of **distributional shift**. Since this is a sequential decision making problem, the training data are not "identically and independently distributed". The result is that if your agent deviates from the *optimal* trajectory that was demonstrated by the expert, it will not have any data in its dataset that shows it how to *recover back* to the optimal trajectory. As a result, it is unlikely that the behiaviour cloning approach will be robust.  
 
-For a better result than behaviour cloning this second version of imitation learning does not train only on a single trajectory given by the expert. We follow the Dataset Aggreagation algorithm [(Dagger)](https://www.cs.cmu.edu/~sross1/publications/Ross-AIStats11-NoRegret.pdf) where we also let the agent interact with the environment and allow the expert to *recover*.  The actions between the expert and the learner are chosen randomly with a varying probability with the hope that the expert _corrects_ the learner if it starts deviating from the optimal trajectory.
+For a better result than behaviour cloning, this second version of imitation learning does not train only on a single trajectory given by the expert. We follow the Dataset Aggregation algorithm [(Dagger)](https://www.cs.cmu.edu/~sross1/publications/Ross-AIStats11-NoRegret.pdf), where the learner also interacts with the environment and the expert recovers from the learner's mistakes.
 
 ## Quickstart 
 
@@ -34,64 +29,45 @@ Clone this [repo](https://github.com/duckietown/challenge-aido_LF-baseline-dagge
 Change into the directory:
 
     $ cd challenge-aido_LF-baseline-dagger-pytorch
-    
-In here you will see two directories `submission` and `learning`. To make a submission, enter the `submission` folder:
 
-    $ cd submission
+The repository already includes `submission.yaml` for `aido-LF-sim-validation` with protocol `aido6_embodied_sys`.
 
 Then test the submission, either locally with:
 
-    $ dts challenges evaluate --challenge ![CHALLENGE_NAME]
+    $ dts challenges evaluate --challenge aido-LF-sim-validation
 
 or make an official submission when you are ready with 
 
-    $ dts challenges submit ![CHALLENGE_NAME]
+    $ dts challenges submit
 
 You can find the list of challenges [here][list-challenges]. Make sure that it is marked as "Open". 
 
 
-[list-challenges]: https://challenges.duckietown.org/v4/humans/challenges
+[list-challenges]: https://staging-challenges.duckietown.com/humans/challenges
 
 
 ## Local Development Workflow
 
-The previous submission used a model which is included in the repo, but you should try to improve upon it. 
+The repository ships a working model, but the expectation is that you will retrain and improve it.
 
-### Option 1: Training with Collab
+### Training
 
-We provide a [Collab notebook that you can used to get started](https://colab.research.google.com/github/duckietown/challenge-aido_LF-baseline-dagger-pytorch/blob/main/notebook.ipynb) 
+Before starting local training, follow the shared Duckiematrix workflow in
+[Using Duckiematrix Locally](../60_manual/32_simulator.md). That page documents the engine
+and renderer setup, when to use DTPS or SHM, and how to run the same workflow
+on a workstation with a display or on a headless GPU host.
 
+From the repository root, run:
 
-During training the loss curve for each episode is available (by default on a folder created on root called `iil_baseline`) and may be checked using `tensorboard` and specifying the `--logidr`. On the same folder you will have `data.dat` and `target.dat` which are the memory maps used by the dataset.
+    $ python -m training.train
+    $ python -m training.test --model-path ![PATH_TO_MODEL]
 
-
-### Option 2: Training Locally
-
-
-Start by cloning  [the gym-duckietown simulator repo](https://github.com/duckietown/gym-duckietown):
-
-    $ git clone https://github.com/duckietown/gym-duckietown.git
-    
-Change into the directory:
-
-    $ cd gym-duckietown
-    
-Install the package:
-
-    $ pip3 install -e .
-
-
-To run the baseline training procedure, run:
-
-    $ python -m learning.train
-
-in the root directory. 
+The training helpers in `training/utils/environment.py` use `gym_duckiematrix.db21j_env.DuckiematrixDB21JEnv`, so the learning path now matches the same Duckiematrix world model used by the runtime submission.
 
 
 ### Parameters that can affect training
 
-
-There are several optional flags that may be used to modify hyperparameters of the algorithm:
+There are several optional flags you can use to modify the training run:
 
 * `--episode` or `-i` an integer specifying the number of episodes to train the agent, defaults to 10.
 * `--horizon` or `-r` an integer specifying the length of the horizon in each episode, defaults to 64.
@@ -104,29 +80,22 @@ There are several optional flags that may be used to modify hyperparameters of t
 * `--randomize-map` or `-rm` a flag to randomize training maps on reset.
 
 
-The baseline model is based on the Dronet model. The feature extractor of the model is frozen while the classifier is modified for the regression task.
+The baseline model is based on Dronet. The feature extractor is frozen while the regression head is adapted to the lane-following control task.
 
-All the PyTorch boilerplate code is encapsulated in the `NeuralNetworkPolicy` class implemented on `learning/imitation/iil-dagger/learner/neural_network_policy.py`and is based on previous work done by Manfred Díaz on Tensorflow.
+### Runtime structure
 
+The `ente` DAgger repository follows the same runtime layout as the template and RL baseline:
 
-###  Local Evaluation
+- `config.yaml` carries the exercise metadata.
+- `solution/` contains the runtime submission payload.
+- `models/` contains the shipped inference checkpoint.
+- `training/` contains the baseline-owned trainer and test harness.
 
-A simple testing script `test.py` is provided with this implementation.
-It loads the latest model from the the provided directory and runs it on the simulator. To test the model:
-    
-    $ python -m learning.test --model-path ![path]
-    
-The model path flag has to be provided for the script to load the model:
+At runtime, `solution/main.py` talks to the live Duckiematrix evaluator through `gym_duckiematrix.gym_environment.GymEnvironment`. Unlike the ROS repositories, this baseline does not need `launchers/` or `assets/` because it runs a direct Python entrypoint rather than a ROS graph.
 
-* `--model-path` or `-mp` string specifying the path to the saved model to be used in testing.
+### Local evaluation
 
-Other optional flags that may be used are:
-
-* `--episode` or `-i` an integer specifying the number of episodes to test the agent, defaults to 10.
-* `--horizon` or `-r` an integer specifying the length of the horizon in each episode, defaults to 64.
-* `--save-path` or `-s` string specifying the path where to save the trained model, models will be overwritten to keep latest episode, defaults to a file named iil_baseline.pt on the project root.
-* `--num-outputs` integer specifying the number of outputs the model has, defaults to 2.
-* `--map-name` or `-m` string  specifying which map to use for training, defaults to loop_empty.
+A simple local test run remains available through `python -m training.test --model-path ![PATH_TO_MODEL]`. Once the runtime checkpoint looks good locally, use the normal `dts challenges evaluate` and `dts challenges submit` commands from the repository root.
    
 ### Expected Results
 
@@ -145,7 +114,7 @@ Some ideas on how to improve on the provided baseline:
 
 * Map randomization.
 * Domain randomization.
-* Better selection than random when switching between expert/learner actions.
+* Better selection than random when switching between expert and learner actions.
 * Balancing the loss between going straight and turning.
 * Change the task from linear and angular speed to left and right wheel velocities.
 * Improving the teacher.

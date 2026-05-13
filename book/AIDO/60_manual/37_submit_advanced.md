@@ -8,8 +8,8 @@ command.
 
 Each submission directory has a file `submission.yaml` containing the following information:
 
-    protocol: ![protocol] # do not change
-    challenge: ![challenge name(s)]
+    protocol: aido6_embodied_sys
+    challenge: aido-LF-sim-validation
     user-label: ![optional label]
     user-payload: ![optional user payload]
     
@@ -23,16 +23,16 @@ However you can also pass the name as a parameter `--challenge`:
     
 The names of the challenges can be seen [at this page][list-challenges].
 
-[list-challenges]: https://challenges.duckietown.org/v4/humans/challenges
+[list-challenges]: https://staging-challenges.duckietown.com/humans/challenges
 
-For example, if you would only like to submit to submit to LF validation system, you can do it as:
+For example, if you would like to submit to the maintained public LF validation challenge, you can do it as:
 
-    $ dts challenges submit --challenge ![aido3-LF-sim-validation]
+    $ dts challenges submit --challenge aido-LF-sim-validation
 
-If you would like to submit to multiple specific challenges, you can do it in the yaml file:
+If you override the default values in `submission.yaml`, make sure that the challenge and protocol remain compatible. For the maintained templates and baselines in this workspace, that means keeping `aido6_embodied_sys` together with `aido-LF-sim-validation` unless you are intentionally targeting another compatible evaluator.
 
-    protocol: ![aido2_db18_agent-z2] # do not change
-    challenge: ![[challenge1_name,challenge2name,...]]
+    protocol: aido6_embodied_sys
+    challenge: aido-LF-sim-validation
     
 ## Metadata {#submit-advanced-metadata}
 

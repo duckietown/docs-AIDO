@@ -1,74 +1,49 @@
 # Challenge `LFI` {#challenge-LFI status=ready}
 
-The third challenge of the *AI Driving Olympics* is "lane following with intersections" (`LFI`).
-This challenge is an extension of Challenge `LF` to include map configurations that are not just 
-loops but now contain intersections which must be traversed. 
+This page documents the historical "lane following with intersections" (`LFI`) challenge from earlier AI-DO releases.
 
 <div figure-id="fig:lane-following-vehicles-intersections-LFI" figure-caption="A Duckiebot following a lane in a Duckietown with intersections.">
   <img src="lfi-db21.jpg" style='width:100%;height:auto'/>
 </div>
 
-Again we ask participants to submit code allowing the Duckiebot to drive on the right-hand side of the street within Duckietown, but now it must also successfully navigate intersections. Due to interactions with other Duckiebots, a successful solution almost certainly not be completely \emph{reactive}. 
-
-<!-- * This challenge uses the Duckietown challenge infrastructure. The precise definition of the challenge is in the [challenge definition repository](https://github.com/duckietown/challenge-aido_LF) -->
-
+Conceptually, `LFI` extends [Challenge `LF`](#challenge-LF) by emphasizing intersection traversal. In the current `ente` workspace there is no separate maintained public `LFI` queue, although the maintained `LF` evaluation still reports `intersection_count` as one of its scores.
 
 ## `LFI` in Simulation {#challenge-aido_lfi status=ready}
 
-The current versions of the lane following with vehicles in simulation are 
-`aido-LFI-sim-testing` and `aido2-LF-sim-validation`. 
-These two challenges are identical except for the output that you are allowed to see. 
-In the case of `testing` you will be able to see performance of your agent ([](#fig:submission-output-lfi))  and you will be able to download the logs and artifacts. 
+There is no maintained public `ente` simulation queue for `LFI` in this workspace.
 
-<div figure-id="fig:submission-output-lfi" figure-caption="Visual output for a LFI submission.">
+<div figure-id="fig:submission-output-lfi" figure-caption="Historical visual output for a LFI submission.">
   <img src="lfi-output.png" style='width:100%;height:auto'/>
 </div>
 
+If you are working on the current public staging stack, use [Challenge `LF`](#challenge-LF) and adapt a maintained runtime if you want stronger intersection behavior.
+
 ## Templates and Baselines {status=ready}
 
-To get started, try one of the existing [templates](#part:embodied), which are
-minimal setups that do random things but are functions, or the [baselines](#part:embodied-strategies)
-which are instantiations of the templates that implement some algorithms, but probably not in an optimal 
-way. Many of the past AI-DO winners are in the baseline solutions.
+The maintained repo set in this workspace provides current LF-facing starting points:
 
+- [PyTorch template](#pytorch-template)
+- [ROS template](#ros-template)
+- [Duckietown ROS baseline](#ros-baseline)
+- [reinforcement learning baseline](#embodied_rl)
+- [DAgger baseline](#embodied_il_sim_dagger)
 
 ### `aido-LFI-sim-testing` Details {#aido-LFI-sim-testing status=ready}
 
- - [Challenge overview](https://challenges.duckietown.org/v4/humans/challenges/aido-LFI-sim-testing)
- - [Leaderboard](https://challenges.duckietown.org/v4/humans/challenges/aido-LFI-sim-testing/leaderboard)
- - [All submissions](https://challenges.duckietown.org/v4/humans/challenges/aido-LFI-sim-testing/submissions)
-
-
-<!-- Interaction protocol: [`aido2_db18_agent-z2`](#aido2_db18_agent-z2) -->
-
-The details for "experiment manager", "simulator", and "scenario maker" parameters may be of interest and 
-are [available here](https://challenges.duckietown.org/v4/humans/challenges/aido-LFI-sim-testing) (Under "Details").
+Historical note: the old `LFI` testing queue belonged to the legacy v4 challenge server and is not part of the maintained `ente` public flow.
 
 ### `aido-LFI-sim-validation` Details {#aido-LFI-sim-validation status=ready}
 
- - [Challenge overview](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFVI-sim-validation)
- - [Leaderboard](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFVI-sim-validation/leaderboard)
- - [All submissions](https://challenges.duckietown.org/v4/humans/challenges/aido2-LFVI-sim-validation/submissions)
-
-
-<!-- Interaction protocol: [`aido2_db18_agent-z2`](#aido2_db18_agent-z2) -->
-
+Historical note: the old `LFI` validation queue is retained here for context only. There is no active staging equivalent in this workspace.
 
 ## `LFI` in the Duckietown Autolab {#challenge-aido_lfi-real status=ready}
 
-The current version of the lane following real robot challenge is  `aido-LFI-real-validation`. 
+There is no maintained public `ente` real-robot `LFI` queue in this workspace.
 
-Note that to test the performance of your agent on the real robot yourself, you can follow
-[the instructions to run your agent on your Duckiebot](#challenge-LF_duckiebot)
-
+If you need robot-side experiments with intersections, start from the [ROS template](#ros-template) or the [Duckietown ROS baseline](#ros-baseline) and manage deployment outside the public staging submission path.
 
 ### `aido-LFI-real-validation` Details {#aido-LFI-real-validation status=ready}
 
-- [Challenge overview](https://challenges.duckietown.org/v4/humans/challenges/aido-LFI-real-validation)
-- [Leaderboard](https://challenges.duckietown.org/v4/humans/challenges/aido-LFI-real-validation/leaderboard)
-- [All submissions](https://challenges.duckietown.org/v4/humans/challenges/aido-LFI-real-validation/submissions)
-
-
-<!-- Interaction protocol: [`aido2_db18_agent-z2`](#aido2_db18_agent-z2) -->
+Historical note: the legacy `LFI` real-robot queue is not part of the maintained `ente` public workflow.
 
 

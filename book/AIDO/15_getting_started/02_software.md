@@ -59,7 +59,7 @@ the following options.
 
 Note: Don't forget that after you install Docker you need to add user to "docker" group:
 
-    $ sudo adduser `whoami` docker
+    $ sudo adduser $(whoami) docker
 
 Note: you likely know about the first two options `default-runtime`
 and `runtimes`. Be sure to include also the "unusual"
@@ -93,9 +93,9 @@ Make sure it is installed by using:
 
 <img class="screencast" src="rec-dts-version.gif" width="100%"/>
 
-Set the `daffy` command branch:
+Set the `ente` command branch used by the current templates and baselines:
 
-    $ dts --set-version daffy
+    $ dts --set-version ente
 
 <img class="screencast" src="rec-dts-command-version.gif" width="100%"/>
 
@@ -162,6 +162,6 @@ You should expect an output like:
 ~
 ~            You can find the list of your submissions at the page:
 ~
-~                https://challenges.duckietown.org/v4/humans/users/1639
+~                https://staging-challenges.duckietown.com/humans/users/1639
 ```
 

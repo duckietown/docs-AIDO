@@ -14,21 +14,25 @@ Result: You have made a submission to the Lane Following AI-DO challenge, and yo
 
 ## Checkout the submission repo {#cm-first-checkout}
 
-Check out the competition template [`challenge-aido_LF-template-random`][template]:
+For a first `ente` submission, start with the PyTorch template [`challenge-aido_LF-template-pytorch`][template]:
 
-    $ git clone https://github.com/duckietown/challenge-aido_LF-template-random
+    $ git clone https://github.com/duckietown/challenge-aido_LF-template-pytorch
 
-[template]: https://github.com/duckietown/challenge-aido_LF-template-random
+[template]: https://github.com/duckietown/challenge-aido_LF-template-pytorch
+
+If you prefer ROS, you can substitute `challenge-aido_LF-template-ros` and follow the same submission flow.
 
 ## Submit {#cm-first-submit}
 
 Jump into the directory:
 
-    $ cd challenge-aido_LF-template-random
+    $ cd challenge-aido_LF-template-pytorch
+
+The template already includes a `submission.yaml` that targets `aido-LF-sim-validation` with protocol `aido6_embodied_sys`.
 
 Submit using:
 
-    $ dts challenges submit --challenge aido-hello-sim-validation
+    $ dts challenges submit
 
 <img class="screencast" src="rec-submit.gif" width="100%"/>
 
@@ -48,7 +52,7 @@ This does the following:
 2. Push the Docker container.
 3. Make contact with the [challenge server][server] to send your submission.
 
-[server]: https://challenges.duckietown.org/v4/
+[server]: https://staging-challenges.duckietown.com/
 
 The expected output is something along the lines of:
 
@@ -57,7 +61,7 @@ The expected output is something along the lines of:
     ...
     Successfully created submission ![SUBMISSION_NUMBER]
     
-    You can track the progress at: https://challenges.duckietown.org/v4/humans/submissions/![SUBMISSION_NUMBER]
+    You can track the progress at: https://staging-challenges.duckietown.com/humans/submissions/![SUBMISSION_NUMBER]
     
     You can also use the command:
     
@@ -82,17 +86,17 @@ The second way is to use the `dts challenges follow` command:
 
 The leaderboard for this challenge is available at the URL
 
-> [`https://challenges.duckietown.org/v4/humans/challenges/aido-hello-sim-validation/leaderboard`][leaderboard]
+> [`https://staging-challenges.duckietown.com/humans/challenges/aido-LF-sim-validation/leaderboard`][leaderboard]
 
-[leaderboard]: https://challenges.duckietown.org/v4/humans/challenges/aido-hello-sim-validation/leaderboard
+[leaderboard]: https://staging-challenges.duckietown.com/humans/challenges/aido-LF-sim-validation/leaderboard
 
 In general all the challenge leaderboards can be viewed at the front page [the challenges website][challenges].
 
-[challenges]: https://challenges.duckietown.org/v4/
+[challenges]: https://staging-challenges.duckietown.com/
 
 All available challenges can be viewed in the [comprehensive challenges page][all-challenges].
 
-[all-challenges]: https://challenges.duckietown.org/v4/humans/challenges
+[all-challenges]: https://staging-challenges.duckietown.com/humans/challenges
 
 ## Local evaluation {#cm-local}
 
@@ -100,7 +104,7 @@ You can also evaluate the submission *locally*.  This is useful for debugging an
 
 Use this command:
 
-    $ dts challenges evaluate  --challenge aido-hello-sim-validation
+    $ dts challenges evaluate --challenge aido-LF-sim-validation
 
 ## Troubleshooting
 

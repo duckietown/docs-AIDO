@@ -1,37 +1,175 @@
-# Using the Simulator {#aido-simulator status=beta}
+# Using Duckiematrix Locally {#aido-simulator status=ready}
 
+The current `ente` learning repositories no longer use the older
+`gym-duckietown` server workflow. The maintained local workflow uses a live
+Duckiematrix engine running in Gym mode plus a renderer.
 
-Doing great on the simulated challenges, but not on the real evaluation? 
-Or doing great in your training, but not on our simulated, held-out environments? 
+This section applies to repositories that build their learning environment
+from `gym_duckiematrix.db21j_env.DuckiematrixDB21JEnv` during training or use
+`gym_duckiematrix.gym_environment.GymEnvironment` at runtime. In the current
+stack that includes the reinforcement-learning baseline, the DAgger baseline,
+and custom repositories derived from the PyTorch template.
 
-In several of the baselines (namely [IL from sim](#embodied_il_sim), [RL](#embodied_rl), [Classical Duckietown](#ros-baseline) part of the workflow for improving your submission includes interacting with the simulator locally. For example, in [IL from sim](#embodied_il_sim), you use the simulator to generate examples to imitate, in [RL](#embodied_rl) the simulator gives you the reward, and in [Classical Duckietown](#ros-baseline) you can run your submission locally for faster development. 
+## What runs where
 
-In all of these cases, you can modify the parameters of the simultor. In each case, you will see a file called `env.py`. In this file,  we launch the `Simulator` class from `gym-duckietown`:
+For local training and debugging, keep these roles separate:
 
+- Your host shell or development container runs the Python trainer and test
+    harness.
+- A local Duckiematrix engine serves the Gym world and the DTPS endpoint on
+    `127.0.0.1:7501`.
+- A renderer attaches to that engine and produces the camera stream.
+- Local submission validation remains a separate step through
+    `dts challenges evaluate`.
+
+The submission image is the artifact you evaluate and submit. It is usually
+not the fastest place to iterate on training code.
+
+## DTPS or SHM
+
+The maintained `ente` training environment supports two local transport modes.
+
+### DTPS mode
+
+Leave `DTSHELL_SHM_PATH` unset.
+
+Use DTPS mode when you are bringing a repository up for the first time,
+debugging engine startup, or validating that the trainer can reset and step
+through the environment at all.
+
+### SHM mode
+
+Set `DTSHELL_SHM_PATH` and start the engine with `--shm-path`.
+
+Use SHM mode when you want the evaluator-style world I/O path or lower
+overhead for repeated stepping. SHM only replaces the Gym `WorldInput` and
+`WorldOutput` channel. The trainer still needs the DTPS endpoint on
+`127.0.0.1:7501` for map data and robot state, so SHM is not a full
+replacement for DTPS.
+
+## Local workstation with a display
+
+This is the simplest setup.
+
+1. Confirm that a renderer release is installed locally. If `dts matrix run`
+     reports that it cannot find the renderer binary, inspect
+     `~/.duckietown/duckiematrix/releases/` and choose an installed version.
+2. Start the Duckiematrix engine in Gym mode.
+3. Wait until port `7501` is reachable and the renderer has joined.
+4. Run a short smoke test before starting a long training job.
+
+Example engine launch:
+
+```bash
+dts matrix run --standalone --embedded --map loop \
+        --version RENDERER_VERSION \
+        --gym --delta-t 0.025 \
+        --target-frame-rate -1 \
+        --no-pull --profiler
 ```
-        from gym_duckietown.simulator import Simulator
-        env = Simulator(
-            seed=123, # random seed
-            map_name="loop_empty",
-            max_steps=500001, # we don't want the gym to reset itself
-            domain_rand=0,
-            camera_width=640,
-            camera_height=480,
-            accept_start_angle_deg=4, # start close to straight
-            full_transparency=True,
-            distortion=True,
-        )
+
+Before training, confirm both of these:
+
+- `nc -z 127.0.0.1 7501` succeeds.
+- `docker logs dts-matrix-engine` shows `All renderers joined the network`.
+
+Most maintained learning repositories then expose baseline-owned commands such
+as:
+
+```bash
+python -m training.test
+python -m training.train
 ```
 
-When we [take a look at the constructor](https://github.com/duckietown/gym-duckietown/blob/aido2_lf_r1/gym_duckietown/simulator.py#L145-L180), you'll notice that we aren't using all of the parameters listed. In particular, the three you should focus on are:
-    
-- `map_name`: What map to use; hint, take a look at gym_duckietown/maps for more choices
-- `domain_rand`: Applies domain randomization, a popular, black-box, sim2real technique
-- `randomized_maps_on_reset`: Slows training time, but increases training variety.
-- `camera_rand`: Randomizes the camera calibration to increase variety.
-- `dynamics_rand`: Simulates a miscalibrated Duckiebot, to better represent reality.
+Start with the shortest smoke test the repository supports. Only move to a
+longer run after reset, stepping, and checkpoint writing work locally.
 
+## Headless GPU host
 
-Mixing and matching different values for these will help you improve your training diversity, and thereby improving your evaluation robustness!
+The trainer and the renderer have different display requirements.
 
-If you're interested in more advanced techniques, like learning a representation that is a bit easier for your network to work with, or one that transfers better across the simulation-to-reality gap, there are some [alternative, more advanced methods](https://github.com/duckietown/segmentation-transfer) you may be interested in trying out.
+- The Python environment may still create a Matplotlib figure even if you do
+    not call `render()`. On a headless machine, set `MPLBACKEND=Agg` unless you
+    intentionally want an interactive backend.
+- The Unity renderer still needs a display provider. On a headless Linux
+    host, that usually means Xvfb or a dedicated renderer container or sidecar.
+- The default training environment is local-only. Unless you have written a
+    custom environment, it expects the engine on `127.0.0.1:7501`.
+
+One common host setup is:
+
+```bash
+export DISPLAY=:99
+export MPLBACKEND=Agg
+Xvfb :99 -screen 0 1280x720x24 &
+```
+
+If you already run the renderer in a sidecar container, keep the trainer on
+the host or in a development container and make sure the engine still appears
+locally on `127.0.0.1:7501`.
+
+## Starting in SHM mode
+
+Enable SHM explicitly and keep the DTPS endpoint alive:
+
+```bash
+export DTSHELL_SHM_PATH=/tmp/duckiematrix/world_io
+mkdir -p /tmp/duckiematrix
+
+dts matrix run --standalone --embedded --map loop \
+        --version RENDERER_VERSION \
+        --gym --delta-t 0.025 \
+        --target-frame-rate -1 \
+        --no-pull --profiler \
+        --shm-path /tmp/duckiematrix/world_io
+```
+
+Before training, confirm all of these:
+
+- the DTPS port `7501` is reachable
+- the SHM files appear for the chosen path, typically including `*.e2s` and
+    `*.s2e`
+- the renderer has joined the engine
+
+Once those conditions are satisfied, the baseline-owned training commands are
+the same as in DTPS mode.
+
+## Multi-repository development
+
+If you are co-developing the local simulator stack together with
+`duckietown-sdk`, `duckietown-messages`, or `gym-duckiematrix`, prefer
+editable installs or a `PYTHONPATH` override so the trainer uses the source
+trees you are editing instead of stale installed packages.
+
+Example:
+
+```bash
+export PYTHONPATH=/path/to/duckietown-messages/src:/path/to/duckietown-sdk/src:/path/to/gym-duckiematrix/src
+```
+
+That is especially useful when you are debugging transport selection,
+camera-decoding issues, or changes in the Duckiematrix environment wrapper.
+
+## Recommended workflow
+
+For most repositories, the safest progression is:
+
+1. Bring up the engine and renderer first.
+2. Run the repository's shortest local test path.
+3. Run a short training job and confirm that checkpoints are written.
+4. Re-evaluate the resulting checkpoint locally.
+5. Validate the submission container separately with
+     `dts challenges evaluate --challenge aido-LF-sim-validation`.
+
+Only after the local runtime and the local trainer both work cleanly is it
+worth spending time on longer training runs.
+
+## Common failure modes
+
+- The renderer release named in `dts matrix run` is not installed locally.
+- SHM is enabled but port `7501` is still down, so the environment never gets
+    map or robot state.
+- A headless machine lacks either a display provider for the renderer or
+    `MPLBACKEND=Agg` for the trainer.
+- Local Python imports still resolve to stale installed packages instead of
+    the source trees you are actively editing.

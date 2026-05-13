@@ -8,12 +8,11 @@ In this page we will describe how to run your submission on your Duckiebot.
 Requires: You have a Duckiebot. See [here](https://www.duckietown.org/about/hardware)
 for how to acquire a Duckiebot.
 
-Requires: You have built your [DB19](+opmanual_duckiebot#assembling-duckiebot-db19) 
-or (recommended) [DB21](+opmanual_duckiebot#assembling-duckiebot-db21) Duckiebot. Evaluations will be performed using `DB21` Duckiebots.
+Requires: You have built your DB19 or, preferably, DB21 Duckiebot. For assembly and setup details, see the [Duckiebot operations manual](https://docs.duckietown.org/daffy/opmanual_duckiebot/out/index.html). Evaluations will be performed using `DB21` Duckiebots.
 
-Requires: You have [built your Duckietown according to the appearance specification](+opmanual_duckietown#dt-ops-appearance-specifications).
+Requires: You have built your Duckietown according to the [appearance specifications](https://docs.duckietown.org/daffy/opmanual_duckietown/out/index.html).
 
-Requires: You can [connect to your robot wirelessly](+opmanual_duckiebot#duckiebot-network).
+Requires: You can connect to your robot wirelessly; the [Duckiebot operations manual](https://docs.duckietown.org/daffy/opmanual_duckiebot/out/index.html) covers the network setup workflow.
 
 Requires: You have [made a valid AI-DO submission](#cm-first).
 
@@ -38,9 +37,9 @@ There are two basic modes that you can use to run a submission.
 
 ## Verifying that your Duckiebot is operational
 
-When you boot your robot it starts to produce camera imagery and wheel encoder data (if it's moving) and waits for incoming motor commands. To verify that your Duckiebot is fully operational, you should follow [](+opmanual_duckiebot#rc-control) and [](+opmanual_duckiebot#read-camera-data). 
+When you boot your robot it starts to produce camera imagery and wheel encoder data (if it's moving) and waits for incoming motor commands. To verify that your Duckiebot is fully operational, check that remote control and camera streaming work correctly using the [Duckiebot operations manual](https://docs.duckietown.org/daffy/opmanual_duckiebot/out/index.html).
 
-You should also ensure that your Duckiebot is well calibrated, both [camera](+opmanual_duckiebot#camera-calib) and [wheels](+opmanual_duckiebot#wheel-calibration).
+You should also ensure that your Duckiebot is well calibrated, especially the camera and wheels; the [Duckiebot operations manual](https://docs.duckietown.org/daffy/opmanual_duckiebot/out/index.html) covers both calibration procedures.
 
 
 ## Run a local submission on the Duckiebot {#aido-run-duckiebot-local}
@@ -56,7 +55,7 @@ Go into any valid submission folder (i.e., one where you could run `dts submit` 
 
 ## Local workflow using the Exercises API {#aido-exercises-api}
 
-We have also developed a [workflow for submitting exercises](+opmanual_duckiebot#running-exercises) 
+We have also developed a workflow for submitting exercises
 in the [Duckietown MOOC on EdX](https://www.edx.org/course/self-driving-cars-with-duckietown)
 that may be useful for your development workflow. Several of the AI-DO templates and baselines are also
 valid "exercises" and can therefore follow this workflow. 

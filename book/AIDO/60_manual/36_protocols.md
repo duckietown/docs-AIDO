@@ -1,62 +1,35 @@
-# Agent protocols {#agent-protocols status=draft}
+# Agent protocols {#agent-protocols status=ready}
 
-The section describes the different protocols that should be followed by agents that are submitted. 
+This section describes the submission protocols used by the current `ente` AIDO lane-following stack.
 
-Note: The currently used protocol is `aido2_db18_agent-z2`
+## `aido6_embodied_sys` {#aido6_embodied_sys}
 
-## `aido2-db18-agent-z2` {#aido2_db18_agent-z2}
+`aido6_embodied_sys` is the active submission protocol for the `ente` lane-following challenge `aido-LF-sim-validation`.
 
-TODO: fill this in
+### Execution model
 
+- The evaluator starts a Duckiematrix engine and the user solution container.
+- The runner injects `VEHICLE_NAME`, `DUCKIEMATRIX_ENGINE_HOSTNAME`, and `DUCKIEMATRIX_ENGINE_PORT` into the solution environment.
+- ROS-based solutions may also receive `DTSHELL_SHM_PATH`; when that variable is set, the ROS template uses shared-memory world I/O instead of DTPS.
 
-## `aido1_remote1-v3` {#aido1_remote1-v3}
+### Observations
 
-Communication: Duckietown Slimremote
+Observations arrive as `WorldInput` messages keyed by vehicle name and tagged with a `session_id`.
 
-`duckietown-challenges`: `v3`
+For the active LF challenge, the most important observation is the compressed front camera image for `map_0/vehicle_0`. The ROS bridge also republishes encoder ticks when they are present.
 
-Observations: 160x120 camera image
+### Actions
 
-Distortion: none
+Actions are wheel commands for the active vehicle. In the current templates and baselines, those commands are normalized PWM values in the interval `[-1, 1]` for the left and right wheels.
 
-Commands: linear and angular velocity
+The evaluator advances the Gym-mode Duckiematrix simulation when the solution publishes the next action.
 
-<video autoplay="1" controls="1" loop="1" style="border: solid 1px black" width="320">
-  <source src="http://duckietown-ai-driving-olympics-1.s3.amazonaws.com/v3/frankfurt/by-value/sha256/db648be4473470451c3ff8131f5c9a96849c812ab30db88ea48e61e089c60405" type="video/mp4"/>
-</video>
- 
+### Reference implementations
 
-## `aido1_remote2-v3` {#aido1_remote2-v3}
+- The [PyTorch template](#pytorch-template) talks directly to Duckiematrix through `gym_duckiematrix.gym_environment.GymEnvironment`.
+- The [ROS template](#ros-template) bridges the same protocol into ROS topics and publishes `WorldOutput` messages for the current `session_id`.
 
-Communication: Duckietown Slimremote
+## Historical note {#aido2_db18_agent-z2}
 
-`duckietown-challenges`: `v3`
-
-Observations: 160x120 
-
-Distortion: none
-
-Commands: left wheel velocity, right wheel velocity
-
-<video autoplay="1" controls="1" loop="1" style="border: solid 1px black" width="320">
-  <source src="http://duckietown-ai-driving-olympics-1.s3.amazonaws.com/v3/frankfurt/by-value/sha256/db648be4473470451c3ff8131f5c9a96849c812ab30db88ea48e61e089c60405" type="video/mp4"/>
-</video>
- 
- 
-## `aido1_remote3-v3` {#aido1_remote3-v3}
-
-Communication: Duckietown Slimremote
-
-`duckietown-challenges`: `v3`
-
-Observations: 640x480
-
-Distortion: yes
-
-Commands: left wheel velocity, right wheel velocity normalized in the unit interval.
-
-
-<video autoplay="1" controls="1" loop="1" style="border: solid 1px black" width="320">
-  <source src="http://duckietown-ai-driving-olympics-1.s3.amazonaws.com/v3/frankfurt/by-value/sha256/4fa2d1b8ed80176695f4d556501baa9085392045915d1ea155358c750699b8f2" type="video/mp4"/>
-</video>
+Older AIDO2 and AIDO5 pages refer to the historical `aido2_db18_agent-z2` protocol. That is not the active submission path on `ente`; use [`aido6_embodied_sys`](#aido6_embodied_sys) for the current lane-following stack.
  

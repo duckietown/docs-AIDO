@@ -6,10 +6,10 @@ This section focuses on the physical platform used for the embodied robotic chal
 
 <!--as outlined in the [challenge overview](#challenge_overview).-->
 
-For examples of Duckiebot driving see [a set of demo videos of Duckiebots driving in Duckietown](+opmanual_duckiebot#demos).
+For examples of Duckiebot driving, see demo videos from past Duckietown runs and AI-DO submissions.
 
 
-The actual embodied challenges will be described in more detail in [LF](#challenge-LF), [LFV](#challenge-LFV), [LFI](#challenge-LFI). 
+The maintained `ente` workflow described in this repo focuses on [LF](#challenge-LF). Historical variant pages for [LFV](#challenge-LFV), [LFP](#challenge-LFP), [LFI](#challenge-LFI), and [LFVI](#challenge-LFVI-multi-stateful) remain in the book for context.
 
 Note: the sequence of the challenges was chosen to gradually increase the difficulty, by extending previous challenge solutions to more general situations. We recommend you tackle the challenges in this same order.
 
@@ -23,13 +23,11 @@ There are three main parts of the platform with which you will interact:
 
 2. **Duckietown Autolabs** in which to try the code in controlled and reproducible conditions.
 
-3. **Physical Duckietown platform**: miniature autonomous vehicles and smart-cities in which the vehicles drive. The [Duckiebots](+opmanual_duckiebot#duckiebot-configurations) (robot hardware) and Duckietown (environment) are [rigorously specified](+opmanual_duckietown#dt-ops-appearance-specifications), which makes the development extremely repeatable. If you have a Duckiebot you can refer to the [Duckiebot operational manual](+opmanual_duckiebot#book) for step-by-step instructions on how to assemble, maintain, calibrate and operate your robot. If you would like to acquire a Duckiebot please go to [the Duckietown project store](https://get.duckietown.com/). 
+3. **Physical Duckietown platform**: miniature autonomous vehicles and smart-cities in which the vehicles drive. The Duckiebots (robot hardware) and Duckietown (environment) are [rigorously specified](https://docs.duckietown.org/daffy/opmanual_duckietown/out/index.html), which makes the development extremely repeatable. If you have a Duckiebot you can refer to the [Duckiebot operations manual](https://docs.duckietown.org/daffy/opmanual_duckiebot/out/index.html) for step-by-step instructions on how to assemble, maintain, calibrate and operate your robot. If you would like to acquire a Duckiebot please go to [the Duckietown project store](https://get.duckietown.com/).
 
-The Duckiebots officially supported for AI-DO 6 (2021) are the [`DB21` Duckiebots](https://get.duckietown.com/collections/dt-robots/products/duckiebot-db21-m). We recommend you [build your Duckietowns](https://docs.duckietown.org/daffy/opmanual_duckietown/out/index.html) according to the specifications, too. The necessary materials can be sourced locally pretty much globally - but if you want compliant "one-click" AI-DO kits for each challenge you can get them from here:
+The Duckiebots officially supported for AI-DO 6 (2021) are the [`DB21` Duckiebots](https://get.duckietown.com/collections/dt-robots/products/duckiebot-db21-m). We recommend you build your Duckietowns according to the [appearance specifications](https://docs.duckietown.org/daffy/opmanual_duckietown/out/index.html), too.
 
-- [`LF` AI-DO 6 hardware kit](https://get.duckietown.com/collections/ai-do-kits/products/ai-do-lane-following-lf-challenge-kit)
-- [`LFV` AI-DO 6 hardware kit](https://get.duckietown.com/collections/ai-do-kits/products/ai-do-lane-following-with-vehicles-lfv-challenge-kit)
-- [`LFI` AI-DO 6 hardware kit](https://get.duckietown.com/collections/starter-kits/products/db-mooc-kit)
+For the maintained public `ente` workflow in this repo, the default submission path is simulation-first: the active templates and baselines target Duckiematrix evaluation, and public validation happens on the simulation queue rather than through a hardware kit-specific workflow.
 
 For any questions regarding Duckietown hardware you can reach out to `hardware@duckietown.com`.
 
@@ -48,11 +46,11 @@ All the *computation* is done onboard on a:
 
 <!-- More details in section [computational substrate](#computation). -->
 
-*Power* is provided by a $10000$ mAh [Duckiebattery](+opmanual_duckiebot#db-opmanual-preliminaries-electronics) which provides several hours of operation.
+*Power* is provided by a $10000$ mAh Duckiebattery pack which provides several hours of operation.
 
 ### The Duckietown {#environment}
 
-Duckietowns are modular, structured environments built on two layers: the *road* and the *signal* layers ([](#fig:duckietown-environment)). Detailed specifications can be found [here](+opmanual_duckietown#dt-ops-appearance-specifications).
+Duckietowns are modular, structured environments built on two layers: the *road* and the *signal* layers ([](#fig:duckietown-environment)). Detailed specifications can be found in the [Duckietown appearance manual](https://docs.duckietown.org/daffy/opmanual_duckietown/out/index.html).
 
 
 There are six well-defined *road segments*: straight, left and right 90 deg turns, 3-way intersection, 4-way intersection, and empty tile. Each is built on individual tiles, and their interlocking enables customizable city sizes and topographies. The appearance specifications detail the color and size of the lines as well as the geometry of the roads.
@@ -68,14 +66,14 @@ The signal layer comprises street signs and traffic lights. *Street signs* enabl
 
 ### Simulation
 
-We provide a cloud simulation environment for training.
+We provide a cloud simulation environment for evaluation and iteration.
 
 In a way similar to the last DARPA Robotics Challenge, we use the simulation
 as a first screening of the participant's submissions. It will be necessary for the submitted agent code to run in simulation and be sufficiently performant to gain access to the Autolabs. 
 
-Simulation environments for each of the individual challenges are provided as Docker containers with clearly specified APIs. The baseline solutions for each challenge is provided as separate containers. When both containers (the simulation and corresponding solution) are loaded and configured correctly, the simulation will effectively replace the real robot(s). A proposed solution can be uploaded to our cloud servers, at which point it will be automatically run against our pristine version of the simulation environment (on a cluster) and a score will be assigned and returned to the participant.
+Simulation environments for each of the individual challenges are provided as Dockerized evaluator stacks with clearly specified APIs. In the current `ente` workflow, the maintained public path uses Duckiematrix together with the `aido6_embodied_sys` submission contract. A proposed solution can be uploaded to the staging challenge server, where it is run against the corresponding challenge definition and scored automatically.
 
-Examples of the simulators provided are shown on the [Duckietown Challenges server](https://challenges.duckietown.org/v4/). E.g., here is a [`LF` evaluated submission example](https://challenges.duckietown.org/v4/humans/submissions/13502) from AI-DO 5. 
+The current public evaluation surface is the [staging challenges site](https://staging-challenges.duckietown.com). For the maintained `ente` workflow in this workspace, the active public challenge is [`aido-LF-sim-validation`](https://staging-challenges.duckietown.com/humans/challenges/aido-LF-sim-validation).
 
 This simulator is also integrated with the OpenAI Gym environment for reinforcement learning agent training. An API for designing reward functions or tweaking domain randomization will be provided.
 
@@ -90,7 +88,7 @@ Examples of submissions and evaluations are publicly available on the [Duckietow
 
 -->
 
-### Duckietown Autolabs
+### Duckietown Autolabs {#duckietown-autolabs}
 
 <figure>
     <figcaption figure-id="fig:robotarium">The Duckietown Autolab at ETH Zürich</figcaption>
